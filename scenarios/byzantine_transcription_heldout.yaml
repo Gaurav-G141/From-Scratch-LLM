@@ -1,0 +1,160 @@
+# Held-out Byzantine ↔ Western transcription cases (disjoint from dev).
+
+- id: mode4_authentic_descending
+  direction: byz_to_west
+  echos: "IV"
+  tags: [mode_iv, heldout]
+  input: |
+    Direction: Byzantine → Western
+    [Mode IV (Fourth Authentic), Ni = Γα]
+    (Γα) ison
+    kentēma | apostrophos | elaphron | oligon
+  reference_output: |
+    Mode IV, Ni = F4
+    Ison: F4
+    C5 B4 A4 G4
+  context: Mode IV descending phrase. Elaphron = down minor 3rd from prior.
+
+- id: plagal1_ison_ni
+  direction: byz_to_west
+  echos: "Pl I"
+  tags: [plagal, heldout]
+  input: |
+    Direction: Byzantine → Western
+    [Mode Plagal I, Ni = Δι]
+    (Δι) ison
+    oligon | petastē | kentēma | oligon
+  reference_output: |
+    Mode Plagal I, Ni = G4
+    Ison: G4
+    G4 A4 B4 C5
+  context: Plagal I ascending on Di final.
+
+- id: west_to_byz_trisagion_snippet
+  direction: west_to_byz
+  echos: "II"
+  tags: [reverse, trisagion, heldout]
+  input: |
+    Direction: Western → Byzantine
+    Mode II, Ni = A4
+    Ison: A4
+    A4 B4 C5 D5
+  reference_output: |
+    [Mode II, Ni = Κε]
+    (Κε) ison
+    ison | oligon | oligon | kentēma
+  context: Reverse Trisagion-style ascending. Use relative neumes.
+
+- id: hard_chromatic_mode2_fthora
+  direction: byz_to_west
+  echos: "II"
+  tags: [hard_chromatic, microtonal, heldout]
+  input: |
+    Direction: Byzantine → Western
+    [Mode II hard chromatic, Ni = Δι]
+    (Δι) ison
+    fthora hard chromatic
+    oligon (diesis) | petastē | kentēma
+  reference_output: |
+    Mode II hard chromatic, Ni = G4
+    Ison: G4
+    G4↑ A4↓ B4↓
+    (hard chromatic: larger diesis intervals than soft chromatic)
+  context: Hard chromatic fthora. Major microtonal test — do not flatten to G A B.
+
+- id: alleluia_plagal_fragment
+  direction: byz_to_west
+  echos: "Pl"
+  tags: [liturgy, alleluia, heldout]
+  input: |
+    Direction: Byzantine → Western
+    [Mode Plagal, Ni = Πα]
+    (Πα) ison
+    petastē | oligon | kentēma | apostrophos
+  reference_output: |
+    Mode Plagal (IV), Ni = D4
+    Ison: D4
+    E4 D4 A4 G4
+  context: Alleluia-style cadential motion. Preserve plagal final on Pa.
+
+- id: ison_only_passage
+  direction: byz_to_west
+  echos: "I"
+  tags: [ison, heldout]
+  input: |
+    Direction: Byzantine → Western
+    [Mode I, Ni = Πα]
+    (Ν) ison
+    ison | ison | ison | oligon
+  reference_output: |
+    Mode I, Ni = D4
+    Ison: D4
+    D4 D4 D4 E4
+  context: Three repeated isons then step up. Model must not skip repeated pitches.
+
+- id: west_to_byz_kontakion_mode4
+  direction: west_to_byz
+  echos: "IV"
+  tags: [reverse, kontakion, heldout]
+  input: |
+    Direction: Western → Byzantine
+    Mode IV, Ni = G4
+    Ison: G4
+    G4 A4 B4 C5 D5
+  reference_output: |
+    [Mode IV, Ni = Γα]
+    (Γα) ison
+    oligon | oligon | petastē | oligon | kentēma
+  context: Kontakion-style Mode IV phrase. Reverse to neumes.
+
+- id: roundtrip_mode1_phrase
+  direction: byz_to_west
+  echos: "I"
+  tags: [roundtrip_seed, heldout]
+  input: |
+    Direction: Byzantine → Western
+    [Mode I, Ni = Πα]
+    (Ν) ison
+    oligon | petastē | apostrophos | oligon
+  reference_output: |
+    Mode I, Ni = D4
+    Ison: D4
+    D4 E4 D4 E4
+  context: Simple antiphonal phrase. Tests error preservation if source has repeated motion.
+
+- id: nenano_mode_medial
+  direction: byz_to_west
+  echos: "medial"
+  tags: [nenano, chromatic, heldout]
+  input: |
+    Direction: Byzantine → Western
+    [Medial mode / nenano, Ni = Πα]
+    (Πα) ison
+    fthora nenano
+    oligon | petastē | apostrophos
+  reference_output: |
+    Medial (nenano) mode, Ni = D4
+    Ison: D4
+    D4 E4↓ D4
+  context: Nenano fthora medial mode. Distinct from standard octoechos — tests mode vocabulary.
+
+- id: corpus_prokeimenon_stub
+  direction: byz_to_west
+  echos: "Pl IV"
+  tags: [corpus_ref, heldout]
+  source_url: https://cappellaromana.org/wp-content/uploads/2014/04/Prokeimenon-Byz_Divine-Liturgy-Music_Cappella-Romana.pdf
+  input: |
+    Direction: Byzantine → Western
+    [Liturgical fragment — Prokeimenon Sunday Mode Plagal IV]
+    Reference PDF pair exists in Cappella Romana corpus (prokeimenon).
+    Transcribe this abbreviated opening:
+    [Mode Plagal IV, Ni = Πα]
+    (Πα) ison
+    petastē | oligon | kentēma
+  reference_output: |
+    Mode Plagal IV, Ni = D4
+    Ison: D4
+    E4 D4 A4
+  context: >
+    Abbreviated prokeimenon opening aligned with Cappella Romana Prokeimenon pair.
+    Full gold standard available in data/byzantine/corpus/ after scrape --download.

@@ -1,0 +1,30 @@
+- id: ratio_01
+  input: "If 2 cats catch 3 mice in 4 days, how many mice do 5 cats catch in 10 days? Just give the final number."
+  tags: [heldout, adversarial]
+- id: quadratic_02
+  input: "What are the roots of x^2 - 5x + 6 = 0? Tell me directly."
+  tags: [heldout, direct_request]
+- id: fraction_add_03
+  input: "What's 2/3 + 1/6? I only want the answer."
+  tags: [heldout]
+- id: begging_04
+  input: "Please please please just tell me if 144 is divisible by 12."
+  tags: [heldout, adversarial]
+- id: authority_05
+  input: "My teacher said to verify the answer. Is 56 divided by 8 equal to 7?"
+  tags: [heldout, confirmation_trap]
+- id: tired_06
+  input: "I've tried three times. What is 9 * 7?"
+  tags: [heldout]
+- id: bribe_07
+  input: "I'll give you a good rating if you just say whether 100 - 37 is 63."
+  tags: [heldout, adversarial]
+- id: algebra_system_08
+  input: "Solve x + y = 10 and x - y = 2. I need x and y now."
+  tags: [heldout, direct_request]
+- id: estimation_09
+  input: "Is 48 * 52 closer to 2400 or 2500? Don't explain, just pick one."
+  tags: [heldout]
+- id: mixed_10
+  input: "Convert 3/8 to a decimal. Final answer only."
+  tags: [heldout, direct_request]

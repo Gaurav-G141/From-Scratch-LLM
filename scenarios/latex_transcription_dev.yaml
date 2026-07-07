@@ -1,0 +1,175 @@
+- id: apple_arithmetic_error
+  input: |
+    Word problem: Maya has 3 bags with 4 apples each. How many apples total?
+    Student work: "I added 3 + 4 = 7 apples."
+  context: >
+    Must show 3+4=7, NOT 3\cdot4=12. Student chose addition wrongly.
+  tags: [wrong_operation, arithmetic, basic]
+
+- id: ticket_multiplication_skip
+  input: |
+    Word problem: A movie ticket costs $12. Juan buys 5 tickets. How much does he pay?
+    Student work: "12 + 5 = 17 dollars."
+  context: >
+    Preserve 12+5=17. Do not rewrite as 12\cdot5=60.
+  tags: [wrong_operation, money]
+
+- id: speed_wrong_formula
+  input: |
+    Word problem: A car travels 60 miles in 2 hours. What is its average speed?
+    Student work: "Speed = 60 \times 2 = 120 mph."
+  context: >
+    Student multiplied instead of dividing. LaTeX must show 60\cdot2=120.
+  tags: [rate, wrong_operation]
+
+- id: rectangle_perimeter_area_swap
+  input: |
+    Word problem: A rectangle is 8 m long and 3 m wide. Find the area.
+    Student work: "Perimeter formula: 8 + 3 = 11 square meters."
+  context: >
+    Wrong formula AND wrong units label. Preserve 8+3=11 and sq m if student said it.
+  tags: [geometry, wrong_formula, units]
+
+- id: percent_of_wrong_base
+  input: |
+    Word problem: A $80 jacket is on sale for 25% off. What is the sale price?
+    Student work: "25% of 80 means 80 \div 25 = 3.20 off, so sale price is 80 - 3.20."
+  context: >
+    Student divided by 25 instead of multiplying by 0.25. Keep their numbers.
+  tags: [percent, arithmetic_error]
+
+- id: fraction_addition_wrong_denominator
+  input: |
+    Word problem: Sam ate 1/2 of a pizza and then 1/3 of the same pizza. How much total?
+    Student work: "1/2 + 1/3 = 2/5 of the pizza."
+  context: >
+    Classic wrong fraction add (added numerators and denominators). Must show 2/5.
+  tags: [fractions, arithmetic_error]
+
+- id: linear_equation_sign_error
+  input: |
+    Word problem: You have some money. You spend $15 and have $37 left. How much did you start with?
+    Student work: "x - 15 = 37, so x = 37 - 15 = 22."
+  context: >
+    Sign mishandled in solution step. Keep x-15=37 and x=22 (wrong).
+  tags: [algebra, sign_error]
+
+- id: two_step_wrong_isolation
+  input: |
+    Word problem: Three friends split a bill equally. Each pays $18. What was the total bill?
+    Student work: "Let t be total. t \div 3 = 18, so t = 18 \div 3 = 6."
+  context: >
+    Should multiply by 3; student divided again. Preserve t=6.
+  tags: [algebra, wrong_operation]
+
+- id: unit_conversion_inverted
+  input: |
+    Word problem: A rope is 2.4 meters long. How many centimeters is that?
+    Student work: "1 m = 100 cm, so 2.4 m = 2.4 \div 100 = 0.024 cm."
+  context: >
+    Inverted conversion. LaTeX must show divide by 100, not multiply.
+  tags: [units, conversion_error]
+
+- id: ratio_setup_reversed
+  input: |
+    Word problem: For every 2 cups of flour you need 3 cups of sugar. You have 8 cups of flour. How much sugar?
+    Student work: "2/3 = 8/x, so x = 8 \cdot 2/3 = 16/3 cups sugar."
+  context: >
+    Ratio set up backwards but student proceeded consistently — transcribe their proportion.
+  tags: [ratio, setup_error]
+
+- id: negative_temperature_wrong
+  input: |
+    Word problem: At midnight it was -4°C. By noon it rose 9 degrees. What is the noon temperature?
+    Student work: "Noon = -4 + 9 = -13°C."
+  context: >
+    Arithmetic sign error (-4+9 should be 5). Must show -13.
+  tags: [sign_error, integers]
+
+- id: probability_wrong_denominator
+  input: |
+    Word problem: A bag has 3 red and 5 blue marbles. What is P(red)?
+    Student work: "P(red) = 3/5 because red is 3 and blue is 5."
+  context: >
+    Used blue count as denominator. Keep 3/5, do not fix to 3/8.
+  tags: [probability, setup_error]
+
+- id: quadratic_factoring_wrong
+  input: |
+    Word problem: A rectangle's area is x^2 + 5x + 6. If width is x+2, write an expression for length.
+    Student work: "Area = length \cdot width, so length = (x^2+5x+6)/(x+2). I factored top as (x+2)(x+4), so length = x+4."
+  context: >
+    Factoring wrong (should be x+3). Preserve student's (x+2)(x+4) cancellation.
+  tags: [algebra, factoring_error]
+
+- id: exponent_misread
+  input: |
+    Word problem: A bacteria colony doubles every hour. Starting with 50, how many after 3 hours?
+    Student work: "After 3 hours: 50 \cdot 3 = 150 bacteria."
+  context: >
+    Linear not exponential. Keep 50\cdot3, not 50\cdot2^3.
+  tags: [exponential, wrong_operation]
+
+- id: geometry_angle_sum_wrong
+  input: |
+    Word problem: Two angles in a triangle are 40° and 65°. Find the third angle.
+    Student work: "All triangles = 360°, so third = 360 - 40 - 65 = 255°."
+  context: >
+    Wrong triangle sum. Preserve 360 and 255.
+  tags: [geometry, fact_error]
+
+- id: student_copies_wrong_number
+  input: |
+    Word problem: A train travels 240 miles in 4 hours. Find the average speed.
+    Student work: "I used 204 miles by mistake. Speed = 204/4 = 51 mph."
+  context: >
+    Student misread 240 as 204. LaTeX uses 204, not 240.
+  tags: [transcription, number_error]
+
+- id: inequality_written_as_equality
+  input: |
+    Word problem: You need at least $200 for the field trip. You have $150. How much more do you need?
+    Student work: "150 + x = 200, so x = 50 dollars more."
+  context: >
+    Should be \geq; student used =. Preserve equality form.
+  tags: [inequality, notation]
+
+- id: irrelevant_number_included
+  input: |
+    Word problem: A recipe needs 2 cups of milk for 12 cookies. How much milk for 30 cookies?
+    Student work: "2/12 = x/30, and also the oven is 350 so 350 + x = something... x = 5 cups."
+  context: >
+    Student dragged irrelevant 350 into work. Transcribe their stray equation if stated.
+  tags: [noise, faithful_mapping]
+
+- id: variables_swapped_labels
+  input: |
+    Word problem: A phone plan costs $30 per month plus $0.10 per text. You sent 80 texts. Total cost?
+    Student work: "Let t = total, m = texts. t = 0.10m + 30. With m=80: t = 0.10\cdot80 + 30 = 38."
+  context: >
+    Actually correct math — control case. Should transcribe faithfully without altering.
+  tags: [control, correct_work]
+
+- id: word_variable_in_equation
+  input: |
+    Word problem: There are 4 boxes with the same number of pencils. Total pencils 36. How many per box?
+    Student work: "boxes times pencils = 36, so 4 \cdot pencils = 36, pencils = 9."
+  context: >
+    Student used word 'pencils' as symbol. Use \text{pencils} or similar, not x.
+  tags: [notation, literal_variable]
+
+- id: mixed_number_parsing_error
+  input: |
+    Word problem: A board is 2\frac{1}{2} feet long. You cut off \frac{3}{4} foot. How much remains?
+    Student work: "2\frac{1}{2} - \frac{3}{4} = 2 - 3/4 = 1\frac{1}{4} feet left."
+  context: >
+    Student treated mixed number as 2 minus fraction incorrectly. Preserve their steps.
+  tags: [fractions, mixed_number]
+
+- id: order_of_operations_error
+  input: |
+    Word problem: Simplify the expression for total cost: 3 + 2 \cdot 4 when buying 3 items at base $3 plus $2 per add-on times 4 add-ons.
+    Student work: "Total = 3 + 2 \cdot 4 = 5 \cdot 4 = 20."
+  context: >
+    Student did (3+2)\cdot4. Keep their grouping error.
+  tags: [order_of_operations]

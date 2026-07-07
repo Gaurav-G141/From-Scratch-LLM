@@ -1,0 +1,112 @@
+[
+  {
+    "id": "unseen_apolytikia_resurrection",
+    "title": "Apolytikia of the Resurrection (Cappella Romana)",
+    "source": "cappella_romana",
+    "byz_url": "https://cappellaromana.org/wp-content/uploads/2014/04/Apolytikia-Byz_Divine-Liturgy-Music_Cappella-Romana.pdf",
+    "west_url": "https://cappellaromana.org/wp-content/uploads/2014/04/Apolytikia-Western-Print_Divine-Liturgy-Music_Cappella-Romana.pdf",
+    "byz_path": "data/byzantine/corpus/unseen/unseen_apolytikia_resurrection_byz.pdf",
+    "byz_png": "data/byzantine/corpus/unseen/png/unseen_apolytikia_resurrection_byz_p0.png",
+    "west_path": "data/byzantine/corpus/unseen/unseen_apolytikia_resurrection_west.pdf",
+    "west_png": "data/byzantine/corpus/unseen/png/unseen_apolytikia_resurrection_west_p0.png"
+  },
+  {
+    "id": "unseen_transfiguration_apolytikion",
+    "title": "Apolytikion of the Transfiguration (New Byzantium)",
+    "source": "new_byzantium",
+    "byz_url": "https://newbyz.weebly.com/uploads/1/4/7/1/147110798/08-06_transfiguration_apolytikion_en_byz.pdf",
+    "west_url": "https://newbyz.weebly.com/uploads/1/4/7/1/147110798/08-06_transfiguration_apolytikion_en_staff.pdf",
+    "byz_path": "data/byzantine/corpus/unseen/unseen_transfiguration_apolytikion_byz.pdf",
+    "byz_png": "data/byzantine/corpus/unseen/png/unseen_transfiguration_apolytikion_byz_p0.png",
+    "west_path": "data/byzantine/corpus/unseen/unseen_transfiguration_apolytikion_west.pdf",
+    "west_png": "data/byzantine/corpus/unseen/png/unseen_transfiguration_apolytikion_west_p0.png"
+  },
+  {
+    "id": "unseen_pentecost_apolytikion",
+    "title": "Apolytikion of Pentecost (New Byzantium)",
+    "source": "new_byzantium",
+    "byz_url": "https://newbyz.weebly.com/uploads/1/4/7/1/147110798/pentecost_apolytikion_en_byz.pdf",
+    "west_url": "https://newbyz.weebly.com/uploads/1/4/7/1/147110798/pentecost_apolytikion_en_staff.pdf",
+    "byz_path": "data/byzantine/corpus/unseen/unseen_pentecost_apolytikion_byz.pdf",
+    "byz_png": "data/byzantine/corpus/unseen/png/unseen_pentecost_apolytikion_byz_p0.png",
+    "west_path": "data/byzantine/corpus/unseen/unseen_pentecost_apolytikion_west.pdf",
+    "west_png": "data/byzantine/corpus/unseen/png/unseen_pentecost_apolytikion_west_p0.png"
+  },
+  {
+    "id": "unseen_annunciation_apolytikion",
+    "title": "Apolytikion of the Annunciation (New Byzantium)",
+    "source": "new_byzantium",
+    "byz_url": "https://newbyz.weebly.com/uploads/1/4/7/1/147110798/03-25_annunciation_apolytikion_en_byz.pdf",
+    "west_url": "https://newbyz.weebly.com/uploads/1/4/7/1/147110798/03-25_annunciation_apolytikion_en_staff.pdf",
+    "byz_path": "data/byzantine/corpus/unseen/unseen_annunciation_apolytikion_byz.pdf",
+    "byz_png": "data/byzantine/corpus/unseen/png/unseen_annunciation_apolytikion_byz_p0.png",
+    "west_path": "data/byzantine/corpus/unseen/unseen_annunciation_apolytikion_west.pdf",
+    "west_png": "data/byzantine/corpus/unseen/png/unseen_annunciation_apolytikion_west_p0.png"
+  },
+  {
+    "id": "unseen_circumcision_apolytikion",
+    "title": "Apolytikion of the Circumcision (New Byzantium)",
+    "source": "new_byzantium",
+    "byz_url": "https://newbyz.weebly.com/uploads/1/4/7/1/147110798/01-01_circumcision_apolytikion_en_byz.pdf",
+    "west_url": "https://newbyz.weebly.com/uploads/1/4/7/1/147110798/01-01_circumcision_apolytikion_en_staff.pdf",
+    "byz_path": "data/byzantine/corpus/unseen/unseen_circumcision_apolytikion_byz.pdf",
+    "byz_png": "data/byzantine/corpus/unseen/png/unseen_circumcision_apolytikion_byz_p0.png",
+    "west_path": "data/byzantine/corpus/unseen/unseen_circumcision_apolytikion_west.pdf",
+    "west_png": "data/byzantine/corpus/unseen/png/unseen_circumcision_apolytikion_west_p0.png"
+  },
+  {
+    "id": "unseen_theophany_apolytikion",
+    "title": "Apolytikion of Theophany (New Byzantium)",
+    "source": "new_byzantium",
+    "byz_url": "https://newbyz.weebly.com/uploads/1/4/7/1/147110798/01-06_theophany_apolytikion_en_byz.pdf",
+    "west_url": "https://newbyz.weebly.com/uploads/1/4/7/1/147110798/01-06_theophany_apolytikion_en_staff.pdf",
+    "byz_path": "data/byzantine/corpus/unseen/unseen_theophany_apolytikion_byz.pdf",
+    "byz_png": "data/byzantine/corpus/unseen/png/unseen_theophany_apolytikion_byz_p0.png",
+    "west_path": "data/byzantine/corpus/unseen/unseen_theophany_apolytikion_west.pdf",
+    "west_png": "data/byzantine/corpus/unseen/png/unseen_theophany_apolytikion_west_p0.png"
+  },
+  {
+    "id": "unseen_ascension_apolytikion",
+    "title": "Apolytikion of the Ascension (New Byzantium)",
+    "source": "new_byzantium",
+    "byz_url": "https://newbyz.weebly.com/uploads/1/4/7/1/147110798/ascension_apolytikion_en_byz.pdf",
+    "west_url": "https://newbyz.weebly.com/uploads/1/4/7/1/147110798/ascension_apolytikion_en_staff.pdf",
+    "byz_path": "data/byzantine/corpus/unseen/unseen_ascension_apolytikion_byz.pdf",
+    "byz_png": "data/byzantine/corpus/unseen/png/unseen_ascension_apolytikion_byz_p0.png",
+    "west_path": "data/byzantine/corpus/unseen/unseen_ascension_apolytikion_west.pdf",
+    "west_png": "data/byzantine/corpus/unseen/png/unseen_ascension_apolytikion_west_p0.png"
+  },
+  {
+    "id": "unseen_pentecost_great_prokimenon",
+    "title": "Great Prokeimenon of Pentecost (New Byzantium)",
+    "source": "new_byzantium",
+    "byz_url": "https://newbyz.weebly.com/uploads/1/4/7/1/147110798/pentecost_great_prokimenon_en_byz.pdf",
+    "west_url": "https://newbyz.weebly.com/uploads/1/4/7/1/147110798/pentecost_great_prokimenon_gr_en_staff.pdf",
+    "byz_path": "data/byzantine/corpus/unseen/unseen_pentecost_great_prokimenon_byz.pdf",
+    "byz_png": "data/byzantine/corpus/unseen/png/unseen_pentecost_great_prokimenon_byz_p0.png",
+    "west_path": "data/byzantine/corpus/unseen/unseen_pentecost_great_prokimenon_west.pdf",
+    "west_png": "data/byzantine/corpus/unseen/png/unseen_pentecost_great_prokimenon_west_p0.png"
+  },
+  {
+    "id": "unseen_theophany_communion",
+    "title": "Theophany Communion Hymn (New Byzantium)",
+    "source": "new_byzantium",
+    "byz_url": "https://newbyz.weebly.com/uploads/1/4/7/1/147110798/01-06_theophany_communion_en_byz.pdf",
+    "west_url": "https://newbyz.weebly.com/uploads/1/4/7/1/147110798/01-06_theophany_communion_gr_en.pdf",
+    "byz_path": "data/byzantine/corpus/unseen/unseen_theophany_communion_byz.pdf",
+    "byz_png": "data/byzantine/corpus/unseen/png/unseen_theophany_communion_byz_p0.png",
+    "west_path": "data/byzantine/corpus/unseen/unseen_theophany_communion_west.pdf",
+    "west_png": "data/byzantine/corpus/unseen/png/unseen_theophany_communion_west_p0.png"
+  },
+  {
+    "id": "unseen_dormition_lamentations",
+    "title": "Dormition Lamentations fragment (New Byzantium)",
+    "source": "new_byzantium",
+    "byz_url": "https://newbyz.weebly.com/uploads/1/4/7/1/147110798/08-15_dormition_lamentations_en_byz.pdf",
+    "west_url": "https://newbyz.weebly.com/uploads/1/4/7/1/147110798/08-15_dormition_lamentations_en_staff.pdf",
+    "byz_path": "data/byzantine/corpus/unseen/unseen_dormition_lamentations_byz.pdf",
+    "byz_png": "data/byzantine/corpus/unseen/png/unseen_dormition_lamentations_byz_p0.png",
+    "west_path": "data/byzantine/corpus/unseen/unseen_dormition_lamentations_west.pdf",
+    "west_png": "data/byzantine/corpus/unseen/png/unseen_dormition_lamentations_west_p0.png"
+  }
+]

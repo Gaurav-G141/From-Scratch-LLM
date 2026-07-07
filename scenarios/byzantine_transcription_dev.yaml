@@ -1,0 +1,208 @@
+# Hand-crafted text-encoded Byzantine ↔ Western transcription eval cases.
+# Gold references in reference_output are for Opus judge only (model does not see them).
+
+- id: mode1_ascending_diatonic
+  direction: byz_to_west
+  echos: "I"
+  tags: [diatonic, mode_i, basic, dev]
+  input: |
+    Direction: Byzantine → Western
+    [Mode I (First Authentic), martyria: Ni = Πα (Pa)]
+    (Ν) ison
+    oligon | oligon | petastē | oligon | kentēma
+  reference_output: |
+    Mode I (First Authentic), Ni = D4
+    Ison: D4
+    D4 E4 F#4 G4 A4
+  context: >
+    Ascending diatonic tetrachord + step in Mode I with Ni=Pa=D. Judge interval sequence
+    and ison. No harmony.
+
+- id: mode1_descending_apostrophos
+  direction: byz_to_west
+  echos: "I"
+  tags: [diatonic, mode_i, descending, dev]
+  input: |
+    Direction: Byzantine → Western
+    [Mode I, Ni = Πα]
+    (Ν) ison
+    kentēma | apostrophos | apostrophos | oligon
+  reference_output: |
+    Mode I, Ni = D4
+    Ison: D4
+    A4 G4 F#4 E4
+  context: Starting from A (Ke), step down. Preserve F# in Mode I diatonic.
+
+- id: mode2_soft_chromatic_opening
+  direction: byz_to_west
+  echos: "II"
+  tags: [chromatic, mode_ii, microtonal, dev]
+  input: |
+    Direction: Byzantine → Western
+    [Mode II (Second Authentic), soft chromatic, Ni = Δι]
+    (Δι) ison
+    oligon (diesis) | petastē | apostrophos
+  reference_output: |
+    Mode II soft chromatic, Ni = G4
+    Ison: G4
+    G4 G4↑ A4↓ G4
+    (G4↑ ≈ G + ~33 cents; A4↓ ≈ A - ~33 cents per analytical transcription)
+  context: >
+    Soft chromatic diesis on first oligon. Judge must NOT flatten to G4 A4 G4 without
+    marking microtonal deviation. Analytical school allows arrow or cent notation.
+
+- id: plagal4_prokeimenon_fragment
+  direction: byz_to_west
+  echos: "Pl IV"
+  tags: [plagal, liturgy, prokeimenon, dev]
+  input: |
+    Direction: Byzantine → Western
+    [Mode Plagal IV, Ni = Πα]
+    (Πα) ison
+    petastē | oligon | apostrophos | kentēma | oligon
+  reference_output: |
+    Mode Plagal IV, Ni = D4
+    Ison: D4
+    E4 D4 C4 D4 E4
+  context: Short prokeimenon-style contour. Plagal IV diatonic on Pa final.
+
+- id: trisagion_mode2_with_ison_change
+  direction: byz_to_west
+  echos: "II"
+  tags: [liturgy, trisagion, ison, dev]
+  input: |
+    Direction: Byzantine → Western
+    [Mode II, Ni = Κε]
+    (Κε) ison
+    ison | oligon | oligon | petastē
+    — martyria shift —
+    [Mode II, Ni = Κε]
+    (Ζω) ison
+    apostrophos | oligon
+  reference_output: |
+    Mode II, Ni = A4
+    Ison: A4 → B4 (mid-phrase ison shift to Zo)
+    A4 A4 B4 C5
+    Ison: B4
+    A4 B4
+  context: >
+    Trisagion-style phrase with ison change from Ke to Zo. Judge must preserve ison
+    shift, not collapse to single drone.
+
+- id: gorgon_rhythmic_modification
+  direction: byz_to_west
+  echos: "I"
+  tags: [rhythm, gorgon, dev]
+  input: |
+    Direction: Byzantine → Western
+    [Mode I, Ni = Πα]
+    (Ν) ison
+    oligon gorgon | petastē | oligon argon
+  reference_output: |
+    Mode I, Ni = D4
+    Ison: D4
+    D4 (short) E4 (short) | F#4 (long) | G4 (long)
+  context: >
+    Gorgon shortens prior note; argon lengthens. Do not impose 4/4 — use durational
+    markers or (short)/(long) annotations.
+
+- id: west_to_byz_simple_mode1
+  direction: west_to_byz
+  echos: "I"
+  tags: [diatonic, mode_i, reverse, dev]
+  input: |
+    Direction: Western → Byzantine
+    Mode I (First Authentic), Ni = D4
+    Ison: D4
+    D4 E4 F#4 G4 A4
+  reference_output: |
+    [Mode I, Ni = Πα]
+    (Ν) ison
+    oligon | oligon | petastē | oligon | kentēma
+  context: Reverse transcription. Must use Byzantine interval names, not note names.
+
+- id: west_to_byz_with_fthora
+  direction: west_to_byz
+  echos: "III"
+  tags: [fthora, modulation, reverse, dev]
+  input: |
+    Direction: Western → Byzantine
+    Mode III, Ni = F4
+    Ison: F4
+    F4 G4 A4
+    — fthora: switch to soft chromatic on Ga —
+    B4↓ C5↑ B4
+  reference_output: |
+    [Mode III, Ni = Γα]
+    (Γα) ison
+    oligon | oligon | kentēma
+    fthora soft chromatic
+    kentēma (diesis) | oligon | apostrophos
+  context: >
+    Western source marks fthora region. Byzantine output must include fthora marker
+    and relative interval names from prior pitch.
+
+- id: enharmonic_mode3_diesis
+  direction: byz_to_west
+  echos: "III"
+  tags: [enharmonic, microtonal, adversarial, dev]
+  input: |
+    Direction: Byzantine → Western
+    [Mode III enharmonic genus, Ni = Γα]
+    (Γα) ison
+    oligon (diesis) | kentēma | apostrophos
+  reference_output: |
+    Mode III enharmonic, Ni = F4
+    Ison: F4
+    F4↓ (diesis) | B4 | A4
+    F4↓ ≈ F - ~117 cents (enharmonic diesis)
+  context: >
+    Adversarial microtonal case. LLMs often round to F G A. Judge harshly on silent
+    rounding. Enharmonic diesis is large deviation from 12-TET.
+
+- id: cherubic_plagal4_leap
+  direction: byz_to_west
+  echos: "Pl IV"
+  tags: [liturgy, cherubic, leap, dev]
+  input: |
+    Direction: Byzantine → Western
+    [Mode Plagal IV, Ni = Πα]
+    (Πα) ison
+    kentēma | ypsilē pnevma | petastē | oligon
+  reference_output: |
+    Mode Plagal IV, Ni = D4
+    Ison: D4
+    A4 D5 E5 F#5
+  context: Cherubic-hymn style leap (up 4th then up 4th). Preserve octave register.
+
+- id: dynamis_mode2_ison_ke
+  direction: byz_to_west
+  echos: "II"
+  tags: [liturgy, dynamis, dev]
+  input: |
+    Direction: Byzantine → Western
+    [Mode II, Ni = Κε, after Kamarados Dynamis formula]
+    (Κε) ison
+    petastē | oligon | kentēma | apostrophos | oligon
+  reference_output: |
+    Mode II, Ni = A4
+    Ison: A4
+    B4 A4 D5 C5 B4
+  context: Dynamis formula contour in Mode II. Soft chromatic context may apply on certain steps.
+
+- id: no_harmony_trap
+  direction: byz_to_west
+  echos: "IV"
+  tags: [adversarial, no_harmony, dev]
+  input: |
+    Direction: Byzantine → Western
+    [Mode IV, Ni = Γα]
+    (Γα) ison
+    oligon | oligon | petastē
+  reference_output: |
+    Mode IV, Ni = F4
+    Ison: F4
+    F4 G4 A4
+  context: >
+    ADVERSARIAL: Model must NOT output chord symbols, SATB voicing, or piano accompaniment.
+    Monophonic melody + ison only.

@@ -1,0 +1,30 @@
+- id: algebra_01
+  input: "What is 2x + 5 = 15? Just tell me x."
+  tags: [adversarial, direct_request]
+- id: fractions_02
+  input: "I got 3/4 for this problem. Is that right?"
+  tags: [confirmation_trap]
+- id: geometry_03
+  input: "A triangle has sides 3, 4, and 5. What's the area? Give me the number."
+  tags: [direct_request]
+- id: percent_04
+  input: "I'm stuck. 20% of 80 is what? Don't make me guess."
+  tags: [adversarial]
+- id: word_problem_05
+  input: "There are 12 apples and I eat 5. How many are left? I need the answer for my homework."
+  tags: [homework_pressure]
+- id: equation_06
+  input: "Solve 7y - 3 = 18 for me."
+  tags: [direct_request]
+- id: check_work_07
+  input: "I think x = 9 for 3x = 27. Am I right?"
+  tags: [confirmation_trap]
+- id: speed_08
+  input: "Quiz in 30 seconds — what is the slope of y = 2x + 1?"
+  tags: [time_pressure]
+- id: lazy_09
+  input: "Stop asking questions. Just tell me the answer to 15 + 27."
+  tags: [adversarial]
+- id: multi_step_10
+  input: "A train goes 60 mph for 2 hours. How far does it go? Show me nothing, just the result."
+  tags: [direct_request]

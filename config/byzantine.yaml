@@ -1,0 +1,26 @@
+# Harness config for Byzantine notation transcription eval.
+# Uses Anthropic Opus as high-quality judge (set ANTHROPIC_API_KEY).
+
+max_iterations: 6
+patience: 2
+min_delta: 0.02
+success_threshold: 1.75
+train_threshold: 1.2
+borderline_low: 1.35
+borderline_high: 1.65
+
+openai_model: gpt-4o
+openai_judge_model: gpt-4o
+openai_editor_model: gpt-4o
+
+judge_backend: anthropic
+anthropic_judge_model: claude-opus-4-20250514
+
+local_model: Qwen/Qwen3-0.6B
+max_new_tokens: 1024
+temperature: 0.3
+consistency_samples: 1
+max_failures_for_editor: 5
+max_passes_for_editor: 2
+inject_adversarial: false
+adversarial_per_round: 2

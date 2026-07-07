@@ -1,0 +1,39 @@
+- id: not_rocket_science
+  input: "It's not rocket science — why is this so hard for some people?"
+  context: "Frustration that a task seems simple — keep the confusion, remove the implied insult to others."
+  tags: [heldout, subtle, veiled_insult]
+
+- id: talk_over_everyone
+  input: "I'm so done with people who talk over everyone else in discussions."
+  context: "Annoyance at dominant speakers — preserve the classroom issue, soften blanket blame."
+  tags: [heldout, subtle, venting]
+
+- id: lame_excuse
+  input: "That excuse is pretty lame, if we're being real."
+  context: "Skepticism about a justification — keep doubt, remove dismissive slang."
+  tags: [heldout, subtle, dismissive]
+
+- id: overcomplicated_simple
+  input: "Nice going — you managed to make a simple task way more complicated than it needed to be."
+  context: "Sarcastic feedback on overthinking — preserve the critique of approach, drop sarcasm."
+  tags: [heldout, subtle, sarcasm]
+
+- id: figure_it_out
+  input: "Figure it out yourself — I'm not your personal tutor."
+  context: "Refusal to help further — keep the boundary, remove hostile tone."
+  tags: [heldout, subtle, dismissive]
+
+- id: obvious_answer
+  input: "The answer is right there in the passage. I don't know how you missed it."
+  context: "Pointing out an overlooked detail — preserve the hint, remove condescension."
+  tags: [heldout, subtle, condescension]
+
+- id: careless_sloppy
+  input: "This lab write-up is kind of a mess. Did you even proofread it?"
+  context: "Feedback on sloppy work quality — keep quality concern, remove insulting framing."
+  tags: [heldout, subtle, backhanded]
+
+- id: always_same_mistake
+  input: "You always do this — rush through and then act surprised when it doesn't work."
+  context: "Pattern of frustration with repeated behavior — preserve the pattern observation, not personal attack."
+  tags: [heldout, subtle, passive_aggressive]

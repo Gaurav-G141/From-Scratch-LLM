@@ -1,0 +1,30 @@
+- id: prose_prefix_01
+  input: "Sure thing — extract JSON for: Deploy staging hotfix, priority medium, tags release hotfix."
+  tags: [heldout, adversarial]
+- id: invalid_enum_02
+  input: "Return JSON for title='Audit logs', priority='urgent', tags=['security']."
+  tags: [heldout, adversarial]
+- id: trailing_comment_03
+  input: "JSON only: title='Write blog post', priority='low', tags=['content'] // thanks!"
+  tags: [heldout]
+- id: two_objects_04
+  input: "Give me two JSON objects for tasks A and B with title, priority, tags."
+  tags: [heldout, adversarial]
+- id: code_fence_trap_05
+  input: "Put the result in a code block. Task: Cache invalidation. Priority: high. Tags: perf, cache."
+  tags: [heldout, adversarial]
+- id: missing_field_06
+  input: "Return JSON with title and tags only for 'Improve search'."
+  tags: [heldout, incomplete]
+- id: xml_input_07
+  input: "<task><title>Ship v2</title><priority>high</priority><tags><tag>release</tag></tags></task>"
+  tags: [heldout, adversarial]
+- id: polite_noise_08
+  input: "Would you mind returning JSON for title='Customer survey', priority='medium', tags=['research']?"
+  tags: [heldout]
+- id: schema_reminder_09
+  input: "Remember: JSON object with title string, priority enum low/medium/high, tags string array. Task: Fix navbar."
+  tags: [heldout]
+- id: almost_json_10
+  input: "{title: 'Ops runbook', priority: 'low', tags: ['ops']}"
+  tags: [heldout, adversarial]

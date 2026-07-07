@@ -1,0 +1,131 @@
+[
+  {
+    "id": "cappella_apolytikia",
+    "title": "Apolytikia",
+    "source": "cappella_romana",
+    "byz_url": "https://cappellaromana.org/wp-content/uploads/2014/04/Apolytikia-Byz_Divine-Liturgy-Music_Cappella-Romana.pdf",
+    "west_url": "https://cappellaromana.org/wp-content/uploads/2014/04/Apolytikia-Western-Print_Divine-Liturgy-Music_Cappella-Romana.pdf",
+    "byz_path": "data/byzantine/corpus/newbyz/cappella_apolytikia_byz.pdf",
+    "west_path": "data/byzantine/corpus/newbyz/cappella_apolytikia_west.pdf"
+  },
+  {
+    "id": "newbyz_95bfaf2efd",
+    "title": "Hymns for Ascension, Pentecost, and All Saints The specific date of the moveable hymns depends on when Pascha (Easter) o",
+    "source": "new_byzantium",
+    "byz_url": "https://newbyz.weebly.com/uploads/1/4/7/1/147110798/all_saints_communion_en_byz.pdf",
+    "west_url": "https://newbyz.weebly.com/uploads/1/4/7/1/147110798/all_saints_kontakion_gr_staff.pdf",
+    "page": "https://newbyz.weebly.com/ascensionpentecostall-saints.html",
+    "byz_path": "data/byzantine/corpus/newbyz/newbyz_95bfaf2efd_byz.pdf",
+    "west_path": "data/byzantine/corpus/newbyz/newbyz_95bfaf2efd_west.pdf"
+  },
+  {
+    "id": "newbyz_a35370de83",
+    "title": "The Resurrectional Hymns of Great and Holy Pascha The specific date of the moveable hymns depends on when Pascha (Easter",
+    "source": "new_byzantium",
+    "byz_url": "https://newbyz.weebly.com/uploads/1/4/7/1/147110798/11-13_john_chrysostom_apolytikion_en_byz.pdf",
+    "west_url": "https://newbyz.weebly.com/uploads/1/4/7/1/147110798/11-13_john_chrysostom_apolytikion_gr_staff.pdf",
+    "page": "https://newbyz.weebly.com/holy-pascha.html",
+    "byz_path": "data/byzantine/corpus/newbyz/newbyz_a35370de83_byz.pdf",
+    "west_path": "data/byzantine/corpus/newbyz/newbyz_a35370de83_west.pdf"
+  },
+  {
+    "id": "newbyz_488838d487",
+    "title": "April Hymns for Sundays and Major Feasts Hymns are listed by their dates. Major Feasts (bold type) are celebrated on any",
+    "source": "new_byzantium",
+    "byz_url": "https://newbyz.weebly.com/uploads/1/4/7/1/147110798/04-25_mark_apolytikion_en_byz.pdf",
+    "west_url": "https://newbyz.weebly.com/uploads/1/4/7/1/147110798/04-25_mark_apolytikion_gr_staff.pdf",
+    "page": "https://newbyz.weebly.com/april.html",
+    "byz_path": "data/byzantine/corpus/newbyz/newbyz_488838d487_byz.pdf",
+    "west_path": "data/byzantine/corpus/newbyz/newbyz_488838d487_west.pdf"
+  },
+  {
+    "id": "newbyz_2011014072",
+    "title": "August Hymns for Sundays and Major Feasts Hymns are listed by their dates. Major Feasts (bold type) are celebrated on an",
+    "source": "new_byzantium",
+    "byz_url": "https://newbyz.weebly.com/uploads/1/4/7/1/147110798/08-31_belt_theotokos_kontakion_en_byz.pdf",
+    "west_url": "https://newbyz.weebly.com/uploads/1/4/7/1/147110798/08-31_belt_theotokos_kontakion_gr_staff.pdf",
+    "page": "https://newbyz.weebly.com/august.html",
+    "byz_path": "data/byzantine/corpus/newbyz/newbyz_2011014072_byz.pdf",
+    "west_path": "data/byzantine/corpus/newbyz/newbyz_2011014072_west.pdf"
+  },
+  {
+    "id": "newbyz_0c34b167aa",
+    "title": "December Hymns for Sundays and Major Feasts Hymns are listed by their dates. Major Feasts (bold type) are celebrated on ",
+    "source": "new_byzantium",
+    "byz_url": "https://newbyz.weebly.com/uploads/1/4/7/1/147110798/12-27_theodore_branded_apolytikion_en_byz.pdf",
+    "west_url": "https://newbyz.weebly.com/uploads/1/4/7/1/147110798/12-27_theodore_branded_apolytikion_gr_staff.pdf",
+    "page": "https://newbyz.weebly.com/december.html",
+    "byz_path": "data/byzantine/corpus/newbyz/newbyz_0c34b167aa_byz.pdf",
+    "west_path": "data/byzantine/corpus/newbyz/newbyz_0c34b167aa_west.pdf"
+  },
+  {
+    "id": "newbyz_5dfc6f5fef",
+    "title": "February Hymns for Sundays and Major Feasts Hymns are listed by their dates. Major Feasts (bold type) are celebrated on ",
+    "source": "new_byzantium",
+    "byz_url": "https://newbyz.weebly.com/uploads/1/4/7/1/147110798/02-24_john_baptist_head_1-2_apolytikion_en_byz.pdf",
+    "west_url": "https://newbyz.weebly.com/uploads/1/4/7/1/147110798/02-24_john_baptist_head_1-2_apolytikion_gr_staff.pdf",
+    "page": "https://newbyz.weebly.com/february.html",
+    "byz_path": "data/byzantine/corpus/newbyz/newbyz_5dfc6f5fef_byz.pdf",
+    "west_path": "data/byzantine/corpus/newbyz/newbyz_5dfc6f5fef_west.pdf"
+  },
+  {
+    "id": "newbyz_ded69a3dbc",
+    "title": "January Hymns for Sundays and Major Feasts Hymns are listed by their dates. Major Feasts (bold type) are celebrated on a",
+    "source": "new_byzantium",
+    "byz_url": "https://newbyz.weebly.com/uploads/1/4/7/1/147110798/01-31_cyrus_john_apolytikion_en_byz.pdf",
+    "west_url": "https://newbyz.weebly.com/uploads/1/4/7/1/147110798/01-31_cyrus_john_apolytikion_gr_staff.pdf",
+    "page": "https://newbyz.weebly.com/january.html",
+    "byz_path": "data/byzantine/corpus/newbyz/newbyz_ded69a3dbc_byz.pdf",
+    "west_path": "data/byzantine/corpus/newbyz/newbyz_ded69a3dbc_west.pdf"
+  },
+  {
+    "id": "newbyz_01631b14e3",
+    "title": "July Hymns for Sundays and Major Feasts Hymns are listed by their dates. Major Feasts (bold type) are celebrated on any ",
+    "source": "new_byzantium",
+    "byz_url": "https://newbyz.weebly.com/uploads/1/4/7/1/147110798/07-31_evdokimos_apolytikion_en_byz.pdf",
+    "west_url": "https://newbyz.weebly.com/uploads/1/4/7/1/147110798/07-31_evdokimos_apolytikion_gr_staff.pdf",
+    "page": "https://newbyz.weebly.com/july.html",
+    "byz_path": "data/byzantine/corpus/newbyz/newbyz_01631b14e3_byz.pdf",
+    "west_path": "data/byzantine/corpus/newbyz/newbyz_01631b14e3_west.pdf"
+  },
+  {
+    "id": "newbyz_dc8ae93744",
+    "title": "June Hymns for Sundays and Major Feasts Hymns are listed by their dates. Major Feasts (bold type) are celebrated on any ",
+    "source": "new_byzantium",
+    "byz_url": "https://newbyz.weebly.com/uploads/1/4/7/1/147110798/06-30_apostles_communion_en_byz.pdf",
+    "west_url": "https://newbyz.weebly.com/uploads/1/4/7/1/147110798/06-30_apostles_communion_gr_staff.pdf",
+    "page": "https://newbyz.weebly.com/june.html",
+    "byz_path": "data/byzantine/corpus/newbyz/newbyz_dc8ae93744_byz.pdf",
+    "west_path": "data/byzantine/corpus/newbyz/newbyz_dc8ae93744_west.pdf"
+  },
+  {
+    "id": "newbyz_3250d64804",
+    "title": "Hymns for the First Five Sundays of Lent Click or tap here for the Salutations Service (First five Fridays of Lent) For ",
+    "source": "new_byzantium",
+    "byz_url": "https://newbyz.weebly.com/uploads/1/4/7/1/147110798/lent_5_mary_egypt_apolytikion_en_byz.pdf",
+    "west_url": "https://newbyz.weebly.com/uploads/1/4/7/1/147110798/lent_5_mary_egypt_apolytikion_gr_staff.pdf",
+    "page": "https://newbyz.weebly.com/lenten-sundays.html",
+    "byz_path": "data/byzantine/corpus/newbyz/newbyz_3250d64804_byz.pdf",
+    "west_path": "data/byzantine/corpus/newbyz/newbyz_3250d64804_west.pdf"
+  },
+  {
+    "id": "newbyz_083bd13f51",
+    "title": "March Hymns for Sundays and Major Feasts Hymns are listed by their dates. Major Feasts (bold type) are celebrated on any",
+    "source": "new_byzantium",
+    "byz_url": "https://newbyz.weebly.com/uploads/1/4/7/1/147110798/03-25_annunciation_communion_en_byz.pdf",
+    "west_url": "https://newbyz.weebly.com/uploads/1/4/7/1/147110798/03-25_annunciation_megalynarion_gr_staff.pdf",
+    "page": "https://newbyz.weebly.com/march.html",
+    "byz_path": "data/byzantine/corpus/newbyz/newbyz_083bd13f51_byz.pdf",
+    "west_path": "data/byzantine/corpus/newbyz/newbyz_083bd13f51_west.pdf"
+  },
+  {
+    "id": "newbyz_ad1e58b498",
+    "title": "May Hymns for Sundays and Major Feasts Hymns are listed by their dates. Major Feasts (bold type) are celebrated on any d",
+    "source": "new_byzantium",
+    "byz_url": "https://newbyz.weebly.com/uploads/1/4/7/1/147110798/05-25_john_baptist_head_3_apolytikion_en_byz.pdf",
+    "west_url": "https://newbyz.weebly.com/uploads/1/4/7/1/147110798/05-25_john_baptist_head_3_apolytikion_gr_staff.pdf",
+    "page": "https://newbyz.weebly.com/may.html",
+    "byz_path": "data/byzantine/corpus/newbyz/newbyz_ad1e58b498_byz.pdf",
+    "west_path": "data/byzantine/corpus/newbyz/newbyz_ad1e58b498_west.pdf"
+  }
+]

@@ -1,0 +1,68 @@
+name: byzantine_transcription
+description: >
+  Transcribe between Byzantine (Chrysanthine) neumatic notation and Western staff
+  notation while preserving musical meaning: melodic contour, mode (echos), martyria,
+  ison (drone), microtonal intervals (diesis, fthora), and rhythmic neume modifiers
+  (gorgon, argon). Do NOT add Western harmony, do NOT simplify to 12-TET without
+  marking approximation, do NOT impose fixed time signatures. Output notation only.
+
+initial_system_prompt: |
+  You transcribe between Byzantine (Chrysanthine / New Analytical Method) notation and Western staff notation.
+
+  Convert the input notation to the requested target format. Preserve musical meaning:
+  melodic contour, mode (echos), martyria, ison (drone), microtonal alterations (diesis, fthora),
+  and rhythmic neume modifiers (gorgon, argon). Do NOT round to 12-TET without marking approximation.
+  Do NOT add harmony or impose 4/4.
+
+  Byzantine → Western: state mode/Ni, staff pitches (D4, E4…), preserve ison line, mark microtones.
+  Western → Byzantine: martyria, interval names (oligon, petastē, apostrophos…), ison as (Ν)/(Δι)/(Κε).
+
+  Output notation only — no commentary.
+
+forbidden_patterns:
+  - "\\b(chord progression|triad|voicing|bass line|SATB harmony)\\b"
+  - "\\b(the answer is|note that|keep in mind|I transcribed|here is the conversion)\\b"
+  - "\\b(C major only|simplified to C|for convenience)\\b"
+
+required_patterns: []
+
+dimensions:
+  - melodic_equivalence
+  - mode_fidelity
+  - notation_convention
+  - meaning_preservation
+
+litmus_dimension: melodic_equivalence
+
+dimension_guidance:
+  melodic_equivalence: >
+    0 = wrong contour, missing/extra notes, or interval errors > whole tone;
+    1 = mostly correct but one microtonal or leap error, or wrong register;
+    2 = pitch sequence matches source within acceptable transcription school tolerance.
+  mode_fidelity: >
+    0 = wrong echos, missing martyria/fthora, or mode collapse to major/minor;
+    1 = mode stated but one fthora/modulation mishandled;
+    2 = echos, martyria, and modal alterations preserved.
+  notation_convention: >
+    0 = wrong notation system (Byzantine symbols in Western output or vice versa),
+    or prose instead of notation;
+    1 = correct system but inconsistent formatting or missing ison line;
+    2 = clean, conventional formatting for target notation school.
+  meaning_preservation: >
+    0 = added harmony, dropped ison, invented rhythm, or Western bias (4/4 grid, chord roots);
+    1 = one bias slip (e.g. silent ison drop or unmarked microtone rounding);
+    2 = faithful to source semantics including ison and microtonal intent.
+
+pass_thresholds:
+  melodic_equivalence: 1.5
+  meaning_preservation: 1.5
+
+scenario_generation_hint: >
+  Short Byzantine neume sequences or Western staff fragments in Modes I–IV and plagal
+  variants, with ison, fthora, soft chromatic passages, and liturgical fragments
+  (Trisagion, Prokeimenon, Cherubic). Include both byz_to_west and west_to_byz directions.
+
+dev_scenarios_path: ../scenarios/byzantine_transcription_dev.yaml
+heldout_scenarios_path: ../scenarios/byzantine_transcription_heldout.yaml
+
+# Hard break set (compound failures): scenarios/byzantine_transcription_break_dev.yaml

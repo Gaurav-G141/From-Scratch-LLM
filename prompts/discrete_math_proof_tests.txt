@@ -1,0 +1,139 @@
+--- 1 ---
+Claim: For every integer n, if n^2 is odd then n is odd.
+Prove the contrapositive: if n is even then n^2 is even. So let n be even, so n=2k. Then n^2=4k^2=2(2k^2) which is even. Done.
+
+--- 2 ---
+Claim: sqrt(2) is irrational.
+Proof by contradiction. Assume sqrt(2)=a/b in lowest terms. Square both sides: 2=a^2/b^2 so 2b^2=a^2. So a^2 is even so a is even. Write a=2k. Then 2b^2=4k^2 so b^2=2k^2 so b is even. But then a and b share factor 2, contradiction.
+
+--- 3 ---
+Claim: For all sets A,B,C, A ∩ (B ∪ C) = (A ∩ B) ∪ (A ∩ C).
+Proof: Let x be arbitrary. x is in the left side iff x in A and (x in B or x in C). That's the same as (x in A and x in B) or (x in A and x in C), which is the right side.
+
+--- 4 ---
+Claim: |A ∪ B| ≤ |A| + |B| for finite sets.
+Proof: Every element in the union is in A or in B. Counting gives at most |A|+|B|. Equality only if disjoint.
+
+--- 5 ---
+Claim: 3 divides (n^3 - n) for every integer n.
+Proof by cases on n mod 3. If n≡0 mod 3 then n^3-n is 0 mod 3. If n≡1 then 1-1=0. If n≡2 then 8-2=6≡0. So always 0 mod 3.
+
+--- 6 ---
+Claim: The relation R on Z defined by a R b iff a-b is even is an equivalence relation.
+Proof: Reflexive: a-a=0 even. Symmetric: if a-b even then b-a even. Transitive: if a-b and b-c even then a-c=(a-b)+(b-c) even.
+
+--- 7 ---
+Claim: For all n in N, sum_{i=1}^n i = n(n+1)/2.
+Proof by induction. Base n=1: LHS=1, RHS=1. Assume true for n=k. Then sum to k+1 equals k(k+1)/2 + (k+1) = (k+1)(k/2+1) = (k+1)(k+2)/2. Done.
+
+--- 8 ---
+Claim: If a graph G=(V,E) has minimum degree at least k and |V| ≥ k+1, then G has a simple path of length k (k edges).
+Proof: Start with any vertex v0. Greedily extend the path v0...v_j by adding a neighbor of v_j not already on the path. You can keep extending while some neighbor of the endpoint lies outside the current path. If the path has fewer than k+1 vertices on it, then at most k vertices are used, so the endpoint still has a fresh neighbor because its degree is at least k. So you can extend until the path has k edges.
+
+--- 9 ---
+Claim: There are infinitely many primes.
+Euclid: Suppose finitely many primes p1,...,pn. Let N = p1*...*pn + 1. Then N has a prime divisor p. But p cannot equal any pi because p divides N and N leaves remainder 1 when divided by pi. Contradiction.
+
+--- 10 ---
+Claim: For functions f:A→B and g:B→C, if g∘f is injective then f is injective.
+Proof: Suppose f(a1)=f(a2). Apply g: g(f(a1))=g(f(a2)). Injective g∘f gives a1=a2.
+
+--- 11 ---
+Claim: The power set of a set with n elements has size 2^n.
+Proof by induction. Base n=0: empty set, power set {∅}, size 1=2^0. For step, take S with n+1 elements, pick x in S. Subsets either contain x or not. By IH there are 2^n without x, same with x, total 2*2^n=2^{n+1}.
+
+--- 12 ---
+Claim: (p → q) ↔ (¬q → ¬p) is a tautology.
+Proof: Write out the full truth table for p and q. The column for p→q should match the column for ¬q→¬p in every row. Since the columns agree everywhere, the biconditional is always true.
+
+--- 13 ---
+Claim: Every partial order on a finite set has a maximal element.
+Proof: Take a strictly increasing chain x0 < x1 < ... in the poset. It cannot go on forever because the set is finite, so it stops at some x_m. Then there is no element strictly above x_m, so x_m is maximal.
+
+--- 14 ---
+Claim: If |A|=|B| and |B|=|C| then |A|=|C|.
+Proof: There are bijections f:A→B and g:B→C. Compose g∘f:A→C. Need to say it's bijective: injective and surjective follow from definitions.
+
+--- 15 ---
+Claim: For integers a,b,c, if a|b and b|c then a|c.
+Proof: b=ak, c=bl for some k,l. So c=a(kl). So a divides c.
+
+--- 16 ---
+Claim: n^2 + n is even for all integers n.
+Proof: n^2+n = n(n+1). These are two consecutive integers, so one of them is even, hence the product is even.
+
+--- 17 ---
+Claim: The number of subsets of {1,...,n} with even size is 2^{n-1}.
+Proof: Pair each subset S with S Δ {1}. That flips parity of |S| and is a bijection between even and odd subsets. Same count, total 2^n so half is 2^{n-1}. (Needs n≥1.)
+
+--- 18 ---
+Claim: In any group G, the identity element is unique.
+Proof: Suppose e and e' are identities. Then e = e*e' = e' using e' identity on left and e on right.
+
+--- 19 ---
+Claim: If H is a subgroup of a finite group G then |H| divides |G| (Lagrange, sketch only).
+Proof: The cosets gH partition the group G, and every coset has exactly |H| elements. So |G| equals (number of cosets) times |H|.
+
+--- 20 ---
+Claim: The Boolean function (p ∧ q) ∨ (¬p ∧ ¬q) is true exactly when p and q have the same truth value.
+Proof: Build the truth table. The formula is true on rows (T,T) and (F,F) and false on (T,F) and (F,T). So it's true exactly when p and q are the same.
+
+--- 21 ---
+Claim: For all ε>0 there exists N such that for all n≥N, |1/n - 0| < ε.
+Proof: Given any positive ε, choose N to be an integer bigger than 1/ε. Then for all n at least N, we have 1/n ≤ 1/N which is less than ε.
+
+--- 22 ---
+Claim: The map f:Z→Z given by f(n)=2n is injective but not surjective.
+Proof: Injective: 2n=2m implies n=m. Not surjective: 1 is not even so nothing maps to 1.
+
+--- 23 ---
+Claim: If a ≡ b (mod n) and c ≡ d (mod n) then a+c ≡ b+d (mod n).
+Proof: a=b+kn, c=d+ln. Add: a+c=b+d+(k+l)n so same mod n.
+
+--- 24 ---
+Claim: Every tree with at least 2 vertices has at least two leaves.
+Proof: Take a longest path in the tree. If an endpoint had another neighbor on the tree off the path, you could extend the path, contradicting maximality. So each endpoint of a longest path has degree 1, giving two leaves.
+
+--- 25 ---
+Claim: There exist irrational numbers x and y such that x^y is rational.
+Proof: Consider r = sqrt(2)^sqrt(2). If r is rational, take x=y=sqrt(2). If r is irrational, take x=r and y=sqrt(2), then x^y = 2 which is rational. Either way such x,y exist.
+
+--- 26 ---
+Claim: The composition of two bijections is a bijection.
+Proof: f,g bijections. For surjectivity of g∘f: given z in C, pick y with g(y)=z, then x with f(x)=y. For injectivity: g(f(x1))=g(f(x2)) => f(x1)=f(x2) => x1=x2.
+
+--- 27 ---
+Claim: For a connected graph G, if |E| ≥ |V| then G contains a cycle.
+Proof: Take a spanning tree T of G. It has |V|-1 edges. Since G has at least |V| edges total, there is an extra edge e not in T. In the tree there is a unique path between the endpoints of e; adding e closes that path into a cycle.
+
+--- 28 ---
+Claim: ¬(∀x P(x)) ↔ ∃x ¬P(x).
+Proof: The left side says it is not true that every x satisfies P, which means some x fails P. The right side says there exists an x with not P. These mean the same thing.
+
+--- 29 ---
+Claim: The handshake lemma: sum of degrees = 2|E|.
+Proof: Each edge contributes 2 to the total degree count (one at each endpoint). Sum counts each edge twice.
+
+--- 30 ---
+Claim: If A ⊆ B then P(A) ⊆ P(B).
+Proof: Take X in P(A). Then X⊆A. Since A⊆B, X⊆B. So X in P(B).
+
+--- 31 ---
+Claim: ¬(∃x P(x)) ↔ ∀x ¬P(x).
+Proof: The left says no x satisfies P. The right says every x fails P. Same meaning.
+
+--- 32 ---
+Claim: (p ∨ q) ∧ (¬p ∨ ¬q) is true exactly when p and q have opposite truth values.
+Proof: Make the truth table and check when the expression is true. It should be true exactly when one of p,q is true and the other false.
+
+--- 33 ---
+Claim: In a connected graph G=(V,E), if |E| = |V|, then G has exactly one cycle.
+Proof sketch: A tree on |V| vertices has |V|-1 edges. One extra edge beyond a spanning tree creates exactly one independent cycle.
+
+--- 34 ---
+Claim: For all integers n, gcd(n, n+1) = 1.
+Proof: Any common divisor d of n and n+1 also divides (n+1)-n = 1, so d = 1.
+
+--- 35 ---
+Claim: If f: A → B is a bijection then |A| = |B|.
+Proof: f is injective and surjective, so it pairs up elements of A with elements of B one-to-one with nothing left over, hence the sets have the same size.

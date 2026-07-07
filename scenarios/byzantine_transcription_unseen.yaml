@@ -1,0 +1,220 @@
+- id: unseen_apolytikia_resurrection
+  direction: byz_to_west
+  echos: Plagal Fourth Mode
+  tags:
+  - cappella_romana
+  - unseen
+  - corpus
+  - vision_extract
+  source_url: https://cappellaromana.org/wp-content/uploads/2014/04/Apolytikia-Byz_Divine-Liturgy-Music_Cappella-Romana.pdf
+  reference_pdf_west: https://cappellaromana.org/wp-content/uploads/2014/04/Apolytikia-Western-Print_Divine-Liturgy-Music_Cappella-Romana.pdf
+  input: 'Plagal Fourth Mode
+
+    Γα ison
+
+    ison | oligon | oligon | petastē | apostrophos | kentēma'
+  reference_output: 'Plagal Fourth Mode
+
+    F ison
+
+    F4 | G4 | F4 | G4 | F4 | E4'
+  context: Unseen held-out from Apolytikia of the Resurrection (Cappella Romana).
+    Vision-extracted opening fragment.
+- id: unseen_transfiguration_apolytikion
+  direction: byz_to_west
+  echos: Grave Tone
+  tags:
+  - new_byzantium
+  - unseen
+  - corpus
+  - vision_extract
+  source_url: https://newbyz.weebly.com/uploads/1/4/7/1/147110798/08-06_transfiguration_apolytikion_en_byz.pdf
+  reference_pdf_west: https://newbyz.weebly.com/uploads/1/4/7/1/147110798/08-06_transfiguration_apolytikion_en_staff.pdf
+  input: 'Grave Tone
+
+    Νη ison
+
+    oligon | oligon | oligon | petastē | oligon | oligon | oligon'
+  reference_output: 'Grave Tone
+
+    Ison: D4
+
+    D4 | D4 | D4 | F4 | E4 | D4 | D4'
+  context: Unseen held-out from Apolytikion of the Transfiguration (New Byzantium).
+    Vision-extracted opening fragment.
+- id: unseen_pentecost_apolytikion
+  direction: byz_to_west
+  echos: Plagal Fourth Tone
+  tags:
+  - new_byzantium
+  - unseen
+  - corpus
+  - vision_extract
+  source_url: https://newbyz.weebly.com/uploads/1/4/7/1/147110798/pentecost_apolytikion_en_byz.pdf
+  reference_pdf_west: https://newbyz.weebly.com/uploads/1/4/7/1/147110798/pentecost_apolytikion_en_staff.pdf
+  input: 'Plagal Fourth Tone
+
+    Νη ison
+
+    ison | oligon | oligon | petastē | apostrophos | kentēma | oligon'
+  reference_output: 'Mode: Plagal Fourth Tone
+
+    Ison: D4
+
+    D4 | E♭4 | F4 | G4 | F4 | E♭4 | D4'
+  context: Unseen held-out from Apolytikion of Pentecost (New Byzantium). Vision-extracted
+    opening fragment.
+- id: unseen_annunciation_apolytikion
+  direction: byz_to_west
+  echos: Fourth Tone
+  tags:
+  - new_byzantium
+  - unseen
+  - corpus
+  - vision_extract
+  source_url: https://newbyz.weebly.com/uploads/1/4/7/1/147110798/03-25_annunciation_apolytikion_en_byz.pdf
+  reference_pdf_west: https://newbyz.weebly.com/uploads/1/4/7/1/147110798/03-25_annunciation_apolytikion_en_staff.pdf
+  input: 'Fourth Tone
+
+    Πα ison
+
+    oligon | oligon | oligon | petastē | petastē | apostrophos'
+  reference_output: 'Mode: Fourth Tone
+
+    Ison: D4
+
+    D4 | D4 | D4 | E4 | F4 | E4'
+  context: Unseen held-out from Apolytikion of the Annunciation (New Byzantium). Vision-extracted
+    opening fragment.
+- id: unseen_circumcision_apolytikion
+  direction: byz_to_west
+  echos: First Tone
+  tags:
+  - new_byzantium
+  - unseen
+  - corpus
+  - vision_extract
+  source_url: https://newbyz.weebly.com/uploads/1/4/7/1/147110798/01-01_circumcision_apolytikion_en_byz.pdf
+  reference_pdf_west: https://newbyz.weebly.com/uploads/1/4/7/1/147110798/01-01_circumcision_apolytikion_en_staff.pdf
+  input: 'First Tone
+
+    Πα ison
+
+    oligon | oligon | petastē | ison | oligon | petastē'
+  reference_output: 'Mode: First Tone
+
+    Ison: D4
+
+    D4 | E4 | F4 | F4 | G4 | A4'
+  context: Unseen held-out from Apolytikion of the Circumcision (New Byzantium). Vision-extracted
+    opening fragment.
+- id: unseen_theophany_apolytikion
+  direction: byz_to_west
+  echos: First Tone
+  tags:
+  - new_byzantium
+  - unseen
+  - corpus
+  - vision_extract
+  source_url: https://newbyz.weebly.com/uploads/1/4/7/1/147110798/01-06_theophany_apolytikion_en_byz.pdf
+  reference_pdf_west: https://newbyz.weebly.com/uploads/1/4/7/1/147110798/01-06_theophany_apolytikion_en_staff.pdf
+  input: 'First Tone
+
+    Πα ison
+
+    ison | oligon | oligon | petastē | apostrophos | oligon | oligon'
+  reference_output: 'First Tone
+
+    Ison: D4
+
+    D4 | E4 | F4 | E4 | D4 | E4 | F4'
+  context: Unseen held-out from Apolytikion of Theophany (New Byzantium). Vision-extracted
+    opening fragment.
+- id: unseen_ascension_apolytikion
+  direction: byz_to_west
+  echos: Fourth Tone
+  tags:
+  - new_byzantium
+  - unseen
+  - corpus
+  - vision_extract
+  source_url: https://newbyz.weebly.com/uploads/1/4/7/1/147110798/ascension_apolytikion_en_byz.pdf
+  reference_pdf_west: https://newbyz.weebly.com/uploads/1/4/7/1/147110798/ascension_apolytikion_en_staff.pdf
+  input: 'Fourth Tone
+
+    Πα ison
+
+    oligon | oligon | oligon | oligon | petastē | apostrophos'
+  reference_output: 'Mode: Fourth Tone
+
+    Ison: D4
+
+    D4 | E4 | F4 | G4 | F4 | E4'
+  context: Unseen held-out from Apolytikion of the Ascension (New Byzantium). Vision-extracted
+    opening fragment.
+- id: unseen_pentecost_great_prokimenon
+  direction: byz_to_west
+  echos: Grave
+  tags:
+  - new_byzantium
+  - unseen
+  - corpus
+  - vision_extract
+  source_url: https://newbyz.weebly.com/uploads/1/4/7/1/147110798/pentecost_great_prokimenon_en_byz.pdf
+  reference_pdf_west: https://newbyz.weebly.com/uploads/1/4/7/1/147110798/pentecost_great_prokimenon_gr_en_staff.pdf
+  input: 'Direction: Grave Tone
+
+    Νη ison
+
+    oligon | oligon | oligon | petastē | apostrophos | kentēma'
+  reference_output: 'Mode: Grave Tone
+
+    Ison: D4
+
+    D4 | E4 | F4 | G4 | F4 | E4'
+  context: Unseen held-out from Great Prokeimenon of Pentecost (New Byzantium). Vision-extracted
+    opening fragment. No fthora, gorgon, or diesis in fragment
+- id: unseen_theophany_communion
+  direction: byz_to_west
+  echos: Plagal First Tone
+  tags:
+  - new_byzantium
+  - unseen
+  - corpus
+  - vision_extract
+  source_url: https://newbyz.weebly.com/uploads/1/4/7/1/147110798/01-06_theophany_communion_en_byz.pdf
+  reference_pdf_west: https://newbyz.weebly.com/uploads/1/4/7/1/147110798/01-06_theophany_communion_gr_en.pdf
+  input: 'Plagal First Tone
+
+    Πα (ison)
+
+    oligon | oligon | oligon | oligon | petastē | apostrophos'
+  reference_output: 'Mode: Plagal First Tone
+
+    Ison: D4
+
+    D4 | E4 | F4 | G4 | A4 | G4'
+  context: Unseen held-out from Theophany Communion Hymn (New Byzantium). Vision-extracted
+    opening fragment. No fthora, gorgon, or diesis in fragment
+- id: unseen_dormition_lamentations
+  direction: byz_to_west
+  echos: Pl I
+  tags:
+  - new_byzantium
+  - unseen
+  - corpus
+  - vision_extract
+  source_url: https://newbyz.weebly.com/uploads/1/4/7/1/147110798/08-15_dormition_lamentations_en_byz.pdf
+  reference_pdf_west: https://newbyz.weebly.com/uploads/1/4/7/1/147110798/08-15_dormition_lamentations_en_staff.pdf
+  input: 'Pl I
+
+    Πα ison
+
+    ison | oligon | oligon | petastē | apostrophos | oligon'
+  reference_output: 'Mode: Plagal First
+
+    Ison: D4
+
+    D4 | E4 | F4 | G4 | F4 | E4'
+  context: Unseen held-out from Dormition Lamentations fragment (New Byzantium). Vision-extracted
+    opening fragment. no fthora, no gorgon, no diesis

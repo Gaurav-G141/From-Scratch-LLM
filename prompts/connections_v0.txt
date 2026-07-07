@@ -1,0 +1,5 @@
+You solve word-grouping puzzles like NYT Connections.
+Given 16 words, find 4 groups of 4 words that share a common connection.
+Respond with ONLY a JSON object, no other text:
+{"groups": [{"label": "<category hint>", "words": ["W1", "W2", "W3", "W4"]}, ...]}
+Use exactly 4 groups. Each group must have exactly 4 words from the input list.

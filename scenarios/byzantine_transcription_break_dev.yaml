@@ -1,0 +1,282 @@
+# Hard break tests — compound failure modes from GPT-4o v0 run.
+# Stacks: Ni traps, microtones, ison shifts, leaps, rhythm, fthora, corpus liturgy.
+# Gold references for Opus judge only.
+
+- id: break_ni_trap_pa_not_a
+  direction: byz_to_west
+  echos: "Pl IV"
+  tags: [ni_trap, plagal, compound, break]
+  source_url: https://cappellaromana.org/wp-content/uploads/2014/04/Prokeimenon-Byz_Divine-Liturgy-Music_Cappella-Romana.pdf
+  input: |
+    Direction: Byzantine → Western
+    [Mode Plagal IV, martyria Ni = Πα]
+    NOTE: Πα = D4. Do NOT use A3 or G4 as Ni.
+    (Πα) ison
+    petastē | oligon | apostrophos | kentēma | oligon
+  reference_output: |
+    Mode Plagal IV, Ni = D4
+    Ison: D4
+    E4 D4 C4 D4 E4
+  context: >
+    GPT-4o used A3 for Πα. Ni=Pa=D4 mandatory. Prokeimenon-style (Cappella Romana corpus).
+
+- id: break_kentema_first_from_ni
+  direction: byz_to_west
+  echos: "I"
+  tags: [interval, kentema, compound, break]
+  input: |
+    Direction: Byzantine → Western
+    [Mode I, Ni = Πα = D4]
+    (Ν) ison
+    kentēma | apostrophos | apostrophos | oligon
+  reference_output: |
+    Mode I, Ni = D4
+    Ison: D4
+    F#4 E4 D4 C#4
+  context: >
+    First neume kentēma = D4+m3=F#4. GPT-4o started at D4 and descended wrong. C#4 on last oligon (Mode I).
+
+- id: break_soft_chromatic_double_diesis
+  direction: byz_to_west
+  echos: "II"
+  tags: [microtonal, chromatic, compound, break]
+  input: |
+    Direction: Byzantine → Western
+    [Mode II soft chromatic, Ni = Δι = G4]
+    (Δι) ison
+    oligon (diesis) | petastē (diesis) | apostrophos
+  reference_output: |
+    Mode II soft chromatic, Ni = G4
+    Ison: G4
+    G4↑ A4↑ A4↓
+    (each diesis ~+33 cents in soft chromatic genus)
+  context: >
+    Ni=Di=G4 NOT E4. Two diesis steps — must not flatten to G4 A4 G4.
+
+- id: break_trisagion_ison_shift_gorgon
+  direction: byz_to_west
+  echos: "II"
+  tags: [ison, trisagion, rhythm, compound, break]
+  source_url: https://cappellaromana.org/wp-content/uploads/2014/04/Trisagion-Byz_Divine-Liturgy-Music_Cappella-Romana.pdf
+  input: |
+    Direction: Byzantine → Western
+    [Mode II, Ni = Κε = A4]
+    (Κε) ison
+    ison gorgon | oligon | oligon | petastē
+    — ison shift —
+    (Ζω) ison
+    apostrophos gorgon | oligon
+  reference_output: |
+    Mode II, Ni = A4
+    Ison: A4
+    A4 (short) A4 B4 C5
+    Ison: B4
+    A4 (short) B4
+  context: >
+    Compound: Ke→Zo ison shift (A→B) + gorgon on ison and apostrophos. No G major.
+
+- id: break_enharmonic_fthora_nenano
+  direction: byz_to_west
+  echos: "III"
+  tags: [enharmonic, fthora, nenano, compound, break]
+  input: |
+    Direction: Byzantine → Western
+    [Mode III enharmonic, Ni = Γα = F4]
+    (Γα) ison
+    oligon (diesis) | kentēma | fthora nenano | oligon | apostrophos
+  reference_output: |
+    Mode III enharmonic, Ni = F4
+    Ison: F4
+    F4↓ B4 A4
+    fthora nenano
+    G4 F4
+  context: >
+    Ni=Ga=F4 NOT G4. Large enharmonic diesis on first step. fthora nenano mid-phrase.
+
+- id: break_cherubic_double_fourth
+  direction: byz_to_west
+  echos: "Pl IV"
+  tags: [leap, cherubic, compound, break]
+  source_url: https://cappellaromana.org/wp-content/uploads/2014/04/Plagal-IV-Cherubic-Byz-Thyateira_Divine-Liturgy-Music_Cappella-Romana.pdf
+  input: |
+    Direction: Byzantine → Western
+    [Mode Plagal IV, Ni = Πα = D4]
+    (Πα) ison
+    kentēma | ypsilē pnevma | petastē | oligon
+  reference_output: |
+    Mode Plagal IV, Ni = D4
+    Ison: D4
+    A4 D5 E5 F#5
+  context: >
+    Cherubic (Cappella corpus). kentēma D→A, ypsilē +4th A→D5, NOT stepwise. GPT-4o gave A3-G3-A3.
+
+- id: break_dynamis_full_formula
+  direction: byz_to_west
+  echos: "II"
+  tags: [dynamis, liturgy, compound, break]
+  source_url: https://cappellaromana.org/wp-content/uploads/2014/04/Dynamis-Byz_Divine-Liturgy-Music_Cappella-Romana.pdf
+  input: |
+    Direction: Byzantine → Western
+    [Mode II, Ni = Κε = A4, Dynamis formula]
+    (Κε) ison
+    petastē | oligon | kentēma | apostrophos | oligon
+  reference_output: |
+    Mode II, Ni = A4
+    Ison: A4
+    B4 A4 D5 C5 B4
+  context: >
+    Dynamis (Cappella corpus). Ni=Ke=A4. Leap A4→D5 on kentēma. NOT G4-F#4-E4.
+
+- id: break_gorgon_argon_hemiolon_stack
+  direction: byz_to_west
+  echos: "I"
+  tags: [rhythm, gorgon, argon, compound, break]
+  input: |
+    Direction: Byzantine → Western
+    [Mode I, Ni = Πα = D4]
+    (Ν) ison
+    oligon gorgon | petastē gorgon | oligon argon | kentēma
+  reference_output: |
+    Mode I, Ni = D4
+    Ison: D4
+    D4 (short) E4 (short) F#4 (long) A4
+  context: >
+    GPT-4o dropped all rhythm modifiers. Must preserve (short)/(long).
+
+- id: break_west_to_byz_eight_notes_fthora
+  direction: west_to_byz
+  echos: "III"
+  tags: [reverse, fthora, compound, break]
+  input: |
+    Direction: Western → Byzantine
+    Mode III, Ni = F4
+    Ison: F4
+    F4 G4 A4 B4
+    — fthora soft chromatic —
+    B4↓ C5↑ B4 A4
+  reference_output: |
+    [Mode III, Ni=Γα]
+    (Γα) ison
+    oligon | oligon | kentēma | kentēma
+    fthora soft chromatic
+    kentēma (diesis) | oligon | apostrophos | apostrophos
+  context: >
+    Reverse with fthora mid-phrase. Ni=Ga not Pa. GPT-4o used wrong martyria and neumes.
+
+- id: break_west_to_byz_rhythm_reverse
+  direction: west_to_byz
+  echos: "I"
+  tags: [reverse, rhythm, compound, break]
+  input: |
+    Direction: Western → Byzantine
+    Mode I, Ni = D4
+    Ison: D4
+    D4 (short) E4 (short) F#4 (long) G4 (long) A4
+  reference_output: |
+    [Mode I, Ni=Πα]
+    (Ν) ison
+    oligon gorgon | petastē gorgon | oligon argon | oligon argon | kentēma
+  context: Reverse rhythm annotations to gorgon/argon.
+
+- id: break_double_ison_shift
+  direction: byz_to_west
+  echos: "IV"
+  tags: [ison, compound, break]
+  input: |
+    Direction: Byzantine → Western
+    [Mode IV, Ni = Γα = F4]
+    (Γα) ison
+    oligon | oligon
+    — (Δι) ison —
+    petastē | oligon
+    — (Κε) ison —
+    apostrophos | oligon
+  reference_output: |
+    Mode IV, Ni = F4
+    Ison: F4
+    F4 G4
+    Ison: G4
+    A4 B4
+    Ison: A4
+    G4 A4
+  context: Three ison shifts Ga→Di→Ke. Must write three Ison lines.
+
+- id: break_hard_chromatic_mode2_leap
+  direction: byz_to_west
+  echos: "II"
+  tags: [hard_chromatic, leap, compound, break]
+  input: |
+    Direction: Byzantine → Western
+    [Mode II hard chromatic, Ni = Δι = G4]
+    (Δι) ison
+    fthora hard chromatic
+    oligon (diesis) | kentēma | ypsilē pnevma
+  reference_output: |
+    Mode II hard chromatic, Ni = G4
+    Ison: G4
+    fthora hard chromatic
+    G4↑ A4↓ B4↓ E5
+  context: Hard chromatic + diesis + 4th leap. Multiple hard dimensions.
+
+- id: break_alleluia_plagal_cadence
+  direction: byz_to_west
+  echos: "Pl"
+  tags: [liturgy, alleluia, corpus, break]
+  source_url: https://cappellaromana.org/wp-content/uploads/2014/04/Alleluiarion-Byz_Divine-Liturgy-Music_Cappella-Romana.pdf
+  input: |
+    Direction: Byzantine → Western
+    [Mode Plagal IV, Ni = Πα = D4]
+    (Πα) ison
+    kentēma | apostrophos | oligon | kentēma | apostrophos
+  reference_output: |
+    Mode Plagal IV, Ni = D4
+    Ison: D4
+    A4 G4 F#4 A4 G4
+  context: Alleluia cadential pattern (Cappella corpus). Mode I diatonic on Pa.
+
+- id: break_kontakion_mode4_ascending
+  direction: byz_to_west
+  echos: "IV"
+  tags: [liturgy, kontakion, corpus, break]
+  source_url: https://cappellaromana.org/wp-content/uploads/2014/04/Kontakion-Byz_Divine-Liturgy-Music_Cappella-Romana.pdf
+  input: |
+    Direction: Byzantine → Western
+    [Mode IV, Ni = Γα = F4]
+    (Γα) ison
+    oligon | oligon | petastē | oligon | kentēma | oligon
+  reference_output: |
+    Mode IV, Ni = F4
+    Ison: F4
+    G4 A4 Bb4 C5 D5 Eb5
+  context: Kontakion Mode IV (Cappella). Bb in Mode IV diatonic. Six neumes — count carefully.
+
+- id: break_no_harmony_microtone_stack
+  direction: byz_to_west
+  echos: "II"
+  tags: [adversarial, microtonal, no_harmony, break]
+  input: |
+    Direction: Byzantine → Western
+    [Mode II soft chromatic, Ni = Δι = G4]
+    (Δι) ison
+    oligon (diesis) | petastē | apostrophos (diesis)
+  reference_output: |
+    Mode II soft chromatic, Ni = G4
+    Ison: G4
+    G4↑ A4 G4↓
+  context: No chords + microtones. GPT-4o failed both Ni and diesis.
+
+- id: break_megalynarion_mode2_ison_ke
+  direction: byz_to_west
+  echos: "II"
+  tags: [liturgy, megalynarion, corpus, break]
+  source_url: https://cappellaromana.org/wp-content/uploads/2014/04/Megalynarion-Byz_Divine-Liturgy-Music_Cappella-Romana.pdf
+  input: |
+    Direction: Byzantine → Western
+    [Mode II, Ni = Κε = A4]
+    (Κε) ison
+    petastē | kentēma | apostrophos | oligon | kentēma
+  reference_output: |
+    Mode II, Ni = A4
+    Ison: A4
+    B4 D5 C5 B4 D5
+  context: Megalynarion (Cappella). Ni=Ke=A4. Two kentēma leaps to D5.

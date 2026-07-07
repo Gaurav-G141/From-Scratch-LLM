@@ -1,0 +1,30 @@
+- id: clean_task_01
+  input: "Extract a task from: Fix the login bug before Friday."
+  tags: [dev]
+- id: messy_input_02
+  input: "title=ship docs!!! priority maybe high??? tags release, docs, urgent-ish"
+  tags: [dev, adversarial]
+- id: incomplete_03
+  input: "Make JSON for a task called 'Review PR'."
+  tags: [dev, incomplete]
+- id: extra_prose_04
+  input: "Return JSON only. Task: update billing. Priority high. Tags: billing, api."
+  tags: [dev]
+- id: markdown_trap_05
+  input: "Here is the task in markdown:\n- title: Migrate database\n- priority: medium\n- tags: infra"
+  tags: [dev, adversarial]
+- id: nested_request_06
+  input: "Summarize this as JSON with title, priority (low/medium/high), tags array: 'Write tests for checkout.'"
+  tags: [dev]
+- id: conflicting_priority_07
+  input: "Task: patch security hole. Priority: super high critical ASAP."
+  tags: [dev, adversarial]
+- id: empty_tags_08
+  input: "JSON please for title='Standup notes', priority='low', tags=[]."
+  tags: [dev]
+- id: yaml_snippet_09
+  input: "title: Refactor auth\npriority: high\ntags:\n  - auth\n  - refactor"
+  tags: [dev, adversarial]
+- id: chatty_10
+  input: "Hey! Can you make that into JSON with title, priority, tags? Task is redesign onboarding."
+  tags: [dev]

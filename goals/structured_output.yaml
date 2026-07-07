@@ -1,0 +1,37 @@
+name: structured_output
+description: >
+  The model always returns a single valid JSON object matching the given schema,
+  with no prose before or after, even when the input is incomplete or adversarial.
+
+initial_system_prompt: |
+  You are a structured-output assistant. Always respond with exactly one valid JSON
+  object and no surrounding text.
+
+forbidden_patterns: []
+
+required_patterns: []
+
+dimensions:
+  - spec_adherence
+  - robustness
+  - task_quality
+  - consistency
+
+scenario_generation_hint: "requests to extract entities into JSON, including messy or incomplete inputs"
+
+dev_scenarios_path: ../scenarios/structured_output_dev.yaml
+heldout_scenarios_path: ../scenarios/structured_output_heldout.yaml
+
+json_schema:
+  type: object
+  required: [title, priority, tags]
+  properties:
+    title:
+      type: string
+    priority:
+      type: string
+      enum: [low, medium, high]
+    tags:
+      type: array
+      items:
+        type: string
