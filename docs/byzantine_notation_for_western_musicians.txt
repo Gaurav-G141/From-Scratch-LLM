@@ -1,0 +1,336 @@
+Byzantine Notation for Western-Trained Musicians
+
+Plain-text UTF-8 version. If a Byzantine symbol still appears as a box or blank,
+your viewer's font does not cover the Byzantine Musical Symbols Unicode block.
+Use the adjacent codepoint and symbol name as the authoritative identifier.
+
+Source: `/Users/gaurav/Downloads/Detailed Byzantine Guide.pdf`, Nick Nicholas, "Unicode Technical Note: Byzantine Musical Notation", Version 1.1, February 2006.
+
+This is a practical reading guide for a college-level musician fluent in Western notation. It assumes you already understand intervals, modes, chromaticism, meter, articulation, ornament, clefs, and transposition. The goal is not to re-teach those concepts, but to show where Byzantine notation is doing something structurally different.
+
+Scope: modern/post-Early Byzantine neumatic notation, especially the Chrysanthine/post-1814 system, with occasional notes on older signs where the guide includes them.
+
+## The Core Reframe
+
+Byzantine notation is mostly intervallic and modal, not staff-positional.
+
+The neumes tell you how the melody moves from the previous pitch. Martyriai, pitch letters, and phthorae tell you the current modal/pitch environment. Temporal and consonant signs modify duration, attack, vocal gesture, or phrasing.
+
+So, do not read a Byzantine page as "where is this note on the staff?" Read it as:
+
+1. What mode/pitch frame am I in?
+2. What is my current pitch?
+3. What interval does this neume or neume group produce from that pitch?
+4. Does this sign alter duration, accent, ornament, scale, or ison behavior?
+5. Has a phthora changed the modal system from here onward?
+
+## Pitch Syllables
+
+The guide presents modern pitch letters as a Byzantine equivalent to solfege, starting from `d`.
+
+| Byzantine syllable | Reference pitch | Reading note |
+|---|---:|---|
+| Pa | D | Common reference/finalis for Mode I and hard chromatic Pa contexts |
+| Vou | E | Second degree above Pa |
+| Ga | F | Third degree above Pa |
+| Di | G | Common center for Mode II/IV contexts |
+| Ke | A | Fifth degree above Pa |
+| Zo | B | Often altered, especially flattened in some modal contexts |
+| Ni | C | Octave boundary/reference; important in Plagal IV contexts |
+
+Treat these as modal pitch labels, not a guarantee of equal-tempered concert pitch. The modern theory described in the guide divides the octave into 72 commas.
+
+## Main Interval Signs
+
+The `Symbol` column uses Unicode Byzantine Musical Symbols. If your environment lacks a supporting font, use the codepoint and name.
+
+| Symbol | Codepoint | Name | Interval action | Accent / vocal behavior |
+|---:|---|---|---|---|
+| 𝁆 | U+1D046 | Ison | Repeat previous pitch | Neutral |
+| 𝁇 | U+1D047 | Oligon | Up one modal step | Unaccented |
+| 𝁉 | U+1D049 | Petasti | Up one modal step | Accented / energetic |
+| 𝁎 | U+1D04E | Kentimata | Up one modal step | Soft, legato, tied to previous |
+| 𝁏 | U+1D04F | Kentima | Up a third | In modern use, modifies another sign |
+| 𝁐 | U+1D050 | Ypsili | Up a fifth | In modern use, modifies another sign |
+| 𝁑 | U+1D051 | Apostrophos | Down one modal step | Neutral |
+| 𝁓 | U+1D053 | Hyporroi / Yporroi | Two descending modal steps | Connected/tied to previous |
+| 𝁕 | U+1D055 | Elaphron | Down a third | Neutral |
+| 𝁖 | U+1D056 | Hamili / Chamili | Down a fifth | Neutral |
+| 𝁈 | U+1D048 | Oxeia | Up one modal step | Abrupt/accented; pre-modern or occasional modern |
+| 𝁊 | U+1D04A | Koufisma | Up one modal step variant | Weak/hesitant or tremolo in older interpretations |
+| 𝁍 | U+1D04D | Pelaston | Up one modal step variant | More intense than petasti |
+| 𝁒 | U+1D052 | Apostrofoi Syndesmos | Long descending second | Older/specialized |
+| 𝁔 | U+1D054 | Kratimoyporroon | Like hyporroi | Preceding note lengthened |
+
+"Second" here means next scale degree in the current modal scale. It may not equal two equal-tempered semitones.
+
+## Combination Logic
+
+The first big Western-reader trap is that stacked signs can be either cumulative or subordinated.
+
+- Cumulative: the intervals add.
+- Subordinated/hypotactic: one sign supplies the actual interval, while the other supplies accent/attack/quality. In such cases, the host sign's own upward second may not count.
+
+| Combination | Result | How to think it |
+|---|---:|---|
+| Oligon over petasti | Up a third | Cumulative upward movement |
+| Kentima over oligon | Up a fourth, unaccented | Kentima + oligon |
+| Kentima over petasti | Up a fourth, accented | Same interval, petasti quality |
+| Ypsili at right/middle of oligon | Up a fifth, unaccented | Subordinated; oligon is quality, not +second |
+| Ypsili at right/middle of petasti | Up a fifth, accented | Subordinated; petasti supplies accent |
+| Ypsili at left of oligon | Up a sixth, unaccented | Cumulative |
+| Ypsili at left of petasti | Up a sixth, accented | Cumulative plus petasti accent |
+| Ypsili next to kentima over oligon | Up a seventh, unaccented | Compound leap |
+| Ypsili next to kentima over petasti | Up a seventh, accented | Compound leap with accent |
+| Ypsili over kentima over oligon | Up an octave, unaccented | Large cumulative leap |
+| Ypsili over kentima over petasti | Up an octave, accented | Large cumulative leap with accent |
+| Two ypsili over oligon | Up a ninth, unaccented | Advanced/rare |
+| Two ypsili over petasti | Up a ninth, accented | Advanced/rare |
+| Elaphron over apostrophos | Down a fourth | Descending intervals add |
+| Hamili over apostrophos | Down a sixth | Descending compound |
+| Hamili over elaphron | Down a seventh | Descending compound |
+| Hamili over elaphron over apostrophos | Down an octave | Source describes `-4 + -3 + -2` |
+| Hamili over hamili | Down a ninth | Advanced/rare |
+| Ison over petasti | Accented unison | Same pitch with accent |
+| Apostrophos over oligon | Down a second, slightly accented | Oligon colors the descent |
+| Apostrophos over petasti | Down a second, accented | Petasti colors the descent |
+| Elaphron over petasti | Down a third, accented | Petasti colors the descent |
+| Elaphron over apostrophos over petasti | Down a fourth, accented | Compound descent with accent |
+
+## Two-Note Sequence Combinations
+
+Some neume clusters are short sequences, not single interval signs.
+
+| Combination | Result | Performance/reading point |
+|---|---|---|
+| Kentimata above oligon | Two ascending steps | Second note legato |
+| Oligon above kentimata | Two ascending steps | First note legato |
+| Oligon before kentimata | Same pitch result as oligon above kentimata | Often hints that an ascent will turn into a descent |
+| Apostrophos under ison | Ison, then apostrophos | Repeat, then descend one step |
+| Two stacked apostrophoi | Two descending steps | Same as two apostrophoi on one syllable |
+
+## Time, Duration, and Rests
+
+Default note value is one beat. In Western transcription this is often represented as a quarter note, but the guide notes that some repertory Westerners would notate mostly in eighths still uses one neume per note, yielding fast-looking tempi if mapped too literally.
+
+| Symbol | Codepoint | Name | Effect |
+|---:|---|---|---|
+| 𝁿 | U+1D07F | Klasma ano | Add one beat |
+| 𝃴 | U+1D0F4 | Klasma kato | Add one beat; usually equivalent to upper klasma except special petasti cases |
+| 𝂏 | U+1D08F | Gorgon | Marked note and previous note share one beat |
+| 𝃵 | U+1D0F5 | Lower gorgon | Same duration effect as gorgon; placement depends on host |
+| 𝂕 | U+1D095 | Digorgon | Three-note group in one beat |
+| 𝂖 | U+1D096 | Trigorgon | Four-note group in one beat |
+| 𝂅 | U+1D085 | Apli | Add one beat |
+| 𝂆 | U+1D086 | Dipli | Add two beats |
+| 𝂇 | U+1D087 | Tripli | Add three beats |
+| 𝂈 | U+1D088 | Tetrapli | Add four beats; rare |
+| 𝂗 | U+1D097 | Argon | Specialized slowing, mainly over oligon + kentimata |
+| 𝂘 | U+1D098 | Imidiargon | Like argon, with longer second note |
+| 𝂙 | U+1D099 | Diargon | Like argon, with still longer second note |
+
+Gorgon is the trap: it reaches backward. It is not simply "shorten the note under the sign." Digorgon and trigorgon involve a group around the marked note.
+
+Punctuated gorgons imitate dotted rhythms, but the guide notes disagreement among authorities. The safe reading principle is: locate the quickened group and identify which member is lengthened.
+
+| Sign type | Approximate result in the guide's logical scheme |
+|---|---|
+| Gorgon with dot before | Long-short triplet feel |
+| Gorgon with dot after | Short-long triplet feel |
+| Digorgon with dot before | First of three lengthened |
+| Digorgon with dot after | Last of three lengthened |
+| Dot above digorgon | Middle of three lengthened/accented |
+
+| Symbol | Codepoint | Name | Effect |
+|---:|---|---|---|
+| 𝁾 | U+1D07E | Stavros | Breath mark |
+| 𝂉 | U+1D089 | Koronis | Fermata |
+| 𝂊 | U+1D08A | Leimma enos chronou | Quarter rest |
+| 𝂋 | U+1D08B | Leimma dyo chronon | Half rest |
+| 𝂌 | U+1D08C | Leimma trion chronon | Dotted half rest |
+| 𝂍 | U+1D08D | Leimma tessaron chronon | Whole rest |
+| 𝂎 | U+1D08E | Leimma imiseos chronou | Eighth rest |
+
+Tempo signs are built from chi (`chronos`) modified by temporal signs. The guide gives 1881 Commission ranges plus a later-used middle marking:
+
+| Name | Approx. bpm |
+|---|---:|
+| Agogi poli argi | 56-80 |
+| Agogi argoteri | 80-100 |
+| Agogi argi | 100-168 |
+| Agogi metria | Around 130; not from the 1881 Commission list |
+| Agogi gorgi | 168-208 |
+| Agogi gorgoteri | Over 208 |
+
+## Consonant Signs / Hypostases
+
+These are vocal gesture, ornament, phrasing, and articulation signs. They are not consistently reducible to Western ornaments.
+
+| Symbol | Codepoint | Name | Practical effect |
+|---:|---|---|---|
+| 𝁘 | U+1D058 | Varia | Accent/separation; also component of rests |
+| 𝁛 | U+1D05B | Omalon | Light undulation between notes |
+| 𝁜 | U+1D05C | Antikenoma | Lively ascent / grace-note-like gesture |
+| 𝁚 | U+1D05A | Psifiston | Accent followed by diminuendo, often over a span |
+| 𝁠 | U+1D060 | Eteron | Slur two notes, sometimes with slight undulation/grace behavior |
+| 𝁻 | U+1D07B | Endofonon | Nasal tone; largely obsolete |
+| 𝁼 | U+1D07C | Yfen kato | Tie/lengthener, no inserted grace note |
+| 𝁽 | U+1D07D | Yfen ano | Upper tie/lengthener |
+
+Eteron is not just a Western tie. The guide notes that if the second note tied is an ison, it is sung with slight upward undulation.
+
+## Modes, Scales, and Commas
+
+Modern theory in the guide divides the octave into 72 commas:
+
+- Equal-tempered whole tone = 12 commas.
+- Equal-tempered semitone = 6 commas.
+
+Scale patterns:
+
+| Scale type | Comma pattern | Main use |
+|---|---|---|
+| Diatonic | 10, 8, 12, 12, 10, 8, 12 | Modes I and IV, authentic and plagal |
+| Soft chromatic | 8, 14, 8, 12, 8, 14, 8 | Often authentic Mode II |
+| Hard chromatic ascending | 6, 20, 4, 12, 6, 20, 4 | Often Plagal II hard chromatic |
+| Hard chromatic descending | 4, 20, 6, 12, 4, 20, 6 | Hard chromatic descent |
+| Enharmonic, 1881 | 12, 12, 6, 12, 12, 12, 6 | Mode III and Varys |
+
+Mode snapshot from the guide, with Western accidentals only approximate:
+
+| Mode | Approximate guide description | Caveat |
+|---|---|---|
+| I | D-E-F-G-A-B-C-D; finalis D, sometimes A | Diatonic |
+| Plagal I | A-B-C-D-E-F-G-A; finalis A fast, D moderate | B often flattened, especially with Agem |
+| II | G-Ab-B-C-Db-E-F-G; finalis G, E, or D | Chromatic, typically soft |
+| Plagal II | D-Eb-F#-G-A-Bb-C#-D | Chromatic, typically hard; soft form finalis G/Nenano, hard finalis D |
+| III | F-G-A-B[flat]-C-D-E-F; finalis F | Enharmonic; usually needs phthorae/general sharp/flat |
+| Varys | Enharmonic on F, or diatonic/proto-varys on B | Several variants |
+| IV | G-A-B-C-D-E-F-G | Diatonic; Legetos behavior in moderate/fast settings |
+| Plagal IV | C-D-E-F-G-A-B-C; finalis C | With Ni phthora, finalis F and B flattened |
+
+The guide itself warns that presenting Byzantine modes as Western tonic-to-tonic scales is distorted. Tetrachords, finalis behavior, cadences, phthorae, and ison practice matter more than the staff-equivalent scale spelling.
+
+## Differentiators: Local Pitch Alterations
+
+Differentiators are closest to accidentals, but not always fixed-size Western accidentals.
+
+| Symbol | Codepoint | Name | Effect in guide |
+|---:|---|---|---|
+| 𝃋 | U+1D0CB | Fthora I Yfesis Tetartimorion / Agem | 1/3-tone flat in Chrysanthus; also Agem modulator |
+| 𝃍 | U+1D0CD | Yfesis Tritimorion | 2/3-tone flat in Chrysanthus |
+| 𝃎 | U+1D0CE | Diesis Tritimorion | 2/3-tone sharp in Chrysanthus |
+| 𝃏 | U+1D0CF | Diesis Tetartimorion | 1/3-tone sharp in Chrysanthus |
+| 𝃐 | U+1D0D0 | Diesis Apli Dyo Dodekata | Semitone in Chrysanthus; two commas in 1881; default sharp in practice |
+| 𝃑 | U+1D0D1 | Diesis Monogrammos | Four commas / 1/3 tone sharp in 1881 |
+| 𝃒 | U+1D0D2 | Diesis Digrammos | Six commas / semitone sharp in 1881 |
+| 𝃓 | U+1D0D3 | Diesis Trigrammos | Eight commas / 2/3 tone sharp in 1881 |
+| 𝃔 | U+1D0D4 | Yfesis Apli Dyo Dodekata | Semitone in Chrysanthus; two commas in 1881; default flat in practice |
+| 𝃕 | U+1D0D5 | Yfesis Monogrammos | Four commas / 1/3 tone flat in 1881 |
+| 𝃖 | U+1D0D6 | Yfesis Digrammos | Six commas / semitone flat in 1881 |
+| 𝃗 | U+1D0D7 | Yfesis Trigrammos | Eight commas / 2/3 tone flat in 1881 |
+| 𝃘 | U+1D0D8 | Geniki Diesis | General sharp: all E's raised; in the guide's 1881 explanation E rises by two commas |
+| 𝃙 | U+1D0D9 | Geniki Yfesis | General flat: all B's flattened |
+
+Do not automatically translate simple diesis/yfesis to `#`/`b` in ET. The guide explicitly notes that default accidentals are not fixed in practice.
+
+## Phthorae: Modulators / Scale Changers
+
+Phthorae change the current scale or modal frame. They can also transpose the finalis if placed on a non-home pitch. This is one of the biggest differences from Western accidental thinking.
+
+| Symbol | Codepoint | Name | Effect |
+|---:|---|---|---|
+| 𝂶 | U+1D0B6 | Enarxis kai phthora Vou | Diatonic E/Vou modulator; also older Enarxis sign |
+| 𝂺 | U+1D0BA | Fthora diatoniki Pa | Diatonic D/Pa modulator |
+| 𝂻 | U+1D0BB | Fthora diatoniki Nana | Diatonic F/Ga/Nana modulator |
+| 𝂽 | U+1D0BD | Fthora diatoniki Di | Diatonic G/Di modulator |
+| 𝂿 | U+1D0BF | Fthora diatoniki Ke | Diatonic A/Ke modulator |
+| 𝃀 | U+1D0C0 | Fthora diatoniki Zo | Diatonic B/Zo modulator |
+| 𝃁 | U+1D0C1 | Fthora diatoniki Ni kato | Diatonic low C/Ni modulator |
+| 𝃂 | U+1D0C2 | Fthora diatoniki Ni ano | Diatonic high C/Ni modulator |
+| 𝃃 | U+1D0C3 | Fthora malakon chroma difonias | Soft chromatic Di/G modulator; also Ni/Vou/Zo without transposition |
+| 𝃄 | U+1D0C4 | Fthora malakon chroma monofonias | Soft chromatic Ke/A modulator; also soft chromatic pitch-indicator use |
+| 𝃅 | U+1D0C5 | Fthora skliron chroma vasis | Hard chromatic Pa/D base modulator |
+| 𝃇 | U+1D0C7 | Fthora Nenano | Hard chromatic Di/G modulator; key sign for Nenano/hard chromatic contexts |
+| 𝃈 | U+1D0C8 | Chroa Zygos | Chromatic Di/G modulator; sharpens D and F in the guide's summary |
+| 𝃉 | U+1D0C9 | Chroa Kliton | Chromatic Di/G modulator; sharpens E and F |
+| 𝃊 | U+1D0CA | Chroa Spathi | Chromatic Ke/A modulator; sharpens G and flattens B |
+| 𝃋 | U+1D0CB | Agem | On Zo, Vou, or Ga, flattens B in Plagal I and indicates enharmonic scale; also local flat differentiator |
+| 𝃘 | U+1D0D8 | General sharp | Causes all E's to be sharp; usual in Mode III with general flat |
+| 𝃙 | U+1D0D9 | General flat | Causes all B's to be flat; usual in Mode III with general sharp |
+
+## Martyriai / Signatures
+
+Martyriai are modal/pitch witnesses. At the beginning they orient the piece; medially they checkpoint cadences and confirm the pitch/mode after movement or modulation.
+
+| Symbol | Codepoint | Meaning / use |
+|---:|---|---|
+| 𝂢 | U+1D0A2 | First mode signature |
+| 𝂣 | U+1D0A3 | Other First mode signature; also pitch indicator for diatonic Pa and Ke |
+| 𝂤 | U+1D0A4 | Second mode signature |
+| 𝂥 | U+1D0A5 | Other Second mode signature; also chromatic pitch indicator in Modes II/Plagal II |
+| 𝂦 | U+1D0A6 | Third mode signature variant |
+| 𝂧 | U+1D0A7 | Trifonias/Fourth signature; used for Mode III and diatonic Ga/high Ni |
+| 𝂨 | U+1D0A8 | Fourth mode signature; used for Modes IV/Plagal IV and diatonic Ni/Di |
+| 𝂩 | U+1D0A9 | Tetartos Legetos signature; also diatonic Vu/Zo |
+| 𝂪 | U+1D0AA | Alternative Legetos signature |
+| 𝂫 | U+1D0AB | Plagal marker |
+| 𝂬 | U+1D0AC | Isakia remnant; Mode III signature tradition |
+| 𝂭 | U+1D0AD | Apostrofoi/dots remnant; signature/pitch-indicator formant |
+| 𝂮 | U+1D0AE | Fanerosis tetrafonias |
+| 𝂯 | U+1D0AF | Fanerosis monofonias; Varys-related |
+| 𝂰 | U+1D0B0 | Fanerosis monofonias; Mode II-related |
+| 𝂱 | U+1D0B1 | Varys mode signature; also low Zo pitch indicator |
+| 𝂲 | U+1D0B2 | Proto-Varys signature |
+| 𝂳 | U+1D0B3 | Plagal Fourth signature |
+| 𝂴 | U+1D0B4 | Gorthmic single nu; inserted nasalized `n` in melismatic passages |
+| 𝂵 | U+1D0B5 | Gorthmic double nu; used before epsilon/alpha-iota in the guide's description |
+
+Think of martyriai as closer to a combined modal label, pitch checkpoint, cadence witness, and transposition sanity check than to any one Western sign.
+
+## Meter Markings
+
+Byzantine rhythm signs include barline-like `diastolai` and time-signature-like `simanses`, but meter is often unstated or implied.
+
+| Symbol | Codepoint | Name | Role |
+|---:|---|---|---|
+| 𝃚 | U+1D0DA | Diastoli apli mikri | Small/simple barline |
+| 𝃛 | U+1D0DB | Diastoli apli megali | Large/simple barline; most common |
+| 𝃜 | U+1D0DC | Diastoli dipli | Double barline for compound meters |
+| 𝃝 | U+1D0DD | Diastoli theseos | Internal downbeat divider |
+| 𝃞 | U+1D0DE | Simansis theseos | One-beat downbeat |
+| 𝃟 | U+1D0DF | Simansis theseos disimou | Two-beat downbeat |
+| 𝃠 | U+1D0E0 | Simansis theseos trisimou | Three-beat downbeat |
+| 𝃡 | U+1D0E1 | Simansis theseos tetrasimou | Four-beat downbeat |
+| 𝃢 | U+1D0E2 | Simansis arseos | One-beat upbeat |
+| 𝃣 | U+1D0E3 | Simansis arseos disimou | Two-beat upbeat |
+| 𝃤 | U+1D0E4 | Simansis arseos trisimou | Three-beat upbeat |
+
+Examples from the guide:
+
+- 4/4 can be written like `OIII`: one downbeat, three upbeats.
+- 7/4 = 3+3+2/4 can be written like `OIIOIOI`.
+
+## Western-Brain Traps
+
+1. Vertical space is not staff pitch.
+   - It matters for grouping and sign relationship, not absolute pitch height.
+2. A "second" is modal, not necessarily ET whole/semitone behavior.
+3. Oligon/petasti can be accent hosts rather than interval contributors.
+4. Gorgon modifies a group and reaches backward.
+5. Phthorae can change the scale/mode, not merely one pitch.
+6. Default sharp/flat signs are not always fixed ET semitone accidentals.
+7. Finalis is not simply tonic; modal cadences and tetrachord/ison behavior matter.
+8. Ison is not bass harmony or root motion.
+9. Meter may be implied, flexible, or pedagogical rather than grid-defining.
+10. Some older signs are genuinely uncertain in the source; do not over-interpret rare hypostases.
+
+## If You Want to Read a Basic Score
+
+1. Identify initial martyria and pitch syllable.
+2. Set your pitch cursor.
+3. Move by interval signs, using the combination table for stacked signs.
+4. Keep a separate duration layer for klasma/apli/gorgon signs.
+5. Watch for phthorae; if one appears, update the scale frame.
+6. Treat ison separately from melody.
+7. Use medial martyriai as checkpoints. If your pitch cursor disagrees with them, you probably missed a combination, phthora, or octave/register assumption.

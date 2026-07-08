@@ -1,5 +1,5 @@
-# Harness config for Byzantine notation transcription eval.
-# Uses Anthropic Opus as high-quality judge (set ANTHROPIC_API_KEY).
+# Smoke eval config: OpenAI judge (when ANTHROPIC_API_KEY unavailable).
+# Use for Day 2 base-vs-tuned compare; production judge remains Opus in byzantine.yaml.
 
 max_iterations: 6
 patience: 2
@@ -13,11 +13,11 @@ openai_model: gpt-4o
 openai_judge_model: gpt-4o
 openai_editor_model: gpt-4o
 
-judge_backend: anthropic
+judge_backend: openai
 anthropic_judge_model: claude-opus-4-20250514
 
 local_model: Qwen/Qwen3-1.7B
-max_new_tokens: 1024
+max_new_tokens: 512
 temperature: 0.3
 consistency_samples: 1
 max_failures_for_editor: 5

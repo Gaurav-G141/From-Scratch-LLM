@@ -1,0 +1,180 @@
+{
+  "total": 108,
+  "accepted": [
+    "cappella_alleluiarion_p0_opening_b2w",
+    "cappella_alleluiarion_p0_opening_w2b",
+    "cappella_alleluiarion_p0_final-ending_b2w",
+    "cappella_alleluiarion_p0_final-ending_w2b",
+    "cappella_alleluiarion_p1_opening_b2w",
+    "cappella_alleluiarion_p1_opening_w2b",
+    "cappella_alleluiarion_p1_verse2-opening_b2w",
+    "cappella_alleluiarion_p1_verse2-opening_w2b",
+    "cappella_apolytikia_p0_opening_b2w",
+    "cappella_apolytikia_p0_opening_w2b",
+    "cappella_apolytikia_p0_pentecost_opening_b2w",
+    "cappella_apolytikia_p0_pentecost_opening_w2b",
+    "cappella_apolytikia_p1_opening_b2w",
+    "cappella_apolytikia_p1_opening_w2b",
+    "cappella_apolytikia_p1_glory_phrase_b2w",
+    "cappella_apolytikia_p1_glory_phrase_w2b",
+    "cappella_cherubic_p0_opening_b2w",
+    "cappella_cherubic_p0_opening_w2b",
+    "cappella_cherubic_p0_mystery_phrase_b2w",
+    "cappella_cherubic_p0_mystery_phrase_w2b",
+    "cappella_cherubic_p1_opening_b2w",
+    "cappella_cherubic_p1_opening_w2b",
+    "cappella_cherubic_p1_thrice_holy_b2w",
+    "cappella_cherubic_p1_thrice_holy_w2b",
+    "cappella_communion-prologue_p0_opening_b2w",
+    "cappella_communion-prologue_p0_opening_w2b",
+    "cappella_communion-prologue_p0_allelouia-opening_b2w",
+    "cappella_communion-prologue_p0_allelouia-opening_w2b",
+    "cappella_dynamis_p0_opening_b2w",
+    "cappella_dynamis_p0_opening_w2b",
+    "cappella_dynamis_p0_first-phrase-shift_b2w",
+    "cappella_dynamis_p0_first-phrase-shift_w2b",
+    "cappella_dynamis_p1_opening_b2w",
+    "cappella_dynamis_p1_opening_w2b",
+    "cappella_dynamis_p1_strong_phrase_b2w",
+    "cappella_dynamis_p1_strong_phrase_w2b",
+    "cappella_entrance-chant_p0_opening_b2w",
+    "cappella_entrance-chant_p0_opening_w2b",
+    "cappella_entrance-chant_p0_allelouia_b2w",
+    "cappella_entrance-chant_p0_allelouia_w2b",
+    "cappella_general-responses_p0_opening_b2w",
+    "cappella_general-responses_p0_opening_w2b",
+    "cappella_general-responses_p0_amen_b2w",
+    "cappella_general-responses_p0_amen_w2b",
+    "cappella_general-responses_p1_opening_before_gospel_b2w",
+    "cappella_general-responses_p1_opening_before_gospel_w2b",
+    "cappella_kontakion_p0_opening_b2w",
+    "cappella_kontakion_p0_opening_w2b",
+    "cappella_kontakion_p0_fthora_phrase_b2w",
+    "cappella_kontakion_p0_fthora_phrase_w2b",
+    "cappella_kontakion_p1_opening_b2w",
+    "cappella_kontakion_p1_opening_w2b",
+    "cappella_kontakion_p1_phrase-end_b2w",
+    "cappella_kontakion_p1_phrase-end_w2b",
+    "cappella_koukouzelis_p0_opening_b2w",
+    "cappella_koukouzelis_p0_opening_w2b",
+    "cappella_koukouzelis_p1_opening_b2w",
+    "cappella_koukouzelis_p1_opening_w2b",
+    "cappella_koukouzelis_p1_alleluia-phrase_b2w",
+    "cappella_koukouzelis_p1_alleluia-phrase_w2b",
+    "cappella_litany-of-peace_p0_opening_b2w",
+    "cappella_litany-of-peace_p0_opening_w2b",
+    "cappella_litany-of-peace_p0_to_you_ending_b2w",
+    "cappella_litany-of-peace_p0_to_you_ending_w2b",
+    "cappella_megalynarion_p0_opening_b2w",
+    "cappella_megalynarion_p0_opening_w2b",
+    "cappella_megalynarion_p0_fthora_phrase_b2w",
+    "cappella_megalynarion_p0_fthora_phrase_w2b",
+    "cappella_megalynarion_p1_opening_b2w",
+    "cappella_megalynarion_p1_opening_w2b",
+    "cappella_megalynarion_p1_seraphim_phrase_b2w",
+    "cappella_megalynarion_p1_seraphim_phrase_w2b",
+    "cappella_post-communion_p0_opening_b2w",
+    "cappella_post-communion_p0_opening_w2b",
+    "cappella_post-communion_p0_trinity_phrase_b2w",
+    "cappella_post-communion_p0_trinity_phrase_w2b",
+    "cappella_post-communion_p1_opening_b2w",
+    "cappella_post-communion_p1_opening_w2b",
+    "cappella_post-communion_p1_blessed_opening_b2w",
+    "cappella_post-communion_p1_blessed_opening_w2b",
+    "cappella_prokeimenon_p1_opening_b2w",
+    "cappella_prokeimenon_p1_opening_w2b",
+    "cappella_prokeimenon_p1_zion_phrase_b2w",
+    "cappella_prokeimenon_p1_zion_phrase_w2b",
+    "cappella_sunday-antiphons_p0_opening_b2w",
+    "cappella_sunday-antiphons_p0_opening_w2b",
+    "cappella_sunday-antiphons_p0_final_cadence_b2w",
+    "cappella_sunday-antiphons_p0_final_cadence_w2b",
+    "cappella_sunday-antiphons_p1_opening_b2w",
+    "cappella_sunday-antiphons_p1_opening_w2b",
+    "cappella_sunday-antiphons_p1_glory-opening_b2w",
+    "cappella_sunday-antiphons_p1_glory-opening_w2b",
+    "cappella_trisagion_p0_opening_b2w",
+    "cappella_trisagion_p0_opening_w2b",
+    "cappella_trisagion_p0_immortal_phrase_b2w",
+    "cappella_trisagion_p0_immortal_phrase_w2b",
+    "cappella_trisagion_p1_opening_b2w",
+    "cappella_trisagion_p1_opening_w2b"
+  ],
+  "rejected": [
+    {
+      "id": "cappella_prokeimenon_p0_opening_b2w",
+      "pass": "rules",
+      "reasons": [
+        "byz\u2192west output lacks Western staff notation markers",
+        "assistant fewer than 2 pitches (0)"
+      ]
+    },
+    {
+      "id": "cappella_prokeimenon_p0_opening_w2b",
+      "pass": "rules",
+      "reasons": [
+        "user fewer than 2 pitches (0)"
+      ]
+    },
+    {
+      "id": "cappella_prokeimenon_p0_verse1_opening_b2w",
+      "pass": "rules",
+      "reasons": [
+        "byz\u2192west output lacks Western staff notation markers",
+        "assistant fewer than 2 pitches (0)"
+      ]
+    },
+    {
+      "id": "cappella_prokeimenon_p0_verse1_opening_w2b",
+      "pass": "rules",
+      "reasons": [
+        "user fewer than 2 pitches (0)"
+      ]
+    },
+    {
+      "id": "cappella_general-responses_p1_opening_litany_b2w",
+      "pass": "dedupe",
+      "reasons": [
+        "duplicate assistant"
+      ]
+    },
+    {
+      "id": "cappella_general-responses_p1_opening_litany_w2b",
+      "pass": "dedupe",
+      "reasons": [
+        "duplicate assistant"
+      ]
+    },
+    {
+      "id": "cappella_koukouzelis_p0_praise_opening_b2w",
+      "pass": "dedupe",
+      "reasons": [
+        "duplicate assistant"
+      ]
+    },
+    {
+      "id": "cappella_koukouzelis_p0_praise_opening_w2b",
+      "pass": "dedupe",
+      "reasons": [
+        "duplicate assistant"
+      ]
+    },
+    {
+      "id": "cappella_trisagion_p1_glory_opening_b2w",
+      "pass": "dedupe",
+      "reasons": [
+        "duplicate assistant"
+      ]
+    },
+    {
+      "id": "cappella_trisagion_p1_glory_opening_w2b",
+      "pass": "dedupe",
+      "reasons": [
+        "duplicate assistant"
+      ]
+    }
+  ],
+  "accepted_count": 98,
+  "rejected_count": 10,
+  "judge_scores": {}
+}

@@ -1,13 +1,30 @@
 # From-Scratch-LLM
 
-Working through the "Train Your Own Small Learning Model" assignment.
+Working through the "Train Your Own Small Learning Model" assignment, now focused on a narrow music-notation behavior:
 
-## Status
+> Transcribe between Byzantine/Chrysanthine neumatic notation and Western staff notation while preserving melodic contour, mode, martyria, ison, microtonal intent, and rhythmic modifiers.
 
-- Day 1 (first part): base model runs and responds via [`run_inference.py`](run_inference.py)
-- Day 2 (litmus harness): prompt optimization + eval loop via [`eval_harness/`](eval_harness/)
+Base local model: [`Qwen/Qwen3-0.6B`](https://huggingface.co/Qwen/Qwen3-0.6B).
 
-Base model: [`Qwen/Qwen3-0.6B`](https://huggingface.co/Qwen/Qwen3-0.6B)
+## Current status
+
+The repo contains a working eval harness, Byzantine behavior spec, prompt banks, corpus discovery/extraction scripts, SFT data rows, and local LoRA adapters.
+
+The core result so far: frontier prompting can improve notation formatting and memorized liturgical formulas, but it still fails on melodic equivalence for unseen and adversarial Byzantine transcription cases. That keeps supervised fine-tuning justified for this behavior.
+
+## Repository map
+
+| Path | Purpose |
+|------|---------|
+| [`eval_harness/`](eval_harness/) | CLI for litmus runs, single evals, scenario generation, and local model comparisons |
+| [`goals/`](goals/) | Behavior specs, rubrics, pass thresholds, and scenario paths |
+| [`scenarios/`](scenarios/) | Dev, held-out, final-dev, break, ultra-hard, and unseen eval banks |
+| [`prompts/`](prompts/) | Byzantine transcription system prompt versions |
+| [`config/`](config/) | Model, judge, threshold, and generation settings |
+| [`scripts/`](scripts/) | Corpus discovery, extraction, pruning, SFT data generation, training, and sweep utilities |
+| [`data/byzantine/`](data/byzantine/) | Corpus manifests, extracted rows, SFT JSONL files, and local rendered score assets |
+| `runs/` | Local eval outputs and sweep summaries; generated artifacts may be untracked |
+| `models/` | Local LoRA adapters; generated artifacts may be untracked |
 
 ## Setup
 
@@ -17,117 +34,164 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-Create a `.env` file for the eval harness (OpenAI API):
+For training workflows:
+
+```bash
+pip install -r requirements-train.txt
+```
+
+Create a `.env` file for API-backed evals:
 
 ```bash
 OPENAI_API_KEY=sk-...
+# Optional: only needed for Anthropic/Opus API judging.
+ANTHROPIC_API_KEY=sk-ant-...
 ```
 
-Model weights for local inference download from Hugging Face on first run.
+If `ANTHROPIC_API_KEY` is not set, see [`docs/byzantine_opus_blind_eval.md`](docs/byzantine_opus_blind_eval.md) and [`docs/byzantine_opus_sweep.md`](docs/byzantine_opus_sweep.md) for the Cursor-agent Opus workflows used in the existing reports.
 
-## Run local inference
+## Quick workflows
+
+### Local inference
+
+Model weights download from Hugging Face on first run.
 
 ```bash
-python run_inference.py
-python run_inference.py "Explain gradient descent in one sentence."
-python run_inference.py --chat
+python3 run_inference.py
+python3 run_inference.py "Explain gradient descent in one sentence."
+python3 run_inference.py --chat
 ```
 
-## Prompt litmus harness
+### Prompt litmus harness
 
-The harness answers: **can a well-prompted frontier model already do your target behavior reliably?**
-
-If prompt optimization plateaus below the reliability bar, the behavior is worth fine-tuning. If it hits the ceiling, pick a harder behavior.
-
-### Commands
+The harness asks: can a well-prompted frontier model already do the target behavior reliably? If held-out performance stays below the training threshold, the behavior is worth fine-tuning.
 
 ```bash
-# Main litmus run: optimize prompt on dev set, verdict on held-out
-python -m eval_harness litmus --goal goals/tutor.yaml
+# Optimize prompt on dev set, then run the held-out litmus verdict.
+python3 -m eval_harness --config config/byzantine_eval.yaml litmus \
+  --goal goals/byzantine_transcription.yaml
 
-# Single eval round (no prompt editing)
-python -m eval_harness eval --goal goals/tutor.yaml --prompt-file prompts/tutor_v0.txt
+# Run one eval round without prompt editing.
+python3 -m eval_harness --config config/byzantine_eval.yaml eval \
+  --goal goals/byzantine_transcription.yaml \
+  --prompt-file prompts/byzantine_transcription_v2.txt \
+  --backend openai --verbose
 
-# Compare local base model against a saved prompt
-python -m eval_harness compare --goal goals/tutor.yaml --prompt-file runs/<run>/best_prompt.txt
+# Compare the local base model on held-out scenarios.
+python3 -m eval_harness --config config/byzantine_eval.yaml compare \
+  --goal goals/byzantine_transcription.yaml \
+  --prompt-file prompts/byzantine_transcription_v2.txt \
+  --split heldout
 
-# Generate more scenarios from a behavior spec
-python -m eval_harness generate-scenarios --goal goals/tutor.yaml --count 10 --split dev
+# Compare a local LoRA adapter against the base model.
+python3 -m eval_harness --config config/byzantine_eval.yaml compare \
+  --goal goals/byzantine_transcription.yaml \
+  --prompt-file prompts/byzantine_transcription_v2.txt \
+  --split heldout \
+  --adapter-path models/byzantine_sft_v1 \
+  --compare-base
+
+# Generate more scenarios from the behavior spec.
+python3 -m eval_harness --config config/byzantine_eval.yaml generate-scenarios \
+  --goal goals/byzantine_transcription.yaml \
+  --count 10 \
+  --split dev
 ```
 
-For `eval`, pass a plain-text system prompt file (e.g. copy `initial_system_prompt` into `prompts/tutor_v0.txt`).
+Use [`config/byzantine.yaml`](config/byzantine.yaml) for Anthropic/Opus API judging when `ANTHROPIC_API_KEY` is available. Use [`config/byzantine_eval.yaml`](config/byzantine_eval.yaml) for OpenAI-backed smoke evals.
 
-### Behavior goals
+### Corpus and SFT data
 
-Goals live in [`goals/`](goals/). Each goal defines:
+```bash
+# Discover parallel Byzantine/Western PDF pairs from all configured sources.
+python3 scripts/scrape_all_byzantine_sources.py discover
+python3 scripts/scrape_all_byzantine_sources.py stats
 
-- A falsifiable behavior spec
-- Initial system prompt
-- Optional forbidden/required regex patterns (and JSON schema for structured-output goals)
-- Dev and held-out scenario file paths
+# Vision-extract chat-format training rows from rendered PDF pages.
+python3 scripts/extract_byzantine_training_data.py --download --resume \
+  --max-pages 1 \
+  --fragments-per-page 2
 
-Example goals:
+# Prune extracted rows with local rules only, or add --judge for OpenAI scoring.
+python3 scripts/prune_byzantine_corpus.py --rules-only
 
-- [`goals/tutor.yaml`](goals/tutor.yaml) — Socratic tutor that never gives the answer
-- [`goals/structured_output.yaml`](goals/structured_output.yaml) — strict JSON-only output
-- [`goals/connections.yaml`](goals/connections.yaml) — NYT Connections-style word grouping (16 → 4×4)
-- [`goals/sanitization.yaml`](goals/sanitization.yaml) — rewrite rude text to be school-appropriate while preserving meaning
-- [`goals/latex_transcription.yaml`](goals/latex_transcription.yaml) — word problems → LaTeX, preserving student errors (test prompts only)
+# Build SFT JSONL from accepted corpus rows.
+python3 scripts/generate_byzantine_sft_data.py \
+  --from-corpus data/byzantine/sft_raw.jsonl \
+  --corpus-status accepted \
+  --out data/byzantine/sft_v1.jsonl
+```
 
-Scenarios live in [`scenarios/`](scenarios/). Dev scenarios drive prompt editing; held-out scenarios determine the litmus verdict.
+### Training
 
-For Connections puzzles, scenarios include `words` and `expected_groups` so the harness reports objective **groups correct** and **puzzles solved** scores alongside the LLM judge.
+```bash
+# Train a local LoRA adapter. Uses PEFT on MPS/CPU and Unsloth on CUDA unless --force-peft is set.
+python3 scripts/train_byzantine_sft.py \
+  --data data/byzantine/sft_v1.jsonl \
+  --out models/byzantine_sft_v1
 
-### Config
+# Evaluate the adapter against the base model.
+python3 -m eval_harness --config config/byzantine_eval.yaml compare \
+  --goal goals/byzantine_transcription.yaml \
+  --prompt-file prompts/byzantine_transcription_v2.txt \
+  --split heldout \
+  --adapter-path models/byzantine_sft_v1 \
+  --compare-base
+```
 
-Thresholds and model names are in [`config/default.yaml`](config/default.yaml):
+### Full sweeps
 
-- `success_threshold` (default 1.85): held-out spec adherence at or above → **FAIL** litmus (behavior is promptable)
-- `train_threshold` (default 1.2): held-out spec adherence at or below → **PASS** litmus (worth fine-tuning)
-- `max_iterations`, `patience`, `min_delta`: prompt optimization stop conditions
+Broader multi-bank frontier-model sweeps live in scripts, not the harness CLI:
 
-### Reports
+```bash
+python3 scripts/run_byzantine_full_sweep.py \
+  --provider openai \
+  --model gpt-4o \
+  --prompt v2 \
+  --suite all \
+  --judge
+```
 
-Each litmus run writes to `runs/<goal_name>_<timestamp>/`:
+## Results at a glance
 
-- `summary.md` — round-by-round scores and verdict
-- `best_prompt.txt` — highest-scoring dev prompt
-- `heldout_eval.json` — final held-out evaluation
-- `rounds/` — per-round prompts and scores
+Strict pass requires `melodic_equivalence >= 1.5`, `meaning_preservation >= 1.5`, and passing rule checks from [`goals/byzantine_transcription.yaml`](goals/byzantine_transcription.yaml).
 
-### Verdict meanings
+| Translator / judge | Prompt | `final_dev` strict | `unseen` strict | Takeaway |
+|--------------------|--------|--------------------|-----------------|----------|
+| GPT-4o / GPT-4o | v2 | 11/36 | 0/10 | Better rule compliance and formatting, but no unseen generalization |
+| Claude Opus 4 / Claude Opus 4 | v2 | 11/36 | 0/10 | Same strict-pass pattern; melody remains the bottleneck |
+
+Across the documented sweeps, models usually produce plausible notation shape, mode labels, and ison lines. They still miss pitch sequences, mode-specific anchors, leading ison neumes, and microtonal spellings often enough that the SFT verdict is unchanged.
+
+## Current data snapshot
+
+| Artifact | Current local state |
+|----------|---------------------|
+| [`data/byzantine/manifest.jsonl`](data/byzantine/manifest.jsonl) | 2,120 discovered parallel PDF pairs |
+| Source counts | GOA DCS 1,825; New Byzantium 277; Cappella Romana 16; St. Anthony's 2 |
+| [`data/byzantine/sft_raw.jsonl`](data/byzantine/sft_raw.jsonl) | 108 extracted chat-format rows |
+| [`data/byzantine/sft_v1.jsonl`](data/byzantine/sft_v1.jsonl) | 98 accepted training rows |
+| `models/byzantine_sft_smoke/` | Local smoke LoRA adapter |
+| `models/byzantine_sft_v1/` | Local v1 corpus LoRA adapter |
+
+Keep these eval banks out of training data:
+
+- [`scenarios/byzantine_transcription_heldout.yaml`](scenarios/byzantine_transcription_heldout.yaml)
+- [`scenarios/byzantine_transcription_unseen.yaml`](scenarios/byzantine_transcription_unseen.yaml)
+- [`scenarios/byzantine_transcription_ultra_hard.yaml`](scenarios/byzantine_transcription_ultra_hard.yaml)
+
+## Reports and handoff docs
+
+- [`docs/byzantine_day2_litmus_report.md`](docs/byzantine_day2_litmus_report.md) — behavior spec, eval design, Day 2 litmus verdict, and educational framing
+- [`docs/byzantine_day3_corpus.md`](docs/byzantine_day3_corpus.md) — real corpus sources, extraction flow, pruning, and holdout guidance
+- [`docs/byzantine_gpt4o_sweep.md`](docs/byzantine_gpt4o_sweep.md) — GPT-4o full translator sweep
+- [`docs/byzantine_opus_sweep.md`](docs/byzantine_opus_sweep.md) — Claude Opus full translator sweep and Opus judge workflow
+- [`docs/byzantine_opus_blind_eval.md`](docs/byzantine_opus_blind_eval.md) — blind translator instructions for Opus-agent evals
+
+## Verdict meanings
 
 | Verdict | Meaning |
 |---------|---------|
-| **PASS** | Frontier model cannot reliably hit threshold even after prompt edits → proceed to SFT |
-| **FAIL** | Frontier model reaches high adherence with optimized prompt → pick a harder behavior |
-| **BORDERLINE** | Scores in the middle band → tighten spec or add adversarial scenarios |
-
-### Byzantine notation transcription
-
-Transcribe between **Byzantine (Chrysanthine) neumes** and **Western staff notation** while preserving mode, ison, and microtonal intent. Uses **Claude Opus** as judge (`config/byzantine.yaml`).
-
-```bash
-# 1. Discover parallel PDF corpus (Cappella Romana + New Byzantium)
-pip install requests beautifulsoup4 anthropic
-python scripts/scrape_byzantine_corpus.py discover
-python scripts/scrape_byzantine_corpus.py discover --download   # optional PDFs
-
-# 2. Eval with Opus judge (set ANTHROPIC_API_KEY in .env)
-python -m eval_harness eval \
-  --config config/byzantine.yaml \
-  --goal goals/byzantine_transcription.yaml \
-  --prompt-file prompts/byzantine_transcription_v0.txt \
-  --backend openai --verbose
-
-# 3. Compare local SLM on held-out set
-python -m eval_harness compare \
-  --config config/byzantine.yaml \
-  --goal goals/byzantine_transcription.yaml \
-  --prompt-file prompts/byzantine_transcription_v0.txt \
-  --split heldout
-```
-
-**Corpus:** `data/byzantine/manifest.jsonl` — paired PDF URLs from liturgical sources.  
-**Text eval:** `scenarios/byzantine_transcription_{dev,heldout}.yaml` — hand-crafted neume sequences with gold references for the judge.  
-**Litmus hypothesis:** If GPT-4o + v0 prompt scores high on microtonal/chromatic cases, Byzantine may be too Western-isomorphic for SLM fine-tuning (per your knowledge tree). The harness tests that empirically.
+| **PASS** | Frontier prompting cannot reliably hit threshold after prompt edits; proceed to SFT |
+| **FAIL** | Frontier prompting reaches high adherence; pick a harder behavior |
+| **BORDERLINE** | Scores land in the middle band; tighten the spec or add adversarial scenarios |

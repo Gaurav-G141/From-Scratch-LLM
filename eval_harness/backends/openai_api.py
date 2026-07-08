@@ -124,10 +124,7 @@ class OpenAIJudge:
 
         strict_section = ""
         if any("HARSH GATE" in v for v in guidance.values()):
-            strict_section = """
-IMPORTANT: Apply a harsh gate on cleanliness. Politeness that still belittles,
-blames, or snipes is a 0 or 1 — never a 2. Passive-aggression is as bad as open rudeness.
-"""
+            strict_section = "\nIMPORTANT: Apply any harsh gates described in the dimension guidance strictly.\n"
 
         prompt = f"""You are an evaluation judge for a behavioral spec.
 {strict_section}
@@ -138,10 +135,10 @@ Behavior spec:
 Score the model output on each dimension (integer 0, 1, or 2 only):
 {dim_lines}
 {context_section}{reference_section}
-Original text to transform:
+User input:
 {user_input}
 
-Model output (sanitized/transformed text):
+Model output:
 {model_output}
 {rule_section}
 
@@ -180,30 +177,6 @@ Include one object per dimension listed above."""
                 }
             )
         return results
-
-    def detect_hidden_rudeness(self, *, original: str, sanitized: str, context: str = "") -> tuple[bool, str]:
-        context_line = f"\nContext: {context}" if context else ""
-        prompt = f"""Does this sanitized rewrite still contain passive-aggression, backhanded comments,
-condescension, sarcasm, veiled insults, dismissive tone, or "politely cruel" phrasing?
-Answer harshly — if there is ANY snide subtext, hidden blame, or talking down to someone, answer yes.
-{context_line}
-
-Original:
-{original}
-
-Sanitized:
-{sanitized}
-
-Return ONLY JSON: {{"detected": true/false, "rationale": "<one sentence>"}}"""
-
-        response = self.client.chat.completions.create(
-            model=self.model,
-            messages=[{"role": "user", "content": prompt}],
-            temperature=0.0,
-            response_format={"type": "json_object"},
-        )
-        parsed = json.loads(response.choices[0].message.content or "{}")
-        return bool(parsed.get("detected")), str(parsed.get("rationale") or "")
 
 
 class OpenAIPromptEditor:

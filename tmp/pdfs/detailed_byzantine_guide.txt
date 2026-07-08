@@ -1,0 +1,2811 @@
+
+
+===== PAGE 1 =====
+1
+Unicode Technical Note: Byzantine Musical Notation
+Version 1.1: February 2006
+Version 1.0: January 2005
+Nick Nicholas; nickn@unimelb.edu.au
+This note documents the practice of Byzantine Musical Notation in its various forms, as an
+aid for implementors using its Unicode encoding. The note contains a good deal of
+background information on Byzantine musical theory, some of which is not readily
+available in English; this helps to make sense of why the notation is the way it is.
+1. Preliminaries
+1.1. Kinds of Notation.
+Byzantine music is a cover term for the liturgical music used in the Orthodox Church
+within the Byzantine Empire and the Churches regarded as continuing that tradition. This
+music is monophonic (with drone notes),1 exclusively vocal, and almost entirely sacred:
+very little secular music of this kind has been preserved, although we know that court
+ceremonial music in Byzantium was similar to the sacred. Byzantine music is accepted to
+have originated in the liturgical music of the Levant, and in particular Syriac and Jewish
+music. The extent of continuity between ancient Greek and Byzantine music is unclear, and
+an issue subject to emotive responses. The same holds for the extent of continuity between
+Byzantine music proper and the liturgical music in contemporary use—i.e. to what extent
+Ottoman influences have displaced the earlier Byzantine foundation of the music.
+There are two kinds of Byzantine musical notation. The earlier ecphonetic (recitative)
+style was used to notate the recitation of lessons (readings from the Bible). It probably was
+introduced in the late 4th century, is attested from the 8th, and was increasingly confused
+until the 15th century, when it passed out of use. Lessons are no longer musically notated,
+though they are still chanted. The notation consisted of marking the overall musical
+rendering of phrases in the reading (prosodic signs), rather than individual notes.
+The second kind of notation is neumatic, i.e. it uses neumes (musical notes). Various
+subdivisions of the notation have been proposed; the standard subdivisions, put forward by
+Tillyard and Wellesz, are:
+1. Early Byzantine (palaeobyzantine), 9th–12th century; its final phase is termed
+‘Coislin’ notation. (The short-lived Kontakarian notation presumably belongs
+here as well.)
+1Earlier in the 20th century, Russian and Western inspired use of harmony began to appear in the Greek
+church; this was widely condemned, and appears to have died out in Greece under the same resurgence of
+traditionalism which is also seeing icons painted in Byzantine rather than Western style. Harmony is used in
+some Greek churches in America; and many parishes in Greece have cantors accompany the head cantor in
+thirds, although this is not sanctioned practice.
+
+
+===== PAGE 2 =====
+2
+2. Middle Byzantine (hagiopolite, round), 12th–14th century.
+3. Late Byzantine (Koukouzelean, hagiopolite–psaltic), 14th–19th century
+(associated with the 14th century musician St John Koukouzeles).
+4. Modern (neobyzantine), 19th century onwards, following the reform of the
+notation in 1814,2 with revisions by the Patriarchal Musical Commission in 1881.
+Middle, Late, and Modern notation use the same basic signs, with similar if not the
+same meanings, and so may be unified as the one notation system (which I refer to here as
+post-Early). There is no clear break between Middle and Late Byzantine notation; and some
+Late signs still have occasional contemporary use, even though they are not officially part
+of the Modern system. Middle Byzantine notation was deciphered in the 1910s, although
+the repertoire of neumes in the system is not completely exhausted, and the Tillyard–
+Wellesz interpretation is not accepted by all specialists in its totality. There are still signs in
+Middle and Late Byzantine sources which have no counterpart in either Byzantine musical
+treatises or the modern notation, and should be considered undeciphered (and not
+necessarily suitable for encoding); this is particularly problematic for the possibly open-
+ended collection of Late Byzantine Great Hypostases (ornaments). The Early Byzantine
+system, which is transitional from the Ecphonetic, is poorly attested, and not fully
+understood.
+Post-Early Neumatic notation indicates the intervals of the melody, using interval signs
+(phonetika), rather than the absolute pitches of the notes, as does Western notation. (Early
+Byzantine notations still does not appear to have indicated precise interval sizes.) Certain
+signs were initially used to indicate accentuation rather than an interval. Though these
+signs came to have a default interval associated with them (rising second), they combine
+with other interval signs, so that the accentuation of the one neume is associated with the
+interval value of the other. Other signs, corresponding to ornamentation, tempo markings,
+accidentals and so forth in the Western system, also combine with interval signs, being
+placed above them or below them.
+There is a notion of modifier and modified signs, with the main signs lining up
+horizontally. In the manuscripts the vertical lining up of signs is not strict—scribes placed
+the neumes somewhat freely in absolute terms (though their position relative to each other
+remained semantically significant), and the stronger sense of lining up in modern notation
+is an artefact of printing. This freedom in vertical positioning was especially pronounced
+for pre-Modern notation, where the interaction of hypostases and interval signs was
+complex: an entire phrase of interval signs could modify a single large hypostasis, meaning
+that all the pitches in the phrase were to be chanted with the same accentuation. (Figures
+2The reform is usually attributed to Chrysanthus of Madytos, Archbishop of Dyrrachium (Durrës/Durazzo)
+and Metropolitan of Prousa (Bursa), and is dated 1821, when Chrysanthus published his first treatise,
+Eἰσαγωγὴ εἰς τὸ θεωρητικὸν καὶ πρακτικὸν τῆς Ἐκκλησιαστικῆς μουσικῆς. The reform was a collaboration with
+two other cantors, Gregory Levitis (Gregory the Protopsaltis [Head Cantor; in 1814 still a Lampadarios, Second
+Cantor]), and Hourmouzios Georgiou/Giamalis (Hourmouzios the Chartophylax [Archivist]). Chrysanthus was
+responsible for the theoretical side of the proposal, and the other two contributors with the practical side—
+the transcriptions. The fact that Chrysanthus was the one who got published helped him get the primary
+credit. Chrysanthus’ 1832 publication, Θεωρητικὸν μέγα τῆς μουσικῆς, contains minor revisions to the 1821
+scheme, and is the main reference for modern notation. For more on the reformers, see Morgan (1971).
+
+
+===== PAGE 3 =====
+3
+10, 11)
+That said, the same sign can be used both as a modifier and a modified; signs can be
+place to the top left or top right as well as just above another sign; signs can tie underneath
+or above multiple other signs; modifier signs can appear either above or below their
+modified, in some instances with no semantic distinction; and so on. In other words, the
+challenges of correctly positioning neumes are beyond the scope of what Unicode is
+intended to cope with, and should be relegated to a higher level protocol.
+The modern Byzantine notation system remains in liturgical use throughout the
+immediate sphere of influence of the Patriarchate of Constantinople, the Orthodox
+churches formerly under Byzantine and then Ottoman dominion: namely, the Orthodox
+churches of Constantinople, Alexandria, Antioch, Jerusalem, Greece, Cyprus, Bulgaria,
+Serbia, FYR Macedonia, Albania, and Rumania, as well as the Orthodox churches in the rest
+of the world under the jurisdiction of these churches (e.g. the Greek Orthodox Church in
+the Americas). The notation is applied to the liturgical languages used in these churches:
+Greek, Rumanian, Old Church Slavonic, but also English and Spanish. There is also frequent
+use of the notation to transcribe folk music (at least in Greece), particularly since both the
+collectors and the audience of such collections were formerly likely to be more familiar
+with Byzantine notation, through the church, than with Western notation. Although this is
+no longer the case, folk song collections are still being published in Greece in both notation
+systems—the collector often having to translate from their Byzantine original to Western
+to reach a broader audience.
+The earliest instance of printing Byzantine neumes is in parodic form, in the 16th
+century edition of the satirical Mass of the Beardless Man. The increasingly ornate Late
+Byzantine system was not well-suited to printing, and indeed one of Chrysanthus’ stated
+aims was to simplify the notation in order to make it easier to print (Tillyard 1970:16).
+Editions of liturgical music are often printed, although reproductions of hand-written
+notation also circulate widely; editions intended for wide use (standard hymnals) tend to
+be printed. Editions of folk-song transcriptions have not been printed to my knowledge,
+presumably as the collectors lack access to the appropriate infrastructure.
+The description of Modern Byzantine notation is based on Greek sources, which are the
+most readily available to me, and reflect the provenance of the current encoding. I am
+currently unfamiliar with the details of the notation as applied, previously or recently,
+outside the Greek-speaking domain; but it is clearly important that the Unicode encoding
+encompass such variation. I welcome any supplementary information, and will be updating
+this document as I receive it.
+According to Palikarova Verdeil (1953), Bulgaria initially adopted Early Byzantine
+notation; after the First Bulgarian Empire was conquered by Byzantium the liturgy was
+chanted in Greek instead of Bulgarian, and even after the Second Bulgarian Empire was
+reestablished, Bulgaria remained beholden to the Byzantine musical tradition, adopting all
+the innovations in notation current in Byzantium.
+The East Slavonic tradition of musical notation (Russia, Byelorus, Ukraine, Galicia,
+Carpatho-Ruthenia) is distinct from that considered here. The main notation system used
+up until the 17th century in Russia (and still used by the Old Believers sect) was the Stolp
+(Hook, Znamenny) notation. Other notation systems also emerged in Russia through its
+
+
+===== PAGE 4 =====
+4
+history—Ecphonetic (in early manuscripts, but sporadically used until the 16th century),
+Kontakarian (in a few manuscripts), Put’, Demestvenny, not to mention local innovations
+such as Kazan notation. Since the 17th century, the mainstream Russian Church has used
+Western staff notation, initially with square note-heads.
+Of these Russian notations, the ecphonetic is the same as that used in Byzantium.
+Kontakarian notation appears linked to a shortlived melismatic innovation in Byzantine
+notation, current during the transition from ecphonetic to neumatic, but quickly
+abandoned in Byzantium. The Stolp notation is a continuation of Early Byzantine Neumatic
+notation; like that notation it did not indicate precise interval sizes, but was used more as
+an aide-de-memoire than an explicit notation. Some signs were added to the notation,
+particularly from the 15th century on, and some combinations of signs were unknown in
+Byzantium; but it appears that Stolp and Early Byzantine notation can be unified. (I do not
+feel competent to essay such a unification myself.) The Unicode Consortium currently has
+no plans as to the encoding of the East Slavonic musical notations, and has not included
+them in its roadmap.
+1.2. Existing infrastructure
+The NEUMES project for the digitisation of Western Mediaeval musical notation (http:/
+/www.scribeserver.com/NEUMES/) includes within its scope Byzantine and Slavonic
+musical notation (and is committed to using Unicode to encode neumes); NEUMES has
+formulated an XML grammar to encode Western and Eastern chant.
+All existing infrastructure that I know of deals only with the modern notation.
+Velisarios Gezerlis in Athens has available for sale a set of Microsoft Word macros
+(ByzWriter) for the authoring of Byzantine notation (http://cgi.di.uoa.gr/
+~gbelis/). This is presumably the major electronic infrastructure already in use for
+Byzantine Musical notation. Fr Constantine Terzopoulos in Aegina (http:/
+/users.forthnet.gr/ath/frc/home.html) has developed the Ephesios font set for
+Byzantine notation, and is in discussion with typographers Tom Gewecke, James Kass and
+John Hudson to develop a Unicode version of the font based on the Unicode encoding.
+I have only found two font suites online for Modern Byzantine. Both are distributed by
+the Association of Constantinopolitan Friends of Music in Athens (http:/
+/www.cmkon.org/fonts.htm), although their public domain status is not clear. The
+provenance of the Bem13 font is unknown. The more compehensive ED suite (Psaltica,
+Fthora, Isson) were designed by Elie Daoun in Beirut (192 Nassif Rayes St., tel. +961 3 278
+344); the original ZIP package is available at http://www.procopiou.net/download/
+byzantine.zip . I use the ED suite in this document, and appeal to it and Ephesios for
+hints on frequent combinations of neumes. The ED fonts, as one would expect, use single
+codepoints to render frequent combinations of neumes, particularly interval signs. The
+Ephesios user manual (http://users.forthnet.gr/ath/frc/Manual.html)
+provides the full list of keystrokes for the fonts in the font set, including the frequent
+combinations in the font, and should be consulted by font designers. In this document, I
+give codepoints in Daoun’s and Terzopulos’ 8-bit fonts, as well as Unicode codepoints; “ED
+Psaltica: 0”, for instance, means that an ison is obtained in the ED Psaltica font by typing 0.
+James Kass’s font Code2001 (http://home.att.net/~jameskass/code2001.htm)
+
+
+===== PAGE 5 =====
+5
+includes the more common neumes of the Modern notation as Plane 1 Unicode codepoints.
+1.3. Text
+In ecphonetic notation, the individual words in the text retain their traditional Greek
+accentuation, despite the fact that the ecphonetic signs themselves substantially overlap
+with the traditional accents, and have the same origin as them. In neumatic notation, Greek
+text appears without diacritics, presumably because of the difficulty of having textual
+diacritics clash with the neumes above them. This has remained the case with Byzantine
+notation.
+Contemporary usage with Greek text makes uses of the conventional modern Greek
+script, as one would expect; so ‘Byzantine’ signs such as the lunate sigma and epsilon are
+not used in the text. However the two ligatures to have survived into 19th century
+typography, stigma (στ = ϛ; EphesosIson: s) and ou (ου = ȣ; EphesosIson: o), are occasionally
+retained (Figure 13). As far as I can tell, U+1D0E6 Byzantine Musical Symbol
+Digramma GG (‘Digraph GG’) is another such ligature.
+It is conventional to repeat vowels over which several neumes appear. The Rumanians
+Lungu et al. (1984) consider this practice antiquated, and prefer the Western practice of
+dashes for multiple notes over the same syllable; but repeating vowels remains the practice
+for Greek.
+1.4. Colour
+It is conventional to write and print certain classes of sign in red rather than black—
+notably phthorae (modulants, accidentals), martyriae (signatures), and the Great
+Hypostases (ornaments). (I have also seen green used for this purpose.) The choice of
+colour is not semantically significant in modern notation, which in published book form
+usually sidesteps this requirement. In earlier stages of the notation, colour was significant,
+indicating amongst other things corrections.
+2. Ecphonetic notation
+Whereas Greek accentuation applies to a vowel, the ecphonetic signs apply to an entire
+phrase, with the appropriate sign placed above or below both the beginning and the end of
+the phrase (Figure 21). The Lesbos table (Figure 1), which was the first instance of
+ecphonetic notation described, names and illustrates the use of most of the signs.
+Wellesz’s (1961:252–253) account of the ecphonetic signs is as follows, supplemented by
+Höeg (1935); my elaborations are in square brackets:3
+U+1D003 Byzantine Musical Symbol Oxeia Ekfonitikon
+The Oxeia [Acute] indicates that the voice should rise and remain on a
+higher pitch until the end of the phrase, marked by a second Oxeia.
+3Wellesz uses Classical transliterations of the Greek names of the neumes; Unicode uses a transliteration
+based on Modern Greek, which, as with the transliterations in the Greek and Coptic and Extended Greek
+blocks, originates in ELOT, the Greek Standards Organisation.
+
+
+===== PAGE 6 =====
+6
+U+1D004 Byzantine Musical Symbol Oxeia Dipli
+[Double Acute: As with the Oxeia, but more emphatic, typically at the end
+of a lesson, where it may have been sung rather than chanted.]
+U+1D005 Byzantine Musical Symbol Vareia Ekfonitikon
+The Bareia [Grave] stands for lowering the pitch of the voice and giving
+emphasis to the words encompassed by the two signs.
+U+1D006 Byzantine Musical Symbol Varia Dipli
+[Double Grave: As with the Bareia, but more emphatic, typically at the end
+of a lesson, where it may have been sung rather than chanted.]
+U+1D007 Byzantine Musical Symbol Kathisti
+The Kathiste [Sitting] marks the narrative style without emphasis, and is
+always found at the beginning of a lesson from the Gospel, introduced by
+[the standard formula] Τῷ καιρῷ ἐκείνῳ (‘at that time’).
+U+1D008 Byzantine Musical Symbol Syrmatiki
+The Syrmatikē [Drawn Out] demands an undulating movement like the
+shape of the sign [a tilde].
+U+1D009 Byzantine Musical Symbol Paraklitiki
+Parakletike [Supplicating] indicates a phrase executed in an entreating,
+praying manner.
+U+1D00A Byzantine Musical Symbol Ypokrisis
+The Hypokrisis has the opposite meaning to the Synemba [U+1D013]; it is a
+sign of separation. Since it may consist of two or three hooks, it can
+indicate a shorter or longer pause. [Höeg, however, believes that the
+single hypokrisis indicated a gradual ascent in pitch at mezzo-forte,
+leading up to an oxia, with the double hypokrisis forte.]
+U+1D00B Byzantine Musical Symbol Ypokrisis Dipli
+[Double Hypokrisis: This is the form of the Hypokrisis with three hooks,
+indicating a longer pause between notes or an ascent in pitch.]
+U+1D00C Byzantine Musical Symbol Kremasti
+The Kremaste [Hanging] marks a rise of the voice with slight accentuation.
+U+1D00D Byzantine Musical Symbol Apeso Ekfonitikon
+U+1D00E Byzantine Musical Symbol Exo Ekfonitikon
+The combination [Apostrophos] ... [Oxeia] is called apeso exo [from inside
+to outside] and indicates a beginning on a low pitch and rising to the
+Oxeia at the end of the phrase. [Presumably there are instances in the
+manuscripts where the Apeso + Exo was distinguished visually from the
+Apostrophos and Oxeia.]
+U+1D00F Byzantine Musical Symbol Teleia
+The Teleia [Full] means a full stop. [For example, a phrase could open with
+an Oxeia and end with a Teleia.]
+U+1D010 Byzantine Musical Symbol Kentemata
+[Stitches: Mentioned but not decoded by Wellesz; Höeg suspects that
+whereas the hypokrises led up to an oxia, the kentemata descended away
+
+
+===== PAGE 7 =====
+7
+from it.]
+Figure 1. The Lesbos table in transcription (Höeg 1935:19).
+U+1D011 Byzantine Musical Symbol Apostrofos
+The Apostrophos [Apostrophe] seems to indicate a somewhat low pitch of
+the voice without giving emphasis to the words which the two
+Apostrophoi enclose, but it seems also to have retained the original
+meaning which the grammarians had given it as one of the Pathē or
+declamatory signs where it means to take breath and to begin to read. [By
+Early neumatic notation, the Apostrophos had become an interval sign.]
+U+1D012 Byzantine Musical Symbol Apostrofos Dipli
+[Double Apostrophe: As with the Apostrophos, but more emphatic,
+typically at the end of a lesson, where it may have been sung rather than
+chanted.]
+U+1D013 Byzantine Musical Symbol Synemva
+The Synemba [Entering Together] is a kind of slur, combining two words in
+one breath.
+U+1D014 Byzantine Musical Symbol Theta
+[Not mentioned by Wellesz or Höeg; I do not currently know its meaning.]
+Of the signs, the Oxeia, Vareia, Syrmatiki, Paraklitiki, Kremasti, and Kentimata
+appeared above the text; the Kathistai, Apostrophos, and Synemva below it. The Teleia and
+Ypokriseis appeared on the line and between texts.
+The prosodic signs U+1D000 Byzantine Musical Symbol Psili, U+1D001
+Byzantine Musical Symbol Daseia, U+1D002 Byzantine Musical Symbol
+
+
+===== PAGE 8 =====
+8
+Perispomeni are of course the smooth and rough breathing and circumflex of normal
+Greek textual accentuation. I am unaware of specifically ecphonetic use of these signs, and
+the rubric ‘Prosodic’ ties them in with the earlier Alexandrian accentuation system.
+3. Post-Early Neumatic notation
+Since the three last phases of neumatic notation are identifiably the same system,
+notwithstanding differences of detail, I discuss them together. Though the Early system is
+not quite the same semantically, many signs are shared between the Early and later
+systems.
+The Unicode table usually includes distinct codepoints for Early and Middle or Middle
+and Modern signs. If the Middle term is understood to be the same as the Modern, both
+semantically and in name, it would have made sense to conflate them even if they did not
+look identical, and rather leave the glyph differences to fonts or glyph variants; this
+appears to have been the case for several neumes. The inclusion of the separate repertoires
+is irrevocable because of Unicode’s stability commitments.
+There are restrictions in Byzantine musical tradition on how signs combine: which
+interval signs can follow which; which interval signs can begin or continue a syllable; and
+which temporal or consonant signs can modify which. These are beyond the scope of this
+document.
+Figure 2 gives the Middle forms of the glyphs, as conventionally used in the Monumenta
+Musicae Byzantinae series.
+3.1. Interval signs
+3.1.1. Interval signs alone
+Interval signs indicate the interval by which the current note differs from the preceding.
+Several of them also indicate a particular kind of accentuation. Their Unicode rubric is
+Fonitika (Vocals) (since phonetika in Byzantine musical theory could mean both ‘vocal’ and
+‘interval’).
+The following signs appear in all Post-Early notation, though the glyphs used vary
+slightly from period to period.
+U+1D046 Byzantine Musical Symbol Ison Neo [Modern Equal]
+ED Psaltica: 0
+EphesiosMain: i
+0
+Ison: Repeat preceding note.
+
+
+===== PAGE 9 =====
+9
+Figure 2. Monumenta Musicae Byzantinae glyphs for Middle notation.
+
+
+===== PAGE 10 =====
+10
+U+1D047 Byzantine Musical Symbol Oligon Neo [Modern Slight]
+ED Psaltica: 1
+EphesiosMain: o
+1
+Oligon: Ascend by a second; no accent.
+U+1D049 Byzantine Musical Symbol Petasti [Flung]
+ED Psaltica: q; ED Fthora: a
+EphesiosMain: p
+q
+Petasti: Ascend by a second, with accent.
+U+1D04E Byzantine Musical Symbol Kentimata Neo Ano [Modern Upper
+Stitches] ED Psaltica: `
+EphesiosMain: n, N, Option-Shift-n
+`
+Kentimata: Ascend by a second, softer, no accent (legato, tied with previous
+note)
+U+1D04F Byzantine Musical Symbol Kentima Neo Ano [Modern Upper
+Stitch] ED Psaltica: ~
+EphesiosMain: x, X, Option-x
+~
+Kentima: Ascend by a third.
+U+1D050 Byzantine Musical Symbol Ypsili [High]
+ED Fthora: s
+EphesiosMain: Option-Shift-e, Option-Shift-f
+s
+Ypsili: Ascend by a fifth.
+U+1D051 Byzantine Musical Symbol Apostrofos Neo [Modern Apostrophe]
+ED Psaltica: !
+EphesiosMain: a
+!
+
+
+===== PAGE 11 =====
+11
+Apostrophos: Descend by a second.
+U+1D053 Byzantine Musical Symbol Yporroi [Underflow]
+ED Psaltica: )
+EphesiosMain: s
+)
+Hyporroi: Descend by two consecutive seconds. Tied to preceding note.
+Formerly known as katavasma [Descending].
+U+1D055 Byzantine Musical Symbol Elafron [Light]
+ED Psaltica: @
+EphesiosMain: e
+@
+Elaphron: Descend by a third.
+U+1D056 Byzantine Musical Symbol Chamili [Low]
+ED Psaltica: $
+EphesiosMain: h
+$
+Hamili: Descend by a fifth.
+The following additional (or variant) interval signs occur in pre-Modern systems.
+U+1D048 Byzantine Musical Symbol Oxeia Neo [Modern Acute]
+U+1D04A Byzantine Musical Symbol Koufisma [Hollowing]
+U+1D04D Byzantine Musical Symbol Pelaston Neo [Modern Approached]
+All three are ascending seconds, alongside the Oligon and the Petasti. Of these,
+the Oxeia appears to have been associated more with accented syllables, and is
+described as an abrupt raising tone followed by a decrescendo. The Petasti in
+Middle notation is described by Wellesz as “sung quickly and with élan”. The
+Koufisma may have been a minor second, or a weak and hesitant major second
+according to Wellesz; Tillyard deems it to have been a tremolo. The Pelaston
+was more intense than the Petasti.
+Despite their Unicode name, the Oxeia and Pelaston have not made into the Modern
+system, and are named Neo to differentiate their Middle–Late forms from their Early or
+Ecphonetic equivalents. (This occurs frequently in the table, and all instances of Archaion/
+Neo in the table are potentially Early/Post-Early glyph variants.) The Oxeia nonetheless has
+some usage among contemporary scribes, and was included in early modern notation
+publications; in EphesiosMain, it appears as Y.
+U+1D052 Byzantine Musical Symbol Apostrofoi Syndesmos Neo
+[Modern Conjunction of Apostrophes]
+Long descending second; properly either Syndesmos or Apostrofoi.
+
+
+===== PAGE 12 =====
+12
+U+1D054 Byzantine Musical Symbol Kratimoyporroon [Held Underflow]
+A sign, like hyporroe, for two descending seconds in a row; the note preceding
+the combination is lengthened. Also known as Kratimo-katavasma.
+U+1D018 Byzantine Musical Symbol Chamilon [Low]
+This is properly a symbol of the Early system, but the glyph appears as a variant
+of U+01D056 in Middle notation; it is the ‘missing link’ between the acronym χ
+for χαμηλή and the modern sign.
+The two remaining interval signs, Petastokoufisma (U+1D04B) and Kratimokoufisma
+(U+1D04C), are clearly Middle Byzantine compounds, which happen not to have been
+included in Wellesz’ or Tillyard’s survey; presumably the petastokoufisma combines the
+accentuation of the petasti and the koufisma, while the kratimokoufisma is a koufisma with
+either the note itself or the preceding note lengthened.
+3.1.2. Interval signs in cumulative combination.
+The interval notes often occur in combination with other interval notes. In Pre-Modern
+notation, a leap (pnevma, ‘spirit’: a third or fifth) can never appear on its own, but only
+modifying a step (soma, ‘body’: a second). In the Modern system, the elaphron and hamili
+can appear on their own, but the kentima and ypsili must still be used only as modifiers,
+not as modifieds.
+In the pre-Modern system, notes combined cumulatively (adding their interval values
+together) if a leap sign was written above a step sign; but if the leap sign was written below
+or to the right, they combined through subordination, substituting the step’s accentuation
+but leaving the leap interval unaffected. So an ypsili could be written to the right of an
+oligon or below it, meaning in both cases an unaccented interval of an ascending fifth
+(interval size: ypsili; accentuation: oligon). Or, an ypsili could be written above an oligon,
+meaning an interval of an ascending sixth (interval size: ypsili + oligon). An ison above any
+neume except kentimata appears to have indicated an ornament centered at the same
+pitch as its precedent.
+The modern system restricts the positions of combination: e.g. the ypsili may only
+appear at the top right, not below or to the right of the step. On the other hand, the
+restriction on appearing alone does not hold at all for descending intervals. Throughout
+post-Early notation, the choice of modified neume determines the accentuation of the note
+even in cumulative combinations—the oligon indicating that the note is unaccented, the
+petasti indicating an accent. The following are the more frequent cumulative combinations
+in the modern system (see also EphesiosCombination and ED Psaltica for leaps greater than
+a ninth):
+Ascending third: Oligon over petasti (ED Psaltica: w; EphesiosMain: Option-Shift-p,
+w
+)
+Ascending fourth unaccented: Kentima over oligon (ED Psaltica: 3; EphesiosMain: K,
+3
+)
+
+
+===== PAGE 13 =====
+13
+Ascending fourth accented: Kentima over petasti (ED Psaltica: e; EphesiosMain:
+e
+Option-k, )
+Ascending fifth unaccented: Ypsili at right end or middle of oligon (ED Psaltica: 4;
+4
+EphesiosMain: u, )
+t
+Ascending sixth accented: Ypsili at left end of petasti (ED Psaltica: t, )
+Ascending octave unaccented: Ypsili over kentima over oligon (ED Psaltica: 7;
+7
+EphesiosMain: J, )
+Ascending octave accented: Ypsili over kentima over petasti (ED Psaltica: u;
+u
+EphesiosMain: Option-Shift-j, l, )
+Descending fourth: Elaphron over apostrophos (ED Psaltica: #; EphesiosMain: Option-
+#
+h, )
+%
+Descending sixth: Hamili over apostrophos (ED Psaltica: %; EphesiosMain: H, )
+^
+Descending seventh: Hamili over elaphron (ED Psaltica: ^, )
+&
+Descending octave: Hamili over elaphron over apostrophos (ED Psaltica: &, )
+*
+Descending ninth: Hamili over hamili (ED Psaltica: *, )
+In the case of subordination (hypotaxis in Byzantine musical theory), where the
+modifier interval is combined with the modified’s accentuation, the modifier is placed
+above the oligon/petasti—except for the kentima, which is placed to the right or below an
+oligon. (When the kentima is placed above, the effect is cumulative instead.) The following
+are the combinations included in Daoun’s and Terzopoulos’ fonts as single codepoints:
+p
+Unison accented: Ison over petasti (ED Psaltica; EphesiosMain: I: p, )
+Ascending third unaccented: Kentima under oligon (ED Psaltica: 2; EphesiosMain:
+
+
+===== PAGE 14 =====
+14
+2 1 ~
+Option-Shift-x, ) or Kentima to the right of oligon (EphesiosMain: k, )
+r
+Ascending fifth accented: Ypsili at right end or middle of petasti (ED Psaltica: r, )
+Ascending sixth unaccented: Ypsili at left end of oligon (ED Psaltica: 5; EphesiosMain:
+5
+U, )
+Ascending seventh unaccented: Ypsili next to kentima over oligon (ED Psaltica: 6;
+6
+EphesiosMain: j, )
+Ascending seventh accented: Ypsili next to kentima over petasti (ED Psaltica: y;
+y
+EphesiosMain: Option-j, )
+8
+Ascending ninth unaccented: Two ipsiles over oligon (ED Psaltica: 8, )
+i
+Ascending ninth accented: Two ipsiles over petasti (ED Psaltica: i, )
+I
+Descending second slightly accented: Apostrophos over oligon (ED Psaltica: I, )
+Descending second accented: Apostrophos over petasti (ED Psaltica: Q; EphesiosMain:
+Q
+Option-Shift-h, )
+Descending third accented: Elaphron over petasti (ED Psaltica: W, EphesiosMain: E,
+W
+)
+Descending fourth accented: Elaphron over apostrophos over petasti (ED Psaltica: E,
+E
+)
+The cumulative combinations may also combine with an accentuation neume through
+subordination: hamili over elaphron over apostrophos over oligon is a slightly accented
+descending octave. (Interval: Hamili + Elaphron + Apostrophos = −4 + −3 + −2; Accentuation:
+Oligon.) In all such cases, the interval of the modified ascending second does not count, and
+is only used for accentuation.
+
+
+===== PAGE 15 =====
+15
+The combination of neumes is potentially open-ended, and existing fonts do not
+exhaust all such possibilities.
+The Specials rubric includes positional variants of the Kentimata and Kentima; this
+would be used, for example, to differentiate glyphically kentima over oligon and kentima
+under oligon.
+U+1D0F0 Byzantine Musical Symbol Kentimata Neo Meso [Modern Middle
+Stitches].
+U+1D0F1 Byzantine Musical Symbol Kentima Neo Meso [Modern Middle
+Stitch].
+U+1D0F2 Byzantine Musical Symbol Kentimata Neo Kato [Modern Low
+Stitches].
+U+1D0F3 Byzantine Musical Symbol Kentima Neo Kato [Modern Low
+Stitch].
+3.1.3. Note sequence combinations
+The kentimata specifically refer to an ascending second tied to a preceding note; so when it
+combines with an oligon it results in two ascending seconds. Its position when it combines
+determines whether the first or the second note of the group is tied to its preceding note.
+O
+Kentimata above oligon (ED Psaltica: O; EphesiosMain: W, ) two ascending
+seconds, second note legato.
+o
+Oligon above kentimata (ED Psaltica: o; EphesiosMain: w, ): two ascending
+seconds, first note legato.
+1 `
+Oligon before kentimata ( ): same as oligon above kentimata. The distinction
+is syntactic (as a hint to the performer): the kentimata are written separately if a run
+of ascending notes is to be followed by a run of descending notes.
+q
+An apostrophos under an ison (ED Isson: q; EphesiosMain: q, ) is performed as an
+ison followed by an apostrophos.
+Two apostrophoi in a row over the same syllable may be stacked (ED Isson: w;
+w
+EphesiosMain: V, ).
+3.1.4. Note letters
+In the modern system, the letters of the alphabet were used to coin equivalents to the
+Western Do–Re–Mi: starting from d, πΑ, Βου, Γα, Δι, κΕ, Ζω, νΗ (pa, vu, ga, di, ke, zo, ni). In
+imitation of Do–Re–Mi, a hymn was devised to justify the choice of initial syllables. The
+
+
+===== PAGE 16 =====
+16
+acronyms of these letters are used to form modern signatures (see below); the Unicode
+table has accordingly included them under the rubric of Grammata (Letters), although these
+are merely stylised Greek letters.
+U+1D0E9 Byzantine Musical Symbol Arktiko Pa [Initial Pa]
+ED Psaltica: v; ED Fthora: V, v
+EphesiosPhthora: a, (raised) A
+V
+The note d.
+U+1D0EA Byzantine Musical Symbol Arktiko Vou [Initial Vou]
+ED Psaltica: b; ED Fthora: B, b
+EphesiosPhthora: b, (raised) B
+B
+The note e.
+U+1D0EB Byzantine Musical Symbol Arktiko Ga [Initial Ga]
+ED Psaltica: n; ED Fthora: N, n
+EphesiosPhthora: g, (raised) G
+N
+The note f.
+U+1D0EC Byzantine Musical Symbol Arktiko Di [Initial Di]
+ED Psaltica: m; ED Fthora: M, m
+EphesiosPhthora: d, (raised) D
+M
+The note g.
+
+
+===== PAGE 17 =====
+17
+U+1D0ED Byzantine Musical Symbol Arktiko Ke [Initial Ke]
+ED Psaltica: , ; ED Fthora: , , <
+EphesiosPhthora: k, (raised) K
+,
+The note a.
+U+1D0EE Byzantine Musical Symbol Arktiko Zo [Initial Zo]
+ED Psaltica: . ; ED Fthora: ., >
+EphesiosPhthora: z, (raised) Z
+.
+The note b.
+U+1D0EF Byzantine Musical Symbol Arktiko Ni [Initial Ni]
+ED Psaltica: c; ED Fthora: C, c
+EphesiosPhthora: n, (raised) N
+C
+The note c.
+Byzantine chant features a few soloists singing against pedal notes (ison)4 sung by the
+remainder of the choir. The ison is not indicated in Chrysanthine notation; no standard has
+been set, but the usual modern practise is to indicate the ison using the pitch letter in
+parentheses—capital for the Mese5 octave (ED Isson: P B G D K Z N
+P B G D K Z N
+), and lowercase for the Nete octave (rare).
+Other practices are attested: Panagiotopoulos uses the full syllables, while Efthymiadis
+4Properly, the ison is the bass note of the current tetrachord of the melody; on the tetrachord, see §3.4.1. Still,
+although the Byzantine finalis note is not identical to the Western tonic, in most instances the ison does
+correspond to a dominant or tonic pedal note.
+5Byzantine music, which is only vocal, admits the following ranges: Hypate: G-A. Mese: B–a. Nete: b–gʹ. See
+Figure 8.
+
+
+===== PAGE 18 =====
+18
+avoids the parentheses. Terzopoulos notes the alternate practise of placing a tie under the
+note initial (EphesiosIson: Option-9; somewhat broader than U+0323); some scribes also
+put the ison note in a circle.
+In the EphesiosIson font, Nete notes are in uppercase and have a prime next to them,
+while Hypate notes have a down-arrow (U+2193 Downwards Arrow) next to them.
+Where the choir is meant to temporarily stop singing ison and join the soloists, this is
+indicated by alpha (ἀκολούθει, “follow”) or mu (μαζί, “together”) (ED Isson: M,
+M
+; cf. Figure 14). The choir can be split into octaves, with the high ison dropping out
+where it would clash with the melody; this is indicated by writing the two ison notes next
+to each other, e.g. Δ.δ (G, g); Δ.α (G, silent); Δ.δ (G, g). (Figure 19)
+Note letters are also written on occasion over a large leap, as a reminder to the chanter
+of what note is reached; this is normally the function of the pitch signature (see §3.4.3), but
+the signature can only be used on a cadence.
+3.2. Temporal signs
+By default, each note has the duration of one beat (cf. the Western quarter note).6 Temporal
+signs modify the duration of notes, and may be placed above or below a neume. In the
+Unicode table, they appear under the rubrics Argies (Retards) and Synagmata or Gorgotites
+(Synagmas or Quickeners).
+3.2.1. Klasma
+U+1D07F Byzantine Musical Symbol Klasma Ano [Upper Breaking]
+ED Psaltica: A, Z, a
+EphesiosMain: c, C, ç, Ç
+A Z a
+U+1D0F4 Byzantine Musical Symbol Klasma Kato [Lower Breaking]
+ED Psaltica: z
+z
+In the modern system, the klasma lengthens a note by a beat: where normal
+notes are transcribed as quarter notes, notes with klasma are transcribed as half
+notes. There is no semantic difference between klasma above or below, except
+in combination with the petasti. A klasma below a petasti has the effect of
+modulating the note: half beat on note, half beat ascending second with
+crescendo, then full beat descending second, decrescendo. With the oligon, the
+6Pieces which in Western notation would be written mostly in eighth notes will have one neume written per
+eighth note; this results in tempi very fast by Western standards.
+
+
+===== PAGE 19 =====
+19
+klasma is written above, except if the oligon already has a kentima or ypsili
+above, in which case it is written below. If an oligon has a psifiston below it as
+well, though, the klasma is written to the right of the kentima. These
+distinctions are all syntactic, rather than semantic, so the two klasmata are
+equivalent semantically.
+In the pre-Modern system, the Klasma (or Tzakisma, ‘Breaking’) was a consonant
+sign, used to mark detached notes; in some usage its precise meaning was
+determined by the colour of ink used.
+3.2.2. Gorgon
+U+1D08F Byzantine Musical Symbol Gorgon Neo Ano [Modern Upper
+Swift]ED Psaltica: S, s
+EphesiosMain: g, 1, Option-Shift-6
+S
+U+1D0F5 Byzantine Musical Symbol Gorgon Neo Kato [Modern Lower
+Swift]ED Psaltica: X, x
+EphesiosMain: G, !
+X
+The gorgon and argon (§3.2.5) served in pre-Modern notation as accelerandos and
+ralletandos. In the Modern system, both signs modify note durations instead. The gorgon
+has scope over the note it modifies and the note before it, halving both their durations. It
+has the effect of a duplet: 1:2. The gorgon is normally placed above the neume; it appears
+below the neume when an oligon begins a musical phrase, and when it modifies kentimata
+following an oligon. (The gorgon above and below are different codepoints in 8-bit fonts.)
+When the gorgon is located on an oligon–kentimata combination, it applies to the
+l
+kentimata. So in the combination Gorgon over kentimata over oligon (ED Psaltica: l, ),
+the first note is an eighth note rising by a second, the second note is an eighth note rising
+by another second, and the two notes are tied. (The kentimata is the second note of the
+combination, so both it and the oligon are halved.) In the combination Gorgon over oligon
+over kentimata, the note before the first note is an eighth note, the first note is an eighth
+note rising by a second and tied to the note before it, and the second note is a quarter note
+rising by another second. (The kentimata is the first note of the combination, so it and its
+preceding note are halved; the oligon retains its normal length.)
+
+
+===== PAGE 20 =====
+20
+-
+When the gorgon modifies a hyporoe (ED Psaltica: -, ), the first note of the hyporoe
+and its predecessor are both halved; if the hyporoe also has an apli, &c., the apli applies to
+its second note. When any other note has both a gorgon and an apli, its duration becomes 1
++ 1/2. When a note with a gorgon follows a note with a klasma, the result is that the first
+note has a duration of 1 + 1/2 rather than 2, and the second note a duration of 1/2: .7
+q.e
+The precise placement of the gorgon (and signs like it) depends on the sign it is
+modifying; this is often only one sign within a combination of signs, and as seen the width
+of neumes is also variable. For that reason, the font EphesiosHronos contains a range of
+locations for the various modifiers (middle, upper, lower, middle right, upper right, lower
+right, upper left).
+The gorgon in the modern system indicates that the current note and its predecessor
+are to be sung in the time of a single note, as a duplet. The notation stacks gorga to obtain
+the same effect with other subdivisions of the beat: if n gorga appear over a note, then that
+note, the note preceding it, and the n−2 notes following it, are each sung with the duration
+of 1/(n+1) beats. Thus the digorgon (n=2) makes a triplet (3:1) out of three notes—the note
+modified, and the two notes on either side of it:
+U+1D095 Byzantine Musical Symbol Digorgon [Two-Swift]
+ED Psaltica: D, d
+EphesiosMain: Option-g, 2, Option-Shift-7
+d
+The trigorgon makes a quadruplet (4:1) out of four notes—the note modified,
+the note before it, and the two notes following it. Each note becomes a sixteenth
+note:
+U+1D096 Byzantine Musical Symbol Trigorgon [Three-Swift]
+ED Psaltica: F, f
+EphesiosMain: Option-Shift-g, 3, Option-Shift-8
+7Idiomatically, when an apostrophos is followed by an elaphron, in what is called a continuous elaphron (ED
+_
+Psaltica: _, ), the apostrophos note and the note before it are halved (as if the apostrophos has a
+gorgon over it), and the elaphron note descends by a second instead of a third. The sequence has its normal
+interpretation if space or a comma is inserted between the two neumes.
+
+
+===== PAGE 21 =====
+21
+F
+When applied to Greek folk music, the system is extended to tetragorgon for
+quintuplets and pentagorgon for sextuplets. V. Gezerlis informs me that his notation
+system includes such high-end quickeners; EphesiosHronos also includes the tetragorgon
+(codepoints: 8, 9, 0, -, =, [, ]). The current encoding makes no provision for such quickeners.
+(Figure 15)
+In folk music usage, the multiply stacked gorga are often felt to be insufficiently
+distinctive, and the requirement of placing them on the second note confusing; so a
+clarifying arabic numeral, giving the number of notes involved, is placed over the first
+neume in the group (e.g. a 5 before the tetragorgon: Figure 15).
+3.2.3. Apli
+U+1D085 Byzantine Musical Symbol Apli [Simple]
+ED Psaltica: :, ;, é
+EphesiosMain: d
+:
+U+1D086 Byzantine Musical Symbol Dipli [Double]
+ED Psaltica: Å, Ä8
+EphesiosMain: D
+Å
+U+1D087 Byzantine Musical Symbol Tripli [Triple]
+EphesiosMain: Option-d
+U+1D088 Byzantine Musical Symbol Tetrapli [Quadruple]
+EphesiosMain: Option-Shift-d
+The apli &c. are dots that appear under a neume, and increase its duration by
+one, two, three, or four beats. So a tripli appearing under an oligon converts it
+from a quarter note into a whole note. Theoretically the system is open-ended,
+although I have not seen any usage past the tripli: longer durations use the tie
+(U+1D07C Byzantine Musical Symbol Yfen Kato) instead.
+8That is to say, the dipli codepoint in ED Psaltica corresponds to the codepoints for Å and Ä in Latin-1.
+
+
+===== PAGE 22 =====
+22
+3.2.4. Punctuated gorgon
+The apli, dipli &c. dots combine with the gorgon and digorgon to produce the equivalent of
+dotted rhythms in the modern system, imitating Western notation. There is confusion in
+the precise value of the times indicated (which Tillyard has been dismissive of); while there
+is a straightforward logic to the value of dotted gorga, it is not followed by all authorities.
+The logical scheme, which appears to be what Chrysanthus put forward in 1821, is that
+an m-gorgon with n dots divides a single duration into 1/(m+n+1). So a gorgon with a single
+dot divides the duration into thirds; a trigorgon with two dots divides the duration into
+sixths (3+2+1). The dots act as retards; the number of dots indicates by how many
+subdivisions the note is lengthened, and the relative location of the dots indicate which
+note in the group is lengthened. So two dots to the left of a digorgon indicate that we are
+dealing with quintuplets; that one of the notes is three fifths long, while the other two
+notes remain a fifth long; and that the lengthened note is the leftmost: . A single dot
+e.xx
+over the third gamma of a tetragorgon indicates that the fourth note of a sextuplet is
+doubled in length: .
+xxxex
+Following this scheme, the punctuated gorgons already in the Unicode encoding have
+the following values.
+U+1D090 Byzantine Musical Symbol Gorgon Parestigmenon Aristera
+[Swift, Side-Dotted to the Left]
+ED Psaltica: H, h
+EphesiosMain: Option-1, Option-Shift-1, @, Option-8, Option-=
+H
+Apli before gorgon: quarter plus eighth triplet, . Also known as
+q3e
+hemigorgon (semi-swift).
+U+1D091 Byzantine Musical Symbol Gorgon Parestigmenon Dexia
+[Swift, Side-Dotted to the Right]
+ED Psaltica: ì
+EphesiosMain: Option-2, Option-Shift-2, #, Option-9
+ì
+Apli after gorgon: eighth plus quarter triplet, . Also known as
+e3q
+trihemigorgon (three–semi-swift).
+U+1D093 Byzantine Musical Symbol Digorgon Parestigmenon
+Aristera Kato [Two-Swift, Side-Dotted to the Left Below]
+ED Psaltica: J, j
+
+
+===== PAGE 23 =====
+23
+EphesiosMain: Option-3, Option-Shift-3
+J
+Apli before digorgon: eighth note, two sixteenth notes,
+exx
+U+1D095 Byzantine Musical Symbol Digorgon Parestigmenon Dexia
+[Two-Swift, Side-Dotted to the Right]
+EphesiosMain: Option-5, Option-Shift-5, Option--
+Dé
+Apli after digorgon : two sixteenth notes, eighth note,
+xxe
+U+1D094 Byzantine Musical Symbol Digorgon Parestigmenon
+Aristera Ano [Two-Swift, Side-Dotted to the Left Above]
+EphesiosMain: Option-4, Option-Shift-4, Option-0
+Apli above digorgon: sixteenth note, eighth note accented, sixteenth note,
+xex
+éé s
+Dipli before gorgon : dotted eighth note, sixteenth note,
+e.x
+éé s
+Dipli after gorgon : sixteenth note, dotted eighth note,
+xe.
+Apli above trigorgon (EphesiosMain: Option-Shift-9): quintuplet with third note tied to
+fourth.
+Apli to right of trigorgon (EphesiosMain: Option-Shift-0): quintuplet with fourth note
+tied to fifth.
+Apli below and gorgon above note A, followed by gorgon on note B: note before A is
+eighth note, A is accented quarter note, B is eighth note: .9
+eqe
+9This is the system as described in Lungu et al, Theofilopoulos and Margaziotis. Chrysanthus in 1832,
+Panagiotiopoulos and Efthymiadis consider the singly punctuated gorgon to be 3/4 + 1/4 rather than 2/3 +
+1/3, and this is presumably the reason the right dotted version is termed a trihemigorgon. (Panagiotopoulos
+allows the triplet interpretation through clarifying arabic numerals under the notes, indicating the beat
+durations. Both Panagiotiopoulos and Efthymiadis keep the punctuated digorgon as quadruplets.) At least
+according to Margaziotis, the ‘logical’ system I have described is that recommended by the 1881 Commission,
+and that originally adopted by Chrystanthus in 1821.
+Chrysanthus in 1832 also considered the digorgon by default to be 2/4 + 1/4 + 1/4, and notated the triplet
+digorgon using an arabic numeral 3 to its right.
+
+
+===== PAGE 24 =====
+24
+Straightforward combinations such as dipli after gorgon are not available as
+precomposed codepoints in Unicode. Combinations with more than a single dot, however,
+are rare in practice (particularly given the confusion with the value of punctuated
+gorgons).
+3.2.5. Argon
+U+1D097 Byzantine Musical Symbol Argon [Slow]
+ED Psaltica: g
+EphesiosMain: r
+g
+In pre-Modern notation the argon was widely used as a tempo marker
+(ralletando). In the Modern system, the Argon appears only in the combination
+og
+Argon over oligon over kentimata, . Instead of two ascending seconds
+(three crotches in a row), the first ascending second and its predecessor become
+(tied) eighth notes, while the second ascending note becomes a half note: >
+qqq
+. An argon can also be dotted on either side; this affects the relative
+eeh
+durations of the first two notes, so that an argon dotted on the left corresponds
+to , and one dotted on the right to .10
+q3eh e3q h
+U+1D098 Byzantine Musical Symbol Imidiargon [Semi–Two-Slow]
+ED Psaltica: G
+EphesiosMain: R
+G
+oG
+As with the argon— ; but the second ascending note is lengthened by two
+beats (dotted half note): . . Called hemiolion or trihemiargon in
+eeh
+Margaziotis; epiargon in Theofilopoulos; diargon in Efthymiadis and
+10Panagiotopoulos gives the dotted gorgon the value , and accordingly gives the dotted argon the value
+e.x
+.
+e.xh
+
+
+===== PAGE 25 =====
+25
+Panagiotopoulos; hemiargon in Terzopoulos. The imidiargon can also be dotted,
+again with the dot affecting the two initial notes of the group.
+U+1D099 Byzantine Musical Symbol Diargon [Two-Slow]
+EphesiosMain: Option-r, Option-Shift-r
+As with the argon; but the second ascending note is lengthened by three beats
+(dotted half note): . Called diargon in Margaziotis and Theofilopoulos;
+eew
+triargon in Efthymiadis and Panagiotopoulos. The diargon can also be dotted,
+again with the dot affecting the two initial notes of the group.
+3.2.6. Rests
+U+1D07E Byzantine Musical Symbol Stavros [Cross]
+ED Psaltica: +
+EphesiosMain: Shift-Option-]
++
+In the Modern system, a breath mark. In the pre-Modern system, a ralletando.
+The Western breath mark (U+1D112 Musical Symbol Breath Mark;
+EphesiosMain: Option-Shift-,) is also used by some to distinguish between
+breath marks applying to the whole choir or only to the soloists.
+U+1D089 Byzantine Musical Symbol Koronis [Coronis]
+ED Psaltica: Æ. æ
+EphesiosMain: Option-.; EphesiosPhthora: u, (inverted) U
+Æ
+This is a borrowing into the modern system of the Western fermata, with the
+same meaning.
+Rests proper in Byzantine notation are created by combinations of the varia (see
+below) with retards. These have been treated as precomposed units for the most frequent
+combinations in the Unicode table; not all possible combinations have been or could have
+been accounted for. Rests have been placed under the rubric Leimmata or Siopes (Leimmas or
+Silencers).
+U+1D08A Byzantine Musical Symbol Leimma Enos Chronou [Taking of One
+Beat] ED Psaltica: |
+EphesiosMain: B; EphesiosPhthora: v
+|
+
+
+===== PAGE 26 =====
+26
+Varia modified by apli: quarter rest.
+U+1D08B Byzantine Musical Symbol Leimma Dyo Chronon [Taking of Two
+Beats] EphesiosMain: Option-B; EphesiosPhthora: V
+\ Ä
+Varia modified by dipli: half rest.
+U+1D08C Byzantine Musical Symbol Leimma Trion Chronon [Taking of
+Three Beats]
+EphesiosMain: Shift-Option-B; EphesiosPhthora: Option-v
+\ Ä :
+Varia modified by tripli: dotted half rest.
+U+1D08D Byzantine Musical Symbol Leimma Tessaron Chronon [Taking
+of Four Beats]
+EphesiosMain: Option-z; EphesiosPhthora: Option-Shift-v
+\ Ä Ä
+Varia modified by tetrapli: whole rest.
+U+1D08E Byzantine Musical Symbol Leimma Imiseos Chronou [Taking of
+Half a Beat] EphesiosMain: Option-t
+\ : s
+Varia modified by apli under gorgon: eighth rest . The gorgon has its normal
+effect of halving the duration of both the rest and the neume preceding it.
+Varia modified by apli under gorgon-after-apli: sixteenth rest.
+3.2.7. Tempo markings
+Tempo markings also involve modifying a sign with a temporal sign, and have also been
+taken as precomposed in the Unicode table. The rubric under which they appear in
+Unicode is Agogika (Conduits). The conduit appears in the initial signature of the work,
+though it is usually left implied by the genre of the piece; it may also appear in the middle
+of a piece, as a temporary tempo change.
+The modified in the tempo marking is the letter chi (for χρόνος, ‘time’). In Rumanian
+s
+practice, it is T for timp; e.g. T. The ranges of the tempo markings were fixed by the 1881
+Commission.
+U+1D09A Byzantine Musical Symbol Agogi Poli Argi [Very Slow Tempo]
+EphesiosArchtika: ö
+Chi modified by diargon. 56–80 beats per minute (Largo or Adagio to
+Efthymiadis, Grave or Largo to Panagiotopoulos).
+U+1D09B Byzantine Musical Symbol Agogi Argoteri [Slower Tempo]
+EphesiosArchtika: õ
+
+
+===== PAGE 27 =====
+27
+Chi modified by imidiargon. 80–100 bpm (Andante to Efthymiadis, Lento or
+Adagio to Panagiotopoulos).
+U+1D09C Byzantine Musical Symbol Agogi Argi [Slow Tempo]
+ED Fthora: x
+EphesiosArchtika: ú
+x
+Chi modified by argon. 100–168 bpm (Moderato or Allegro to Efthymiadis,
+Moderato to Panagiotopoulos).
+U+1D09D Byzantine Musical Symbol Agogi Metria [Moderate Tempo]
+ED Fthora: Z
+EphesiosArchtika: ù
+Z
+Chi modified by gorgon next to argon. This value was not mentioned by the
+1881 Commission, but is used for the higher end of slow tempo, around 130
+bpm. (Andante to Panagiotopoulos, not mentioned by Efthymiadis.)
+U+1D09E Byzantine Musical Symbol Agogi Mesi [Medium Tempo]
+EphesiosArchtika: û
+Chi modified by mu (for μέση, ‘medium’). Not mentioned in any of my sources,
+presumably a synonym of U+1D09D Byzantine Musical Symbol Agogi
+Metria.
+U+1D09F Byzantine Musical Symbol Agogi Gorgi [Swift Tempo]
+ED Fthora: X
+EphesiosArchtika: ü
+X
+Chi modified by gorgon. 168–208 bpm (Presto to Efthymiadis, Allegro to
+Panagiotopoulos).
+U+1D0A0 Byzantine Musical Symbol Agogi Gorgoteri [Swifter Tempo]
+ED Fthora: z
+EphesiosArchtika: †
+
+
+===== PAGE 28 =====
+28
+z
+Chi modified by digorgon. Over 208 bpm (Prestissimo to Efthymiadis, Presto or
+Prestissimo to Panagiotopoulos). Tempo known as χύμα, “flowing”, and used in
+recitatives.
+U+1D0A1 Byzantine Musical Symbol Agogi Poli Gorgi [Very Swift
+Tempo] EphesiosArchtika: Shift-Option-8
+Chi modified by trigorgon. Unattested in my sources.
+3.2.8. Pre-Modern Temporal Signs
+U+1D080 Byzantine Musical Symbol Dipli Archaion [Ancient Double]
+This is the Middle form of U+1D086, and doubles the length of the note, rather than adding
+two beats to it. So there is a graphemic and semantic difference between the Middle and
+Modern signs; it is not clear from this that they should have been disunified.
+U+1D081 Byzantine Musical Symbol Kratima Archaion [Ancient Hold]
+U+1D082 Byzantine Musical Symbol Kratima Allo [Other Hold]
+U+1D083 Byzantine Musical Symbol Kratima Neo [Modern Hold]
+All these signs likewise double the length of the note. The Kratima was also
+produced with emphasis. It is not clear whether the three kratimata should not
+simply have been counted as glyph variants.
+U+1D069 Byzantine Musical Symbol Seisma [Shaking]
+Lengthening by half. The Seisma also involved a tremolo. (See also Klasma,
+above.)
+U+1D084 Byzantine Musical Symbol Apoderma Neo [Modern Giving]
+According to Tillyard this was a lengthener like the kratima (and he transcribes
+it as a fermata), but according to Wellesz this indicated the end of a musical
+phrase, and a slight ralletando.
+3.3. Consonant signs
+The consonant signs involve various kinds of ornament or phrasing. They appear under the
+rubric Afona or Ypostaseis (Mutes or Hypostases). There was a profusion of hypostases
+particularly in the Late system, introduced in the 12th and 13th century (termed Great
+Hypostases). The meaning of many hypostases is obscure, and Wellesz doubts that the
+names of others, not included here, are even meaningful.
+As a result of the Chrysanthine reforms to the notation—which aimed to simplify it and
+expand out the abbreviations endemic to the system—only six consonant signs have
+survived into the Modern system: varia, omalon, antikenoma, psifiston, eteron, and
+endofonon. (Chrysanthus also considered the stavros to be a consonant sign.)11
+11The values of the consonants are inconsistently and sketchily described in the references, which appear to
+rely on practical instruction on this point instead.
+
+
+===== PAGE 29 =====
+29
+U+1D058 Byzantine Musical Symbol Varia Neo [Modern Grave]
+ED Psaltica: \
+EphesiosMain: b, .
+\
+Accent note.12 The varia is conventionally used before certains kinds of runs and
+ties of notes; we have already seen it is also used as a rest, in combination with
+retards. In the pre-Modern system, the Varia was used to mark the start of a run
+of ascending and descending notes just before a strong accent; but by the Late
+system it had become a mere sign of separation—whence its modern use in
+rests.
+U+1D05B Byzantine Musical Symbol Omalon [Smooth]
+ED Psaltica: [, {
+EphesiosMain: /, Option-Shift-/
+[
+In the Modern system, light undulation of the voice between two notes.13 In the
+pre-Modern system, the Omalon indicates “the rhythmical equality of the tones
+of the melisma”.
+U+1D05C Byzantine Musical Symbol Antikenoma [Instead of Void]
+ED Psaltica: "
+EphesiosMain: f
+"
+In the Modern system, note is sung “with an ascent more lively than the tempo”
+1"
+(and a grace note). If placed under an oligon (EphesiosMain: M, ): eighth
+note on pitch, then sixteenth note up another second and sixteenth note back
+12According to Lungu et al., before a note of a full beat, equivalent to a Western mordent (rapidly raising voice
+to note immediately above and back again). Before note with half a beat (i.e. next note modified by gorgon),
+or before note with full beat in lively tempo: accent.
+13According to Lungu et al., crescendo–decrescendo affecting two or three tied notes. The group of notes
+involved conventionally starts with a varia, which has its mordent effect on the first note.
+
+
+===== PAGE 30 =====
+30
+1"s
+down ( ). If placed under oligon with gorgon: small crescendo ( ). If
+exx
+1";
+placed under note, with antikenoma modified by apli ( ): dotted eighth note
+on note, then sixteenth note up a second, and quarter note back down ( ).
+e.xq
+In the Middle system, a tie connecting ascending and descending notes; when
+used between two apostrophoi, Tillyard believes it was a glissando.
+U+1D05A Byzantine Musical Symbol Psifiston Neo [Modern Reckoned]
+ED Psaltica: ', }, ü
+EphesiosMain: ,
+'
+In the Modern system, indicates an accent followed by a diminuendo, which
+ranges over the next few syllables unless the next syllable is accented.14 In the
+pre-Modern system, the Psifiston indicated that each note of a phrase was
+articulated separately according to Wellesz; according to Tillyard it was a
+sforzando.
+U+1D060 Byzantine Musical Symbol Eteron Parakalesma [Other
+Beseeching]
+ED Psaltica: ]
+EphesiosMain: t
+]
+In the Modern system termed simply Eteron. Slur two notes. If more than two
+notes need to be slurred together, the notes involved are often lined up on top
+of an oligon. The oligon is cancelled out through subordination, but the
+combination still counts as a single note, which can be tied to another; e.g.
+@U]
+(−3 tied with [−2 +1]). (The practice is common enough that Daoun’s
+14According to Lungu et al., inserts preceding grace note a second above. If the neume is also modified by a
+1}Z
+klasma ( ), eighth note a second above, followed by dotted quarter note at the initial pitch ( ).
+eq.
+
+
+===== PAGE 31 =====
+31
+fonts contain several such combinations as single codepoints:
+PRTUYàâäåç
+, ED Psaltica P R T
+U Y à â ä å ç . Such combinations are also present in the EphesiosMain font.)
+If the second note tied is an ison, sing it with slight undulation upwards. (This
+means that the eteron is not a tie, used merely to elongate the duration of a
+note.) If the eteron appears under a single note with dipli or tripli and preceded
+\1Å ]
+by varia ( ), the retard lengthens the note, and the eteron has the same
+effect on the penultimate beat as an antikenoma with apli. (So eteron with
+dipli—three beats: quarter note + dotted eighth note tied, then sixteenth note
+up a second, then quarter note down a second: )
+q..xq
+U+1D07B Byzantine Musical Symbol Endofonon [Inner Sound]
+EphesiosMain: z; EphesiosPhthora: w
+Sing nasally. This sign is restricted to melismata, and has fallen into disuse since
+Chrysanthus’ time.
+There are also conventional grace notes associated with normal neumes in certain
+contexts; these are performance issues beyond the scope of this document.
+The modern sign repertoire also includes ties borrowed from Western notation:
+U+1D07C Byzantine Musical Symbol Yfen Kato [Lower Hyphen]
+EphesiosPhthora: y
+U+1D07D Byzantine Musical Symbol Yfen Ano [Upper Hyphen]
+EphesiosPhthora: Y
+These signs are always used to connect a note to an ison (since their point is to
+lengthen the note); unlike the eteron, there is no grace note inserted between
+the notes. Their Hellenic name appeals to the original shape and function of the
+hyphen in Hellenistic Greek punctuation, which was similar.
+On occasion, other Western devices are borrowed, such as dynamics (piano, forte) (cf.
+Figure 14).
+The Pre-Modern repertoire of consonant signs was rather more extensive.
+U+1D059 Byzantine Musical Symbol Piasma Neo [Modern Catch]
+“Probably a slight accent with groups of descending notes.”
+U+1D05E Byzantine Musical Symbol Paraklitiki Neo [Modern
+Supplicating]
+U+1D05F Byzantine Musical Symbol Parakalesma Neo [Modern
+Beseeching]
+U+1D060 Byzantine Musical Symbol Eteron Parakalesma [Other
+Beseeching]
+According to Tillyard, expressives of beseeching, and slurs. According to
+
+
+===== PAGE 32 =====
+32
+Wellesz, lengthening by half.
+U+1D05D Byzantine Musical Symbol Lygisma [Bending]
+U+1D061 Byzantine Musical Symbol Kylisma [Rolling]
+The Lygisma and Kylisma are counted, along with the Omalon and Antikenoma,
+as types of slurs. However the Kylisma (and apparently the Lygisma) was also a
+trill, and corresponds to the Western neumatic quilisma. According to Tillyard
+the Kylisma was a flourish at a medial cadence, usually with the neumes of the
+flourish written out around the kylisma sign.
+U+1D062 Byzantine Musical Symbol Antikenokylisma [Instead of Empty
+Rolling]
+The Antikenokylisma was an inverted trill.
+U+1D063 Byzantine Musical Symbol Tromikon [Trembling]
+The Tromikon was a “turn” of the voice.
+U+1D064 Byzantine Musical Symbol Ekstrepton [Turning Out]
+An inverted Tromikon; also Strepton.
+U+1D065 Byzantine Musical Symbol Synagma Neo [Modern Gathering]
+The Synagma was a legato marking.
+U+1D066 Byzantine Musical Symbol Syrma [Dragging]
+Indicates a turn, same as Ecphonetic Syrmatiki (U+1D008).
+U+1D067 Byzantine Musical Symbol Chorevma Neo [Modern Dancing]
+A kind of mordent, distinct from the Ouranisma (U+1D075).
+U+1D068 Byzantine Musical Symbol Epegerma [Awakening]
+Like the Middle Antikenoma, a tie uniting ascending with descending notes.
+U+1D06A Byzantine Musical Symbol Xiron Klasma [Dry Breaking]
+Voice rising abruptly and harshly; mezzo-staccato.
+U+1D06E Byzantine Musical Symbol Tromikoparakalesma [Trembling
+Beseeching]
+The Tromikoparakalesma was an intensified tremolo.
+U+1D06F Byzantine Musical Symbol Psifistoparakalesma [Reckoned
+Beseeching]
+The Psifistoparakalesma was a mordent.
+U+1D070 Byzantine Musical Symbol Tromikosynagma [Trembling
+Gathering]
+The Tromikosynagma was a soft tremolo.
+U+1D071 Byzantine Musical Symbol Psifistosynagma [Reckoned
+Gathering]
+“A soft rolling of the voice in the throat.” Also called Gurgurisma, “Purring”.
+U+1D072 Byzantine Musical Symbol Gorgosyntheton [Compound Swift]
+The Gorgosyntheton doubles the rhythmic value of the gorgon according to
+
+
+===== PAGE 33 =====
+33
+Wellesz, and presumably corresponds to the later digorgon. According to
+Tillyard a slur used with a particular kind of flourish.
+U+1D073 Byzantine Musical Symbol Argosyntheton [Compound Slow]
+U+1D074 Byzantine Musical Symbol Eteron Argosyntheton [Other
+Compound Slow]
+The Argosyntheton is a double Argon.
+U+1D075 Byzantine Musical Symbol Ouranisma [Heavening]
+A Mordent/“turn”.
+U+1D076 Byzantine Musical Symbol Thematismos Eso [Placing In]
+U+1D077 Byzantine Musical Symbol Thematismos Exo [Placing Out]
+U+1D078 Byzantine Musical Symbol Thema Aploun [Simple Place]
+Grouping signs or ornaments (Tillyard is not clear on these, and neither
+apparently are the sources). Accoding to Thibault the Thematismoi are ‘Nana’
+mode modulants (see below). The Thema Aploun is described in the sources as
+“indicating a simple rhythm”, whatever that may mean; Tillyard believes it
+marked a middle cadence with two or three descending notes. These symbols
+were borrowed in Russian notation as Fita (Theta), and indicated elaborate,
+improvisable flourishes.
+U+1D079 Byzantine Musical Symbol Thes Kai Apothes [Place And
+Remove]
+A sign indicating a final (Tillyard: middle) cadence.
+U+1D0B6 Byzantine Musical Symbol Enarxis Kai Phthora Vou
+[Beginning and e Modulator]
+ED Fthora: G, g
+EphesiosMain: 4; EphesiosPhthora: x, Option-x
+G
+The Enarxis or Anarxis (‘Commencement’) or Diamphismos (‘Separation’)
+denoted the beginning of the melody after the initial intonation formula for a
+piece. The Unicode encoding conflates this pre-Modern sign with the Modern
+phthora for Vou (see below).
+Wellesz also mentions a Hemiargon sign, apparently related to the Argosyntheton
+(Thibault considers them synonyms), but unattested in the treatises and found in only one
+manuscript.
+As of this writing, I have found no information on the following hypostases, though the
+last three are clearly compounds:
+U+1D057 Byzantine Musical Symbol Mikron Ison [Small Equal]
+U+1D06B Byzantine Musical Symbol Tromikopsifiston [Trembling
+
+
+===== PAGE 34 =====
+34
+Reckoned]
+U+1D06C Byzantine Musical Symbol Psifistolygisma [Reckoned Bending]
+U+1D06D Byzantine Musical Symbol Tromikolygsima [Trembling Bending]
+3.4. Phthoral Signs
+The phthoral signs encompass all the signs dealing with altering the pitches of the notes.
+To clarify how they did so, I need to go through the basics of Byzantine modes.
+3.4.1. Byzantine Modes
+Byzantine music is organised around eight modes (echos, ‘sound’). The conventional
+wisdom is that in Byzantium, the modes corresponded to the diatonic modes of Western
+mediaeval and Ancient Greek music, although recently Greek scholars have argued that
+chromatic modes were also in use. The eight modes are divided into Authentic and Plagal:
+(Authentic) First, Second, Third, Fourth, Plagal First, Plagal Second, Varys [Deep], and
+Plagal Fourth. The plagal modes started a fourth below the corresponding authentic modes.
+The modes correspond to the Western Dorian, Phrygian, Lydian, Mixolydian, Hypodorian,
+Hypophrygian, Hypolydian and Hypomixolydian; and their scales are d–e–f–g–a–b–c–d for
+the First, e–f–g–a–b–c–d–e for the Second, and so on: III starting on f, IV on g, Plagal I
+starting on a, Plagal II on b, Varys on cʹ, Plagal IV on dʹ. (This means that the Plagal Fourth
+ends up being the same scale as the First, transposed up an octave.)
+Byzantine music had two further modes added, nana and nenano (so named after their
+intonation formulas). The precise nature of these modes is not clear; according to
+Chrysanthus and Thibault these were Medial modes of Modes II and IV (i.e. starting a third
+above their corresponding authentic modes); so Authentic II e–e and Plagal II b–b
+corresponded to Medial II g–g. Tillyard accepts only nenano as a distinct mode, and
+believed it was the only instance of a chromatic mode in Byzantine music (with the
+standard minor second, major third combination characteristic of the chromatic modes);
+the nana he considered synonymous with Plagal IV.
+In the modern system, matters are more complicated.
+• As of the 1881 Commission, the scale is divided into 72 intervals (termed
+commas), so that the sizes of intervals need not correspond to Western equal-
+tempered tones and semitones. The modern Western equal-tempered tone
+corresponds to 12 commas, and the equal-tempered semitone to 6 commas.
+• The same mode may have different realisations of its intervals depending on
+the tempo—and even independently of it. There is also some flexibility on
+which note is the finalis (tonic) of the mode.
+• Three new chromatic modes (chroae) have arisen which are not associated with
+the traditional eight. They are only used passingly in chants (Figure 20), rather
+than being the main mode of any piece, and have a range of only a fifth; any
+notes outside the fifth remain diatonic.
+• There is also an overriding tendency, independently of the mode, for b and (less
+often) e to be flattened.
+Modern theory sets up three types of scale: diatonic, chromatic, and enharmonic; these
+are named after the scale types of Ancient Greek music, based on the tone, semitone, and
+
+
+===== PAGE 35 =====
+35
+quarter-tone respectively. Each scale type is defined by a tetrachord (sequence of three
+intervals); the tetrachord is repeated at the dominant, and the distance between
+subdominant and dominant is always 12 commas (an equal-tempered tone).
+• The diatonic scale is used for Modes I and IV authentic and plagal. It runs from d
+to dʹ, and has the following sequence of intervals (in commas): 10, 8, 12, 12, 10, 8,
+12, with the reference pitch c at 512 Hz.15 (So e and c are two commas flatter
+than in the well-tempered scale).
+• The chromatic scales are characterised by a minor second and major third, and
+are of two types.
+The soft chromatic scale is defined as c–cʹ: 8, 14, 8, 12, 8, 14, 8. (So d and a
+are four commas flat, while e and c are still two commas flat.)
+The hard chromatic scale is defined as a–aʹ: ascending 6, 20, 4, 12, 6, 20, 4;
+descending 4, 20, 6, 12, 4, 20, 6. (So ascending, b is a semitone flat and f is
+at its equal-tempered pitch, while c and g are eight commas sharp.
+Descending, c and g are only a semitone sharp, while b is eight commas
+flat and f is two commas flat—eight commas flatter than f♯.)
+Both scales are used in Modes II and II plagal; the authentic mode defaults to the
+soft chromatic, and the plagal to the hard chromatic.
+• The enharmonic scale, used in Mode III and Barys, is 12, 12, 6, 12, 12, 12, 6—that
+is to say, it is identical to the Western well-tempered major scale (but only since
+the 1881 revision of the scale).
+The division of the octave into seventy-seconds by the 1881 Commission are an attempt
+to rationalise the interval sizes in just intonation. Chrysanthus’ original proposal was closer
+to just intonation: he had proposed the tetrachords 12, 9, 7 instead of 12, 10, 8 for the
+diatonic scale; 7, 12, 7 instead of 8, 14, 8 for the soft chromatic; 7, 18, 3 instead of 4, 20, 6 for
+the hard chromatic; and 12, 13, 3, 12, 12, 3, 13 for the enharmonic, with 68 rather than 72
+commas per octave. (His soft chromatic scale does not add up to 68 commas, and
+Hourmouzios the Archivist later corrected it to 9, 12, 7.) So like the Ancient Greek
+enharmonic scale for which it was named, the Modern Byzantine enharmonic originally did
+contain quarter-tones.
+The rationale of the unequally-tempered scale is to give the frequencies of adjacent
+tones a ratio expressible in small numbers: tones with values of 12, 10 and 8 correspond to
+9:8, ca. 10:9, and 16:15 of the frequency of the preceding note.
+The modern modes are thus as follows, with sharps and flats intended only as
+approximate values:
+I: d–e–f–g–a–b–c–d. Diatonic. Finalis: d; in some genres a.
+Plagal I: a–b–c–d–e–f–g–a. Diatonic. Finalis: a in fast tempo, d in moderate tempo. b is
+often flattened, particularly with the Agem phthora (U+1D0CB), so that the upper half
+15Amusingly, Efthymiadis states that the difference between Byzantine a, 864 Hz, and the standard a of
+European music is a mere 6 Hz; he had not been informed that the ISO standard Western A was raised from
+435 to 440 Hz in 1955 (a pitch already standard in Germany since 1816), so the difference is now 16 Hz. The
+pitch c = 512 Hz was one of the competing Western standards for concert pitch until the 19th century.
+
+
+===== PAGE 36 =====
+36
+of the scale becomes enharmonic.
+II: g–a♭–b–c–d♭–e–f–g. Chromatic, typically soft. Finalis: g, e or d.
+Plagal II: d–e♭–f♯–g–a–b♭–c♯–d. Chromatic, typically hard. Finalis: g for soft (in
+which case it is termed ‘Nenano’, after the old mode); d for hard chromatic.
+III: f–g–a–b[♭]–c–d–e–f. Enharmonic (though in practice, this requires enharmonic
+phthorae—the general sharp and flat or the agem, otherwise the scale is diatonic. The
+enharmonic phthorae are usually supplied). Finalis: f.
+Varys: there are three variants of the mode. Enharmonic–Agem form: f–g–a–b♭–c–d–
+e–f. Enharmonic. Finalis: f. (This differs from III only in where the imperfect cadences
+tend to go.) Diatonic Varys form: b-c–d–e–f♯–g–a♯–b (8, 12, 10, 12, 8, 16, 6). (The
+deviation from the normal intervals at the high end of the scale is because of the ‘law
+of attraction’, enabling a♯ to be a true leading-tone.) Finalis: b. Proto-Varys form: b–
+c–d–e–f–g–a–b. Finalis: b.
+IV: g–a–b–c–d–e–f–g. Diatonic. Finalis: Slow, d or g; Moderate or fast: e (the ‘Legetos’
+mode, which like the chromatic modes has a minor second).
+Plagal IV: c–d–e–f–g–a–b–c. Diatonic. Finalis: c. With Ni phthora, finalis: f, and b
+flattened. (The 1881 Commission raises the supertonic of IV and Plagal IV by two
+commas.)
+The three chroae are:
+Zygos scale: c–d♯–e–f♯–g. (18, 4, 16, 4; so d♯ is at well-tempered pitch, e is two
+commas flat, and f is eight commas sharp.)
+Kliton scale: c–d–e–f♯–g. (12, 12, 14, 4; so e is at well-tempered pitch, and f is eight
+commas sharp.)
+Spathi scale: (d–e–)f–g♯–a–b♭–c(–d). (20, 4, 4, 14; so g eight commas sharp, and b is
+eight commas flat.)
+This presentation is somewhat distorted, as it is geared to the Western notion of a scale
+starting and ending with a tonic. The same tetrachords are used in Byzantine modes
+whatever the finalis. So Mode II is properly c–d♭–e–f–g–a♭–b–c, with the lowest note
+usually being e.
+3.4.2. Differentiators
+The Modern notation has introduced a series of accidentals which alter the pitch of a note
+by a specific interval; these are given under the rubric of Alloioseis (Differentiators). The
+differentiators are a Chrysanthine innovation, and were revised by the 1881 Commission.
+Chrysanthus provides for quarter-tones, third-tones and semi-tones, while the 1881
+Commission worked with sixths of tones. Other than the default accidentals, the precise
+divisions listed below are not seen outside theoretical discussions of scales (Figure 3).
+Moreover, the default accidentals (U+1D0D0, U+1D0D4) do not have a fixed value.16 In
+16Chrysanthus explicitly stated that a semitone was not a division of a tone (12 or 10 commas) into two equal
+parts of 6 and 6 commas, but into 7 and 5, or 8 and 4. Greek theory manuals defend this lack of fixity by
+appealing to Ancient Greek musical theory (which split the tone unequally), and the Roman-era musician
+Gaudentius’ Zen-like statement, τὸ ἡμιτόνιον οὐκ ἔστιν ἀκριβῶς ἡμιτόνιον, “the semitone is not exactly a
+
+
+===== PAGE 37 =====
+37
+fact, the two differentiators generalised as the ‘General Sharp’ and ‘General Flat’ (U+1D0D8,
+U+1D0D9) are necessarily of different sizes (despite what most theory manuals state): the
+general flat lowers all b’s in a piece by six commas to b♭, whereas the general sharp raises
+all e’s in a piece from their diatonic pitch by two commas, to the equal-tempered
+(enharmonic) pitch of e. The other differentiators have only local effect.
+U+1D0CB Byzantine Musical Symbol Fthora I Yfesis Tetartimorion
+[Quarter Tone Differentiator Or Flat]
+ED Fthora: 0
+EphesiosMain: Option-Shift-; EphesiosPhthora: c, C
+1/3 tone flat in Chrysanthus.
+U+1D0CC Byzantine Musical Symbol Fthora Enarmonios Antifonia
+[Enharmonic Antiphony Differentiator]
+EphesiosPhthora: Option-q, Option-Shift-q
+This sign is undocumented in my sources.
+U+1D0CD Byzantine Musical Symbol Yfesis Tritimorion [Third Tone
+Flat] EphesiosMain: Option-; ; EphesiosPhthora: f, F
+2/3 tone flat in Chrysanthus.
+U+1D0CE Byzantine Musical Symbol Diesis Tritimorion [Third Tone
+Sharp] EphesiosMain: Option-' ; EphesiosPhthora: h, H
+2/3 tone sharp in Chrysanthus.
+Figure 3. A paedagogical instance of use of differentiators (Efthymiadis 1988:261): differentiators are used
+over a diatonic Mode I scale to produce the intervals of the hard chromatic scale on d, written beneath it. The
+intervals 10, 8, 12, 12, 10, 8, 12 are modified by -4, +8, 0, 0, -4, +8, 0 ascending, to give the required 6, 20, 4, 12, 6,
+20, 4.
+U+1D0CF Byzantine Musical Symbol Diesis Tetartimorion [Quarter
+Tone Sharp]
+EphesiosMain: "
+1/3 tone sharp in Chrysanthus.
+U+1D0D0 Byzantine Musical Symbol Diesis Apli Dyo Dodekata [Simple
+Sharp, Two Twelfths]
+ED Fthora: +, =
+semitone”.
+
+
+===== PAGE 38 =====
+38
+EphesiosMain: +; EphesiosPhthora: =, +
++
+Raise by semitone in Chrysanthus, by two commas in 1881 Commission. Default,
+undefined sharp in practice. Placed under neume.
+U+1D0D1 Byzantine Musical Symbol Diesis Monogrammos Tessera
+Dodekata [One-line Sharp, Four Twelfths]
+EphesiosMain: ]; EphesiosPhthora: ], }
+Raise by quarter tone in Chrysanthus, by four commas (1/3 tone) in 1881
+Commission.
+U+1D0D2 Byzantine Musical Symbol Diesis Digrammos Ex Dodekata
+[Two-line Sharp, Six Twelfths]
+EphesiosMain: '; EphesiosPhthora: ',"
+Raise by three quarter tones in Chrysanthus, by six commas (semitone) in 1881
+Commission.
+U+1D0D3 Byzantine Musical Symbol Diesis Trigrammos Okto
+Dodekata [Three-line Sharp, Eight Twelfths]
+EphesiosMain: }; EphesiosPhthora: Option-', Option-Shift-'
+Raise by eight commas (2/3 tone) in 1881 Commission.
+U+1D0D4 Byzantine Musical Symbol Yfesis Apli Dyo Dodekata [Simple
+Flat, Two Twelfths]
+ED Fthora: -
+EphesiosMain: -; EphesiosPhthora: -, _
+-
+Lower by semitone in Chrysanthus, by two commas in 1881 Commission.
+Default, undefined flat in practice. Placed above neume.
+U+1D0D5 Byzantine Musical Symbol Yfesis Monogrammos Tessera
+Dodekata [One-line Flat, Four Twelfths]
+EphesiosMain: [; EphesiosPhthora: [, {
+Lower by quarter tone in Chrysanthus, by four commas (1/3 tone) in 1881
+Commission.
+U+1D0D6 Byzantine Musical Symbol Yfesis Digrammos Ex Dodekata
+[Two-line Flat, Six Twelfths]
+EphesiosMain: ;, :; EphesiosPhthora: ;, :
+Lower by three quarter tones in Chrysanthus, by six commas (semitone) in 1881
+Commission.
+U+1D0D7 Byzantine Musical Symbol Yfesis Trigrammos Okto
+
+
+===== PAGE 39 =====
+39
+Dodekata [Three-line Flat, Eight Twelfths]
+EphesiosMain: {; EphesiosPhthora: Option-;, Option-Shift-;
+Lower by eight commas (2/3 tone) in 1881 Commission.
+U+1D0D8 Byzantine Musical Symbol Geniki Diesis [General Sharp]
+ED Fthora: 3
+3
+Modulator which causes all e’s in a piece to be sharp.
+U+1D0D9 Byzantine Musical Symbol Geniki Yfesis [General Flat]
+ED Fthora: 5
+5
+Modulator which causes all b’s in a piece to be flat.
+The 1881 Commission also devised flats and sharps with four lines, indicating a 10
+comma interval; these have not been included in the encoding, and no Byzantine scale
+involves altering a pitch in another by ten commas.
+3.4.3. Signatures
+Each mode has associated with it an intonation formula (echema or apechema, ‘sounding’).
+This is a phrase of a few notes, originally associated with a particular nonsense utterance
+(nenano, ananeanes, &c.), and intended to tune the choir in to the current pitch and mode.
+The intonation formula had a conventional abbreviation (Figure 4), which appeared at the
+start of most genres of pieces. It also surfaces sporadically in many pre-Modern
+manuscripts in the middle of pieces, and in the Late period also at their end. Raasted
+tentatively concludes that the medial formulas were originally sung, and were stylistically
+associated with festive music. He believes that the formulas were also used to indicate
+modulation to a different key, characteristic of that formula, before the invention of
+phthorae—which is why Middle pieces often have medial formulas that seem to be on the
+wrong pitch.
+Increasingly, however, the formulas were no longer sung during performance. Instead
+they were used only as paedagogical devices, and as aides-de-memoire during performance
+(the signer singing the formula to himself to confirm that he was in key); the formulas
+themselves also became much abbreviated. Modern notation no longer indicates the
+formula per se, but merely the current pitch and mode; it is accordingly termed a signature
+(martyria, ‘witness, indicator’) instead. The mode signature appears at the start of the piece,
+and is followed by the pitch syllable of the finalis. The pitch syllable is often written above
+the neume for the interval between the expected finalis and the finalis of the piece (e.g. if
+
+
+===== PAGE 40 =====
+40
+the expected finalis is f and the actual finalis is d, the Pa syllable will appear over an
+elaphron, which descends by a third: f to d). If there is a choice to be made between hard
+and soft chromatic scales, the appropriate phthora appears over the pitch syllable. The
+pitch indicators, serving as reminders of which pitch should be reached at any given point,
+mark cadences throughout the piece, including at its conclusion. (Some publications write
+the mode signature out in words instead.)
+Figure 4. Middle intonation formulas: abbreviations and expansions. (Raasted 1966:8)
+Figure 5. Western transcriptions of Middle intonation formulas. (Raasted 1966:9)
+In accordance with their differing functions, the pre-Modern intonation formulas and
+the Modern signatures are notated differently.17 In the pre-Modern system, the notation
+consists of a stylised Greek numeric letter corresponding to each mode (alpha for I and Pl. I,
+beta for II and Pl. II, gamma for III, delta for IV and Pl. IV, beta rho for Varys), with pi and
+lambda prefixed to the letter for plagal modes (I, II, IV). (The modal indicators are strongly
+stylised, and there is no compelling reason to unify them with their originating letters.)
+The two ‘medial’ mode intonation formulas, nana and nenano, are formed from a sequence
+of two stylised nus, and two stylised nus prefixed by a stylised nu-epsilon, respectively.
+(Figure 2); these nus resurface as the gorthmic nus (see below).
+The pre-Modern intonation formula had its concluding notes adjusted to the following
+melody; so the notation for the formula (which was understood as an abbreviation for the
+formula itself) had written over it the neumes of its concluding notes (Figures 4, 6).
+The usual forms of the formulas had the following neumes written over or at the top
+right of the modal indication:
+I: apostrophos, apostrophos, oligon–ypsili
+17There has been some limited use of the pre-Modern formulae in modern notation, and the EphesiosArchtika
+font includes several of them.
+
+
+===== PAGE 41 =====
+41
+II: apostrophos, apostrophos, oligon with kentimata underneath,
+III: oligon with dipli underneath, oligon with kentimata underneath
+IV: apostrophos, apostrophos, oligon–ypsili
+Pl. I: apostrophos, apostrophos
+Pl. II: apostrophos, apostrophos
+Varys: oligon with dipli underneath
+Pl. IV: ison with dipli underneath
+Nana: ison, ison
+Nenano: ison with kentimata above, oligon, oligon with kentimata below
+Figure 6. Martyriae in Late notation (Wellesz 1961:302).
+Figure 7. Modern (left) and Middle (right) diatonic modal signatures (Raasted 1966:148).
+The glyph for U+1D0A6 includes both the gamma for Mode III and the sequence oligon
+with dipli underneath, oligon with kentimata underneath—indicating the concluding three
+
+
+===== PAGE 42 =====
+42
+notes of the formula.
+In the modern system, the signs have become further stylised, and merely
+conventional—although they are so different to their Middle predecessors as to be
+disunified from them. (Figure 7) Modern authorities no longer connect them to the original
+neumes; Panagopoulos (1947:111) even identifies the stylised alpha of modern notation
+with the hemiphi of Ancient Greek Musical Notation (U+1D203, Greek Vocal
+Notation Symbol 4). The modern diatonic modes retain their alpha and delta as mode
+letters; the modern chromatic and enharmonic modes use the Nana, Nenano, and Legetos
+mode letters. The pitch indicators use the same mode letters as the mode signatures in the
+diatonic and enharmonic scales; the soft and hard chromatic scales have their own mode
+letter equivalents.
+Figure 8. Modern pitch indicators (Efthymiadis 1988:21).
+The Unicode encoding does not decompose the signatures in terms of their erstwhile
+neumes.18 This approach is appropriate for the Modern signatures; but pre-Modern
+notation built its formula notations out of true neumes, allowing for variation, and should
+be so notated.
+The neumes in the Modern signatures have atrophied to conventional markings, which
+appear in the initial mode signature of the piece. When the signature is used medially, as a
+pitch indicator (Figure 8), the modern notation adds the initial letter of the pitch syllable in
+question, instead of the neume remnant (although two dots—U+1D0AD—are retained over
+the delta and alpha of Di and Ke). This letter appears on top of the mode letter, except for
+the bottom octave (Hypate), where it appears beneath it. In the high octave (Nete), the
+letters take a prime. (EphesiosPhthora: `, ~, Option-Shift-`; in the EphesiosIson font, the
+letter–prime combination is a single codepoint: A B G D K Z N, and the
+EphesiosPhthoraExpert font contains the possible combinations in pitch signatures,
+including phthoric martyriae [see below].)
+U+1D0A2 Byzantine Musical Symbol Martyria Protos Ichos [First Mode
+Signature] EphesiosArchtika: 0
+U+1D0A3 Byzantine Musical Symbol Martyria Alli Protos Ichos
+[Other First Mode Signature]
+ED Psaltica: V
+EphesiosPhthora: 1, (raised) !
+18The EphesiosArchtika font goes further, and codes each complete initial signature as a single codepoint: the
+normal combinations of pitch and mode signature are 1 q a z ! Q A Z.
+
+
+===== PAGE 43 =====
+43
+V
+As far as I can tell, these two are merely glyph variants. The pre-Modern
+stylised alpha had a straight stem. Also used in the pitch indicator for diatonic
+Pa and Ke (d, a).
+U+1D0A4 Byzantine Musical Symbol Martyria Deyteros Ichos [Second
+Mode Signature]
+U+1D0A5 Byzantine Musical Symbol Martyria Alli Deyteros Ichos
+[Other Second Mode Signature]
+ED Psaltica: ?
+EphesiosPhthora: Option-2, (raised) Option-Shift-2
+?
+These are also presumably glyph variants. The pre-Modern stylised beta looked
+more like a y, which is close to how lowercase beta was written at the time. The
+modern form of U+1D0A5 is also the original stylised nu-epsilon of the nenano
+formula; the beta and the nu-epsilon appear to have been conflated in the
+Modern system.
+Besides the mode signature for Mode II, this sign is also used in the pitch
+indicator for the chromatic tonic, mediant, dominant, and leading tone of
+Modes II (c–c) and II Plagal (d–d). In the hard chromatic scale, it appears alone;
+in the soft chromatic scale, it has U+1D0AD Byzantine Musical Symbol
+Apostrofoi Telous Ichimatos above it.
+U+1D0A6 Byzantine Musical Symbol Martyria Tritos Ichos [Third
+Mode Signature]
+EphesiosArchtika: a
+Variant Modern signature for Mode III; contains the original neumes for two
+oligons, the first with dipli and the second with kentimata, intact. Variants of
+the signature exclude the dipli; this argues against the decomposition of
+U+1D0A6 into <gamma> U+1D0AF U+1D0B0.
+U+1D0A7 Byzantine Musical Symbol Martyria Trifonias [Fourth
+Signature] ED Psaltica: N
+EphesiosPhthora: 3, (raised) #
+N
+The pre-Modern Nana Mode indicator (two nus). Used in the Modern signature
+for Mode III, and the diatonic pitch indicator for Ga and high Ni (f, cʹ).
+U+1D0A8 Byzantine Musical Symbol Martyria Tetartos Ichos [Fourth
+
+
+===== PAGE 44 =====
+44
+Mode Signature]
+ED Psaltica: C
+EphesiosPhthora: 4, (raised) $
+C
+The pre-Modern sign was a simple lowercase delta, without a downward tail.
+Used in the Modern signature for Modes IV and Pl. IV, and in the diatonic pitch
+indicator for Ni and Di (c, g).
+U+1D0A9 Byzantine Musical Symbol Martyria Tetartos Legetos
+Ichos [Tetartos Legetos Mode Signature]
+ED Psaltica: B
+EphesiosPhthora: 2
+B
+Used as symbol of the Legetos IV mode; derived from λΓ, an abbreviation of
+Legetos (λέγετος). (The legetos can also be notated with the normal Mode IV
+signature, followed by a continuous elaphron and the syllable Vou, to indicate
+that the finalis goes down from the expected g to e.) Also used in the diatonic
+pitch indicator for Vu and Zo (e, b).
+U+1D0AA Byzantine Musical Symbol Martyria Legetos Ichos
+EphesiosArchtika: l
+Alternative signature for the Legetos IV mode, a stylised abbreviation of
+λέγετος.
+U+1D0AB Byzantine Musical Symbol Martyria Plagios Ichos [Plagal
+Mode Signature]
+ED Fthora: S
+EphesiosArchtika: i
+S
+Used in both pre-Modern and Modern signatures to indicate the plagal mode; a
+straightforward ligature of pi and lambda.
+U+1D0AC Byzantine Musical Symbol Isakia Telous Ichimatos [Little
+Isons of the End of an Intonation Formula]
+A reflex of the erstwhile two isons appearing over the signature for Mode III. In
+
+
+===== PAGE 45 =====
+45
+the EphesiosPhthora font, the isakia are combined with the Mode III signature
+as the single codepoint Option-3, Option-Shift-3.
+U+1D0AD Byzantine Musical Symbol Apostrofoi Telous Ichimatos
+[Apostrophes of the End of an Intonation Formula]
+EphesiosArchtika: Option-=
+A reflex of the erstwhile two apostrophes, appearing over the signature for
+Modes II, Pl. I, Pl. II. It also functions as the medial pitch indicator for diatonic Di
+and Ke (g, a), and hard chromatic Ni, Vu, Di, Zo (c, e, g, b) in Mode II. Though it
+further appears over the signature for Pl. IV, there it is a remnant of the dipli
+instead; the two are routinely conflated in the neume remnants (already in the
+18th century), which is why they should not be conflated with their original
+neumes when used as signature formants in the modern system. The glyph very
+frequently is rendered merely as two dots.
+In the EphesiosPhthora font, the apostrophoi are combined with the mode
+signature in one codepoint: Option-1 for the Mode I signature, Option-0 for the
+Mode II signature, Option-4 for the Mode IV signature (with Option-Shift for
+raised versions).
+U+1D0AE Byzantine Musical Symbol Fanerosis Tetrafonias
+[Manifestation of Fifth]
+A reflex of the erstwhile combination of two apostrophes and an ypsili,
+appearing over the signature for Modes I and IV. Since this is a unitary
+construct in Modern musical theory, there is little point in decomposing it,
+although it is clearly a combination of the U+1D0AD apostrophes and an ypsili.
+U+1D0AF Byzantine Musical Symbol Fanerosis Monofonias
+[Manifestation of Second]
+EphesiosArchtika: Option-Shift-o
+A reflex of the erstwhile combination of oligon and dipli, appearing over the
+signature for Varys Mode.
+U+1D0B0 Byzantine Musical Symbol Fanerosis Monofonias
+[Manifestation of Third]
+EphesiosArchtika: Option-5
+A reflex of the erstwhile combination of oligon and kentimata, appearing over
+the signature for Mode II.
+U+1D0B1 Byzantine Musical Symbol Martyria Varys Ichos [Varys Mode
+Signature] ED Psaltica: >
+EphesiosPhthora: 7, (raised) &
+>
+Stylisted beta-rho. The pre-Modern sign started with a u-shape (the old
+lowercase beta), rather than a loop. Used in the Modern signature for Varys
+Mode, and in the diatonic pitch indicator for low Zo (B).
+
+
+===== PAGE 46 =====
+46
+U+1D0B2 Byzantine Musical Symbol Martyria Protovarys Ichos
+[Proto–Varys Mode Signature]
+EphesiosArchtika: K, S
+Signature for the Proto-Varys mode, regarded as a combination of Modes I and
+Varys. Accordingly, the signature combined U+1D0B1 and U+1D0A3, the
+signatures of the two modes.
+U+1D0B3 Byzantine Musical Symbol Martyria Plagios Tetartos
+Ichos [Plagal Fourth Mode Signature]
+EphesiosArchtika: Z
+A combination of the plagal marker U+1D0AB, the Mode IV signature U+1D0A8,
+and the signature formant neume U+1D0AD.
+U+1D0B4 Byzantine Musical Symbol Gorthmikon N Aploun [Gorthmic
+Single Nu] EphesiosIson: ]; EphesiosArchtika: Option-y
+U+1D0B5 Byzantine Musical Symbol Gorthmikon N Diploun [Gorthmic
+Double Nu] EphesiosIson: [; EphesiosArchtika: Option-m
+These two glyphs are stylised versions of nu, used in melismatic passages where
+an extratextual nasalised n is inserted (to allow drawing breath without an
+obvious break). So a particularly long-drawn out Kyrie might be sung as
+Kyyyyyyriii[n]iiie. In that case, the inserted nu will be written with one of these
+glyphs. The nonsense-syllables of intonation formulas, which are thought of as
+wholly melismatic, are also spelled with these glyphs—so that U+1D0A5 and
+U+1D0A7 are derived from gorthmic nus: n(a)n(a) and n(enano). The ‘double nu’
+(in Efthymiadis the gorthmikon) is the version used before epsilon and alpha-iota
+(both pronouced /e/), and thus in nenano; this is because the glyph originated as
+a nu-epsilon ligature. The ‘single nu’ (in Efthymiadis the pelastikon) is the
+version used before all other vowels and digraphs, and thus in nana.
+The following are the eight pre-Modern intonation formulas, with ν standing for
+1
+single nu and ν for double nu; note that when Raasted transcribed the formulas into
+2
+Western notation (Figure 5), he used simple nu.
+I: αν αν εαν ες Pl. I: αν εαν ες
+1 2 2 2 2
+II: ν εαν ες Pl. II: ν εαν ες
+2 2 2 2
+III: αν εαν ες Varys: αν ες
+2 2 2
+IV: αγια Pl. IV: ν εαγιε
+2
+3.4.3. Modulants
+The Phthorae (here termed ‘modulants’, after Tillyard; lit. ‘destroyers’) indicate a change of
+scale within a piece. There are phthorae for each note on the diatonic scale, and for the
+bottom and top note of the chromatic tetrachords (which imply the chromatic modes II
+and II Plagal).19 Phthorae are bound to particular notes; if they appear on the ‘right’ note in
+19Some phthorae have effect only over one tetrachord, so it is possible for half the scale to be diatonic and the
+other half chromatic. For instance, in Plagal II, a chromatic mode, a diatonic Ke modulator would have scope
+only over a–dʹ.
+
+
+===== PAGE 47 =====
+47
+a piece, they at most change the current scale (and therefore the mode). If they occur on
+other notes, they shift the finalis as well as the mode of the scale, effecting a transposition.
+For example, if a phthora associated with d occurs on the note b, the piece is transposed
+from b to d, and the key signature of intervals surrounding d shifts accordingly.
+When a transposition takes place, the pitch letter appearing in the ensuing pitch
+indicators changes accordingly, and the modified pitch indicator is termed a phthoric
+martyria. So while normally the pitch indicator associates each pitch with its own mode
+letter, that association is disrupted in transposition, and the pitch indicator appears over
+the mode letter for the new mode. (So if we are in Mode I and transpose from Zo (b) to Pa
+(d), the next pitch indicator for a cadence on Zo would not have the pitch letter zeta over
+U+1D0B1, but over U+1D0A3—the mode letter normally associated with diatonic Pa.) If a
+piece is ‘interloping’ (ἐπείσακτον)—i.e. it is titularly associated with one mode but is in fact
+sung in another—then the pitch syllable with the appropriate phthora is inserted in the
+mode signature for the piece.
+Phthorae are distinct from the differentiators: the differentiators alter the pitch of a
+specific note, corresponding to Western accidentals, whereas the modulators change the
+current mode, corresponding to Western key signatures. This can include shifting a single
+note globally through a piece, such as flattening b. However, modulators can be written
+either above or below a neume (wherever they will fit), so the distinction does not mean
+much for the positioning of the signs.
+The initial letter of the pitch associated with the phthora occasionally appears over it.
+Phthorae usually appear over a neume, but can also appear over a pitch indicator, changing
+its scale type. For example, the nenano phthora (U+1D0C7), appearing over the diatonic
+pitch indicator for g (U+1D0A8 U+1D0AD U+1D0EC), shifts the scale from that point
+forward from diatonic to hard chromatic, since the nenano is a hard chromatic mode.
+The full phthoral system is Modern; the Nenano phthora dates from Middle notation,
+and the diatonic phthorae used to cancel chromatic mode and to modulate the finalis date
+from Late notation.
+U+1D0B6 Byzantine Musical Symbol Enarxis Kai Phthora Vou
+[Beginning and e Modulator]
+ED Fthora: G, g
+EphesiosMain: 4; EphesiosPhthora: x, Option-x
+G
+Diatonic e Modulator (transpose current note to e); also used for the pre-
+Modern consonant sign Enarxis (see above).
+U+1D0BA Byzantine Musical Symbol Fthora Diatoniki Pa [Diatonic d
+Modulator] ED Fthora: F, f
+
+
+===== PAGE 48 =====
+48
+EphesiosMain: ~; EphesiosPhthora: o, O
+F
+Diatonic d Modulator.
+U+1D0BB Byzantine Musical Symbol Fthora Diatoniki Nana [Diatonic
+‘Nana’ Modulator]
+ED Fthora: H, h
+EphesiosMain: *; EphesiosPhthora: Option-8, (raised) Option-Shift-8
+H
+Diatonic f Modulator.
+U+1D0BD Byzantine Musical Symbol Fthora Diatoniki Di [Diatonic g
+Modulator] ED Fthora: J, j
+EphesiosMain: 6; EphesiosPhthora: 8, (raised) *
+J
+Diatonic g Modulator.
+U+1D0FB Byzantine Musical Symbol Fthora Diatoniki Ke [Diatonic a
+Modulator] ED Fthora: K, k
+EphesiosMain: ^; EphesiosPhthora: Option-o, Option-Shift-o
+K
+Diatonic a Modulator.
+U+1D0C0 Byzantine Musical Symbol Fthora Diatoniki Zo [Diatonic b
+Modulator] ED Fthora: L, l
+EphesiosMain: $; EphesiosPhthora: X, Option-Shift-x
+
+
+===== PAGE 49 =====
+49
+L
+Diatonic b Modulator.
+U+1D0C1 Byzantine Musical Symbol Fthora Diatoniki Ni Kato
+[Diatonic Low c Modulator]
+ED Fthora: D, E, d, e
+EphesiosMain: `, Option-Shift-`; EphesiosPhthora: p, P
+d
+Diatonic c Modulator.
+U+1D0C2 Byzantine Musical Symbol Fthora Diatoniki Ni Ano [Diatonic
+High c Modulator]
+ED Fthora: 7
+EphesiosMain: Option-Shift--; EphesiosPhthora: Option-p, Option-Shift-p
+7
+Diatonic high c Modulator. (Recall that the scale on high c is considered distinct
+from that on low c.)
+U+1D0C3 Byzantine Musical Symbol Fthora Malakon Chroma Difonias
+[Soft Chromatic Third Modulator]
+ED Fthora: 2
+EphesiosMain: 0; EphesiosPhthora: 0, (raised) )
+2
+Soft chromatic Di (g) Modulator (also used on Ni, Vou, Zo—c, e, b—without
+transposition). If used with another pitch, that pitch’s signature is placed
+underneath the Modulator.
+U+1D0C4 Byzantine Musical Symbol Fthora Malakon Chroma
+Monofonias [Soft Chromatic Second Modulator]
+ED Fthora: $
+
+
+===== PAGE 50 =====
+50
+EphesiosMain: Option-5; EphesiosPhthora: Option-5, (raised) Option-Shift-
+5
+$
+Soft chromatic Ke (a) Modulator (also used on Ni, Vou, Zo—d, f, c—without
+transposition). If used with another pitch, that pitch’s signature should be
+placed underneath the Modulator. Also used in the pitch indicator for Pa, Ga,
+Ke, Ni (d, f, a, high c) in the soft chromatic scale.
+U+1D0C5 Byzantine Musical Symbol Fhtora Skliron Chroma Vasis
+[Hard Chromatic Base Modulator]
+ED Fthora: 1
+EphesiosMain: 7; EphesiosPhthora: 6, (raised) ^
+1
+Hard chromatic Pa (d) Modulator (also used on Ga, Ke, Ni—f, a, c—without
+transposition). Notorious in Unicode as a mispelling irrevocably enshrined in
+the standard.
+U+1D0C7 Byzantine Musical Symbol Fthora Nenano [‘Nenano’ Modulator]
+ED Fthora: 6
+EphesiosMain: 5; EphesiosPhthora: 5, (raised) %
+6
+Hard chromatic Di (g) Modulator (also used on Ni, Vou, Zo, Pa—c, e, b, high d—
+without transposition). Also used in the pitch indicator for Ni, Vou, Zo, Di, Pa (c,
+e, g, b, d) in the hard chromatic scale. The nenano modulator was also used in
+pre-Modern notation, to indicate the Nenano mode.
+U+1D0C8 Byzantine Musical Symbol Chroa Zygos [‘Scales’ Chroa]
+ED Fthora: *
+EphesiosMain: &; EphesiosPhthora: Option-z, Option-Shift-z
+
+
+===== PAGE 51 =====
+51
+*
+Chromatic Di (g) Modulator, causes d and f to be sharpened (the ‘Zygos’ chroa).
+U+1D0C9 Byzantine Musical Symbol Chroa Kliton [‘Inclined’ Chroa]
+ED Fthora: 9
+EphesiosMain: 8; EphesiosPhthora: 9, (raised) (
+9
+Chromatic Di (g) Modulator, causes e and f to be sharpened (the ‘Cliton’ chroa).
+U+1D0CA Byzantine Musical Symbol Chroa Spathi [‘Sword’ Chroa]
+ED Fthora: `
+EphesiosMain: Option-7; EphesiosPhthora: Option-7, (raised) Option-Shift-
+7
+`
+Chromatic Ke (a) Modulator, causes g to be sharpened and b to be flattened (the
+‘Spathi’ chroa).
+U+1D0CB Byzantine Musical Symbol Fthora I Yfesis Tetartimorion
+[Quarter Tone Differentator Or Flat]
+ED Fthora: 0
+EphesiosMain: Option-Shift-; EphesiosPhthora: c, C
+0
+The ‘Agem’ Modulator, written on Zo, Vou or Ga (b, e, f), causes b to be flattened
+in Mode I Plagal, serving as an indicator of the enharmomic scale. (The other
+notes of the enharmonic scale have the same phthorae as in the diatonic scale.)
+Also used as a flat differentiator (see above). This means the sign can modify
+both an interval sign—as do the other differentiators—and stand on its own as a
+
+
+===== PAGE 52 =====
+52
+modulator.
+U+1D0D8 Byzantine Musical Symbol Geniki Diesis [General Sharp]
+ED Fthora: 3
+3
+Modulator which causes all e’s in a piece to be sharp. The sign is named a sharp,
+as with other accidentals, and is included under the Differentiator rubric.
+U+1D0D9 Byzantine Musical Symbol Geniki Yfesis [General Flat]
+ED Fthora: 5
+5
+Modulator which causes all b’s in a piece to be flat. Can also appear over a pitch
+indicator, shifting its scale to enharmonic. The General Sharp and Flat produce
+an enharmonic scale, and are usual in Mode III pieces.
+Figure 9. Phthorae in Late notation (Wellesz 1961:309).
+While the full-fledged system of phthorae is modern, modulants were already in use in
+Late notation (Figure 9), where they were associated with modes rather than pitches. The
+modulants were: Mode I, U+1D0BF; Mode III, U+1D0BB; Mode IV, U+1D0BD; Mode II Plagal,
+U+1D0BA; Mode Varys, U+1D0C7; Mode IV Plagal, U+1D0C2. Of the two remaining
+modulants, that for II appears in the chart as U+1D0B9; that for Pl. I is absent.
+U+1D0B9 Byzantine Musical Symbol Fthora Archaion Deyterou Ichou
+[Ancient Modulant of the Second Mode]
+Modulant associated with Mode II.
+Two further pre-Modern modulants are still uncertain in their denotation:
+
+
+===== PAGE 53 =====
+53
+U+1D0B7 Byzantine Musical Symbol Imofonon [Half-voiced]
+Unexplained in the source treatises; according to Thibault this is a modulant
+marking modulation away from the Varys Mode.
+U+1D0B8 Byzantine Musical Symbol Imifthoron [Half-Modulant]
+EphesiosArchtika: Option-Shift-p
+Aparently a modulant marking modulation away from Mode IV Plagal.
+I do not yet have information on U+1D0BC Byzantine Musical Symbol Fhthora
+Naos Ichos (EphesiosPhthora: j, J) or U+1D0C6 Byzantine Musical Symbol
+Fhthora Skliron Chroma Synafi (EphesiosPhthora: Option-6, Option-Shift-6).
+3.5. Rhythmic Signs
+The rhythmic signs are used to indicate the beat of the piece in Modern notation. Of these,
+the diastolai (measures) are kinds of bar line, while the simanses (soundings) are equivalent
+to time signatures, appearing at the start of a piece.
+U+1D0DA Byzantine Musical Symbol Diastoli Apli Mikri [Simple Small
+Measure] EphesiosMain: |, Option-Shift-|; EphesiosIson: |
+U+1D0DB Byzantine Musical Symbol Diastoli Apli Megali [Simple
+Large Measure]
+EphesiosMain: \; EphesiosIson: \
+The full bar (large measure) is more frequent; I am not aware of any semantic
+distinction between the two. Margaziotis uses the small barline,
+Panagiotopoulos, Efthymiadis and Theofilopoulos the large; this seems to be a
+matter of individual preference.
+U+1D0DC Byzantine Musical Symbol Diastoli Dipli [Double Measure]
+EphesiosMain: ?; EphesiosIson: /
+The double barline is used to give the bars of compound metres, in order to
+contrast with the internal downbeat barline below.
+U+1D0DD Byzantine Musical Symbol Diastoli Theseos [Downbeat
+Measure] EphesiosMain: Option-/; EphesiosIson: ?
+Used to indicate next downbeat in compound metre, as with Western dotted
+barline; for instance a 3+2+2 metre would have a diastoli theseos for each
+subdivision of the bar. The diastoli theseos glyph may be regarded as a
+combination of diastoli and yfen.
+The simanses are a sequence of omicrons and iotas, omicron indicating a downbeat,
+and iota an upbeat; apli, dipli &c. dots may appear over the signs, lengthening them. Thus:
+U+1D0DE Byzantine Musical Symbol Simansis Theseos [Sounding of
+Downbeat] EphesiosArchtika: Shift-Option-5
+One-beat downbeat.
+U+1D0DF Byzantine Musical Symbol Simansis Theseos Disimou
+[Sounding of Two-beat Downbeat]
+
+
+===== PAGE 54 =====
+54
+EphesiosArchtika: Shift-Option-6
+Two-beat downbeat.
+U+1D0E0 Byzantine Musical Symbol Simansis Theseos Trisimou
+[Sounding of Three-beat Downbeat]
+EphesiosArchtika: Shift-Option-7
+Three-beat downbeat.
+U+1D0E1 Byzantine Musical Symbol Simansis Theseos Tetrasimou
+[Sounding of Four-beat Downbeat]
+EphesiosArchtika: Shift-Option-9
+Four-beat downbeat.
+U+1D0E2 Byzantine Musical Symbol Simansis Arseos [Sounding of
+Upbeat] EphesiosArchtika: Shift-Option-0
+One-beat upbeat.
+U+1D0E3 Byzantine Musical Symbol Simansis Arseos Disimou
+[Sounding of Two-beat Upbeat]
+EphesiosArchtika: Shift-Option-w
+Two-beat upbeat.
+U+1D0E4 Byzantine Musical Symbol Simansis Arseos Trisimou
+[Sounding of Three-beat Upbeat]
+EphesiosArchtika: Shift-Option-r
+Three-beat upbeat.
+U+1D0E1 Byzantine Musical Symbol Simansis Arseos Tetrasimou
+[Sounding of Four-beat Upbeat]
+EphesiosArchtika: Shift-Option-e
+Four-beat upbeat.
+So 4/4 is normally written as OIII: one down-beat, three up-beats. 3/2, which is seen
+occasionally, is written as Ȯİİ: one double-length downbeat, two double-length upbeats. 7/4
+= 3+3+2/4 would be written as OIIOIOI. Since the first beat is stronger, 7/8 could also be
+written as Öİİ; but I have not seen this done. In fact, outside 3/2, I have not seen lengthened
+simanses used at all; folksong transcription, where the subtle indications of complex
+metrical structure could be useful, appears to avoid them.
+Although the Unicode encoding gives the simanses distinct glyphs, all instances of the
+semanses I have seen in use conflate them with the Greek capital letters—even in
+manuscript.
+Of the rhythmic signs, the simanses are relatively infrequent; exercises such as Figure 3
+are the only genre where they are the norm. The metre of a piece is more often either
+written out in words (e.g. ῥυθμός τετράσημος, “four-beat metre”), or implied through the
+use of bars; more often, it is simply unstated.20 Byzantine chant is traditionaly quite free in
+20The failure to state the metre explicitly can lead to trouble in folk music transcriptions; Dragoumis
+(1991:101) for example believes he has found in Phardys’ folk music transcriptions the first instances of
+rebetika music, dating from the 1870s—if he has reconstructed the 9/8 metre correctly.
+
+
+===== PAGE 55 =====
+55
+deviating from the set metre. The only barline seen with any frequency is the diastoli, and
+even that is not usual; the other barlines are restricted to paedagogical contexts. When the
+bar length is highly variable, an Arabic numeral for the number of beats in the given bar is
+occasionally added, particularly in paedagogical texts.
+4. Early Neumatic notation
+Early neumatic notation remains problematic, not least because it was itself transitional
+between ecphonetic and neumatic notation. The early signs are gathered together under
+the Melodimata (Melodics) rubric, and most are duplications rather than conflations with the
+same signs in earlier or later use. (However no distinct Early sign has been devised for:
+U+1D012, U+1D048, U+1D04A, U+1D051, U+1D055, U+1D058, U+1D05C,
+U+1D061, U+1D066, U+1D06A, U+1D07A, U+1D080—presumably because the glyphs
+remained identical in Ecphonetic or Middle notation.)
+I use Thibaut’s (1976) discussion of the notation; Thibault’s definitions are not always
+clear (I assume relâchement and surtension are really about pitch, in which case the neumes
+are often quite close to Middle and Modern), but I am not sure much can be done about
+that.
+My impression from Palikarova Verdeil (1953) is that some of the many signs
+undocumented below belong to the short-lived Kontakarian notation; I would need more
+information before writing anything further.
+U+1D012 Byzantine Musical Symbol Apostrofos Dipli
+Known in Early notation as Double Apostrophe, Varia (Grave), and Dyosyndesmoi
+(Two Joined); compressed relaxation of voice with rhythmic lengthening.
+U+1D015 Byzantine Musical Symbol Oligon Archaion [Old Slight]
+Slight tensing or rising of voice; unaccented rising second.
+U+1D016 Byzantine Musical Symbol Gorgon Archaion [Old Swift]
+—
+U+1D017 Byzantine Musical Symbol Psilon [High]
+Direct modulation through discontinuous intervals.
+U+1D018 Byzantine Musical Symbol Chamilon [Low]
+Indirect modulation through discontinuous intervals.
+U+1D019 Byzantine Musical Symbol Vathy [Deep]
+—
+U+1D01A Byzantine Musical Symbol Ison Archaion [Old Equal]
+Normal chanting.
+U+1D01B Byzantine Musical Symbol Kentima Archaion [Old Stitch]
+Tensing of the voice through disjoint steps.
+U+1D01C Byzantine Musical Symbol Kentimata Archaion [Old Stitches]
+—
+U+1D01D Byzantine Musical Symbol Saximata [Arrangements?]
+
+
+===== PAGE 56 =====
+56
+—
+U+1D01E Byzantine Musical Symbol Parichon [By-Sound]
+—
+U+1D01F Byzantine Musical Symbol Stavros Apodexia [Cross from the
+left]
+—
+U+1D020 Byzantine Musical Symbol Oxeiai Archaion [Old Acutes]
+—
+U+1D021 Byzantine Musical Symbol Vareiai Archaion [Old Graves]
+—
+U+1D022 Byzantine Musical Symbol Apoderma Archaion [Old Giving]
+—
+U+1D023 Byzantine Musical Symbol Apothema [Placing Away]
+—
+U+1D024 Byzantine Musical Symbol Klasma [Breaking]
+Also Klasma Mikron [Small Breaking]; lenghenting of note, less than for the xiron
+klasma (U+1D06A).
+U+1D025 Byzantine Musical Symbol Revma [Flow]
+—
+U+1D026 Byzantine Musical Symbol Piasma Archaion [Old Catching]
+—
+U+1D027 Byzantine Musical Symbol Tinagma [Flinging]
+—
+U+1D028 Byzantine Musical Symbol Anatrichisma [Counter-Hair]
+A ‘body’ (step) in Early notation; a melismatic figure in Late notation.
+U+1D029 Byzantine Musical Symbol Seisma [Shaking]
+Long trilled note. Tillyard reports it in use also in Middle notation, possibly as a
+tremolo.
+U+1D02A Byzantine Musical Symbol Synagma Archaion [Old Gathering]
+—
+U+1D02B Byzantine Musical Symbol Synagma Meta Stavrou [Gathering
+with Cross]
+—
+U+1D02C Byzantine Musical Symbol Oyranisma Archaion [Old Heavening]
+—
+U+1D02D Byzantine Musical Symbol Thema [Placing]
+—
+U+1D02E Byzantine Musical Symbol Lemoi [?]
+
+
+===== PAGE 57 =====
+57
+—
+U+1D02F Byzantine Musical Symbol Dyo [Two]
+—
+U+1D030 Byzantine Musical Symbol Tria [Three]
+—
+U+1D031 Byzantine Musical Symbol Tessera [Four]
+—
+U+1D032 Byzantine Musical Symbol Kratimata [Holdings]
+The kratima, which was a compound of the dipli and petasma alone (the top part
+of the kratimata glyph) indicated a musical formula whose first note was held.
+The kratimata is presumably an elaboration on this, but a distinct sign.
+U+1D033 Byzantine Musical Symbol Apeso Exo Neo [Modern Inside Out]
+Inverse melodic movements.
+U+1D034 Byzantine Musical Symbol Fthora Archaion [Old Modulant]
+Sign of modulation in general. There are various symbols for the modulation to
+the ‘Nenano’ mode in particular (oxia + ypsili + kentema; stylised nu + nu +
+omicron), which are not represented in the current encoding.
+U+1D035 Byzantine Musical Symbol Imifthora [Semi-Modulant]
+—
+U+1D036 Byzantine Musical Symbol Tromikon Archaion [Old Trembling]
+—
+U+1D037 Byzantine Musical Symbol Katava Tromikon [Trembling
+Descent]
+—
+U+1D038 Byzantine Musical Symbol Pelaston [Neighbouring]
+—
+U+1D039 Byzantine Musical Symbol Psifiston [Reckoned]
+—
+U+1D03A Byzantine Musical Symbol Kontevma [Shortening]
+—
+U+1D03B Byzantine Musical Symbol Chorevma Archaion [Old Dancing]
+—
+U+1D03C Byzantine Musical Symbol Rapisma [Striking]
+—
+U+1D03D Byzantine Musical Symbol Parakalesma Archaion [Old
+Beseeching]
+—
+U+1D03E Byzantine Musical Symbol Paraklitiki Archaion [Old
+Supplicating]
+
+
+===== PAGE 58 =====
+58
+Quick alternation of two notes; contrasts with xiron klasma (U+1D06A).
+U+1D040 Byzantine Musical Symbol Nana [‘Nana’ Mode]
+Modulation to the ‘Nana’ mode.
+U+1D041 Byzantine Musical Symbol Petasma [Flinging]
+Also called Petasti; lively raising of the voice.
+U+1D042 Byzantine Musical Symbol Kontevma Allo [Other Shortening]
+—
+U+1D043 Byzantine Musical Symbol Tromikon Allo [Other Trembling]
+—
+U+1D048 Byzantine Musical Symbol Oxeia Neo [Modern Acute]
+In Early notation, the acute represented tensing of the voice and a slight accent.
+U+1D04A Byzantine Musical Symbol Koufisma [Hollowing]
+Sing delicately; originally compound of petasma and klasma, which continued
+to modify two syllables in a row.
+U+1D051 Byzantine Musical Symbol Apostrofos Neo [Modern Apostrophe]
+Compressed relaxation of voice.
+U+1D055 Byzantine Musical Symbol Elafron [Light]
+Compressed relaxation of voice through discontinuous interval.
+U+1D058 Byzantine Musical Symbol Varia Neo [Modern Grave]
+Relaxation of voice, downbeat.
+U+1D05C Byzantine Musical Symbol Antikenoma [Instead of Void]
+A tie of a run of descending and ascending notes, corresponding to the Middle
+Epegerma (U+1D068).
+U+1D061 Byzantine Musical Symbol Kylisma [Rolling]
+A ‘convolutionary’ musical formula.
+U+1D066 Byzantine Musical Symbol Syrma
+Indicates a turn, same as Ecphonetic Syrmatiki (U+1D008).
+U+1D06A Byzantine Musical Symbol Xiron Klasma [Dry Breaking]
+Rhythmic elongation; compound of dipli and klasma.
+U+1D07A Byzantine Musical Symbol Katavasma [Descent]
+The katavasma of Early notation looks like the Ecphonetic ypokrisis or ypokrisis
+dipli (or a wavy vertical line), but is semantically to be identified with the later
+yporroi, a descent of two seconds (and is of course a compound of two
+apostrophes); katavasma and yporroi were synonymous in Middle notation.
+U+1D080 Byzantine Musical Symbol Dipli Archaion [Ancient Double]
+Compound of two oxiai; rhythmic lengthening.
+Other compound symbols, such as the anastama [‘raising’: dipli + apostrophos +
+petasma + kentimata] are absent from the encoding, although they can be represented
+through codepoint combination. The anastama was also used in Late notation.
+
+
+===== PAGE 59 =====
+59
+4.1. Late Miscellaneous
+The Melodics rubric also includes several signs which are apparently Late ornaments,
+but which for some reason have not been included with the other hypostases. These
+ornaments may be Early, and some of the ornaments Thibault discusses do overlap
+between the two periods; clarification is needed on why these signs were included in this
+rubric (and in this font for the reference glyphs). The signs in question are:
+U+1D008 Byzantine Musical Symbol Syrmatiki
+Same as in Ecphonetic and Early.
+U+1D028 Byzantine Musical Symbol Anatrichisma [Counter-Hair]
+A ‘body’ (step) in Early notation; a melismatic figure in Late notation.
+U+1D03F Byzantine Musical Symbol Ichadin [Little sound]
+A formula opposed to the double pelaston, involving two oxiai and two
+apostrophoi.
+U+1D044 Byzantine Musical Symbol Straggismata [Drippings]
+Consecutive falling thirds.
+U+1D045 Byzantine Musical Symbol Gronthismata [Punchings]
+The grothisma or bythogrothisma [Deep Punching] indicated martellato
+articulation. The Negorthmos and Gorthmos appear to have been variants of
+this.
+Other Late signs absent from the current encoding include: the Darmos [Beating], the
+Orthion [Standing Up], the Chairestismos [Salutation], the Kolaphismos [Bellows], the Krousma
+[Striking, an attacco], the Antikountisma [Response], and the Anapavma [Repose].
+Bibliography
+Dragoumis, M.F. [Δραγούμης, Μ.Φ.] 1991. Ογδόντα Πέντε Δημοτικές Μελωδίες από τα Κατάλοιπα του
+Νικόλαου Φαρδύ. Athens: Κέντρο Μικρασιατικών Σπουδών.
+Efthymiadis, A.C. [Εὐθυμιάδης, Ἀ.Χ.] 1988. Μαθήματα Βυζαντινῆς Ἐκκλησιαστικῆς Μουσικῆς. 3rd ed.
+Thessalonica.
+Höeg, C. 1935. La Notation Ekphonétique. Copenhagen: Levin & Munksgaard.
+Kakoulidis, G.I. [Κακουλίδης, Γ.Ἰ.] 1984. Βυζαντινή Θεία Λειτουργία. Athens.
+Kyriakopoulos, D.K. [Κυριακόπουλος, Δ.Κ.] 1992. 170 Γορτυνιακὰ Δημοτικὰ Τραγούδια. Athens: Ἑταιρεία
+Πελοποννησιακῶν Σπουδῶν.
+Lungu, N., Costea, G. & Croitoru, I. 1984. A guide to the Music of the Eastern Orthodox Church. Tr. Apostola,
+N.K. Boston: Holy Cross Orthodox Press.
+Karamanis, A. [Καραμάνης, Ἀ.] 1965. Νέα Μουσικὴ Κυψέλη. Vol. 3.1. Thessalonica.
+Margaziotis, I.D. [Μαργαζιώτης, Ἰ.Δ.] 1958. Θεωρητικὸν Βυζαντινῆς Ἐκκλησιαστικῆς Μουσικῆς. Athens: Χ.
+Στασινός.
+Morgan, M.M. 1971. The ‘Three Teachers’ and Their Place in the History of Greek Church Music. In
+Velimirović, M. (ed.), Studies in Eastern Chant, Volume II. London: Oxford University Press. 86–99.
+Panagiotopoulos, D.G. [Παναγιωτόπουλος, Δ.Γ.] 1986. Θεωρία καὶ Πρᾶξις τῆς Βυζαντινῆς Ἐκκλησιαστικῆς
+Μουσικῆς. 4th ed. Athens: Ἀδελφότης Θεολόγων «Ὁ Σωτήρ».
+Palikarova Verdeil, R. 1953. La musique byzantine chez les bulgares et les russes (du IXe au XIVe siècle).
+Copenhagen: Ejnar Munskgaard.
+
+
+===== PAGE 60 =====
+60
+Raasted, J. 1966. Intonation Formulas and Modal Signatures in Byzantine Musical Manuscripts. Copenhagen:
+Ejnar Munksgaard.
+Theofilopoulos, H. 1979. Συνοπτικὴ Θεωρία Ἐκκλησιαστικῆς Βυζαντινῆς Μουσικῆς. 3rd ed. Thessalonica: Β.
+Ρηγόπουλος.
+Thibault, J.-B. 1976. Monuments de la Notation Ekphonètique et Hagiopolite de l’Eglise Grecque. Hildesheim:
+Georg Olms.
+Tillyard, H.J.W. 1923. Byzantine Music and Hymnography. London: The Faith Press.
+Tillyard, H.J.W. 1970. Handbook of the Middle Byzantine Musical Notation. 2nd ed. Copenhagen:
+Munksgaard.
+von Gardener, J. 1980. Russian Church Singing. Vol. 1. Tr. Morosan, V. Crestwood (N.Y.): St Vladimir’s
+Seminary Press.
+Wellesz, E. 1961. A History of Byzantine Music and Hymnography. 2nd ed. Oxford: Clarendon Press.
+Appendix A. Illustrations.
+Figure 10. Illustration of Middle notation in modern scholarly transcription. (Raasted 1966:13): Ἔστησαν τὰ
+τριάκοντα ἀργύρια, “They set the thirty pieces of silver”. Note: the multiple neumes over single hypostases;
+for instance, the oxeia, oxeia, elaphron, apostrophos, oligon, all around the kylisma on -στη- in the first line.
+Also: the intonation formulas (signatures) in red, at the start of the first and fourth lines, indicating III and
+Nana modes respectively.
+Figure 11. Another illustration of Middle notation (Raasted 1966:47)—this time with a modulant, associated in
+Middle notation with a, and transposing f to a. Again, abundant use of multiple neumes above and below
+hypostases.
+
+
+===== PAGE 61 =====
+61
+Figure 12. Raasted’s transcription of Figure 11 into Western notation.
+Figure 13. Modern use of Byzantine notation alongside Western. A transcription of the standard Modern
+Greek Christmas carol Καλήν εσπέραν άρχοντες, “Good Evening, My Lords”. Western devices for indicating
+repeats have been imposed onto Byzantine notation. The tempo is spelled out (Γοργά, “swift”), and the pitch
+syllables for the starting note is given explicitly as a syllable, Di (g). The Western solfège for the finalis (Mi) is
+given as a gloss on the mode signature (Vou Legetos). Monotonic accentuation is used in the Western
+transcription but no accentuation is in the Byzantine; both transcriptions use the omicron-upsilon ligature
+(Χριστού appears as Χριστȣ́) .
+
+
+===== PAGE 62 =====
+62
+Figure 14. A cherubic hymn by the 19th century composer Th. Fokaefs (Kakoulidis 1984:175). The ison is
+indicated by the note syllables written over the neumes, with ΜΑ standing for μαζί, “togther”; the editor also
+introduces ΣΙΓ (σιγά, “softly”) and ΚΑΝ (κανονικά, “normally”) as dynamic indications. The mode signature is
+spelled out (Ἦχος βʹ, “Mode II”), followed by the syllable for g (Δι) with a soft chromatic third modulator,
+indicating that the finalis is g and that the scale is the soft chromatic. At the end of the signature is a slow
+conduit tempo marker. The Arabic numeral 3 gives the number of beats in the two initial bars (with short
+barlines).
+In accordance with the slow tempo of cherubic hymns, the syllables are much drawn out; the text on this
+page is Οἱ τὰ χερουβὶμ μυστικῶς εἰκονίζοντες, “those that secretly imagine the cherubim”. Extratextual nus
+have been inserted into the word χερουβίμ (χεεεεεε[ν]εεεεεεεεεεεερουου[ν]ουουουουχεερουουβιιμ), but the
+editor has used a normal nu instead of the proper gorthmic nu. The editor also makes a distinction between
+the stavros (only the soloists pause) and the Western breathing mark (the ison singers pause as well).
+
+
+===== PAGE 63 =====
+63
+Figure 15. A folksong transcrption from the Peloponnese, Τί ἔχουν τῆς Μάνης τὰ βουνά, “What ails the
+mountains of Maina” (Kyriakopoulos 1992:297). The metre indication is spelled out (Ρυθμός Ἑξάσημος, “six-
+beat metre”). The double barline is used for the six beats, the downbeat barline for each three beats. The
+trigorgon and tetragorgon is used extensively, the latter with a clarifying numeral 5. The soft chromatic
+modulants on the fourth and fifth lines change the scale, and are cancelled out by the subsequent diatonic g
+modulants. Note the straight lines in the glyph for the Mode III letter (U+1D0A7).
+Figure 16. Western transcription of the same song (Kyriakopoulos 1992:296) . The punctuated gorgon is
+transcribed as a dotted eighth note–sixteenth note. The omalon grace note is incorporated into the run of
+sixteenth notes in the fourth half-bar (which is a triplet in the Byzantine transcription).
+
+
+===== PAGE 64 =====
+64
+Figure 17. An example of liturgical printed notation: the Christmas hymn Σήμερον τίκτει ἡ Παρθένος, “Today
+the Virgin gives birth”. (Karamanis 1965:326) The mode signature is spelled out (Ἦχος γʹ, Mode III). The finalis
+syllable Γα is followed by an elaphron and Πα, meaning that the true finalis is d, not f (and that the piece is in
+d minor, not f major). This is an old anomaly remarked on in Panagiotopoulos (1986:195), who recommends
+ignoring it; the final pitch indicator in the piece is the expected f. The piece features the conventional use of
+the general flat and sharp, converting the scale to enharmonic, and a few instances of normal flat over b. The
+editor also distinguishes between stavros and Western breathing mark.
+
+
+===== PAGE 65 =====
+65
+Figure 18. An involved instance of a phthoral martyria, used as an exercise in Efthymiadis (1988:302). The
+initial pitch indicator is Ke (a) diatonic, with a Pa (d) modulant (a transposed to d). The second pitch indicator
+accordingly has Ke over the mode letter for Pa; but in turn it has the soft chromatic phthora above it, with its
+pitch delta for Di (g)—so what was originally diatonic a, transposed to diatonic d, is now transposed in turn to
+soft chromatic g. The final pitch indicator is Ke over the mode letter for the beginning of a soft chromatic
+tetrachord (c–f or g–c)—in other words, Ke has been transposed to soft chromatic g. (The ambiguity of the
+chromatic modulator between c and g is why the delta was inserted over the modulator.)
+Baroque though this may seem, the phrase is taken from an actual piece by Head Cantor Constantine Pringos
+(and proves once and for all that Byzantine notation is not intended for sight-reading). Note the pelastikon
+nu in the first line (βοαααααααα[ν]αααα σοι θερααααπον Χριστουουουουουουουου = βοᾷ σοι θεράπον Χριστοῦ,
+“he cries out to thee, Servant of Christ”). Like other exercises in Efthymiadis, the number of beats in the bar is
+given as a small Arabic numeral. Efthymiadis switches from a full barline to a short barline (including
+downbeat barlines) before note sequence neumes (hyporroi, kentimata + oligon).
+Figure 19. The hymn Τῇ Ὑπερμάχῳ Στρατηγῷ, “To the Leader Above all Battles”, used to illustrate split ison
+(Efthymiadis 1988:479).
+
+
+===== PAGE 66 =====
+66
+Figure 20. An example of the use of the Spathi chroa (Efthymiadis 1988:339). The excerpt of the hymn Δοῦλοι
+Κύριον, “Ye servants, the Lord” by Daniel the Head Cantor, uses the filler word τεριρέμ. The Spathi has the
+clarifying pitch letter for Ga (f) over it; the shape of the gamma has been kept distinct from that of the
+gorgon.
+Figure 21. A transcription of ecphonetic notation: John 1:11–45. (Höeg 1935:95)
+Appendix B. Modern Notation Codepoints
+The following codepoints are those an implementor will need to include to support the
+modern notation system.
+1D046 ; [*0C54.0020.0002.1D046] # BYZANTINE MUSICAL SYMBOL ISON NEO
+1D047 ; [*0C55.0020.0002.1D047] # BYZANTINE MUSICAL SYMBOL OLIGON NEO
+1D048 ; [*0C56.0020.0002.1D048] # BYZANTINE MUSICAL SYMBOL OXEIA NEO
+1D049 ; [*0C57.0020.0002.1D049] # BYZANTINE MUSICAL SYMBOL PETASTI
+1D04E ; [*0C5C.0020.0002.1D04E] # BYZANTINE MUSICAL SYMBOL KENTIMATA NEO ANO
+1D04F ; [*0C5D.0020.0002.1D04F] # BYZANTINE MUSICAL SYMBOL KENTIMA NEO ANO
+1D050 ; [*0C5E.0020.0002.1D050] # BYZANTINE MUSICAL SYMBOL YPSILI
+1D051 ; [*0C5F.0020.0002.1D051] # BYZANTINE MUSICAL SYMBOL APOSTROFOS NEO
+1D053 ; [*0C61.0020.0002.1D053] # BYZANTINE MUSICAL SYMBOL YPORROI
+1D055 ; [*0C63.0020.0002.1D055] # BYZANTINE MUSICAL SYMBOL ELAFRON
+1D056 ; [*0C64.0020.0002.1D056] # BYZANTINE MUSICAL SYMBOL CHAMILI
+1D058 ; [*0C66.0020.0002.1D058] # BYZANTINE MUSICAL SYMBOL VAREIA NEO
+1D05A ; [*0C68.0020.0002.1D05A] # BYZANTINE MUSICAL SYMBOL PSIFISTON NEO
+1D05B ; [*0C69.0020.0002.1D05B] # BYZANTINE MUSICAL SYMBOL OMALON
+1D05C ; [*0C6A.0020.0002.1D05C] # BYZANTINE MUSICAL SYMBOL ANTIKENOMA
+1D060 ; [*0C6E.0020.0002.1D060] # BYZANTINE MUSICAL SYMBOL ETERON PARAKALESMA
+1D07B ; [*0C89.0020.0002.1D07B] # BYZANTINE MUSICAL SYMBOL ENDOFONON
+1D07C ; [*0C8A.0020.0002.1D07C] # BYZANTINE MUSICAL SYMBOL YFEN KATO
+1D07D ; [*0C8B.0020.0002.1D07D] # BYZANTINE MUSICAL SYMBOL YFEN ANO
+
+
+===== PAGE 67 =====
+67
+1D07E ; [*0C8C.0020.0002.1D07E] # BYZANTINE MUSICAL SYMBOL STAVROS
+1D07F ; [*0C8D.0020.0002.1D07F] # BYZANTINE MUSICAL SYMBOL KLASMA ANO
+1D085 ; [*0C93.0020.0002.1D085] # BYZANTINE MUSICAL SYMBOL APLI
+1D086 ; [*0C94.0020.0002.1D086] # BYZANTINE MUSICAL SYMBOL DIPLI
+1D087 ; [*0C95.0020.0002.1D087] # BYZANTINE MUSICAL SYMBOL TRIPLI
+1D088 ; [*0C96.0020.0002.1D088] # BYZANTINE MUSICAL SYMBOL TETRAPLI
+1D089 ; [*0C97.0020.0002.1D089] # BYZANTINE MUSICAL SYMBOL KORONIS
+1D08A ; [*0C98.0020.0002.1D08A] # BYZANTINE MUSICAL SYMBOL LEIMMA ENOS CHRONOU
+1D08B ; [*0C99.0020.0002.1D08B] # BYZANTINE MUSICAL SYMBOL LEIMMA DYO CHRONON
+1D08C ; [*0C9A.0020.0002.1D08C] # BYZANTINE MUSICAL SYMBOL LEIMMA TRION CHRONON
+1D08D ; [*0C9B.0020.0002.1D08D] # BYZANTINE MUSICAL SYMBOL LEIMMA TESSARON CHRONON
+1D08E ; [*0C9C.0020.0002.1D08E] # BYZANTINE MUSICAL SYMBOL LEIMMA IMISEOS CHRONOU
+1D08F ; [*0C9D.0020.0002.1D08F] # BYZANTINE MUSICAL SYMBOL GORGON NEO ANO
+1D090 ; [*0C9E.0020.0002.1D090] # BYZANTINE MUSICAL SYMBOL GORGON PARESTIGMENON ARISTERA
+1D091 ; [*0C9F.0020.0002.1D091] # BYZANTINE MUSICAL SYMBOL GORGON PARESTIGMENON DEXIA
+1D092 ; [*0CA0.0020.0002.1D092] # BYZANTINE MUSICAL SYMBOL DIGORGON
+1D093 ; [*0CA1.0020.0002.1D093] # BYZANTINE MUSICAL SYMBOL DIGORGON PARESTIGMENON ARISTERA
+KATO
+1D094 ; [*0CA2.0020.0002.1D094] # BYZANTINE MUSICAL SYMBOL DIGORGON PARESTIGMENON ARISTERA
+ANO
+1D095 ; [*0CA3.0020.0002.1D095] # BYZANTINE MUSICAL SYMBOL DIGORGON PARESTIGMENON DEXIA
+1D096 ; [*0CA4.0020.0002.1D096] # BYZANTINE MUSICAL SYMBOL TRIGORGON
+1D097 ; [*0CA5.0020.0002.1D097] # BYZANTINE MUSICAL SYMBOL ARGON
+1D098 ; [*0CA6.0020.0002.1D098] # BYZANTINE MUSICAL SYMBOL IMIDIARGON
+1D099 ; [*0CA7.0020.0002.1D099] # BYZANTINE MUSICAL SYMBOL DIARGON
+1D09A ; [*0CA8.0020.0002.1D09A] # BYZANTINE MUSICAL SYMBOL AGOGI POLI ARGI
+1D09B ; [*0CA9.0020.0002.1D09B] # BYZANTINE MUSICAL SYMBOL AGOGI ARGOTERI
+1D09C ; [*0CAA.0020.0002.1D09C] # BYZANTINE MUSICAL SYMBOL AGOGI ARGI
+1D09D ; [*0CAB.0020.0002.1D09D] # BYZANTINE MUSICAL SYMBOL AGOGI METRIA
+1D09E ; [*0CAC.0020.0002.1D09E] # BYZANTINE MUSICAL SYMBOL AGOGI MESI
+1D09F ; [*0CAD.0020.0002.1D09F] # BYZANTINE MUSICAL SYMBOL AGOGI GORGI
+1D0A0 ; [*0CAE.0020.0002.1D0A0] # BYZANTINE MUSICAL SYMBOL AGOGI GORGOTERI
+1D0A1 ; [*0CAF.0020.0002.1D0A1] # BYZANTINE MUSICAL SYMBOL AGOGI POLI GORGI
+1D0A2 ; [*0CB0.0020.0002.1D0A2] # BYZANTINE MUSICAL SYMBOL MARTYRIA PROTOS ICHOS
+1D0A3 ; [*0CB1.0020.0002.1D0A3] # BYZANTINE MUSICAL SYMBOL MARTYRIA ALLI PROTOS ICHOS
+1D0A4 ; [*0CB2.0020.0002.1D0A4] # BYZANTINE MUSICAL SYMBOL MARTYRIA DEYTEROS ICHOS
+1D0A5 ; [*0CB3.0020.0002.1D0A5] # BYZANTINE MUSICAL SYMBOL MARTYRIA ALLI DEYTEROS ICHOS
+1D0A6 ; [*0CB4.0020.0002.1D0A6] # BYZANTINE MUSICAL SYMBOL MARTYRIA TRITOS ICHOS
+1D0A7 ; [*0CB5.0020.0002.1D0A7] # BYZANTINE MUSICAL SYMBOL MARTYRIA TRIFONIAS
+1D0A8 ; [*0CB6.0020.0002.1D0A8] # BYZANTINE MUSICAL SYMBOL MARTYRIA TETARTOS ICHOS
+1D0A9 ; [*0CB7.0020.0002.1D0A9] # BYZANTINE MUSICAL SYMBOL MARTYRIA TETARTOS LEGETOS ICHOS
+1D0AA ; [*0CB8.0020.0002.1D0AA] # BYZANTINE MUSICAL SYMBOL MARTYRIA LEGETOS ICHOS
+1D0AB ; [*0CB9.0020.0002.1D0AB] # BYZANTINE MUSICAL SYMBOL MARTYRIA PLAGIOS ICHOS
+1D0AC ; [*0CBA.0020.0002.1D0AC] # BYZANTINE MUSICAL SYMBOL ISAKIA TELOUS ICHIMATOS
+1D0AD ; [*0CBB.0020.0002.1D0AD] # BYZANTINE MUSICAL SYMBOL APOSTROFOI TELOUS ICHIMATOS
+1D0AE ; [*0CBC.0020.0002.1D0AE] # BYZANTINE MUSICAL SYMBOL FANEROSIS TETRAFONIAS
+1D0AF ; [*0CBD.0020.0002.1D0AF] # BYZANTINE MUSICAL SYMBOL FANEROSIS MONOFONIAS
+1D0B0 ; [*0CBE.0020.0002.1D0B0] # BYZANTINE MUSICAL SYMBOL FANEROSIS DIFONIAS
+1D0B1 ; [*0CBF.0020.0002.1D0B1] # BYZANTINE MUSICAL SYMBOL MARTYRIA VARYS ICHOS
+1D0B2 ; [*0CC0.0020.0002.1D0B2] # BYZANTINE MUSICAL SYMBOL MARTYRIA PROTOVARYS ICHOS
+1D0B3 ; [*0CC1.0020.0002.1D0B3] # BYZANTINE MUSICAL SYMBOL MARTYRIA PLAGIOS TETARTOS ICHOS
+1D0B4 ; [*0CC2.0020.0002.1D0B4] # BYZANTINE MUSICAL SYMBOL GORTHMIKON N APLOUN
+1D0B5 ; [*0CC3.0020.0002.1D0B5] # BYZANTINE MUSICAL SYMBOL GORTHMIKON N DIPLOUN
+1D0B6 ; [*0CC4.0020.0002.1D0B6] # BYZANTINE MUSICAL SYMBOL ENARXIS KAI FTHORA VOU
+1D0BA ; [*0CC8.0020.0002.1D0BA] # BYZANTINE MUSICAL SYMBOL FTHORA DIATONIKI PA
+1D0BB ; [*0CC9.0020.0002.1D0BB] # BYZANTINE MUSICAL SYMBOL FTHORA DIATONIKI NANA
+1D0BD ; [*0CCB.0020.0002.1D0BD] # BYZANTINE MUSICAL SYMBOL FTHORA DIATONIKI DI
+1D0BE ; [*0CCC.0020.0002.1D0BE] # BYZANTINE MUSICAL SYMBOL FTHORA SKLIRON DIATONON DI
+
+
+===== PAGE 68 =====
+68
+1D0BF ; [*0CCD.0020.0002.1D0BF] # BYZANTINE MUSICAL SYMBOL FTHORA DIATONIKI KE
+1D0C0 ; [*0CCE.0020.0002.1D0C0] # BYZANTINE MUSICAL SYMBOL FTHORA DIATONIKI ZO
+1D0C1 ; [*0CCF.0020.0002.1D0C1] # BYZANTINE MUSICAL SYMBOL FTHORA DIATONIKI NI KATO
+1D0C2 ; [*0CD0.0020.0002.1D0C2] # BYZANTINE MUSICAL SYMBOL FTHORA DIATONIKI NI ANO
+1D0C3 ; [*0CD1.0020.0002.1D0C3] # BYZANTINE MUSICAL SYMBOL FTHORA MALAKON CHROMA DIFONIAS
+1D0C4 ; [*0CD2.0020.0002.1D0C4] # BYZANTINE MUSICAL SYMBOL FTHORA MALAKON CHROMA MONOFONIAS
+1D0C5 ; [*0CD3.0020.0002.1D0C5] # BYZANTINE MUSICAL SYMBOL FHTORA SKLIRON CHROMA VASIS
+1D0C6 ; [*0CD4.0020.0002.1D0C6] # BYZANTINE MUSICAL SYMBOL FTHORA SKLIRON CHROMA SYNAFI
+1D0C7 ; [*0CD5.0020.0002.1D0C7] # BYZANTINE MUSICAL SYMBOL FTHORA NENANO
+1D0C8 ; [*0CD6.0020.0002.1D0C8] # BYZANTINE MUSICAL SYMBOL CHROA ZYGOS
+1D0C9 ; [*0CD7.0020.0002.1D0C9] # BYZANTINE MUSICAL SYMBOL CHROA KLITON
+1D0CA ; [*0CD8.0020.0002.1D0CA] # BYZANTINE MUSICAL SYMBOL CHROA SPATHI
+1D0CB ; [*0CD9.0020.0002.1D0CB] # BYZANTINE MUSICAL SYMBOL FTHORA I YFESIS TETARTIMORION
+1D0CC ; [*0CDA.0020.0002.1D0CC] # BYZANTINE MUSICAL SYMBOL FTHORA ENARMONIOS ANTIFONIA
+1D0CD ; [*0CDB.0020.0002.1D0CD] # BYZANTINE MUSICAL SYMBOL YFESIS TRITIMORION
+1D0CE ; [*0CDC.0020.0002.1D0CE] # BYZANTINE MUSICAL SYMBOL DIESIS TRITIMORION
+1D0CF ; [*0CDD.0020.0002.1D0CF] # BYZANTINE MUSICAL SYMBOL DIESIS TETARTIMORION
+1D0D0 ; [*0CDE.0020.0002.1D0D0] # BYZANTINE MUSICAL SYMBOL DIESIS APLI DYO DODEKATA
+1D0D1 ; [*0CDF.0020.0002.1D0D1] # BYZANTINE MUSICAL SYMBOL DIESIS MONOGRAMMOS TESSERA
+DODEKATA
+1D0D2 ; [*0CE0.0020.0002.1D0D2] # BYZANTINE MUSICAL SYMBOL DIESIS DIGRAMMOS EX DODEKATA
+1D0D3 ; [*0CE1.0020.0002.1D0D3] # BYZANTINE MUSICAL SYMBOL DIESIS TRIGRAMMOS OKTO DODEKATA
+1D0D4 ; [*0CE2.0020.0002.1D0D4] # BYZANTINE MUSICAL SYMBOL YFESIS APLI DYO DODEKATA
+1D0D5 ; [*0CE3.0020.0002.1D0D5] # BYZANTINE MUSICAL SYMBOL YFESIS MONOGRAMMOS TESSERA
+DODEKATA
+1D0D6 ; [*0CE4.0020.0002.1D0D6] # BYZANTINE MUSICAL SYMBOL YFESIS DIGRAMMOS EX DODEKATA
+1D0D7 ; [*0CE5.0020.0002.1D0D7] # BYZANTINE MUSICAL SYMBOL YFESIS TRIGRAMMOS OKTO DODEKATA
+1D0D8 ; [*0CE6.0020.0002.1D0D8] # BYZANTINE MUSICAL SYMBOL GENIKI DIESIS
+1D0D9 ; [*0CE7.0020.0002.1D0D9] # BYZANTINE MUSICAL SYMBOL GENIKI YFESIS
+1D0DA ; [*0CE8.0020.0002.1D0DA] # BYZANTINE MUSICAL SYMBOL DIASTOLI APLI MIKRI
+1D0DB ; [*0CE9.0020.0002.1D0DB] # BYZANTINE MUSICAL SYMBOL DIASTOLI APLI MEGALI
+1D0DC ; [*0CEA.0020.0002.1D0DC] # BYZANTINE MUSICAL SYMBOL DIASTOLI DIPLI
+1D0DD ; [*0CEB.0020.0002.1D0DD] # BYZANTINE MUSICAL SYMBOL DIASTOLI THESEOS
+1D0DE ; [*0CEC.0020.0002.1D0DE] # BYZANTINE MUSICAL SYMBOL SIMANSIS THESEOS
+1D0DF ; [*0CED.0020.0002.1D0DF] # BYZANTINE MUSICAL SYMBOL SIMANSIS THESEOS DISIMOU
+1D0E0 ; [*0CEE.0020.0002.1D0E0] # BYZANTINE MUSICAL SYMBOL SIMANSIS THESEOS TRISIMOU
+1D0E1 ; [*0CEF.0020.0002.1D0E1] # BYZANTINE MUSICAL SYMBOL SIMANSIS THESEOS TETRASIMOU
+1D0E2 ; [*0CF0.0020.0002.1D0E2] # BYZANTINE MUSICAL SYMBOL SIMANSIS ARSEOS
+1D0E3 ; [*0CF1.0020.0002.1D0E3] # BYZANTINE MUSICAL SYMBOL SIMANSIS ARSEOS DISIMOU
+1D0E4 ; [*0CF2.0020.0002.1D0E4] # BYZANTINE MUSICAL SYMBOL SIMANSIS ARSEOS TRISIMOU
+1D0E5 ; [*0CF3.0020.0002.1D0E5] # BYZANTINE MUSICAL SYMBOL SIMANSIS ARSEOS TETRASIMOU
+1D0E6 ; [*0CF4.0020.0002.1D0E6] # BYZANTINE MUSICAL SYMBOL DIGRAMMA GG
+1D0E7 ; [*0CF5.0020.0002.1D0E7] # BYZANTINE MUSICAL SYMBOL DIFTOGGOS OU
+1D0E8 ; [*0CF6.0020.0002.1D0E8] # BYZANTINE MUSICAL SYMBOL STIGMA
+1D0E9 ; [*0CF7.0020.0002.1D0E9] # BYZANTINE MUSICAL SYMBOL ARKTIKO PA
+1D0EA ; [*0CF8.0020.0002.1D0EA] # BYZANTINE MUSICAL SYMBOL ARKTIKO VOU
+1D0EB ; [*0CF9.0020.0002.1D0EB] # BYZANTINE MUSICAL SYMBOL ARKTIKO GA
+1D0EC ; [*0CFA.0020.0002.1D0EC] # BYZANTINE MUSICAL SYMBOL ARKTIKO DI
+1D0ED ; [*0CFB.0020.0002.1D0ED] # BYZANTINE MUSICAL SYMBOL ARKTIKO KE
+1D0EE ; [*0CFC.0020.0002.1D0EE] # BYZANTINE MUSICAL SYMBOL ARKTIKO ZO
+1D0EF ; [*0CFD.0020.0002.1D0EF] # BYZANTINE MUSICAL SYMBOL ARKTIKO NI
+1D0F0 ; [*0CFE.0020.0002.1D0F0] # BYZANTINE MUSICAL SYMBOL KENTIMATA NEO MESO
+1D0F1 ; [*0CFF.0020.0002.1D0F1] # BYZANTINE MUSICAL SYMBOL KENTIMA NEO MESO
+1D0F2 ; [*0D00.0020.0002.1D0F2] # BYZANTINE MUSICAL SYMBOL KENTIMATA NEO KATO
+1D0F3 ; [*0D01.0020.0002.1D0F3] # BYZANTINE MUSICAL SYMBOL KENTIMA NEO KATO
+1D0F4 ; [*0D02.0020.0002.1D0F4] # BYZANTINE MUSICAL SYMBOL KLASMA KATO
+1D0F5 ; [*0D03.0020.0002.1D0F5] # BYZANTINE MUSICAL SYMBOL GORGON NEO KATO
+
+
+===== PAGE 69 =====
+69
+Appendix C. Customised DUCET
+The following customisation of the Default Unicode Collation Element Table incoroporates
+the conflations of semantically equivalent codepoints that appear to me necessary for the
+successful meaningful manipulation of Byzantine notation codepoints, and implementers
+should consider it.
+1D000 ; [*0217.0020.0002.1D000] # BYZANTINE MUSICAL SYMBOL PSILI: made equivalent to 1FBF
+GREEK PSILI
+1D001 ; [*0218.0020.0002.1D001] # BYZANTINE MUSICAL SYMBOL DASEIA: made equivalent to 1FFE
+GREEK DASIA
+1D002 ; [*021D.0020.0002.1D002] # BYZANTINE MUSICAL SYMBOL PERISPOMENI: made equivalent to
+1FC0 GREEK PERISPOMENI
+1D0E6 ; [.10EA.0020.0002.1D0E6][.10EA.0020.0002.1D0E6] # BYZANTINE MUSICAL SYMBOL DIGRAMMA
+GG: made equivalent to 03B3 GREEK SMALL LETTER GAMMA + 03B3 GREEK SMALL LETTER GAMMA
+1D0E7 ; [.10FB.0020.0002.1D0E7][.1104.0020.0002.1D0E7] # BYZANTINE MUSICAL SYMBOL DIFTOGGOS
+OU: made equivalent to 03BF GREEK SMALL LETTER OMICRON + 03C5 GREEK SMALL LETTER UPSILON
+1D0E8 ; [.1102.0020.0002.1D0E8][.1103.0020.0002.1D0E8] # BYZANTINE MUSICAL SYMBOL STIGMA:
+made equivalent to 03C3 GREEK SMALL LETTER SIGMA + 03C4 GREEK SMALL LETTER TAU
+1D003 ; [*0C11.0020.0002.1D003] # BYZANTINE MUSICAL SYMBOL OXEIA EKFONITIKON
+1D004 ; [*0C12.0020.0002.1D004] # BYZANTINE MUSICAL SYMBOL OXEIA DIPLI
+1D005 ; [*0C13.0020.0002.1D005] # BYZANTINE MUSICAL SYMBOL VAREIA EKFONITIKON
+1D006 ; [*0C14.0020.0002.1D006] # BYZANTINE MUSICAL SYMBOL VAREIA DIPLI
+1D007 ; [*0C15.0020.0002.1D007] # BYZANTINE MUSICAL SYMBOL KATHISTI
+1D008 ; [*0C16.0020.0002.1D008] # BYZANTINE MUSICAL SYMBOL SYRMATIKI
+1D009 ; [*0C17.0020.0002.1D009] # BYZANTINE MUSICAL SYMBOL PARAKLITIKI
+1D00A ; [*0C18.0020.0002.1D00A] # BYZANTINE MUSICAL SYMBOL YPOKRISIS
+1D00B ; [*0C19.0020.0002.1D00B] # BYZANTINE MUSICAL SYMBOL YPOKRISIS DIPLI
+1D00C ; [*0C1A.0020.0002.1D00C] # BYZANTINE MUSICAL SYMBOL KREMASTI
+1D00D ; [*0C1B.0020.0002.1D00D] # BYZANTINE MUSICAL SYMBOL APESO EKFONITIKON
+1D00E ; [*0C1C.0020.0002.1D00E] # BYZANTINE MUSICAL SYMBOL EXO EKFONITIKON
+1D00F ; [*0C1D.0020.0002.1D00F] # BYZANTINE MUSICAL SYMBOL TELEIA
+1D010 ; [*0C1E.0020.0002.1D010] # BYZANTINE MUSICAL SYMBOL KENTIMATA
+1D011 ; [*0C1F.0020.0002.1D011] # BYZANTINE MUSICAL SYMBOL APOSTROFOS
+1D012 ; [*0C20.0020.0002.1D012] # BYZANTINE MUSICAL SYMBOL APOSTROFOS DIPLI
+1D013 ; [*0C21.0020.0002.1D013] # BYZANTINE MUSICAL SYMBOL SYNEVMA
+1D014 ; [*0C22.0020.0002.1D014] # BYZANTINE MUSICAL SYMBOL THITA
+1D015 ; [*0C23.0020.0002.1D015] # BYZANTINE MUSICAL SYMBOL OLIGON ARCHAION
+1D047 ; [*0C23.0021.0002.1D047] # BYZANTINE MUSICAL SYMBOL OLIGON NEO: made equivalent to
+1D015
+1D016 ; [*0C24.0020.0002.1D016] # BYZANTINE MUSICAL SYMBOL GORGON ARCHAION
+1D08F ; [*0C24.0021.0002.1D08F] # BYZANTINE MUSICAL SYMBOL GORGON NEO ANO: made equivalent to
+1D016
+1D0F5 ; [*0C24.0021.0003.1D0F5] # BYZANTINE MUSICAL SYMBOL GORGON NEO KATO: made equivalent
+to 1D08F
+1D017 ; [*0C25.0020.0002.1D017] # BYZANTINE MUSICAL SYMBOL PSILON
+1D018 ; [*0C26.0020.0002.1D018] # BYZANTINE MUSICAL SYMBOL CHAMILON
+1D056 ; [*0C64.0021.0002.1D056] # BYZANTINE MUSICAL SYMBOL CHAMILIl: made equivalent to 1D018
+1D019 ; [*0C27.0020.0002.1D019] # BYZANTINE MUSICAL SYMBOL VATHY
+1D01A ; [*0C28.0020.0002.1D01A] # BYZANTINE MUSICAL SYMBOL ISON ARCHAION
+1D046 ; [*0C28.0021.0002.1D046] # BYZANTINE MUSICAL SYMBOL ISON NEO: made equivalent to 1D01A
+1D01B ; [*0C29.0020.0002.1D01B] # BYZANTINE MUSICAL SYMBOL KENTIMA ARCHAION
+1D04F ; [*0C29.0021.0002.1D04F] # BYZANTINE MUSICAL SYMBOL KENTIMA NEO ANO: equivalent to
+1D01B
+1D0F1 ; [*0C29.0021.0004.1D0F1] # BYZANTINE MUSICAL SYMBOL KENTIMA NEO MESO: made equivalent
+to 1D04E
+1D0F3 ; [*0C29.0021.0004.1D0F3] # BYZANTINE MUSICAL SYMBOL KENTIMA NEO KATO: made equivalent
+to 1D04F
+
+
+===== PAGE 70 =====
+70
+1D01C ; [*0C2A.0020.0002.1D01C] # BYZANTINE MUSICAL SYMBOL KENTIMATA ARCHAION
+1D04E ; [*0C2A.0021.0002.1D04E] # BYZANTINE MUSICAL SYMBOL KENTIMATA NEO ANO: made equivalent
+to 1D01C
+1D0F0 ; [*0C29.0021.0003.1D0F0] # BYZANTINE MUSICAL SYMBOL KENTIMATA NEO MESO: made
+equivalent to 1D04E
+1D0F2 ; [*0C29.0021.0003.1D0F2] # BYZANTINE MUSICAL SYMBOL KENTIMATA NEO KATO: made
+equivalent to 1D04F
+1D01D ; [*0C2B.0020.0002.1D01D] # BYZANTINE MUSICAL SYMBOL SAXIMATA
+1D01E ; [*0C2C.0020.0002.1D01E] # BYZANTINE MUSICAL SYMBOL PARICHON
+1D01F ; [*0C2D.0020.0002.1D01F] # BYZANTINE MUSICAL SYMBOL STAVROS APODEXIA
+1D020 ; [*0C2E.0020.0002.1D020] # BYZANTINE MUSICAL SYMBOL OXEIAI ARCHAION
+1D021 ; [*0C2F.0020.0002.1D021] # BYZANTINE MUSICAL SYMBOL VAREIAI ARCHAION
+1D022 ; [*0C30.0020.0002.1D022] # BYZANTINE MUSICAL SYMBOL APODERMA ARCHAION
+1D084 ; [*0C30.0021.0002.1D084] # BYZANTINE MUSICAL SYMBOL APODERMA NEO: made equivalent to
+1D022
+1D023 ; [*0C31.0020.0002.1D023] # BYZANTINE MUSICAL SYMBOL APOTHEMA
+1D024 ; [*0C32.0020.0002.1D024] # BYZANTINE MUSICAL SYMBOL KLASMA
+1D07F ; [*0C32.0021.0002.1D07F] # BYZANTINE MUSICAL SYMBOL KLASMA ANO: made equivalent to
+1D024
+1D0F4 ; [*0C32.0021.0003.1D0F4] # BYZANTINE MUSICAL SYMBOL KLASMA KATO: made equivalent to
+1D07F
+1D025 ; [*0C33.0020.0002.1D025] # BYZANTINE MUSICAL SYMBOL REVMA
+1D026 ; [*0C34.0020.0002.1D026] # BYZANTINE MUSICAL SYMBOL PIASMA ARCHAION
+1D059 ; [*0C34.0021.0002.1D059] # BYZANTINE MUSICAL SYMBOL PIASMA NEO: made equivalent to
+1D026
+1D027 ; [*0C35.0020.0002.1D027] # BYZANTINE MUSICAL SYMBOL TINAGMA
+1D028 ; [*0C36.0020.0002.1D028] # BYZANTINE MUSICAL SYMBOL ANATRICHISMA
+1D029 ; [*0C37.0020.0002.1D029] # BYZANTINE MUSICAL SYMBOL SEISMA
+1D02A ; [*0C38.0020.0002.1D02A] # BYZANTINE MUSICAL SYMBOL SYNAGMA ARCHAION
+1D065 ; [*0C38.0021.0002.1D065] # BYZANTINE MUSICAL SYMBOL SYNAGMA NEO: made equivalent to
+1D02A
+1D02B ; [*0C39.0020.0002.1D02B] # BYZANTINE MUSICAL SYMBOL SYNAGMA META STAVROU
+1D02C ; [*0C3A.0020.0002.1D02C] # BYZANTINE MUSICAL SYMBOL OYRANISMA ARCHAION
+1D075 ; [*0C3A.0021.0002.1D075] # BYZANTINE MUSICAL SYMBOL OYRANISMA NEO: made equivalent to
+1D02C
+1D02D ; [*0C3B.0020.0002.1D02D] # BYZANTINE MUSICAL SYMBOL THEMA
+1D02E ; [*0C3C.0020.0002.1D02E] # BYZANTINE MUSICAL SYMBOL LEMOI
+1D02F ; [*0C3D.0020.0002.1D02F] # BYZANTINE MUSICAL SYMBOL DYO
+1D030 ; [*0C3E.0020.0002.1D030] # BYZANTINE MUSICAL SYMBOL TRIA
+1D031 ; [*0C3F.0020.0002.1D031] # BYZANTINE MUSICAL SYMBOL TESSERA
+1D032 ; [*0C40.0020.0002.1D032] # BYZANTINE MUSICAL SYMBOL KRATIMATA
+1D033 ; [*0C41.0020.0002.1D033] # BYZANTINE MUSICAL SYMBOL APESO EXO NEO
+1D034 ; [*0C42.0020.0002.1D034] # BYZANTINE MUSICAL SYMBOL FTHORA ARCHAION
+1D035 ; [*0C43.0020.0002.1D035] # BYZANTINE MUSICAL SYMBOL IMIFTHORA
+1D036 ; [*0C44.0020.0002.1D036] # BYZANTINE MUSICAL SYMBOL TROMIKON ARCHAION
+1D063 ; [*0C44.0021.0002.1D063] # BYZANTINE MUSICAL SYMBOL TROMIKON NEO: made equivalent to
+1D036
+1D037 ; [*0C45.0020.0002.1D037] # BYZANTINE MUSICAL SYMBOL KATAVA TROMIKON
+1D038 ; [*0C46.0020.0002.1D038] # BYZANTINE MUSICAL SYMBOL PELASTON
+1D04D ; [*0C46.0021.0002.1D04D] # BYZANTINE MUSICAL SYMBOL PELASTON NEO: made equivlent to
+1D038
+1D039 ; [*0C47.0020.0002.1D039] # BYZANTINE MUSICAL SYMBOL PSIFISTON
+1D05A ; [*0C47.0021.0002.1D05A] # BYZANTINE MUSICAL SYMBOL PSIFISTON NEO: made equivalent to
+1D039
+1D03A ; [*0C48.0020.0002.1D03A] # BYZANTINE MUSICAL SYMBOL KONTEVMA
+1D03B ; [*0C49.0020.0002.1D03B] # BYZANTINE MUSICAL SYMBOL CHOREVMA ARCHAION
+1D067 ; [*0C49.0021.0002.1D067] # BYZANTINE MUSICAL SYMBOL CHOREVMA NEO: made equivalent to
+1D03B
+1D03C ; [*0C4A.0020.0002.1D03C] # BYZANTINE MUSICAL SYMBOL RAPISMA
+1D03D ; [*0C4B.0020.0002.1D03D] # BYZANTINE MUSICAL SYMBOL PARAKALESMA ARCHAION
+
+
+===== PAGE 71 =====
+71
+1D05F ; [*0C4B.0021.0002.1D05F] # BYZANTINE MUSICAL SYMBOL PARAKALESMA NEO: made equivalent
+to 1D03D
+1D03E ; [*0C4C.0020.0002.1D03E] # BYZANTINE MUSICAL SYMBOL PARAKLITIKI ARCHAION
+1D05E ; [*0C4C.0021.0002.1D05E] # BYZANTINE MUSICAL SYMBOL PARAKLITIKI NEO: made equivalent
+to 1D03E
+1D03F ; [*0C4D.0020.0002.1D03F] # BYZANTINE MUSICAL SYMBOL ICHADIN
+1D040 ; [*0C4E.0020.0002.1D040] # BYZANTINE MUSICAL SYMBOL NANA
+1D041 ; [*0C4F.0020.0002.1D041] # BYZANTINE MUSICAL SYMBOL PETASMA
+1D042 ; [*0C50.0020.0002.1D042] # BYZANTINE MUSICAL SYMBOL KONTEVMA ALLO
+1D043 ; [*0C51.0020.0002.1D043] # BYZANTINE MUSICAL SYMBOL TROMIKON ALLO
+1D044 ; [*0C52.0020.0002.1D044] # BYZANTINE MUSICAL SYMBOL STRAGGISMATA
+1D045 ; [*0C53.0020.0002.1D045] # BYZANTINE MUSICAL SYMBOL GRONTHISMATA
+1D048 ; [*0C56.0020.0002.1D048] # BYZANTINE MUSICAL SYMBOL OXEIA NEO
+1D049 ; [*0C57.0020.0002.1D049] # BYZANTINE MUSICAL SYMBOL PETASTI
+1D04A ; [*0C58.0020.0002.1D04A] # BYZANTINE MUSICAL SYMBOL KOUFISMA
+1D04B ; [*0C59.0020.0002.1D04B] # BYZANTINE MUSICAL SYMBOL PETASTOKOUFISMA
+1D04C ; [*0C5A.0020.0002.1D04C] # BYZANTINE MUSICAL SYMBOL KRATIMOKOUFISMA
+1D050 ; [*0C5E.0020.0002.1D050] # BYZANTINE MUSICAL SYMBOL YPSILI
+1D051 ; [*0C5F.0020.0002.1D051] # BYZANTINE MUSICAL SYMBOL APOSTROFOS NEO
+1D052 ; [*0C60.0020.0002.1D052] # BYZANTINE MUSICAL SYMBOL APOSTROFOI SYNDESMOS NEO
+1D053 ; [*0C61.0020.0002.1D053] # BYZANTINE MUSICAL SYMBOL YPORROI
+1D07A ; [*0C61.0021.0002.1D07A] # BYZANTINE MUSICAL SYMBOL KATAVASMA: made equivalent to
+1D053
+1D054 ; [*0C62.0020.0002.1D054] # BYZANTINE MUSICAL SYMBOL KRATIMOYPORROON
+1D055 ; [*0C63.0020.0002.1D055] # BYZANTINE MUSICAL SYMBOL ELAFRON
+1D057 ; [*0C65.0020.0002.1D057] # BYZANTINE MUSICAL SYMBOL MIKRON ISON
+1D058 ; [*0C66.0020.0002.1D058] # BYZANTINE MUSICAL SYMBOL VAREIA NEO
+1D05B ; [*0C69.0020.0002.1D05B] # BYZANTINE MUSICAL SYMBOL OMALON
+1D05C ; [*0C6A.0020.0002.1D05C] # BYZANTINE MUSICAL SYMBOL ANTIKENOMA
+1D05D ; [*0C6B.0020.0002.1D05D] # BYZANTINE MUSICAL SYMBOL LYGISMA
+1D060 ; [*0C6E.0020.0002.1D060] # BYZANTINE MUSICAL SYMBOL ETERON PARAKALESMA
+1D061 ; [*0C6F.0020.0002.1D061] # BYZANTINE MUSICAL SYMBOL KYLISMA
+1D062 ; [*0C70.0020.0002.1D062] # BYZANTINE MUSICAL SYMBOL ANTIKENOKYLISMA
+1D064 ; [*0C72.0020.0002.1D064] # BYZANTINE MUSICAL SYMBOL EKSTREPTON
+1D066 ; [*0C74.0020.0002.1D066] # BYZANTINE MUSICAL SYMBOL SYRMA
+1D068 ; [*0C76.0020.0002.1D068] # BYZANTINE MUSICAL SYMBOL EPEGERMA
+1D069 ; [*0C77.0020.0002.1D069] # BYZANTINE MUSICAL SYMBOL SEISMA NEO
+1D06A ; [*0C78.0020.0002.1D06A] # BYZANTINE MUSICAL SYMBOL XIRON KLASMA
+1D06B ; [*0C79.0020.0002.1D06B] # BYZANTINE MUSICAL SYMBOL TROMIKOPSIFISTON
+1D06C ; [*0C7A.0020.0002.1D06C] # BYZANTINE MUSICAL SYMBOL PSIFISTOLYGISMA
+1D06D ; [*0C7B.0020.0002.1D06D] # BYZANTINE MUSICAL SYMBOL TROMIKOLYGISMA
+1D06E ; [*0C7C.0020.0002.1D06E] # BYZANTINE MUSICAL SYMBOL TROMIKOPARAKALESMA
+1D06F ; [*0C7D.0020.0002.1D06F] # BYZANTINE MUSICAL SYMBOL PSIFISTOPARAKALESMA
+1D070 ; [*0C7E.0020.0002.1D070] # BYZANTINE MUSICAL SYMBOL TROMIKOSYNAGMA
+1D071 ; [*0C7F.0020.0002.1D071] # BYZANTINE MUSICAL SYMBOL PSIFISTOSYNAGMA
+1D072 ; [*0C80.0020.0002.1D072] # BYZANTINE MUSICAL SYMBOL GORGOSYNTHETON
+1D073 ; [*0C81.0020.0002.1D073] # BYZANTINE MUSICAL SYMBOL ARGOSYNTHETON
+1D074 ; [*0C81.0021.0002.1D074] # BYZANTINE MUSICAL SYMBOL ETERON ARGOSYNTHETON: made
+equivalent to 1D073
+1D076 ; [*0C84.0020.0002.1D076] # BYZANTINE MUSICAL SYMBOL THEMATISMOS ESO
+1D077 ; [*0C85.0020.0002.1D077] # BYZANTINE MUSICAL SYMBOL THEMATISMOS EXO
+1D078 ; [*0C86.0020.0002.1D078] # BYZANTINE MUSICAL SYMBOL THEMA APLOUN
+1D079 ; [*0C87.0020.0002.1D079] # BYZANTINE MUSICAL SYMBOL THES KAI APOTHES
+1D07B ; [*0C89.0020.0002.1D07B] # BYZANTINE MUSICAL SYMBOL ENDOFONON
+1D07C ; [*0C8A.0020.0002.1D07C] # BYZANTINE MUSICAL SYMBOL YFEN KATO
+1D07D ; [*0C8B.0020.0002.1D07D] # BYZANTINE MUSICAL SYMBOL YFEN ANO
+1D07E ; [*0C8C.0020.0002.1D07E] # BYZANTINE MUSICAL SYMBOL STAVROS
+1D080 ; [*0C8E.0020.0002.1D080] # BYZANTINE MUSICAL SYMBOL DIPLI ARCHAION
+
+
+===== PAGE 72 =====
+72
+1D081 ; [*0C8F.0020.0002.1D081] # BYZANTINE MUSICAL SYMBOL KRATIMA ARCHAION
+1D082 ; [*0C90.0021.0002.1D082] # BYZANTINE MUSICAL SYMBOL KRATIMA ALLO: made equivalent to
+1D081
+1D083 ; [*0C91.0022.0002.1D083] # BYZANTINE MUSICAL SYMBOL KRATIMA NEO: made equivalent to
+1D081
+1D085 ; [*0C93.0020.0002.1D085] # BYZANTINE MUSICAL SYMBOL APLI
+1D086 ; [*0C94.0020.0002.1D086] # BYZANTINE MUSICAL SYMBOL DIPLI
+1D087 ; [*0C95.0020.0002.1D087] # BYZANTINE MUSICAL SYMBOL TRIPLI
+1D088 ; [*0C96.0020.0002.1D088] # BYZANTINE MUSICAL SYMBOL TETRAPLI
+1D089 ; [*0C97.0020.0002.1D089] # BYZANTINE MUSICAL SYMBOL KORONIS
+1D08A ; [*0C98.0020.0002.1D08A] # BYZANTINE MUSICAL SYMBOL LEIMMA ENOS CHRONOU
+1D08B ; [*0C99.0020.0002.1D08B] # BYZANTINE MUSICAL SYMBOL LEIMMA DYO CHRONON
+1D08C ; [*0C9A.0020.0002.1D08C] # BYZANTINE MUSICAL SYMBOL LEIMMA TRION CHRONON
+1D08D ; [*0C9B.0020.0002.1D08D] # BYZANTINE MUSICAL SYMBOL LEIMMA TESSARON CHRONON
+1D08E ; [*0C9C.0020.0002.1D08E] # BYZANTINE MUSICAL SYMBOL LEIMMA IMISEOS CHRONOU
+1D090 ; [*0C9E.0020.0002.1D090] # BYZANTINE MUSICAL SYMBOL GORGON PARESTIGMENON ARISTERA
+1D091 ; [*0C9F.0020.0002.1D091] # BYZANTINE MUSICAL SYMBOL GORGON PARESTIGMENON DEXIA
+1D092 ; [*0CA0.0020.0002.1D092] # BYZANTINE MUSICAL SYMBOL DIGORGON
+1D093 ; [*0CA1.0020.0002.1D093] # BYZANTINE MUSICAL SYMBOL DIGORGON PARESTIGMENON ARISTERA
+KATO
+1D094 ; [*0CA2.0020.0002.1D094] # BYZANTINE MUSICAL SYMBOL DIGORGON PARESTIGMENON ARISTERA
+ANO
+1D095 ; [*0CA3.0020.0002.1D095] # BYZANTINE MUSICAL SYMBOL DIGORGON PARESTIGMENON DEXIA
+1D096 ; [*0CA4.0020.0002.1D096] # BYZANTINE MUSICAL SYMBOL TRIGORGON
+1D097 ; [*0CA5.0020.0002.1D097] # BYZANTINE MUSICAL SYMBOL ARGON
+1D098 ; [*0CA6.0020.0002.1D098] # BYZANTINE MUSICAL SYMBOL IMIDIARGON
+1D099 ; [*0CA7.0020.0002.1D099] # BYZANTINE MUSICAL SYMBOL DIARGON
+1D09A ; [*0CA8.0020.0002.1D09A] # BYZANTINE MUSICAL SYMBOL AGOGI POLI ARGI
+1D09B ; [*0CA9.0020.0002.1D09B] # BYZANTINE MUSICAL SYMBOL AGOGI ARGOTERI
+1D09C ; [*0CAA.0020.0002.1D09C] # BYZANTINE MUSICAL SYMBOL AGOGI ARGI
+1D09D ; [*0CAB.0020.0002.1D09D] # BYZANTINE MUSICAL SYMBOL AGOGI METRIA
+1D09E ; [*0CAB.0021.0002.1D09E] # BYZANTINE MUSICAL SYMBOL AGOGI MESI: made equivalent to
+1D09D
+1D09F ; [*0CAD.0020.0002.1D09F] # BYZANTINE MUSICAL SYMBOL AGOGI GORGI
+1D0A0 ; [*0CAE.0020.0002.1D0A0] # BYZANTINE MUSICAL SYMBOL AGOGI GORGOTERI
+1D0A1 ; [*0CAF.0020.0002.1D0A1] # BYZANTINE MUSICAL SYMBOL AGOGI POLI GORGI
+1D0A2 ; [*0CB0.0020.0002.1D0A2] # BYZANTINE MUSICAL SYMBOL MARTYRIA PROTOS ICHOS
+1D0A3 ; [*0CB0.0021.0002.1D0A3] # BYZANTINE MUSICAL SYMBOL MARTYRIA ALLI PROTOS ICHOS: made
+equivalent to 1D0A2
+1D0A4 ; [*0CB2.0020.0002.1D0A4] # BYZANTINE MUSICAL SYMBOL MARTYRIA DEYTEROS ICHOS
+1D0A5 ; [*0CB2.0021.0002.1D0A5] # BYZANTINE MUSICAL SYMBOL MARTYRIA ALLI DEYTEROS ICHOS: made
+equivalent to 1D0A4
+1D0A6 ; [*0CB4.0020.0002.1D0A6] # BYZANTINE MUSICAL SYMBOL MARTYRIA TRITOS ICHOS
+1D0A7 ; [*0CB5.0020.0002.1D0A7] # BYZANTINE MUSICAL SYMBOL MARTYRIA TRIFONIAS
+1D0A8 ; [*0CB6.0020.0002.1D0A8] # BYZANTINE MUSICAL SYMBOL MARTYRIA TETARTOS ICHOS
+1D0A9 ; [*0CB7.0020.0002.1D0A9] # BYZANTINE MUSICAL SYMBOL MARTYRIA TETARTOS LEGETOS ICHOS
+1D0AA ; [*0CB8.0020.0002.1D0AA] # BYZANTINE MUSICAL SYMBOL MARTYRIA LEGETOS ICHOS
+1D0AB ; [*0CB9.0020.0002.1D0AB] # BYZANTINE MUSICAL SYMBOL MARTYRIA PLAGIOS ICHOS
+1D0AC ; [*0CBA.0020.0002.1D0AC] # BYZANTINE MUSICAL SYMBOL ISAKIA TELOUS ICHIMATOS
+1D0AD ; [*0CBB.0020.0002.1D0AD] # BYZANTINE MUSICAL SYMBOL APOSTROFOI TELOUS ICHIMATOS
+1D0AE ; [*0CBC.0020.0002.1D0AE] # BYZANTINE MUSICAL SYMBOL FANEROSIS TETRAFONIAS
+1D0AF ; [*0CBD.0020.0002.1D0AF] # BYZANTINE MUSICAL SYMBOL FANEROSIS MONOFONIAS
+1D0B0 ; [*0CBE.0020.0002.1D0B0] # BYZANTINE MUSICAL SYMBOL FANEROSIS DIFONIAS
+1D0B1 ; [*0CBF.0020.0002.1D0B1] # BYZANTINE MUSICAL SYMBOL MARTYRIA VARYS ICHOS
+1D0B2 ; [*0CBF.0020.0002.1D0B1][*0CB0.0021.0002.1D0A3][*0CBB.0020.0002.1D0AD] # BYZANTINE
+MUSICAL SYMBOL MARTYRIA PROTOVARYS ICHOS: decomposed
+1D0B3 ; [*0CB9.0020.0002.1D0AB][*0CB6.0020.0002.1D0A8][*0CBB.0020.0002.1D0AD] # BYZANTINE
+MUSICAL SYMBOL MARTYRIA PLAGIOS TETARTOS ICHOS: decomposed
+1D0B4 ; [.10F9.0020.0006.1D0B4] # BYZANTINE MUSICAL SYMBOL GORTHMIKON N APLOUN: made
+
+
+===== PAGE 73 =====
+73
+equivalent to 03BD GREEK SMALL LETTER NU
+1D0B5 ; [.10F9.0020.0007.1D0B5] # BYZANTINE MUSICAL SYMBOL GORTHMIKON N DIPLOUN: made
+equivalent to 03BD GREEK SMALL LETTER NU
+1D0B6 ; [*0CC4.0020.0002.1D0B6] # BYZANTINE MUSICAL SYMBOL ENARXIS KAI FTHORA VOU
+1D0B7 ; [*0CC5.0020.0002.1D0B7] # BYZANTINE MUSICAL SYMBOL IMIFONON
+1D0B8 ; [*0CC6.0020.0002.1D0B8] # BYZANTINE MUSICAL SYMBOL IMIFTHORON
+1D0B9 ; [*0CC7.0020.0002.1D0B9] # BYZANTINE MUSICAL SYMBOL FTHORA ARCHAION DEYTEROU ICHOU
+1D0BA ; [*0CC8.0020.0002.1D0BA] # BYZANTINE MUSICAL SYMBOL FTHORA DIATONIKI PA
+1D0BB ; [*0CC9.0020.0002.1D0BB] # BYZANTINE MUSICAL SYMBOL FTHORA DIATONIKI NANA
+1D0BC ; [*0CCA.0020.0002.1D0BC] # BYZANTINE MUSICAL SYMBOL FTHORA NAOS ICHOS
+1D0BD ; [*0CCB.0020.0002.1D0BD] # BYZANTINE MUSICAL SYMBOL FTHORA DIATONIKI DI
+1D0BE ; [*0CCC.0020.0002.1D0BE] # BYZANTINE MUSICAL SYMBOL FTHORA SKLIRON DIATONON DI
+1D0BF ; [*0CCD.0020.0002.1D0BF] # BYZANTINE MUSICAL SYMBOL FTHORA DIATONIKI KE
+1D0C0 ; [*0CCE.0020.0002.1D0C0] # BYZANTINE MUSICAL SYMBOL FTHORA DIATONIKI ZO
+1D0C1 ; [*0CCF.0020.0002.1D0C1] # BYZANTINE MUSICAL SYMBOL FTHORA DIATONIKI NI KATO
+1D0C2 ; [*0CD0.0020.0002.1D0C2] # BYZANTINE MUSICAL SYMBOL FTHORA DIATONIKI NI ANO
+1D0C3 ; [*0CD1.0020.0002.1D0C3] # BYZANTINE MUSICAL SYMBOL FTHORA MALAKON CHROMA DIFONIAS
+1D0C4 ; [*0CD2.0020.0002.1D0C4] # BYZANTINE MUSICAL SYMBOL FTHORA MALAKON CHROMA MONOFONIAS
+1D0C5 ; [*0CD3.0020.0002.1D0C5] # BYZANTINE MUSICAL SYMBOL FHTORA SKLIRON CHROMA VASIS
+1D0C6 ; [*0CD4.0020.0002.1D0C6] # BYZANTINE MUSICAL SYMBOL FTHORA SKLIRON CHROMA SYNAFI
+1D0C7 ; [*0CD5.0020.0002.1D0C7] # BYZANTINE MUSICAL SYMBOL FTHORA NENANO
+1D0C8 ; [*0CD6.0020.0002.1D0C8] # BYZANTINE MUSICAL SYMBOL CHROA ZYGOS
+1D0C9 ; [*0CD7.0020.0002.1D0C9] # BYZANTINE MUSICAL SYMBOL CHROA KLITON
+1D0CA ; [*0CD8.0020.0002.1D0CA] # BYZANTINE MUSICAL SYMBOL CHROA SPATHI
+1D0CB ; [*0CD9.0020.0002.1D0CB] # BYZANTINE MUSICAL SYMBOL FTHORA I YFESIS TETARTIMORION
+1D0CC ; [*0CDA.0020.0002.1D0CC] # BYZANTINE MUSICAL SYMBOL FTHORA ENARMONIOS ANTIFONIA
+1D0CD ; [*0CDB.0020.0002.1D0CD] # BYZANTINE MUSICAL SYMBOL YFESIS TRITIMORION
+1D0CE ; [*0CDC.0020.0002.1D0CE] # BYZANTINE MUSICAL SYMBOL DIESIS TRITIMORION
+1D0CF ; [*0CDD.0020.0002.1D0CF] # BYZANTINE MUSICAL SYMBOL DIESIS TETARTIMORION
+1D0D0 ; [*0CDE.0020.0002.1D0D0] # BYZANTINE MUSICAL SYMBOL DIESIS APLI DYO DODEKATA
+1D0D1 ; [*0CDF.0020.0002.1D0D1] # BYZANTINE MUSICAL SYMBOL DIESIS MONOGRAMMOS TESSERA
+DODEKATA
+1D0D2 ; [*0CE0.0020.0002.1D0D2] # BYZANTINE MUSICAL SYMBOL DIESIS DIGRAMMOS EX DODEKATA
+1D0D3 ; [*0CE1.0020.0002.1D0D3] # BYZANTINE MUSICAL SYMBOL DIESIS TRIGRAMMOS OKTO DODEKATA
+1D0D4 ; [*0CE2.0020.0002.1D0D4] # BYZANTINE MUSICAL SYMBOL YFESIS APLI DYO DODEKATA
+1D0D5 ; [*0CE3.0020.0002.1D0D5] # BYZANTINE MUSICAL SYMBOL YFESIS MONOGRAMMOS TESSERA
+DODEKATA
+1D0D6 ; [*0CE4.0020.0002.1D0D6] # BYZANTINE MUSICAL SYMBOL YFESIS DIGRAMMOS EX DODEKATA
+1D0D7 ; [*0CE5.0020.0002.1D0D7] # BYZANTINE MUSICAL SYMBOL YFESIS TRIGRAMMOS OKTO DODEKATA
+1D0D8 ; [*0CE6.0020.0002.1D0D8] # BYZANTINE MUSICAL SYMBOL GENIKI DIESIS
+1D0D9 ; [*0CE7.0020.0002.1D0D9] # BYZANTINE MUSICAL SYMBOL GENIKI YFESIS
+1D0DB ; [*0CE9.0020.0002.1D0DB] # BYZANTINE MUSICAL SYMBOL DIASTOLI APLI MEGALI
+1D0DA ; [*0CE9.0021.0002.1D0DA] # BYZANTINE MUSICAL SYMBOL DIASTOLI APLI MIKRI: made
+equivalent to 1D0DB
+1D0DC ; [*0CEA.0020.0002.1D0DC] # BYZANTINE MUSICAL SYMBOL DIASTOLI DIPLI
+1D0DD ; [*0CEB.0020.0002.1D0DD] # BYZANTINE MUSICAL SYMBOL DIASTOLI THESEOS
+1D0DE ; [*0CEC.0020.0002.1D0DE] # BYZANTINE MUSICAL SYMBOL SIMANSIS THESEOS
+1D0DF ; [*0CED.0020.0002.1D0DF] # BYZANTINE MUSICAL SYMBOL SIMANSIS THESEOS DISIMOU
+1D0E0 ; [*0CEE.0020.0002.1D0E0] # BYZANTINE MUSICAL SYMBOL SIMANSIS THESEOS TRISIMOU
+1D0E1 ; [*0CEF.0020.0002.1D0E1] # BYZANTINE MUSICAL SYMBOL SIMANSIS THESEOS TETRASIMOU
+1D0E2 ; [*0CF0.0020.0002.1D0E2] # BYZANTINE MUSICAL SYMBOL SIMANSIS ARSEOS
+1D0E3 ; [*0CF1.0020.0002.1D0E3] # BYZANTINE MUSICAL SYMBOL SIMANSIS ARSEOS DISIMOU
+1D0E4 ; [*0CF2.0020.0002.1D0E4] # BYZANTINE MUSICAL SYMBOL SIMANSIS ARSEOS TRISIMOU
+1D0E5 ; [*0CF3.0020.0002.1D0E5] # BYZANTINE MUSICAL SYMBOL SIMANSIS ARSEOS TETRASIMOU
+1D0E9 ; [*0CF7.0020.0002.1D0E9] # BYZANTINE MUSICAL SYMBOL ARKTIKO PA
+1D0EA ; [*0CF8.0020.0002.1D0EA] # BYZANTINE MUSICAL SYMBOL ARKTIKO VOU
+1D0EB ; [*0CF9.0020.0002.1D0EB] # BYZANTINE MUSICAL SYMBOL ARKTIKO GA
+1D0EC ; [*0CFA.0020.0002.1D0EC] # BYZANTINE MUSICAL SYMBOL ARKTIKO DI
+
+
+===== PAGE 74 =====
+74
+1D0ED ; [*0CFB.0020.0002.1D0ED] # BYZANTINE MUSICAL SYMBOL ARKTIKO KE
+1D0EE ; [*0CFC.0020.0002.1D0EE] # BYZANTINE MUSICAL SYMBOL ARKTIKO ZO
+1D0EF ; [*0CFD.0020.0002.1D0EF] # BYZANTINE MUSICAL SYMBOL ARKTIKO NI

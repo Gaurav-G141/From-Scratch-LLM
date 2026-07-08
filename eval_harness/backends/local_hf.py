@@ -5,7 +5,7 @@ import sys
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
-DEFAULT_MODEL_NAME = "Qwen/Qwen3-0.6B"
+DEFAULT_MODEL_NAME = "Qwen/Qwen3-1.7B"
 
 
 def pick_device() -> str:
@@ -17,16 +17,27 @@ def pick_device() -> str:
 
 
 class LocalHFBackend:
-    def __init__(self, model_name: str = DEFAULT_MODEL_NAME, device: str | None = None):
+    def __init__(
+        self,
+        model_name: str = DEFAULT_MODEL_NAME,
+        device: str | None = None,
+        adapter_path: str | None = None,
+    ):
         self.model_name = model_name
-        self.name = f"local:{model_name}"
+        self.adapter_path = adapter_path
+        label = f"{model_name}+adapter" if adapter_path else model_name
+        self.name = f"local:{label}"
         self.device = device or pick_device()
-        print(f"Loading {model_name} on {self.device} ...", file=sys.stderr)
+        print(f"Loading {label} on {self.device} ...", file=sys.stderr)
         self.tokenizer = AutoTokenizer.from_pretrained(model_name)
         self.model = AutoModelForCausalLM.from_pretrained(
             model_name,
             torch_dtype="auto",
         ).to(self.device)
+        if adapter_path:
+            from peft import PeftModel
+
+            self.model = PeftModel.from_pretrained(self.model, adapter_path)
         self.model.eval()
 
     def generate(

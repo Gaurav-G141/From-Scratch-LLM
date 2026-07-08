@@ -309,6 +309,8 @@ Transparency matches the assignment’s requirement for eval-before-train and fa
 | GPT-4.1 on 9 failures, v2 | 0/9 | Generic rules fail compound cases |
 | GPT-4.1 on 9 failures, v3 | 8/9 | Oracle cheat sheet, not generalization |
 | GPT-4.1 on 10 unseen | 0/10 | No corpus generalization |
+| GPT-4o + v0/v2 full sweep (107 cases) | v2: 11/36 final_dev; 0/10 unseen | See [`byzantine_gpt4o_sweep.md`](byzantine_gpt4o_sweep.md) |
+| Opus + v0/v2 full sweep (107 cases) | v2: 11/36 final_dev; 0/10 unseen | See [`byzantine_opus_sweep.md`](byzantine_opus_sweep.md) |
 | Opus blind on 33 hard+unseen | **1/33** strict | Frontier ceiling confirmed |
 
 **Conclusion:** Byzantine neume ↔ Western staff transcription is a **behavior worth training**. Reliability — not raw intelligence — is the gap. A well-prompted frontier model (including Opus) cannot do it reliably on held-out liturgical material.
@@ -334,6 +336,10 @@ Transparency matches the assignment’s requirement for eval-before-train and fa
 | [`runs/byzantine_ultra_hard_eval_summary.json`](../runs/byzantine_ultra_hard_eval_summary.json) | 23-case ultra-hard bank |
 | [`runs/byzantine_opus_blind_graded_summary.json`](../runs/byzantine_opus_blind_graded_summary.json) | 33-case blind Opus grade |
 | [`docs/byzantine_opus_blind_eval.md`](byzantine_opus_blind_eval.md) | Blind eval protocol for separate agent |
+| [`docs/byzantine_gpt4o_sweep.md`](byzantine_gpt4o_sweep.md) | GPT-4o v0/v2 full translator sweep (214 calls) |
+| [`docs/byzantine_opus_sweep.md`](byzantine_opus_sweep.md) | Opus v0/v2 full translator sweep (Cursor agents) |
+| [`runs/byzantine_gpt-4o_sweep_summary.json`](../runs/byzantine_gpt-4o_sweep_summary.json) | GPT-4o sweep summary JSON |
+| [`runs/byzantine_claude-opus-4-20250514_sweep_summary.json`](../runs/byzantine_claude-opus-4-20250514_sweep_summary.json) | Opus sweep summary JSON |
 
 ---
 

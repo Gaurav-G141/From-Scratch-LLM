@@ -106,7 +106,11 @@ def cmd_eval(args: argparse.Namespace) -> None:
             status = "PASS" if ok else "FAIL"
             if ok:
                 passed += 1
-            line = f"  [{status}] {result.scenario_id}: cleanliness={result.score_for('cleanliness'):.0f}, meaning={result.score_for('meaning_preservation'):.0f}"
+            dims = ", ".join(
+                f"{dim}={result.score_for(dim):.0f}"
+                for dim in goal.pass_thresholds
+            )
+            line = f"  [{status}] {result.scenario_id}: {dims}"
             print(line)
             if args.verbose or not ok:
                 print(f"      in:  {result.user_input[:100]}")
@@ -121,21 +125,23 @@ def cmd_eval(args: argparse.Namespace) -> None:
         print(f"Puzzles solved: {solved}/{len(scored)}")
 
 
-def cmd_compare(args: argparse.Namespace) -> None:
-    load_dotenv()
-    goal_path = Path(args.goal).resolve()
-    goal = load_goal(goal_path)
-    config = load_config(args.config)
-
-    system_prompt = Path(args.prompt_file).read_text(encoding="utf-8").strip()
-    dev_path, heldout_path = _goal_paths(goal_path, goal)
-    scenarios = load_scenarios(heldout_path if args.split == "heldout" else dev_path)
-
+def _run_local_eval(
+    *,
+    goal,
+    config,
+    scenarios,
+    system_prompt: str,
+    adapter_path: str | None = None,
+    label: str = "local",
+):
     from eval_harness.backends.local_hf import LocalHFBackend
 
-    backend = LocalHFBackend(model_name=config.local_model)
+    backend = LocalHFBackend(
+        model_name=config.local_model,
+        adapter_path=adapter_path,
+    )
     judge = _make_judge(config)
-    round_scores = evaluate_scenarios(
+    return evaluate_scenarios(
         goal=goal,
         scenarios=scenarios,
         system_prompt=system_prompt,
@@ -146,10 +152,50 @@ def cmd_compare(args: argparse.Namespace) -> None:
         temperature=config.temperature,
     )
 
-    print(f"Local model ({config.local_model}) on {args.split} set")
+
+def _print_round_scores(goal, round_scores, label: str, split: str) -> None:
+    print(f"\n{label} on {split} set")
     print(f"Overall mean: {round_scores.overall_mean():.2f}")
     for dim in goal.dimensions:
         print(f"  {dim}: {round_scores.mean_for(dim):.2f}")
+
+
+def cmd_compare(args: argparse.Namespace) -> None:
+    load_dotenv()
+    goal_path = Path(args.goal).resolve()
+    goal = load_goal(goal_path)
+    config = load_config(args.config)
+
+    system_prompt = Path(args.prompt_file).read_text(encoding="utf-8").strip()
+    dev_path, heldout_path = _goal_paths(goal_path, goal)
+    scenarios = load_scenarios(heldout_path if args.split == "heldout" else dev_path)
+
+    adapter_path = getattr(args, "adapter_path", None) or None
+    label = config.local_model
+    if adapter_path:
+        label = f"{config.local_model} (adapter: {adapter_path})"
+
+    round_scores = _run_local_eval(
+        goal=goal,
+        config=config,
+        scenarios=scenarios,
+        system_prompt=system_prompt,
+        adapter_path=adapter_path,
+        label=label,
+    )
+    _print_round_scores(goal, round_scores, label, args.split)
+
+    if getattr(args, "adapter_path", None) and getattr(args, "compare_base", False):
+        base_scores = _run_local_eval(
+            goal=goal,
+            config=config,
+            scenarios=scenarios,
+            system_prompt=system_prompt,
+            adapter_path=None,
+            label=config.local_model,
+        )
+        _print_round_scores(goal, base_scores, f"{config.local_model} (base)", args.split)
+        print("\nDelta (tuned - base) overall:", f"{round_scores.overall_mean() - base_scores.overall_mean():+.2f}")
 
 
 def cmd_generate_scenarios(args: argparse.Namespace) -> None:
@@ -194,6 +240,12 @@ def build_parser() -> argparse.ArgumentParser:
     compare.add_argument("--goal", required=True)
     compare.add_argument("--prompt-file", required=True)
     compare.add_argument("--split", choices=["dev", "heldout"], default="heldout")
+    compare.add_argument("--adapter-path", default=None, help="Path to PEFT/LoRA adapter for tuned model")
+    compare.add_argument(
+        "--compare-base",
+        action="store_true",
+        help="When --adapter-path is set, also eval base model and print delta",
+    )
     compare.set_defaults(func=cmd_compare)
 
     gen = sub.add_parser("generate-scenarios", help="Generate scenarios from a behavior spec")

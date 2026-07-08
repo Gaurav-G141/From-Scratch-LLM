@@ -1,0 +1,10 @@
+{
+  "total": 2292,
+  "by_source": {
+    "cappella_romana": 16,
+    "new_byzantium": 320,
+    "goa_dcs": 1825,
+    "st_anthonys": 131
+  },
+  "out": "/Users/gaurav/From-Scratch-LLM/data/byzantine/manifest.jsonl"
+}
