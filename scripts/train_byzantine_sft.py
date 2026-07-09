@@ -134,15 +134,18 @@ def train_with_peft(
     ds = Dataset.from_dict({"text": texts})
 
     def tokenize(batch):
+        # No fixed-length padding here: the collator pads each batch to its own
+        # longest sequence, so short fragments don't cost a full 1024-token step.
         return tokenizer(
             batch["text"],
             truncation=True,
             max_length=1024,
-            padding="max_length",
         )
 
     tokenized = ds.map(tokenize, batched=True, remove_columns=["text"])
-    collator = DataCollatorForLanguageModeling(tokenizer=tokenizer, mlm=False)
+    collator = DataCollatorForLanguageModeling(
+        tokenizer=tokenizer, mlm=False, pad_to_multiple_of=8
+    )
 
     trainer = Trainer(
         model=model,

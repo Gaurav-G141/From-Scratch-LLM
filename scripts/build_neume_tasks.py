@@ -14,6 +14,7 @@ are correct at the sequence/aggregate level:
   neume_to_west  given a full hymn's neume sequence, output the parallel Western pitch
                  sequence (sequence-to-sequence; the model learns the mapping, we don't
                  hand-align). Labels are the real OMR pitches for the SAME hymn.
+  west_to_neume  the reverse direction (Western pitches -> neume sequence), same pair.
   mode_from_neumes  given a neume sequence, identify the mode (from PDF title)
 
 Usage:
@@ -175,10 +176,12 @@ def build(out_path: str) -> None:
             ))
             counts["mode_from_neumes"] += 1
 
-        # neume_to_west: full neume sequence -> full Western pitch sequence (seq2seq)
+        # Bidirectional transcription (seq2seq) between the same hymn's neume sequence
+        # and its parallel OMR Western pitches. Both directions from one paired source.
         if stem in omr and len(omr[stem]) >= 8:
             src_n = " ".join(seq[:60])
             tgt_p = " ".join(omr[stem][:60])
+            # neume -> west
             rows.append(msg(
                 "Transcribe this Byzantine neume sequence to Western staff pitches:\n"
                 + src_n,
@@ -187,6 +190,15 @@ def build(out_path: str) -> None:
                 f"{base}_n2w",
             ))
             counts["neume_to_west"] += 1
+            # west -> neume (reverse direction, same pair)
+            rows.append(msg(
+                "Transcribe these Western staff pitches to a Byzantine neume sequence:\n"
+                + tgt_p,
+                src_n,
+                "west_to_neume",
+                f"{base}_w2n",
+            ))
+            counts["west_to_neume"] += 1
 
     rows.sort(key=lambda r: r["id"])
     with open(out_path, "w", encoding="utf-8") as f:

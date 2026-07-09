@@ -6,10 +6,17 @@
 
 | File | Rows | Contents |
 |------|------|----------|
-| `data/byzantine/sft_byzantine_all_train.jsonl` | 4,359 | Combined Western + neume tasks (headline SFT set) |
-| `data/byzantine/sft_byzantine_all_heldout.jsonl` | 485 | Held-out split (0 leakage vs train) |
+| `data/byzantine/sft_byzantine_all_train.jsonl` | 4,823 | Combined Western + neume tasks (headline SFT set) |
+| `data/byzantine/sft_byzantine_all_heldout.jsonl` | 536 | Held-out split (0 leakage vs train) |
 | `data/byzantine/sft_western.jsonl` | 4,294 | Western-only tasks: `mode_id`, `continuation`, `contour`, `transpose` |
-| `data/byzantine/sft_neume.jsonl` | 1,666 | Neume tasks: `neume_read`, `mode_from_neumes`, `neume_to_west` (581 bidirectional) |
+| `data/byzantine/sft_neume.jsonl` | 2,247 | Neume tasks: `neume_read`, `mode_from_neumes`, `neume_to_west`, `west_to_neume` |
+
+**Translation (bidirectional) is the core transcription data:** `neume_to_west` (515) +
+`west_to_neume` (515) = **1,030 translation examples**, both directions from the same
+parallel pairs. The other task types (continuation, contour, mode_id, transpose,
+neume_read, mode_from_neumes) are single-modality augmentation derived from the same hymns
+— useful support, but not paired transcription. So the headline "4,823 rows" is task rows,
+of which ~1,030 are true bidirectional transcription.
 
 **Intermediate / source data (regenerable):**
 

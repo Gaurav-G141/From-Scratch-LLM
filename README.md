@@ -181,10 +181,10 @@ for the full pipeline and a per-file data index.
 
 | Artifact | Current local state |
 |----------|---------------------|
-| [`data/byzantine/sft_byzantine_all_train.jsonl`](data/byzantine/sft_byzantine_all_train.jsonl) | 4,359 rows — combined Western + neume tasks (headline SFT set) |
-| [`data/byzantine/sft_byzantine_all_heldout.jsonl`](data/byzantine/sft_byzantine_all_heldout.jsonl) | 485 rows — held-out split (no train leakage) |
+| [`data/byzantine/sft_byzantine_all_train.jsonl`](data/byzantine/sft_byzantine_all_train.jsonl) | 4,823 rows — combined Western + neume tasks (headline SFT set) |
+| [`data/byzantine/sft_byzantine_all_heldout.jsonl`](data/byzantine/sft_byzantine_all_heldout.jsonl) | 536 rows — held-out split (no train leakage) |
 | [`data/byzantine/sft_western.jsonl`](data/byzantine/sft_western.jsonl) | 4,294 Western-only task rows (`mode_id`, `continuation`, `contour`, `transpose`) |
-| [`data/byzantine/sft_neume.jsonl`](data/byzantine/sft_neume.jsonl) | 1,666 neume task rows (`neume_read`, `mode_from_neumes`, `neume_to_west`); **581 bidirectional pairs** |
+| [`data/byzantine/sft_neume.jsonl`](data/byzantine/sft_neume.jsonl) | 2,247 neume task rows: `neume_read`, `mode_from_neumes`, and **bidirectional translation** `neume_to_west` (581) + `west_to_neume` (581) = **1,162 translation examples** |
 
 **Intermediate / source data:**
 
@@ -213,6 +213,7 @@ Keep these eval banks out of training data:
 - [`docs/byzantine_omr_western_data.md`](docs/byzantine_omr_western_data.md) — **current** deterministic data pipeline (OMR + neume extraction), per-file data index, and why the vision-era data was replaced
 - [`docs/byzantine_day2_litmus_report.md`](docs/byzantine_day2_litmus_report.md) — behavior spec, eval design, Day 2 litmus verdict, and educational framing
 - [`docs/byzantine_day3_corpus.md`](docs/byzantine_day3_corpus.md) — historical vision-extraction corpus flow (superseded; see the OMR doc above)
+- [`docs/byzantine_day3_results.md`](docs/byzantine_day3_results.md) — **Day 3 midweek gate**: first real SFT run (Qwen3-1.7B, 897 translation rows) and base-vs-tuned numbers with error analysis
 - [`docs/byzantine_gpt4o_sweep.md`](docs/byzantine_gpt4o_sweep.md) — GPT-4o full translator sweep
 - [`docs/byzantine_opus_sweep.md`](docs/byzantine_opus_sweep.md) — Claude Opus full translator sweep and Opus judge workflow
 - [`docs/byzantine_opus_blind_eval.md`](docs/byzantine_opus_blind_eval.md) — blind translator instructions for Opus-agent evals
