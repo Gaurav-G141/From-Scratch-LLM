@@ -1,0 +1,307 @@
+{
+  "dcs_aftercommunion2": {
+    "pitch_bearing_neumes": 97,
+    "pitches": 100,
+    "ratio": 1.031
+  },
+  "dcs_alt1apolytikion1": {
+    "pitch_bearing_neumes": 109,
+    "pitches": 100,
+    "ratio": 0.917
+  },
+  "dcs_alt1exaposteilarion": {
+    "pitch_bearing_neumes": 157,
+    "pitches": 145,
+    "ratio": 0.924
+  },
+  "dcs_alt1kathisma3": {
+    "pitch_bearing_neumes": 295,
+    "pitches": 267,
+    "ratio": 0.905
+  },
+  "dcs_alt1lauds": {
+    "pitch_bearing_neumes": 427,
+    "pitches": 428,
+    "ratio": 1.002
+  },
+  "dcs_alt1lityglory": {
+    "pitch_bearing_neumes": 158,
+    "pitches": 169,
+    "ratio": 1.07
+  },
+  "dcs_alt1stichera": {
+    "pitch_bearing_neumes": 558,
+    "pitches": 538,
+    "ratio": 0.964
+  },
+  "dcs_annunciation": {
+    "pitch_bearing_neumes": 503,
+    "pitches": 482,
+    "ratio": 0.958
+  },
+  "dcs_antiphon21": {
+    "pitch_bearing_neumes": 104,
+    "pitches": 97,
+    "ratio": 0.933
+  },
+  "dcs_comereceive": {
+    "pitch_bearing_neumes": 50,
+    "pitches": 50,
+    "ratio": 1.0
+  },
+  "dcs_hypakoe": {
+    "pitch_bearing_neumes": 113,
+    "pitches": 118,
+    "ratio": 1.044
+  },
+  "dcs_lauds7": {
+    "pitch_bearing_neumes": 154,
+    "pitches": 164,
+    "ratio": 1.065
+  },
+  "dcs_mode8-byconceivingthewisdom": {
+    "pitch_bearing_neumes": 159,
+    "pitches": 161,
+    "ratio": 1.013
+  },
+  "dcs_ode1katavasia": {
+    "pitch_bearing_neumes": 62,
+    "pitches": 60,
+    "ratio": 0.968
+  },
+  "dcs_ode4katavasia": {
+    "pitch_bearing_neumes": 72,
+    "pitches": 72,
+    "ratio": 1.0
+  },
+  "dcs_ode5katavasia": {
+    "pitch_bearing_neumes": 56,
+    "pitches": 54,
+    "ratio": 0.964
+  },
+  "dcs_ode6katavasia": {
+    "pitch_bearing_neumes": 61,
+    "pitches": 57,
+    "ratio": 0.934
+  },
+  "dcs_ode7katavasia": {
+    "pitch_bearing_neumes": 72,
+    "pitches": 72,
+    "ratio": 1.0
+  },
+  "dcs_ode8katavasia": {
+    "pitch_bearing_neumes": 71,
+    "pitches": 67,
+    "ratio": 0.944
+  },
+  "dcs_psa50-mode2": {
+    "pitch_bearing_neumes": 646,
+    "pitches": 587,
+    "ratio": 0.909
+  },
+  "dcs_psa50-mode8": {
+    "pitch_bearing_neumes": 620,
+    "pitches": 610,
+    "ratio": 0.984
+  },
+  "dcs_theotokos": {
+    "pitch_bearing_neumes": 465,
+    "pitches": 472,
+    "ratio": 1.015
+  },
+  "dcs_theotokosakathist": {
+    "pitch_bearing_neumes": 480,
+    "pitches": 482,
+    "ratio": 1.004
+  },
+  "dcs_theotokosdormition": {
+    "pitch_bearing_neumes": 465,
+    "pitches": 473,
+    "ratio": 1.017
+  },
+  "dcs_theotokosentry": {
+    "pitch_bearing_neumes": 464,
+    "pitches": 473,
+    "ratio": 1.019
+  },
+  "dcs_triodion3": {
+    "pitch_bearing_neumes": 466,
+    "pitches": 503,
+    "ratio": 1.079
+  },
+  "dcs_typika-psalm145-pl1": {
+    "pitch_bearing_neumes": 480,
+    "pitches": 452,
+    "ratio": 0.942
+  },
+  "newbyz_01d28ac129": {
+    "pitch_bearing_neumes": 76,
+    "pitches": 75,
+    "ratio": 0.987
+  },
+  "newbyz_1140cc748f": {
+    "pitch_bearing_neumes": 76,
+    "pitches": 79,
+    "ratio": 1.039
+  },
+  "newbyz_16da6c02e2": {
+    "pitch_bearing_neumes": 78,
+    "pitches": 75,
+    "ratio": 0.962
+  },
+  "newbyz_1dfa242a09": {
+    "pitch_bearing_neumes": 76,
+    "pitches": 71,
+    "ratio": 0.934
+  },
+  "newbyz_2297dcd806": {
+    "pitch_bearing_neumes": 65,
+    "pitches": 63,
+    "ratio": 0.969
+  },
+  "newbyz_41136a448e": {
+    "pitch_bearing_neumes": 72,
+    "pitches": 75,
+    "ratio": 1.042
+  },
+  "newbyz_8886f75a2b": {
+    "pitch_bearing_neumes": 100,
+    "pitches": 98,
+    "ratio": 0.98
+  },
+  "newbyz_d77c16d561": {
+    "pitch_bearing_neumes": 101,
+    "pitches": 96,
+    "ratio": 0.95
+  },
+  "newbyz_e85a4b6504": {
+    "pitch_bearing_neumes": 75,
+    "pitches": 74,
+    "ratio": 0.987
+  },
+  "newbyz_f2a1ee57b5": {
+    "pitch_bearing_neumes": 74,
+    "pitches": 74,
+    "ratio": 1.0
+  },
+  "newbyz_f8adbb0c57": {
+    "pitch_bearing_neumes": 79,
+    "pitches": 74,
+    "ratio": 0.937
+  },
+  "newbyz_fc8de42722": {
+    "pitch_bearing_neumes": 90,
+    "pitches": 87,
+    "ratio": 0.967
+  },
+  "sam_m0040-brief-doxology-mode-1": {
+    "pitch_bearing_neumes": 561,
+    "pitches": 617,
+    "ratio": 1.1
+  },
+  "sam_m0050-brief-doxology-mode-2": {
+    "pitch_bearing_neumes": 559,
+    "pitches": 583,
+    "ratio": 1.043
+  },
+  "sam_m0060-brief-doxology-mode-3": {
+    "pitch_bearing_neumes": 566,
+    "pitches": 585,
+    "ratio": 1.034
+  },
+  "sam_m0070-brief-doxology-mode-4": {
+    "pitch_bearing_neumes": 531,
+    "pitches": 580,
+    "ratio": 1.092
+  },
+  "sam_m0080-brief-doxology-mode-5": {
+    "pitch_bearing_neumes": 562,
+    "pitches": 607,
+    "ratio": 1.08
+  },
+  "sam_m0100-brief-doxology-mode-7": {
+    "pitch_bearing_neumes": 547,
+    "pitches": 593,
+    "ratio": 1.084
+  },
+  "sam_m0118-after-rising-from-the-tomb": {
+    "pitch_bearing_neumes": 414,
+    "pitches": 416,
+    "ratio": 1.005
+  },
+  "sam_m0150-lord-have-mercy-mode-1": {
+    "pitch_bearing_neumes": 99,
+    "pitches": 106,
+    "ratio": 1.071
+  },
+  "sam_m0250-only-begotten-son": {
+    "pitch_bearing_neumes": 173,
+    "pitches": 170,
+    "ratio": 0.983
+  },
+  "sam_m0260-come-let-us-worship": {
+    "pitch_bearing_neumes": 196,
+    "pitches": 204,
+    "ratio": 1.041
+  },
+  "sam_m0262-typica-1st-stasis-mode-8": {
+    "pitch_bearing_neumes": 661,
+    "pitches": 656,
+    "ratio": 0.992
+  },
+  "sam_m0264-typica-1st-stasis-mode-5": {
+    "pitch_bearing_neumes": 694,
+    "pitches": 690,
+    "ratio": 0.994
+  },
+  "sam_m0266-typica-2nd-stasis-mode-7": {
+    "pitch_bearing_neumes": 416,
+    "pitches": 433,
+    "ratio": 1.041
+  },
+  "sam_m0268-typica-2nd-stasis-mode-5": {
+    "pitch_bearing_neumes": 501,
+    "pitches": 477,
+    "ratio": 0.952
+  },
+  "sam_m0279-festal-entrance-hymns": {
+    "pitch_bearing_neumes": 696,
+    "pitches": 631,
+    "ratio": 0.907
+  },
+  "sam_m0280-resurrectional-apolytikia": {
+    "pitch_bearing_neumes": 674,
+    "pitches": 660,
+    "ratio": 0.979
+  },
+  "sam_m0600-anaphora-mode-3-nikolaidis": {
+    "pitch_bearing_neumes": 370,
+    "pitches": 387,
+    "ratio": 1.046
+  },
+  "sam_m0605-anaphora-mode-3-karamanis": {
+    "pitch_bearing_neumes": 371,
+    "pitches": 408,
+    "ratio": 1.1
+  },
+  "sam_m0625-anaphora-mode-5-phrygian": {
+    "pitch_bearing_neumes": 432,
+    "pitches": 467,
+    "ratio": 1.081
+  },
+  "sam_m1545-remember-us-also": {
+    "pitch_bearing_neumes": 40,
+    "pitches": 43,
+    "ratio": 1.075
+  },
+  "sam_m1550-let-our-mouths-be-filled": {
+    "pitch_bearing_neumes": 202,
+    "pitches": 187,
+    "ratio": 0.926
+  },
+  "sam_m1570-christ-is-risen-brief-version": {
+    "pitch_bearing_neumes": 119,
+    "pitches": 116,
+    "ratio": 0.975
+  }
+}

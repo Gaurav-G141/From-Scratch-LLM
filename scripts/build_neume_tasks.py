@@ -241,9 +241,13 @@ def build(out_path: str) -> None:
                 # target byzantine block: header + neume chain (repeat-collapsed)
                 byz_block = f"{mode_hdr}\n(Ison {ison})\n" + " | ".join(_collapse_repeats(nw))
 
+                # Length cue = honest INPUT count, embedded in the instruction line (keeps
+                # downstream line indices stable). NOTE: on this real melismatic corpus
+                # neumes:pitches ≈ 1.78:1, so the count is an imprecise-but-useful prior
+                # (accepted tradeoff); exact only on the 1:1 synthetic data.
                 # neume -> west
                 rows.append(msg(
-                    "Transcribe this Byzantine neume sequence to Western staff pitches:\n"
+                    f"Transcribe this Byzantine neume sequence ({len(nw)} neumes) to Western staff pitches:\n"
                     f"{mode_hdr}\n{neume_str}",
                     west_block,
                     "neume_to_west",
@@ -252,7 +256,7 @@ def build(out_path: str) -> None:
                 counts["neume_to_west"] += 1
                 # west -> neume (reverse direction, same window)
                 rows.append(msg(
-                    "Transcribe these Western staff pitches to a Byzantine neume sequence:\n"
+                    f"Transcribe these Western staff pitches ({len(pw)} pitches) to a Byzantine neume sequence:\n"
                     f"{mode_hdr}\nIson: {ison}\n{pitch_str}",
                     byz_block,
                     "west_to_neume",

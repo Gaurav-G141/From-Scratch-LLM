@@ -117,6 +117,8 @@ def train_with_unsloth(
     epochs: float,
     learning_rate: float,
     seq_length: int,
+    batch_size: int,
+    grad_accum: int,
 ) -> None:
     from unsloth import FastLanguageModel
     from unsloth.chat_templates import train_on_responses_only
@@ -152,8 +154,8 @@ def train_with_unsloth(
         max_seq_length=seq_length,
         args=TrainingArguments(
             output_dir=str(output_dir / "checkpoints"),
-            per_device_train_batch_size=1,
-            gradient_accumulation_steps=4,
+            per_device_train_batch_size=batch_size,
+            gradient_accumulation_steps=grad_accum,
             learning_rate=learning_rate,
             logging_steps=5,
             save_strategy="epoch" if epochs and epochs > 0 else "no",
@@ -194,6 +196,8 @@ def train_with_peft(
     epochs: float,
     learning_rate: float,
     seq_length: int,
+    batch_size: int,
+    grad_accum: int,
 ) -> None:
     import torch
     from datasets import Dataset
@@ -252,8 +256,8 @@ def train_with_peft(
         model=model,
         args=TrainingArguments(
             output_dir=str(output_dir / "checkpoints"),
-            per_device_train_batch_size=1,
-            gradient_accumulation_steps=2,
+            per_device_train_batch_size=batch_size,
+            gradient_accumulation_steps=grad_accum,
             learning_rate=learning_rate,
             logging_steps=5,
             save_strategy="epoch" if epochs and epochs > 0 else "no",
@@ -282,6 +286,11 @@ def main() -> None:
                         help="Epochs for a real run (e.g. 2-3); overrides --max-steps when > 0")
     parser.add_argument("--seq-length", type=int, default=1024,
                         help="Max sequence length (lower to 768 if VRAM-tight on Colab)")
+    parser.add_argument("--batch-size", type=int, default=8,
+                        help="per-device train batch size (4-8 on L4/A100; lower if OOM). "
+                             "Dynamic padding keeps short rows cheap.")
+    parser.add_argument("--grad-accum", type=int, default=2,
+                        help="gradient accumulation steps; effective batch = batch-size * this")
     parser.add_argument("--lr", type=float, default=2e-4)
     parser.add_argument("--force-peft", action="store_true", help="Skip Unsloth even on CUDA")
     args = parser.parse_args()
@@ -316,6 +325,8 @@ def main() -> None:
             epochs=args.epochs,
             learning_rate=args.lr,
             seq_length=args.seq_length,
+            batch_size=args.batch_size,
+            grad_accum=args.grad_accum,
         )
     else:
         train_with_peft(
@@ -326,6 +337,8 @@ def main() -> None:
             epochs=args.epochs,
             learning_rate=args.lr,
             seq_length=args.seq_length,
+            batch_size=args.batch_size,
+            grad_accum=args.grad_accum,
         )
 
     meta = {
@@ -335,6 +348,8 @@ def main() -> None:
         "epochs": args.epochs,
         "max_steps": args.max_steps if not (args.epochs and args.epochs > 0) else None,
         "seq_length": args.seq_length,
+        "batch_size": args.batch_size,
+        "grad_accum": args.grad_accum,
         "response_only_loss": True,
         "backend": "unsloth" if use_unsloth else "peft",
     }

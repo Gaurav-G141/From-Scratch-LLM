@@ -204,14 +204,24 @@ def make_rows(mode: str, anchor_idx: int, neumes_plain: list[str],
     west_block = f"{mode}\nIson: {ison}\n{pitch_str}"
     byz_block = f"{mode}\n(Ison {ison})\n{w2n_neume_str}"
 
+    # Length cue: the honest INPUT count (neumes shown for n2w, pitches given for w2n),
+    # embedded in the instruction line so downstream line indices are unchanged. Teaches
+    # the model to scale output to input length instead of emitting a fixed window.
+    n_in_neumes = len(neumes_n2w)
+    n_in_pitches = len(pitches)
+
     return [
         {
             "id": f"{rid}_n2w", "task": "neume_to_west", "synthetic": True,
             "messages": [
                 {"role": "system", "content": SYSTEM_PROMPT},
                 {"role": "user", "content":
-                    "Transcribe this Byzantine neume sequence to Western staff pitches:\n"
-                    f"{mode}\n{n2w_neume_str}"},
+                    f"Transcribe this Byzantine neume sequence ({n_in_neumes} neumes) to Western staff pitches:\n"
+                    # Ison anchor given: neumes are RELATIVE, so absolute pitch is only
+                    # determined once the starting anchor is known (transposition re-anchors
+                    # the same neumes to different isons). This is a starting reference, not
+                    # the answer. Matches the real eval format ("Ni = Γα") and the w2n dir.
+                    f"{mode}\nIson: {ison}\n{n2w_neume_str}"},
                 {"role": "assistant", "content": west_block},
             ],
         },
@@ -220,7 +230,7 @@ def make_rows(mode: str, anchor_idx: int, neumes_plain: list[str],
             "messages": [
                 {"role": "system", "content": SYSTEM_PROMPT},
                 {"role": "user", "content":
-                    "Transcribe these Western staff pitches to a Byzantine neume sequence:\n"
+                    f"Transcribe these Western staff pitches ({n_in_pitches} pitches) to a Byzantine neume sequence:\n"
                     f"{mode}\nIson: {ison}\n{pitch_str}"},
                 {"role": "assistant", "content": byz_block},
             ],

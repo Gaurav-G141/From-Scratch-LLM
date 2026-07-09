@@ -1,0 +1,14 @@
+{
+  "_source": "docs/byzantine_notation_for_slm.md — 'Mode snapshot' table (§ Mode and Scale Rules)",
+  "_note": "Maps the canonical mode label (as emitted by norm_mode in build_neume_tasks.py) to its Byzantine genus. Genus determines the microtonal comma pattern (see comma tables in the same doc). This preserves microtonal INTENT symbolically; it does not give exact frequencies. 'grave' (Varys) has multiple forms — enharmonic is the common default, marked uncertain.",
+  "map": {
+    "Mode 1":     {"genus": "diatonic",       "certain": true},
+    "Mode 2":     {"genus": "soft chromatic", "certain": true},
+    "Mode 3":     {"genus": "enharmonic",     "certain": true},
+    "Mode 4":     {"genus": "diatonic",       "certain": true},
+    "Mode pl. 1": {"genus": "diatonic",       "certain": true},
+    "Mode pl. 2": {"genus": "hard chromatic", "certain": true},
+    "Mode pl. 4": {"genus": "diatonic",       "certain": true},
+    "Mode grave": {"genus": "enharmonic",     "certain": false}
+  }
+}

@@ -65,10 +65,14 @@ def derive(anchor: str, neumes: list[str]) -> list[str]:
 
 
 def check_n2w(row: dict) -> None:
+    # prompt lines: instruction / mode / "Ison: X" / neume_str
     ulines = row["messages"][1]["content"].split("\n")
     alines = row["messages"][2]["content"].split("\n")
     mode = ulines[1]
-    neumes = ulines[2].split()
+    um = re.match(r"^Ison: ([A-G][3-6])$", ulines[2])
+    assert um, "prompt ison anchor missing/malformed"
+    prompt_anchor = um.group(1)
+    neumes = ulines[3].split()
     assert mode in MODES, f"unknown mode {mode!r}"
     assert all(n in STEP or n in BREATH_NOOPS for n in neumes), "bad token in user"
     assert alines[0] == mode, "mode header mismatch"
@@ -76,6 +80,7 @@ def check_n2w(row: dict) -> None:
     assert m, "ison header malformed"
     anchor = m.group(1)
     assert anchor in LADDER_IX, "anchor off-ladder"
+    assert anchor == prompt_anchor, "prompt anchor != target anchor"
     pitches = alines[2].split()
     assert all(PITCH_RE.match(p) and p in LADDER_IX for p in pitches), "off-ladder pitch"
     assert derive(anchor, neumes) == pitches, "pitches != interval walk"
@@ -124,7 +129,7 @@ def main() -> int:
         if "n2w" not in pair or "w2n" not in pair:
             rev_bad += 1
             continue
-        n2w_neumes = [t for t in pair["n2w"]["messages"][1]["content"].split("\n")[2].split()
+        n2w_neumes = [t for t in pair["n2w"]["messages"][1]["content"].split("\n")[3].split()
                       if t not in BREATH_NOOPS]
         w2n_neumes = pair["w2n"]["messages"][2]["content"].split("\n")[2].split()
         if n2w_neumes != w2n_neumes:

@@ -36,9 +36,42 @@ so no model or rule can recover exact pitches from them.** Byzantine neumes enco
 *relative, context-dependent* motion with melisma (one neume held over several notes),
 ison-priming, and modal/microtonal realization that the bare symbol stream does not carry.
 
-This is confirmed from **four independent angles** — please engage with these before
-proposing a fix, because any idea that assumes recoverable 1:1 alignment will fail the same
-way:
+### Why neume→note is not 1:1 (the musical reasons)
+
+Byzantine notation is fundamentally different from Western staff notation: it is
+**prescriptive of contour and gesture, not of an explicit note-for-note sequence.** It
+tells a trained cantor *how to move*; the singing tradition fills in the actual notes.
+Western notation is the opposite — every note is spelled out. So the conversion is
+inherently **1-to-many and context-dependent.** Four concrete mechanisms cause the count
+mismatch (they stack):
+
+1. **Melisma — one neume, many notes (dominant cause).** A single neume, especially when
+   combined with cheironomic/"great hypostases" signs, expands into a multi-note ornamental
+   figure: 1 written symbol → 3–5 sung notes. Chant is inherently melismatic (many notes
+   per syllable). This is the main driver of the observed **1.78 notes per pitch-bearing
+   neume**.
+2. **The ison adds notes with no neume.** The ison is a held drone; the Western
+   transcription writes the drone/opening pitches out as real notes, but on the Byzantine
+   side the ison is a *separate support marking*, not part of the neume chain. This is
+   exactly the "+2 pitches" surplus seen in every eval reference (§2, confirmation 3).
+3. **Many neume tokens carry zero pitch.** The stream includes martyria (mode signatures),
+   gorgon/argon (tempo), breath marks, and fthora (modulation) — all extracted as tokens
+   but none of which are notes. So neume-count and note-count diverge even before melisma.
+4. **Realization depends on mode + microtonal genus.** The same neume ("up one degree")
+   resolves to a whole tone, a small semitone, or a microtonal step depending on the mode's
+   comma pattern (diatonic / soft-chromatic / hard-chromatic / enharmonic). This doesn't
+   change the *count*, but it's why even a correct count wouldn't yield correct pitches
+   without the full modal context the symbols omit.
+
+Bottom line: the exact-pitch information **is not present in the neume symbols** — it lives
+in the melismatic expansion, the ison, and the oral/modal tradition. That is why every
+attempt to recover pitch from the neume stream alone has failed, and why the promising
+leads below all involve sourcing data where that realization is actually captured
+(audio, or a natively-authored score).
+
+This under-specification is confirmed from **four independent angles** — please engage with
+these before proposing a fix, because any idea that assumes recoverable 1:1 alignment will
+fail the same way:
 
 1. **OMR ratio.** Across 495 hymns with both sides extracted, pitch-bearing-neume : pitch
    ratio is **1.78 : 1** (median). Only 15% of hymns are within 0.9–1.1.

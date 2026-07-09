@@ -53,6 +53,8 @@ def main() -> None:
     ap.add_argument("--max-new-tokens", type=int, default=256)
     ap.add_argument("--temperature", type=float, default=0.0,
                     help="0.0 = greedy/deterministic (recommended for scoring)")
+    ap.add_argument("--batch-size", type=int, default=16,
+                    help="rows generated per batch (left-padded); 1 = unbatched")
     ap.add_argument("--load-4bit", action="store_true", help="NF4 4-bit (CUDA only)")
     ap.add_argument("--limit", type=int, default=0, help="predict only first N rows (0=all)")
     ap.add_argument("--enable-thinking", action="store_true",
@@ -71,6 +73,9 @@ def main() -> None:
     tokenizer = AutoTokenizer.from_pretrained(args.model)
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token
+    # Decoder-only batched generation requires LEFT padding, else right-pad tokens shift
+    # the position of the generated continuation and corrupt short-prompt rows.
+    tokenizer.padding_side = "left"
 
     model_kwargs: dict = {"torch_dtype": "auto"}
     if args.load_4bit:
@@ -106,27 +111,30 @@ def main() -> None:
 
     out_path = Path(args.out)
     out_path.parent.mkdir(parents=True, exist_ok=True)
+    bs = max(1, args.batch_size)
     n = 0
     with out_path.open("w", encoding="utf-8") as f:
-        for r in rows:
-            prompt_msgs = build_prompt_messages(r["messages"])
-            text = template(prompt_msgs)
-            inputs = tokenizer(text, return_tensors="pt").to(model.device)
+        for start in range(0, len(rows), bs):
+            batch = rows[start:start + bs]
+            texts = [template(build_prompt_messages(r["messages"])) for r in batch]
+            # left-padded batch encode
+            enc = tokenizer(texts, return_tensors="pt", padding=True).to(model.device)
             with torch.no_grad():
                 gen = model.generate(
-                    **inputs,
+                    **enc,
                     max_new_tokens=args.max_new_tokens,
                     do_sample=(args.temperature > 0),
                     temperature=(args.temperature if args.temperature > 0 else None),
                     pad_token_id=tokenizer.pad_token_id,
                 )
-            completion = tokenizer.decode(
-                gen[0][inputs["input_ids"].shape[1]:], skip_special_tokens=True)
-            f.write(json.dumps({"id": r["id"], "prediction": completion},
-                               ensure_ascii=False) + "\n")
-            n += 1
-            if n % 100 == 0:
-                print(f"  {n}/{len(rows)}", file=sys.stderr, flush=True)
+            # with left padding, every row's continuation starts at the same padded width
+            gen_only = gen[:, enc["input_ids"].shape[1]:]
+            completions = tokenizer.batch_decode(gen_only, skip_special_tokens=True)
+            for r, completion in zip(batch, completions):
+                f.write(json.dumps({"id": r["id"], "prediction": completion},
+                                   ensure_ascii=False) + "\n")
+            n += len(batch)
+            print(f"  {n}/{len(rows)}", file=sys.stderr, flush=True)
 
     print(f"Wrote {n} predictions -> {out_path}")
 
