@@ -103,3 +103,77 @@ completely. This is the clearest evidence that SFT is doing something real.
    `[MeasureBar]…` loops.
 4. **Retrain + re-eval** on the same held-out banks and report the new deltas,
    ideally with an API judge restored for a comparable row.
+
+---
+
+# v2 Run — Data Fixes Applied (2026-07-09)
+
+All four Day-4 data actions above were implemented in `scripts/build_neume_tasks.py`
+and the model retrained. Results below.
+
+## What changed in the data
+
+| Fix | Before (v1) | After (v2) | Verified |
+|-----|-------------|-----------|----------|
+| Target length | 97% exactly 60 tokens (fixed-slice artifact) | proportional windowing, median 22 / p90 39 / cap 121 | ✅ |
+| Mode/Ison header in targets | 0% | 100% (matches eval reference format) | ✅ |
+| `west_to_neume` degeneration | runs to 16, 45 `measure_bar` loops | max run 1, 0 loops (repeat-collapse) | ✅ |
+| Training rows | 897 | 10,496 (windowing = honest fragment augmentation), split by hymn, 0 leakage | ✅ |
+
+Adapter: `models/byzantine_sft_translation_v2_1.7b` — LoRA r=8, trained on a
+diverse 2,400-row / 513-hymn subset, ~6 epochs, final train loss **0.30**
+(v1 was 0.47). Graded by in-session Opus agent on the same rubric (API judge still
+billing-blocked — same caveat as v1; directional, not API-comparable).
+
+## Results v1 → v2 (tuned, mean over 43 scenarios)
+
+| Dimension | v1 | v2 | Δ |
+|-----------|-----|-----|-----|
+| **melodic_equivalence** (litmus) | 0.02 | **0.00** | **−0.02** |
+| mode_fidelity | 0.16 | **1.61** | **+1.45** |
+| notation_convention | 0.72 | 0.81 | +0.09 |
+| meaning_preservation | 0.02 | **1.19** | **+1.17** |
+| overall mean | 0.23 | **0.90** | **+0.67** |
+| strict pass | 0/43 | **0/43** | 0 |
+
+## Verdict: fixes worked — except on the one metric that matters
+
+The data fixes did exactly what they were designed to do on three of four dimensions.
+The `mode_fidelity` regression is **fully repaired** (0.16 → 1.61): re-adding the header
+means the tuned model now emits the correct mode label. `meaning_preservation` jumped
+(0.02 → 1.19) because outputs now carry the ison header and aren't degenerate. Overall
+quality nearly quadrupled (0.23 → 0.90).
+
+**But `melodic_equivalence` is still 0.00, and strict pass is still 0/43.** The core
+transcription behavior did not move. Fixing the *format* of the data could not fix the
+*content* problem, and the eval surfaced a new failure mode that explains why:
+
+1. **Direction confusion.** On `byz_to_west` scenarios (target = Western pitches), the
+   tuned model emits *Byzantine neumes* instead — 6/8 (heldout), 9/10 (unseen), 11/18
+   (ultra_hard). The bidirectional training taught both mappings but not *which direction
+   to apply* from the prompt.
+2. **Mode-template collapse.** It falls back to a memorized "Mode II, Ni=Κε / petastē
+   oligon kentēma apostrophos oligon" string, especially on unseen (9/10) — it reproduces
+   a frequent training pattern rather than transcribing the actual input.
+3. **`<think>` wrapper returned** on 100% of outputs (usually empty `<think>\n\n</think>`).
+
+## Root cause (unchanged from the deepest finding)
+
+This is the same wall hit repeatedly: **neumes and pitches do not align 1:1 (~1.78:1,
+melismatic), so whole-hymn seq2seq pairs teach contour/format but not exact pitch
+mapping.** The model learns "produce a plausible chant-like sequence in some notation,"
+not "transcribe *these* specific symbols." No amount of format-fixing or data-volume
+changes that — it is a property of the training signal.
+
+## Day 4+ actions (content, not format)
+
+1. **Fix direction confusion first (cheap, high-value).** Make the two directions
+   unmistakable — distinct system prompts / task tags per direction, or train two
+   single-direction adapters. This alone should stop byz→west emitting neumes.
+2. **Attack alignment (the real bottleneck).** Options, hardest-but-only-real-fix last:
+   (a) use the Neanes `MusicXmlExporter` pitch engine to produce *per-neume-aligned*
+   targets (exact, deterministic) instead of whole-hymn seq2seq; (b) restrict training to
+   the ~15% of hymns that are near-1:1 neume:pitch; (c) accept that this SLM does
+   contour/mode, not exact pitch, and reframe the deliverable.
+3. **Suppress the `<think>` wrapper** in training targets / generation config.
+4. Re-eval with an API judge once billing is restored for an API-comparable row.

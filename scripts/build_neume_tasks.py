@@ -127,6 +127,55 @@ def load_omr() -> dict:
 
 QUANT = {"ison", "oligon", "petaste", "apostrophos", "elaphron", "chamile", "kentemata"}
 
+# Neume/pitch windowing. Whole hymns are long (median 130 neumes / 173 pitches, up to
+# 1800+) and neumes:pitches align ~1.78:1 (melismatic — no clean per-neume alignment).
+# We therefore emit WHOLE-HYMN pairs split into proportional windows: a window of neumes
+# is paired with the proportionally-corresponding window of pitches. This bounds sequence
+# length, removes the old fixed-60 truncation artifact (which taught "always emit 60
+# tokens"), and multiplies training signal — without asserting false per-neume alignment.
+WINDOW_NEUMES = 24          # neumes per training window
+MIN_WINDOW = 6              # skip trailing scraps shorter than this
+MAX_TARGET = 120            # skip pathologically melismatic windows (pitch:neume blowout)
+
+
+def _ison_of(pitches: list[str]) -> str:
+    """Ison (drone) proxy = most common pitch in the hymn."""
+    return Counter(pitches).most_common(1)[0][0] if pitches else ""
+
+
+def _collapse_repeats(tokens: list[str], max_run: int = 3) -> list[str]:
+    """Clamp any token repeated more than max_run times in a row (kills the
+    degenerate `measure_bar measure_bar ...` / repeated-token loops in some
+    west_to_neume targets)."""
+    out: list[str] = []
+    run = 0
+    for t in tokens:
+        if out and t == out[-1]:
+            run += 1
+            if run >= max_run:
+                continue
+        else:
+            run = 0
+        out.append(t)
+    return out
+
+
+def _windows(neumes: list[str], pitches: list[str]):
+    """Yield (neume_window, pitch_window) pairs by proportional slicing."""
+    n_n, n_p = len(neumes), len(pitches)
+    if n_n < MIN_WINDOW or n_p < MIN_WINDOW:
+        return
+    n_windows = max(1, round(n_n / WINDOW_NEUMES))
+    for i in range(n_windows):
+        na, nb = i * n_n // n_windows, (i + 1) * n_n // n_windows
+        pa, pb = i * n_p // n_windows, (i + 1) * n_p // n_windows
+        nw, pw = neumes[na:nb], pitches[pa:pb]
+        if len(nw) >= MIN_WINDOW and len(pw) >= MIN_WINDOW:
+            # skip windows where the pitch span dwarfs the neume span (extreme melisma):
+            # such pairs teach the model to over-generate and hurt length discipline.
+            if len(pw) <= MAX_TARGET and len(nw) <= MAX_TARGET:
+                yield nw, pw
+
 
 def msg(user: str, assistant: str, task: str, rid: str) -> dict:
     return {
@@ -176,29 +225,40 @@ def build(out_path: str) -> None:
             ))
             counts["mode_from_neumes"] += 1
 
-        # Bidirectional transcription (seq2seq) between the same hymn's neume sequence
-        # and its parallel OMR Western pitches. Both directions from one paired source.
-        if stem in omr and len(omr[stem]) >= 8:
-            src_n = " ".join(seq[:60])
-            tgt_p = " ".join(omr[stem][:60])
-            # neume -> west
-            rows.append(msg(
-                "Transcribe this Byzantine neume sequence to Western staff pitches:\n"
-                + src_n,
-                tgt_p,
-                "neume_to_west",
-                f"{base}_n2w",
-            ))
-            counts["neume_to_west"] += 1
-            # west -> neume (reverse direction, same pair)
-            rows.append(msg(
-                "Transcribe these Western staff pitches to a Byzantine neume sequence:\n"
-                + tgt_p,
-                src_n,
-                "west_to_neume",
-                f"{base}_w2n",
-            ))
-            counts["west_to_neume"] += 1
+        # Bidirectional transcription between the same hymn's neume sequence and its
+        # parallel OMR Western pitches, split into proportional windows. Targets carry the
+        # Mode/Ison header (matching the eval reference format) so the model learns to emit
+        # it. west_to_neume targets are repeat-collapsed to kill degeneration loops.
+        if stem in omr and len(omr[stem]) >= MIN_WINDOW:
+            pitches = omr[stem]
+            ison = _ison_of(pitches)
+            mode_hdr = mode or "Mode ?"
+            for wi, (nw, pw) in enumerate(_windows(seq, pitches)):
+                neume_str = " ".join(nw)
+                pitch_str = " ".join(pw)
+                # target western block: header + ison + pitch line (eval format)
+                west_block = f"{mode_hdr}\nIson: {ison}\n{pitch_str}"
+                # target byzantine block: header + neume chain (repeat-collapsed)
+                byz_block = f"{mode_hdr}\n(Ison {ison})\n" + " | ".join(_collapse_repeats(nw))
+
+                # neume -> west
+                rows.append(msg(
+                    "Transcribe this Byzantine neume sequence to Western staff pitches:\n"
+                    f"{mode_hdr}\n{neume_str}",
+                    west_block,
+                    "neume_to_west",
+                    f"{base}_n2w_{wi}",
+                ))
+                counts["neume_to_west"] += 1
+                # west -> neume (reverse direction, same window)
+                rows.append(msg(
+                    "Transcribe these Western staff pitches to a Byzantine neume sequence:\n"
+                    f"{mode_hdr}\nIson: {ison}\n{pitch_str}",
+                    byz_block,
+                    "west_to_neume",
+                    f"{base}_w2n_{wi}",
+                ))
+                counts["west_to_neume"] += 1
 
     rows.sort(key=lambda r: r["id"])
     with open(out_path, "w", encoding="utf-8") as f:
