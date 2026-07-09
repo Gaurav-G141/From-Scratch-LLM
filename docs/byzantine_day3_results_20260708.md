@@ -177,3 +177,88 @@ changes that — it is a property of the training signal.
    contour/mode, not exact pitch, and reframe the deliverable.
 3. **Suppress the `<think>` wrapper** in training targets / generation config.
 4. Re-eval with an API judge once billing is restored for an API-comparable row.
+
+---
+
+# v3 — Two One-Directional SLMs + rules-engine test (2026-07-09)
+
+Two experiments this round: (A) test whether the `byzantine_notation_for_slm.md` pitch
+rules can generate *aligned* targets (the real melodic_equivalence fix); (B) split the
+bidirectional model into two single-direction adapters to kill the direction-confusion
+failure from v2.
+
+## (A) Rules-engine for aligned targets — DEAD END (confirmed)
+
+Built `scripts/neume_rules_engine.py` from the doc's per-neume interval rules (ison=0,
+oligon=+1, apostrophos=-1, elaphron=-2, ...) + comma scale patterns, and validated against
+the hand-aligned eval references. **Result: 0/8 exact, 0/8 contour match.** Cause is
+structural and systematic: every reference has ~2 **more** pitches than its neume chain
+has neumes (4→6, 3→5, consistently) — the neume chain *under-specifies* the melody
+(ison-priming + melodic realization the bare symbols don't encode).
+
+Checked Neanes as an alternative engine: its `AnalysisService`/`getNeumeValue` uses the
+**identical 1:1 neume→pitch model** (Ison→0, Oligon→+1, OligonPlusKentimaBelow→+2, …), so
+it hits the same wall. The alignment problem is now confirmed from **four** independent
+angles: OMR ratio 1.78:1, 0 exact-length files, +2 reference-pitch surplus, and Neanes's
+own 1:1 assumption. **No rule engine can recover exact pitch from bare neume sequences.**
+
+## (B) Two directional adapters
+
+Data split by direction (hymn-level, 0 leakage), trained separately on the v2 fixed data
+(windowed, header-carrying). `models/byzantine_sft_n2w_1.7b` (byz→west) and
+`models/byzantine_sft_w2n_1.7b` (west→byz), each LoRA r=8, ~1,510-row subset, 4,500 steps.
+Graded by in-session Opus agent (same caveat as prior rows).
+
+### Result #1 — n2w (byz→west), graded on 36 byz→west scenarios
+
+| Dimension | v2 bidir | n2w directional | Δ |
+|-----------|----------|-----------------|-----|
+| notation_convention | 0.81 | **1.39** | **+0.58** |
+| mode_fidelity | 1.61 | 1.50 | −0.11 |
+| meaning_preservation | 1.19 | **0.39** | **−0.80** |
+| melodic_equivalence | 0.00 | 0.00 | 0 |
+| strict pass | 0/43 | 0/36 | 0 |
+
+**Direction confusion fixed as predicted:** byz→west outputs emitting *neumes* (wrong)
+dropped from **26/36 (v2) → 10/36**; 67% now correctly emit pitches, and the mode/Ison
+header often lands (`Mode IV, Ni = F4 / Ison: F4`). BUT meaning_preservation regressed to
+0.39 — the adapter over-generates (20+ notes for a 4-note reference), a **length-discipline**
+side-effect of windowed training (targets ~22 tokens, no stop signal on short inputs).
+
+### Result #2 — w2n (west→byz), graded on 7 west→byz scenarios — FAILED
+
+| Dimension | value |
+|-----------|-------|
+| notation_convention | 0.57 |
+| mode_fidelity | 1.29 |
+| meaning_preservation | **0.00** |
+| correct-direction (emits neumes) | **0/7** |
+
+**All 7 outputs are runaway `<think>` chains that never close and never emit an answer**
+(vs n2w which closed think + answered 100%). The west→byz adapter collapsed into
+reasoning-loop degeneration. Likely causes: the west→byz targets (neume chains) are the
+harder/messier direction, and 4,500 steps on 1,510 rows may have over- or under-fit into a
+think-loop attractor. This direction needs `<think>` suppression at train time and likely
+a cleaner target set.
+
+## v3 verdict
+
+- The **rules-engine / aligned-target path is definitively closed** — melodic_equivalence
+  cannot be moved via any deterministic neume→pitch mapping on this data.
+- The **directional split works for byz→west** (fixes the specific direction-confusion bug,
+  +0.58 notation) but **not for west→byz** (think-loop collapse), and neither moves the
+  melodic bottleneck.
+- Two *new*, fixable issues surfaced, both about output discipline not alignment:
+  **(1) length over-generation** (n2w), **(2) `<think>` runaway** (w2n).
+
+## Day 5+ actions
+
+1. **Suppress `<think>` in training + generation** (add `/no_think` or strip the block in
+   targets; set generation to stop at answer). Fixes w2n's total failure directly.
+2. **Length discipline for n2w:** add an explicit output-length hint / EOS training, or
+   train on shorter windows, so it stops instead of running to the token cap.
+3. **Reframe the deliverable around what's achievable:** contour + mode + notation-system
+   discipline (all now working) rather than exact pitch (blocked by alignment). The
+   litmus's melodic_equivalence gate is not reachable with the current data.
+4. Aligned pitch data would require a source with note-level neume↔pitch alignment (audio
+   time-alignment or a natively-aligned corpus) — none currently available.
