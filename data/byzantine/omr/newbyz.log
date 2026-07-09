@@ -1,0 +1,41 @@
+/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/site-packages/music21/musicxml/xmlToM21.py:5542: MusicXMLWarning: Could not import octave-shift: Error in getting Ottava
+  self.setDirectionInDirectionType(mxSpecificDirectionTag,
+  [20/305] ok=20 empty=0 noexp=0 err=0 to=0 notes=2903
+/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/site-packages/music21/musicxml/xmlToM21.py:5542: MusicXMLWarning: Could not import octave-shift: Error in getting Ottava
+  self.setDirectionInDirectionType(mxSpecificDirectionTag,
+  [40/305] ok=40 empty=0 noexp=0 err=0 to=0 notes=6005
+  [60/305] ok=60 empty=0 noexp=0 err=0 to=0 notes=9121
+/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/site-packages/music21/musicxml/xmlToM21.py:5542: MusicXMLWarning: Could not import octave-shift: Error in getting Ottava
+  self.setDirectionInDirectionType(mxSpecificDirectionTag,
+/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/site-packages/music21/musicxml/xmlToM21.py:5542: MusicXMLWarning: Could not import octave-shift: Error in getting Ottava
+  self.setDirectionInDirectionType(mxSpecificDirectionTag,
+  [80/305] ok=80 empty=0 noexp=0 err=0 to=0 notes=12259
+/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/site-packages/music21/musicxml/xmlToM21.py:5542: MusicXMLWarning: Could not import octave-shift: Error in getting Ottava
+  self.setDirectionInDirectionType(mxSpecificDirectionTag,
+  [100/305] ok=99 empty=0 noexp=0 err=0 to=1 notes=15176
+/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/site-packages/music21/musicxml/xmlToM21.py:5542: MusicXMLWarning: Could not import octave-shift: Error in getting Ottava
+  self.setDirectionInDirectionType(mxSpecificDirectionTag,
+  [120/305] ok=119 empty=0 noexp=0 err=0 to=1 notes=18342
+  [140/305] ok=139 empty=0 noexp=0 err=0 to=1 notes=21646
+/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/site-packages/music21/musicxml/xmlToM21.py:5542: MusicXMLWarning: Could not import octave-shift: Error in getting Ottava
+  self.setDirectionInDirectionType(mxSpecificDirectionTag,
+  [160/305] ok=158 empty=0 noexp=1 err=0 to=1 notes=24435
+  [180/305] ok=178 empty=0 noexp=1 err=0 to=1 notes=27379
+/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/site-packages/music21/musicxml/xmlToM21.py:5542: MusicXMLWarning: Could not import octave-shift: Error in getting Ottava
+  self.setDirectionInDirectionType(mxSpecificDirectionTag,
+  [200/305] ok=198 empty=0 noexp=1 err=0 to=1 notes=30331
+  [220/305] ok=218 empty=0 noexp=1 err=0 to=1 notes=34278
+  [240/305] ok=238 empty=0 noexp=1 err=0 to=1 notes=37541
+  [260/305] ok=258 empty=0 noexp=1 err=0 to=1 notes=40676
+  [280/305] ok=278 empty=0 noexp=1 err=0 to=1 notes=43804
+  [300/305] ok=298 empty=0 noexp=1 err=0 to=1 notes=46957
+  [305/305] ok=303 empty=0 noexp=1 err=0 to=1 notes=49154
+{
+  "files": 305,
+  "ok": 303,
+  "empty": 0,
+  "no_export": 1,
+  "timeout": 1,
+  "error": 0,
+  "notes": 49154
+}

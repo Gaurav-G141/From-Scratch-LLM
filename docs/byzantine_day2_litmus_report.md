@@ -18,7 +18,7 @@ The assignment’s Day 2 row requires:
 | Build eval harness | Done | [`eval_harness/`](../eval_harness/) + [`config/byzantine.yaml`](../config/byzantine.yaml) |
 | Build data-gen pipeline (corpus) | Started | [`scripts/scrape_byzantine_corpus.py`](../scripts/scrape_byzantine_corpus.py), [`data/byzantine/manifest.jsonl`](../data/byzantine/manifest.jsonl) |
 | Run smoke tests (50+ scenarios) | Done | 84 hand-crafted + 10 unseen + 23 ultra-hard = **117 eval cases** across banks |
-| Full loop scaffold | Ready | `eval` → judge → report; SFT step wired via `compare` against [`Qwen/Qwen3-0.6B`](../run_inference.py) |
+| Full loop scaffold | Ready | `eval` → judge → report; SFT step wired via `compare` against [`Qwen/Qwen3-1.7B`](../run_inference.py) |
 
 The **litmus question** from the assignment:
 
@@ -198,7 +198,7 @@ The assignment thesis: *behavior from data*, not *smarter than GPT*. An SLM is j
 | Liturgical formula families | v2 prompt is 130+ lines and still incomplete | Distill formulas from 17+ bi-notational PDFs into weights |
 | West→Byz reverse mapping | Requires inverse interval table + mode context | Parallel PDF pairs provide reverse direction gold |
 
-**Base model candidate:** [`Qwen/Qwen3-0.6B`](../run_inference.py) (assignment default); compare via `eval_harness compare`.
+**Base model candidate:** [`Qwen/Qwen3-1.7B`](../run_inference.py); compare via `eval_harness compare`.
 
 ### 6.2 SLM deployment niches (not replacing Opus)
 
@@ -220,7 +220,7 @@ An SLM is not meant to beat Opus on raw capability. It is meant to do **one narr
 2. **Extract** aligned neume ↔ staff fragments (vision teacher model on image PDFs)
 3. **Filter** with the same Opus judge rubric used here
 4. **SFT** (QLoRA via Unsloth) on accepted pairs
-5. **Compare** base Qwen3-0.6B vs tuned on held-out + unseen banks
+5. **Compare** base Qwen3-1.7B vs tuned on held-out + unseen banks
 
 The **dataset is the deliverable**; this Day 2 report proves the eval exists before training.
 
@@ -318,7 +318,7 @@ Transparency matches the assignment’s requirement for eval-before-train and fa
 ### Day 3 actions
 
 1. Generate 500–2000 filtered parallel fragments from [`manifest.jsonl`](../data/byzantine/manifest.jsonl)
-2. First QLoRA SFT run on Qwen3-0.6B
+2. First QLoRA SFT run on Qwen3-1.7B
 3. `eval_harness compare` — base vs tuned on `heldout`, `unseen`, `ultra_hard`
 4. Report delta on **melodic_equivalence** (primary) and strict pass rate
 

@@ -246,6 +246,7 @@ def process_pair(
     max_fragments: int,
     zoom: float,
     download: bool,
+    done_pages: set[str] | None = None,
 ) -> tuple[list[dict], list[dict]]:
     if download:
         download_pair(pair, CORPUS_DIR)
@@ -271,6 +272,8 @@ def process_pair(
 
     for page_idx in range(n_pages):
         job_id = f"{pair.id}_p{page_idx}"
+        if done_pages and job_id in done_pages:
+            continue
         byz_png = PNG_DIR / pair.source / f"{pair.id}_p{page_idx}_byz.png"
         west_png = PNG_DIR / pair.source / f"{pair.id}_p{page_idx}_west.png"
 
@@ -321,6 +324,8 @@ def main() -> None:
     parser.add_argument("--log", default=str(OUT_LOG))
     parser.add_argument("--model", default="gpt-4.1")
     parser.add_argument("--limit-pairs", type=int, default=0, help="0 = all")
+    parser.add_argument("--offset", type=int, default=0, help="Skip first N pairs after filters")
+    parser.add_argument("--shard", default="", help="Parallel shard I/N, e.g. 0/6")
     parser.add_argument("--max-pages", type=int, default=2, help="Pages per PDF to scan")
     parser.add_argument("--fragments-per-page", type=int, default=2)
     parser.add_argument("--source", default="", help="Filter manifest by source, e.g. cappella_romana")
@@ -341,8 +346,16 @@ def main() -> None:
     pairs = load_manifest(Path(args.manifest))
     if args.source:
         pairs = [p for p in pairs if p.source == args.source]
-    if args.limit_pairs > 0:
-        pairs = pairs[: args.limit_pairs]
+    if args.shard:
+        shard_i, shard_n = (int(x) for x in args.shard.split("/", 1))
+        if shard_i < 0 or shard_n < 1 or shard_i >= shard_n:
+            raise SystemExit(f"Invalid --shard {args.shard!r}; use e.g. 0/4")
+        pairs = pairs[shard_i::shard_n]
+    else:
+        if args.offset > 0:
+            pairs = pairs[args.offset :]
+        if args.limit_pairs > 0:
+            pairs = pairs[: args.limit_pairs]
 
     done = load_done_ids(log_path) if args.resume else set()
     client = OpenAI()
@@ -363,6 +376,7 @@ def main() -> None:
             max_fragments=args.fragments_per_page,
             zoom=2.0,
             download=args.download,
+            done_pages=done if args.resume else None,
         )
         for row in rows:
             append_jsonl(out_path, row)

@@ -1,0 +1,29 @@
+  [20/350] ok=20 empty=0 noexp=0 err=0 to=0 notes=4396
+  [40/350] ok=40 empty=0 noexp=0 err=0 to=0 notes=10058
+  [60/350] ok=60 empty=0 noexp=0 err=0 to=0 notes=14792
+  [80/350] ok=80 empty=0 noexp=0 err=0 to=0 notes=20700
+/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/site-packages/music21/musicxml/xmlToM21.py:1807: MusicXMLWarning: The following exception took place in m. 1 in part Voice.
+  self.xmlMeasureToMeasure(mxMeasure)
+  [100/350] ok=99 empty=0 noexp=0 err=1 to=0 notes=28077
+  [120/350] ok=118 empty=0 noexp=0 err=1 to=1 notes=31756
+  [140/350] ok=138 empty=0 noexp=0 err=1 to=1 notes=35938
+  [160/350] ok=158 empty=0 noexp=0 err=1 to=1 notes=40719
+  [180/350] ok=178 empty=0 noexp=0 err=1 to=1 notes=46681
+  [200/350] ok=198 empty=0 noexp=0 err=1 to=1 notes=53145
+  [220/350] ok=218 empty=0 noexp=0 err=1 to=1 notes=57241
+  [240/350] ok=238 empty=0 noexp=0 err=1 to=1 notes=60944
+  [260/350] ok=258 empty=0 noexp=0 err=1 to=1 notes=66633
+  [280/350] ok=278 empty=0 noexp=0 err=1 to=1 notes=68870
+  [300/350] ok=298 empty=0 noexp=0 err=1 to=1 notes=76205
+  [320/350] ok=318 empty=0 noexp=0 err=1 to=1 notes=82616
+  [340/350] ok=338 empty=0 noexp=0 err=1 to=1 notes=88880
+  [350/350] ok=348 empty=0 noexp=0 err=1 to=1 notes=92764
+{
+  "files": 350,
+  "ok": 348,
+  "empty": 0,
+  "no_export": 0,
+  "timeout": 1,
+  "error": 1,
+  "notes": 92764
+}

@@ -1,5 +1,14 @@
 # Day 3: Real Training Corpus
 
+> **⚠️ Superseded.** The vision-LLM extraction flow described below (`extract_byzantine_training_data.py`
+> → `prune_byzantine_corpus.py` → `generate_byzantine_sft_data.py`, producing `sft_raw.jsonl` /
+> `sft_v1.jsonl`) proved unreliable — the vision model confabulated pitches it could not read.
+> It was replaced by a **deterministic** pipeline: Audiveris OMR for Western pitches + EZ/ED
+> font and vector decoding for Byzantine neumes. For the current data locations and pipeline,
+> see [`byzantine_omr_western_data.md`](byzantine_omr_western_data.md). The `sft_raw*`/`sft_v1`/`sft_v2`
+> files are retained only for provenance. The **source discovery** parts below (scraping,
+> `manifest.jsonl`) are still current.
+
 ## Sources scraped
 
 Run discovery (updates `data/byzantine/manifest.jsonl`):

@@ -1,0 +1,338 @@
+[1/2292] skip cappella_alleluiarion (done)
+[2/2292] skip cappella_apolytikia (done)
+[3/2292] skip cappella_cherubic (done)
+[4/2292] skip cappella_communion-prologue (done)
+[5/2292] skip cappella_dynamis (done)
+[6/2292] skip cappella_entrance-chant (done)
+[7/2292] skip cappella_general-responses (done)
+[8/2292] skip cappella_kontakion (done)
+[9/2292] skip cappella_koukouzelis (done)
+[10/2292] skip cappella_litany-of-peace (done)
+[11/2292] skip cappella_megalynarion (done)
+[12/2292] skip cappella_post-communion (done)
+[13/2292] skip cappella_prokeimenon (done)
+[14/2292] skip cappella_sunday-antiphons (done)
+[15/2292] skip cappella_trisagion (done)
+[16/2292] extract cappella_divine-liturgy-binotational — Divine Liturgy in English (bi-notational combined 
+  +0 rows (0 total)
+[17/2292] extract newbyz_hymns-are-listed-by-their-dates-major-feasts-bold-type-are-celebrated-on-any-day — Hymns are listed by their dates. Major Feasts (bol
+  +4 rows (4 total)
+[18/2292] extract newbyz_hymns-are-listed-by-their-dates-major-feasts-bold-type-are-celebrated-on-any-day — Hymns are listed by their dates. Major Feasts (bol
+  +4 rows (8 total)
+[19/2292] extract newbyz_hymns-are-listed-by-their-dates-major-feasts-bold-type-are-celebrated-on-any-day — Hymns are listed by their dates. Major Feasts (bol
+  +4 rows (12 total)
+[20/2292] extract newbyz_hymns-are-listed-by-their-dates-major-feasts-bold-type-are-celebrated-on-any-day — Hymns are listed by their dates. Major Feasts (bol
+  +4 rows (16 total)
+[21/2292] extract newbyz_hymns-are-listed-by-their-dates-major-feasts-bold-type-are-celebrated-on-any-day — Hymns are listed by their dates. Major Feasts (bol
+  +4 rows (20 total)
+[22/2292] extract newbyz_hymns-are-listed-by-their-dates-major-feasts-bold-type-are-celebrated-on-any-day — Hymns are listed by their dates. Major Feasts (bol
+  +4 rows (24 total)
+[23/2292] extract newbyz_hymns-are-listed-by-their-dates-major-feasts-bold-type-are-celebrated-on-any-day — Hymns are listed by their dates. Major Feasts (bol
+  +4 rows (28 total)
+[24/2292] extract newbyz_hymns-are-listed-by-their-dates-major-feasts-bold-type-are-celebrated-on-any-day — Hymns are listed by their dates. Major Feasts (bol
+  +4 rows (32 total)
+[25/2292] extract newbyz_hymns-are-listed-by-date-major-feasts-bold-type-are-celebrated-on-any-day-of-the — Hymns are listed by date. Major Feasts (bold type)
+  +4 rows (36 total)
+[26/2292] extract newbyz_hymns-are-listed-by-their-dates-major-feasts-bold-type-are-celebrated-on-any-day — Hymns are listed by their dates. Major Feasts (bol
+  +4 rows (40 total)
+[27/2292] extract newbyz_hymns-are-listed-by-their-dates-major-feasts-bold-type-are-celebrated-on-any-day — Hymns are listed by their dates. Major Feasts (bol
+  +4 rows (44 total)
+[28/2292] extract newbyz_hymns-are-listed-by-their-dates-major-feasts-bold-type-are-celebrated-on-any-day — Hymns are listed by their dates. Major Feasts (bol
+  +4 rows (48 total)
+[29/2292] extract newbyz_the-specific-date-of-the-moveable-hymns-depends-on-when-pascha-easter-occurs — The specific date of the moveable hymns depends on
+  +4 rows (52 total)
+[30/2292] extract newbyz_the-specific-date-of-the-moveable-hymns-depends-on-when-pascha-easter-occurs — The specific date of the moveable hymns depends on
+  +4 rows (56 total)
+[31/2292] extract newbyz_the-specific-date-of-the-moveable-hymns-depends-on-when-pascha-easter-occurs — The specific date of the moveable hymns depends on
+  +4 rows (60 total)
+[32/2292] extract newbyz_the-specific-date-of-the-moveable-hymns-depends-on-when-pascha-easter-occurs — The specific date of the moveable hymns depends on
+  +4 rows (64 total)
+[33/2292] extract newbyz_palm-sunday-through-holy-tuesday-evenings-bridegroom-services-troparion-behold-t — Palm Sunday through Holy Tuesday Evenings Bridegro
+  +4 rows (68 total)
+[34/2292] extract newbyz_note-also-see-the-divine-liturgy-page-in-the-services-section-for-more-hymns-fro — NOTE: Also see the Divine Liturgy Page in the Serv
+  +0 rows (68 total)
+[35/2292] extract newbyz_the-specific-date-of-the-moveable-hymns-depends-on-when-pascha-easter-occurs — The specific date of the moveable hymns depends on
+  +4 rows (72 total)
+[36/2292] extract newbyz_the-specific-date-of-the-moveable-hymns-depends-on-when-pascha-easter-occurs — The specific date of the moveable hymns depends on
+  +4 rows (76 total)
+[37/2292] extract newbyz_bc1bbac3b6 — EB
+  +4 rows (80 total)
+[38/2292] extract newbyz_142f024932 — EB
+  +4 rows (84 total)
+[39/2292] extract newbyz_0917ea1edb — EB
+  +4 rows (88 total)
+[40/2292] extract newbyz_f70eb7c155 — EB
+  +4 rows (92 total)
+[41/2292] extract newbyz_fac329ad42 — EB
+  +4 rows (96 total)
+[42/2292] extract newbyz_beb51d6ee5 — EB
+  +4 rows (100 total)
+[43/2292] extract newbyz_1eb28810a0 — EB
+  +4 rows (104 total)
+[44/2292] extract newbyz_88f18cfd0d — EB
+  +4 rows (108 total)
+[45/2292] extract newbyz_11668024d2 — EB
+  +4 rows (112 total)
+[46/2292] extract newbyz_576b48a439 — EB
+  +4 rows (116 total)
+[47/2292] extract newbyz_207c29a860 — EB
+  +4 rows (120 total)
+[48/2292] extract newbyz_186b890a15 — EB
+  +4 rows (124 total)
+[49/2292] extract newbyz_0e67f5630d — EB
+  +4 rows (128 total)
+[50/2292] extract newbyz_e20c472698 — EB
+  +4 rows (132 total)
+[51/2292] extract newbyz_dc8f00aadd — EB
+  +4 rows (136 total)
+[52/2292] extract newbyz_27ae4aa1fc — EB
+  +4 rows (140 total)
+[53/2292] extract newbyz_9869d90d21 — EB
+  +4 rows (144 total)
+[54/2292] extract newbyz_1dfa242a09 — EB
+  +4 rows (148 total)
+[55/2292] extract newbyz_2a228e0d24 — EB
+  +4 rows (152 total)
+[56/2292] extract newbyz_a6536c9843 — EB
+  +4 rows (156 total)
+[57/2292] extract newbyz_37906e7831 — EB
+  +4 rows (160 total)
+[58/2292] extract newbyz_22035acaff — EB
+  +4 rows (164 total)
+[59/2292] extract newbyz_4882a9e69e — EB
+  +4 rows (168 total)
+[60/2292] extract newbyz_6586154a06 — EB
+  +4 rows (172 total)
+[61/2292] extract newbyz_3642af77a5 — EB
+  +4 rows (176 total)
+[62/2292] extract newbyz_3a7bb8c5f2 — EB
+  +4 rows (180 total)
+[63/2292] extract newbyz_2c24b2822c — EB
+  +4 rows (184 total)
+[64/2292] extract newbyz_48b093bc66 — EB
+  +4 rows (188 total)
+[65/2292] extract newbyz_cd2f17d2ef — EB
+  +0 rows (188 total)
+[66/2292] extract newbyz_e23f74eea7 — EB
+  +4 rows (192 total)
+[67/2292] extract newbyz_0d7357cd5d — EB
+  +4 rows (196 total)
+[68/2292] extract newbyz_07e2666224 — EB
+  +4 rows (200 total)
+[69/2292] extract newbyz_f0297ec63a — EB
+  +4 rows (204 total)
+[70/2292] extract newbyz_3c6d69c872 — EB
+  +4 rows (208 total)
+[71/2292] extract newbyz_5fc546feeb — EB
+  +4 rows (212 total)
+[72/2292] extract newbyz_26af8ee059 — EB
+  +4 rows (216 total)
+[73/2292] extract newbyz_58e7c8795a — EB
+  +4 rows (220 total)
+[74/2292] extract newbyz_f9d80930e5 — EB
+  +4 rows (224 total)
+[75/2292] extract newbyz_20e4eb2886 — EB
+  +4 rows (228 total)
+[76/2292] extract newbyz_70a0059b5e — EB
+  +4 rows (232 total)
+[77/2292] extract newbyz_9722165545 — EB
+  +4 rows (236 total)
+[78/2292] extract newbyz_2e7e0b027f — EB
+  +4 rows (240 total)
+[79/2292] extract newbyz_f8adbb0c57 — EB
+  +4 rows (244 total)
+[80/2292] extract newbyz_2fd9e488a6 — EB
+  +4 rows (248 total)
+[81/2292] extract newbyz_41cd9c07fa — EB
+  +4 rows (252 total)
+[82/2292] extract newbyz_405e9f1b09 — EB
+  +4 rows (256 total)
+[83/2292] extract newbyz_2103d002c0 — EB
+  +4 rows (260 total)
+[84/2292] extract newbyz_3a7d5ebf2e — EB
+  +4 rows (264 total)
+[85/2292] extract newbyz_d1c65ea80e — EB
+  +4 rows (268 total)
+[86/2292] extract newbyz_fdfadfba38 — EB
+  +4 rows (272 total)
+[87/2292] extract newbyz_522e516a8a — EB
+  +4 rows (276 total)
+[88/2292] extract newbyz_cada155535 — EB
+  +4 rows (280 total)
+[89/2292] extract newbyz_71b01cf410 — EB
+  +4 rows (284 total)
+[90/2292] extract newbyz_337e560b74 — EB
+  +4 rows (288 total)
+[91/2292] extract newbyz_32b64d302f — EB
+  +4 rows (292 total)
+[92/2292] extract newbyz_8fc2f4bbaa — EB
+  +4 rows (296 total)
+[93/2292] extract newbyz_3224cf4f1c — EB
+  +4 rows (300 total)
+[94/2292] extract newbyz_f395cc98d1 — EB
+  +4 rows (304 total)
+[95/2292] extract newbyz_fc3d3bc7d4 — EB
+  +4 rows (308 total)
+[96/2292] extract newbyz_e0fb01fc6e — EB
+  +4 rows (312 total)
+[97/2292] extract newbyz_5088bbf1c8 — EB
+  +4 rows (316 total)
+[98/2292] extract newbyz_a974c263b0 — EB
+  +4 rows (320 total)
+[99/2292] extract newbyz_acff78b42a — EB
+  +4 rows (324 total)
+[100/2292] extract newbyz_fbfaeb41c6 — EB
+  +4 rows (328 total)
+[101/2292] extract newbyz_7a64d74c07 — EB
+  +4 rows (332 total)
+[102/2292] extract newbyz_b521ee024a — EB
+  +4 rows (336 total)
+[103/2292] extract newbyz_a0bac7adab — EB
+  +4 rows (340 total)
+[104/2292] extract newbyz_b467d9aa6b — EB
+  +4 rows (344 total)
+[105/2292] extract newbyz_cf652a1346 — EB
+  +4 rows (348 total)
+[106/2292] extract newbyz_5ed25b65ba — EB
+  +4 rows (352 total)
+[107/2292] extract newbyz_b652ae3ccb — EB
+  +4 rows (356 total)
+[108/2292] extract newbyz_9f679d826a — EB
+  +4 rows (360 total)
+[109/2292] extract newbyz_2ac9c0cc5a — EB
+  +4 rows (364 total)
+[110/2292] extract newbyz_3b84bd8264 — EB
+  +4 rows (368 total)
+[111/2292] extract newbyz_b9c9aafbdb — EB
+  +4 rows (372 total)
+[112/2292] extract newbyz_a397ede816 — EB
+  +4 rows (376 total)
+[113/2292] extract newbyz_7331eccb13 — EB
+  +4 rows (380 total)
+[114/2292] extract newbyz_70033440f8 — EB
+  +4 rows (384 total)
+[115/2292] extract newbyz_81a9cca2f5 — EB
+  +4 rows (388 total)
+[116/2292] extract newbyz_d71ec74180 — EB
+  +4 rows (392 total)
+[117/2292] extract newbyz_e2e1eed0a2 — EB
+  +4 rows (396 total)
+[118/2292] extract newbyz_fb9b5e6935 — EB
+  +4 rows (400 total)
+[119/2292] extract newbyz_2297dcd806 — EB
+  +4 rows (404 total)
+[120/2292] extract newbyz_8da26b138a — EB
+  +4 rows (408 total)
+[121/2292] extract newbyz_2091fc63c2 — EB
+  +4 rows (412 total)
+[122/2292] extract newbyz_4f0977918a — EB
+  +4 rows (416 total)
+[123/2292] extract newbyz_1734140c40 — EB
+  +4 rows (420 total)
+[124/2292] extract newbyz_4761938445 — EB
+  +4 rows (424 total)
+[125/2292] extract newbyz_f64168462d — EB
+  +4 rows (428 total)
+[126/2292] extract newbyz_84fc2dd65c — EB
+  +4 rows (432 total)
+[127/2292] extract newbyz_b37be538b0 — EB
+  +4 rows (436 total)
+[128/2292] extract newbyz_ea2b4bb48b — EB
+  +4 rows (440 total)
+[129/2292] extract newbyz_9b2ae28e26 — EB
+  +4 rows (444 total)
+[130/2292] extract newbyz_a7ad25b195 — EB
+  +4 rows (448 total)
+[131/2292] extract newbyz_4ea4d59b7f — EB
+  +4 rows (452 total)
+[132/2292] extract newbyz_82c51407fe — EB
+  +4 rows (456 total)
+[133/2292] extract newbyz_aaea35d50d — EB
+  +4 rows (460 total)
+[134/2292] extract newbyz_6481bbffee — EB
+  +4 rows (464 total)
+[135/2292] extract newbyz_6b86aa2148 — EB
+  +4 rows (468 total)
+[136/2292] extract newbyz_53a6b35423 — EB
+  +4 rows (472 total)
+[137/2292] extract newbyz_1140cc748f — EB
+  +4 rows (476 total)
+[138/2292] extract newbyz_08cf17caac — EB
+  +4 rows (480 total)
+[139/2292] extract newbyz_984d055646 — EB
+  +4 rows (484 total)
+[140/2292] extract newbyz_2656c7b121 — EB
+  +0 rows (484 total)
+[141/2292] extract newbyz_855b570e3c — EB
+  +4 rows (488 total)
+[142/2292] extract newbyz_a95bb5de96 — EB
+  +4 rows (492 total)
+[143/2292] extract newbyz_167c805519 — EB
+  +4 rows (496 total)
+[144/2292] extract newbyz_82650f10cb — EB
+  +4 rows (500 total)
+[145/2292] extract newbyz_f2a1ee57b5 — EB
+  +4 rows (504 total)
+[146/2292] extract newbyz_01d28ac129 — ​
+  +4 rows (508 total)
+[147/2292] extract newbyz_cef7565dd2 — EB
+  +4 rows (512 total)
+[148/2292] extract newbyz_ef0a2d3efb — EB
+  +4 rows (516 total)
+[149/2292] extract newbyz_1423a3b1d7 — EB
+  +4 rows (520 total)
+[150/2292] extract newbyz_d0e5c52341 — EB
+  +4 rows (524 total)
+[151/2292] extract newbyz_20ca072637 — EB
+  +4 rows (528 total)
+[152/2292] extract newbyz_a14b5d8e22 — EB
+  +4 rows (532 total)
+[153/2292] extract newbyz_adbfee29bd — EB
+  +4 rows (536 total)
+[154/2292] extract newbyz_de3917f803 — EB
+  +4 rows (540 total)
+[155/2292] extract newbyz_770665b23c — EB
+  +4 rows (544 total)
+[156/2292] extract newbyz_ddfd21defc — EB
+  +4 rows (548 total)
+[157/2292] extract newbyz_d2226f380e — EB
+  +4 rows (552 total)
+[158/2292] extract newbyz_d8cebda320 — EB
+  +4 rows (556 total)
+[159/2292] extract newbyz_90b3e06a0e — EB
+  +4 rows (560 total)
+[160/2292] extract newbyz_496cdca5e6 — EB
+  +4 rows (564 total)
+[161/2292] extract newbyz_47942ce056 — EB
+  +4 rows (568 total)
+[162/2292] extract newbyz_325ed92db9 — EB
+  +4 rows (572 total)
+[163/2292] extract newbyz_0f800d6473 — EB
+  +4 rows (576 total)
+[164/2292] extract newbyz_d96ba29e74 — EB
+  +4 rows (580 total)
+[165/2292] extract newbyz_d67bb5471f — EB
+  +4 rows (584 total)
+[166/2292] extract newbyz_6e32f6e64a — EB
+  +4 rows (588 total)
+[167/2292] extract newbyz_41136a448e — EB
+  +4 rows (592 total)
+[168/2292] extract newbyz_41d092eb1a — EB
+  +4 rows (596 total)
+[169/2292] extract newbyz_b91ea87414 — EB
+  +4 rows (600 total)
+[170/2292] extract newbyz_ea3a3d2a9f — EB
+  +4 rows (604 total)
+[171/2292] extract newbyz_42ccaeb1fc — EB
+  +4 rows (608 total)
+[172/2292] extract newbyz_04e08b490b — EB
+  +4 rows (612 total)
+[173/2292] extract newbyz_30169328a3 — EB
+  +4 rows (616 total)
+[174/2292] extract newbyz_5bc5ea3870 — EB
+  +4 rows (620 total)
+[175/2292] extract newbyz_abb9a488a9 — EB
+  +4 rows (624 total)
+[176/2292] extract newbyz_15b5f158fc — EB
+  +4 rows (628 total)
+[177/2292] extract newbyz_d4d9103b34 — EB

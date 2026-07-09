@@ -1,0 +1,22 @@
+{
+  "input_rows": 9936,
+  "duplicate_id_rows": 5070,
+  "distinct_rows": 4866,
+  "poor_quality_rows": 323,
+  "clean_rows": 4543,
+  "poor_quality_breakdown": {
+    "lyric_leak": 212,
+    "degenerate_single_pitch": 120,
+    "count_mismatch": 8
+  },
+  "clean_direction": {
+    "byz_to_west": 2244,
+    "west_to_byz": 2299
+  },
+  "clean_source": {
+    "cappella_romana": 107,
+    "new_byzantium": 1197,
+    "goa_dcs": 2331,
+    "st_anthonys": 908
+  }
+}

@@ -1,0 +1,1133 @@
+[1/201] skip cappella_apolytikia (done)
+[2/201] extract cappella_entrance-chant — Sunday Entrance Chant
+  +0 rows (0 total)
+[3/201] extract cappella_litany-of-peace — Litany of Peace
+  +0 rows (0 total)
+[4/201] skip cappella_sunday-antiphons (done)
+[5/201] extract newbyz_hymns-are-listed-by-date-major-feasts-bold-type-are-celebrated-on-any-day-of-the — Hymns are listed by date. Major Feasts (bold type)
+  +0 rows (0 total)
+[6/201] extract newbyz_bc1bbac3b6 — EB
+  +0 rows (0 total)
+[7/201] extract newbyz_fac329ad42 — EB
+  +0 rows (0 total)
+[8/201] extract newbyz_11668024d2 — EB
+  +0 rows (0 total)
+[9/201] extract newbyz_0e67f5630d — EB
+  +0 rows (0 total)
+[10/201] extract newbyz_9869d90d21 — EB
+  +0 rows (0 total)
+[11/201] extract newbyz_37906e7831 — EB
+  +0 rows (0 total)
+[12/201] extract newbyz_3642af77a5 — EB
+  +0 rows (0 total)
+[13/201] extract newbyz_cd2f17d2ef — EB
+  +4 rows (4 total)
+[14/201] extract newbyz_f0297ec63a — EB
+  +0 rows (4 total)
+[15/201] extract newbyz_58e7c8795a — EB
+  +0 rows (4 total)
+[16/201] extract newbyz_9722165545 — EB
+  +0 rows (4 total)
+[17/201] extract newbyz_41cd9c07fa — EB
+  +0 rows (4 total)
+[18/201] extract newbyz_d1c65ea80e — EB
+  +0 rows (4 total)
+[19/201] extract newbyz_71b01cf410 — EB
+  +0 rows (4 total)
+[20/201] extract newbyz_3224cf4f1c — EB
+  +0 rows (4 total)
+[21/201] extract newbyz_5088bbf1c8 — EB
+  +0 rows (4 total)
+[22/201] extract newbyz_7a64d74c07 — EB
+  +0 rows (4 total)
+[23/201] extract newbyz_cf652a1346 — EB
+  +0 rows (4 total)
+[24/201] extract newbyz_2ac9c0cc5a — EB
+  +0 rows (4 total)
+[25/201] extract newbyz_7331eccb13 — EB
+  +0 rows (4 total)
+[26/201] extract newbyz_e2e1eed0a2 — EB
+  +0 rows (4 total)
+[27/201] extract newbyz_2091fc63c2 — EB
+  +0 rows (4 total)
+[28/201] extract newbyz_f64168462d — EB
+  +0 rows (4 total)
+[29/201] extract newbyz_9b2ae28e26 — EB
+  +0 rows (4 total)
+[30/201] extract newbyz_aaea35d50d — EB
+  +0 rows (4 total)
+[31/201] extract newbyz_1140cc748f — EB
+  +0 rows (4 total)
+[32/201] extract newbyz_855b570e3c — EB
+  +0 rows (4 total)
+[33/201] extract newbyz_f2a1ee57b5 — EB
+  +0 rows (4 total)
+[34/201] extract newbyz_1423a3b1d7 — EB
+  +0 rows (4 total)
+[35/201] extract newbyz_adbfee29bd — EB
+  +0 rows (4 total)
+[36/201] extract newbyz_d2226f380e — EB
+  +0 rows (4 total)
+[37/201] extract newbyz_47942ce056 — EB
+  +0 rows (4 total)
+[38/201] extract newbyz_d67bb5471f — EB
+  +0 rows (4 total)
+[39/201] extract newbyz_b91ea87414 — EB
+  +0 rows (4 total)
+[40/201] extract newbyz_30169328a3 — EB
+  +0 rows (4 total)
+[41/201] extract newbyz_d4d9103b34 — EB
+[1/382] skip cappella_apolytikia (done)
+[2/382] skip cappella_kontakion (done)
+[3/382] skip cappella_sunday-antiphons (done)
+[4/382] extract newbyz_hymns-are-listed-by-their-dates-major-feasts-bold-type-are-celebrated-on-any-day — Hymns are listed by their dates. Major Feasts (bol
+  +0 rows (0 total)
+[5/382] extract newbyz_hymns-are-listed-by-their-dates-major-feasts-bold-type-are-celebrated-on-any-day — Hymns are listed by their dates. Major Feasts (bol
+  +0 rows (0 total)
+[6/382] extract newbyz_the-specific-date-of-the-moveable-hymns-depends-on-when-pascha-easter-occurs — The specific date of the moveable hymns depends on
+  +0 rows (0 total)
+[7/382] extract newbyz_142f024932 — EB
+  +0 rows (0 total)
+[8/382] extract newbyz_88f18cfd0d — EB
+  +0 rows (0 total)
+[9/382] extract newbyz_e20c472698 — EB
+  +0 rows (0 total)
+[10/382] extract newbyz_a6536c9843 — EB
+  +0 rows (0 total)
+[11/382] extract newbyz_3a7bb8c5f2 — EB
+  +0 rows (0 total)
+[12/382] extract newbyz_07e2666224 — EB
+  +0 rows (0 total)
+[13/382] extract newbyz_f9d80930e5 — EB
+  +0 rows (0 total)
+[14/382] extract newbyz_2fd9e488a6 — EB
+  +0 rows (0 total)
+[15/382] extract newbyz_fdfadfba38 — EB
+  +0 rows (0 total)
+[16/382] extract newbyz_8fc2f4bbaa — EB
+  +0 rows (0 total)
+[17/382] extract newbyz_a974c263b0 — EB
+  +0 rows (0 total)
+[18/382] extract newbyz_b467d9aa6b — EB
+  +0 rows (0 total)
+[19/382] extract newbyz_3b84bd8264 — EB
+  +0 rows (0 total)
+[20/382] extract newbyz_d71ec74180 — EB
+  +0 rows (0 total)
+[21/382] extract newbyz_4f0977918a — EB
+  +0 rows (0 total)
+[22/382] extract newbyz_ea2b4bb48b — EB
+  +0 rows (0 total)
+[23/382] extract newbyz_6481bbffee — EB
+  +0 rows (0 total)
+[24/382] extract newbyz_2656c7b121 — EB
+  +0 rows (0 total)
+[25/382] extract newbyz_01d28ac129 — ​
+  +0 rows (0 total)
+[26/382] extract newbyz_a14b5d8e22 — EB
+  +0 rows (0 total)
+[27/382] extract newbyz_d8cebda320 — EB
+  +0 rows (0 total)
+[28/382] extract newbyz_d96ba29e74 — EB
+  +0 rows (0 total)
+[29/382] extract newbyz_ea3a3d2a9f — EB
+  +0 rows (0 total)
+[30/382] extract newbyz_15b5f158fc — EB
+  +0 rows (0 total)
+[31/382] extract newbyz_3dd1c1282a — EB
+  +4 rows (4 total)
+[32/382] extract newbyz_bde922ad2e — EB
+  +4 rows (8 total)
+[33/382] extract newbyz_bb26c8827b — EB
+  +4 rows (12 total)
+[34/382] extract newbyz_14ea20af2d — EB
+  +4 rows (16 total)
+[35/382] extract newbyz_237d113f97 — EB
+  +4 rows (20 total)
+[36/382] extract newbyz_8886f75a2b — EB
+  +4 rows (24 total)
+[37/382] extract newbyz_e707819ae6 — EB
+  +4 rows (28 total)
+[38/382] extract newbyz_13ed1ca61d — EB
+  +4 rows (32 total)
+[39/382] extract newbyz_1b4ce7d2ef — EB
+  +4 rows (36 total)
+[40/382] extract newbyz_6ccf19387d — EB
+  +4 rows (40 total)
+[41/382] extract newbyz_6138d83a2c — EB
+  +4 rows (44 total)
+[42/382] extract newbyz_edf7b553d8 — EB
+  +4 rows (48 total)
+[43/382] extract newbyz_796ce58ac5 — EB
+  +4 rows (52 total)
+[44/382] extract newbyz_890c41c66c — EB
+  +4 rows (56 total)
+[45/382] extract newbyz_b807efc4d5 — EB
+  +4 rows (60 total)
+[46/382] extract newbyz_eec2046135 — EB
+  +4 rows (64 total)
+[47/382] extract newbyz_fc78b09f89 — EB     GM     EM
+  +4 rows (68 total)
+[48/382] extract newbyz_9a6879782d — EB
+  +4 rows (72 total)
+[49/382] extract newbyz_3769c09533 — EB
+  +4 rows (76 total)
+[50/382] extract newbyz_a48e27d40b — EB
+  +8 rows (84 total)
+[51/382] extract newbyz_02760254e0 — EB
+  +4 rows (88 total)
+[52/382] extract newbyz_5957ed546f — EB
+  +4 rows (92 total)
+[53/382] extract newbyz_3f22debf59 — EB
+  +4 rows (96 total)
+[54/382] extract newbyz_0fafcff79d — EB
+  +4 rows (100 total)
+[55/382] extract newbyz_a64f0f1711 — EB
+  +4 rows (104 total)
+[56/382] extract newbyz_30a06bf806 — EB
+  +4 rows (108 total)
+[57/382] extract dcs_alt1kathisma1 — alt1kathisma1
+  +8 rows (116 total)
+[58/382] extract dcs_alt1apolytikion1 — alt1apolytikion1
+  +4 rows (120 total)
+[59/382] extract dcs_prokeimenon — prokeimenon
+  +4 rows (124 total)
+[60/382] extract dcs_sticglory — sticglory
+  +8 rows (132 total)
+[61/382] extract dcs_godisthelord — godisthelord
+  +4 rows (136 total)
+[62/382] extract dcs_eotheotokion — eotheotokion
+  +4 rows (140 total)
+[63/382] extract dcs_eotheotokion — eotheotokion
+  +4 rows (144 total)
+[64/382] extract dcs_eotheotokion — eotheotokion
+  +4 rows (148 total)
+[65/382] extract dcs_eotheotokion — eotheotokion
+  +4 rows (152 total)
+[66/382] extract dcs_eotheotokion — eotheotokion
+  +4 rows (156 total)
+[67/382] extract dcs_psalm31 — psalm31
+  +4 rows (160 total)
+[68/382] extract dcs_hymn22 — hymn22
+  +4 rows (164 total)
+[69/382] extract dcs_hymn71 — hymn71
+  +4 rows (168 total)
+[70/382] extract dcs_memory-goa — memory GOA
+  +4 rows (172 total)
+[71/382] extract dcs_troparion2 — troparion2
+  +4 rows (176 total)
+[72/382] extract dcs_fimis-goa — fimis goa
+  +8 rows (184 total)
+[73/382] extract dcs_martyrs — martyrs
+  +4 rows (188 total)
+[74/382] extract dcs_annunciation — annunciation
+  +8 rows (196 total)
+[75/382] extract dcs_epiphany1 — epiphany1
+  +8 rows (204 total)
+[76/382] extract dcs_meeting — meeting
+  +8 rows (212 total)
+[77/382] extract dcs_pentecost2 — pentecost2
+  +8 rows (220 total)
+[78/382] extract dcs_triodion14 — triodion14
+  +8 rows (228 total)
+[79/382] extract dcs_postgospelglory-apostles — postgospelglory apostles
+  +4 rows (232 total)
+[80/382] extract dcs_postgospelglory-prophet — postgospelglory prophet
+  +4 rows (236 total)
+[81/382] extract dcs_psa50-mode2 — psa50 mode2
+  +4 rows (240 total)
+[82/382] extract dcs_apolytikion1 — apolytikion1
+  +4 rows (244 total)
+[83/382] extract dcs_aposboth — aposboth
+  +8 rows (252 total)
+[84/382] extract dcs_idiomelon11 — idiomelon11
+  +4 rows (256 total)
+[85/382] extract dcs_idiomelon61 — idiomelon61
+  +8 rows (264 total)
+[86/382] extract dcs_aposglory — aposglory
+  +8 rows (272 total)
+[87/382] extract dcs_lauds3 — lauds3
+  +4 rows (276 total)
+[88/382] extract dcs_ode9c2 — ode9c2
+  +8 rows (284 total)
+[89/382] extract dcs_aposticha2 — aposticha2
+  +8 rows (292 total)
+[90/382] extract dcs_prophecytroparion2 — prophecytroparion2
+  +4 rows (296 total)
+[91/382] extract dcs_stichera1234as78910 — stichera1234as78910
+  +8 rows (304 total)
+[92/382] extract dcs_sticboth — sticboth
+  +4 rows (308 total)
+[93/382] extract dcs_sticboth — sticboth
+  +4 rows (312 total)
+[94/382] extract dcs_aposglory — aposglory
+  +8 rows (320 total)
+[95/382] extract dcs_postgospelidiomelon — postgospelidiomelon
+  +4 rows (324 total)
+[96/382] extract dcs_postgospelidiomelon — postgospelidiomelon
+  +4 rows (328 total)
+[97/382] extract dcs_sticglory — sticglory
+  +8 rows (336 total)
+[98/382] extract dcs_laudsboth — laudsboth
+  +4 rows (340 total)
+[99/382] extract dcs_theotokoshymn — theotokoshymn
+  +4 rows (344 total)
+[100/382] extract dcs_lity5 — lity5
+  +4 rows (348 total)
+[101/382] extract dcs_stichera03 — stichera03
+  +8 rows (356 total)
+[102/382] extract dcs_alt1aposboth — alt1aposboth
+  +8 rows (364 total)
+[103/382] extract dcs_sticglory — sticglory
+  +8 rows (372 total)
+[104/382] extract dcs_laudsglory — laudsglory
+  +4 rows (376 total)
+[105/382] extract dcs_stichera03 — stichera03
+  +8 rows (384 total)
+[106/382] extract dcs_aposticha1 — aposticha1
+  +8 rows (392 total)
+[107/382] extract dcs_postgospelidiomelon — postgospelidiomelon
+  +4 rows (396 total)
+[108/382] extract dcs_sticglory — sticglory
+  +8 rows (404 total)
+[109/382] extract dcs_sticglory — sticglory
+  +8 rows (412 total)
+[110/382] extract dcs_aposglory — aposglory
+  +8 rows (420 total)
+[111/382] extract dcs_aposglory — aposglory
+  +8 rows (428 total)
+[112/382] extract dcs_postgospelidiomelon — postgospelidiomelon
+  +4 rows (432 total)
+[113/382] extract dcs_postgospelidiomelon — postgospelidiomelon
+  +4 rows (436 total)
+[114/382] extract dcs_aposglory — aposglory
+  +8 rows (444 total)
+[115/382] extract dcs_aposboth — aposboth
+  +8 rows (452 total)
+[116/382] extract dcs_stichera03 — stichera03
+  +8 rows (460 total)
+[117/382] extract dcs_stichera03 — stichera03
+  +8 rows (468 total)
+[118/382] extract dcs_lityglory — lityglory
+  +4 rows (472 total)
+[119/382] extract dcs_laudsglory — laudsglory
+  +0 rows (472 total)
+[120/382] extract dcs_laudsglory — laudsglory
+  +4 rows (476 total)
+[121/382] extract dcs_alt1postgospelidiomelon — alt1postgospelidiomelon
+  +8 rows (484 total)
+[122/382] extract dcs_aposglory — aposglory
+  +8 rows (492 total)
+[123/382] extract dcs_sticglory — sticglory
+  +8 rows (500 total)
+[124/382] extract dcs_lauds4 — lauds4
+  +8 rows (508 total)
+[125/382] extract dcs_sticglory — sticglory
+  +8 rows (516 total)
+[126/382] extract dcs_sticglory — sticglory
+  +8 rows (524 total)
+[127/382] extract dcs_sticglory — sticglory
+  +8 rows (532 total)
+[128/382] extract dcs_aposglory — aposglory
+  +8 rows (540 total)
+[129/382] extract dcs_svsticglory — svsticglory
+  +8 rows (548 total)
+[130/382] extract dcs_lity1 — lity1
+  +4 rows (552 total)
+[131/382] extract dcs_stichera04 — stichera04
+  +4 rows (556 total)
+[132/382] extract dcs_sticglory — sticglory
+  +8 rows (564 total)
+[133/382] extract dcs_sticglory — sticglory
+  +8 rows (572 total)
+[134/382] extract dcs_postgospelidiomelon — postgospelidiomelon
+  +4 rows (576 total)
+[135/382] extract dcs_lity1 — lity1
+  +4 rows (580 total)
+[136/382] extract dcs_sticglory2 — sticglory2
+  +8 rows (588 total)
+[137/382] extract dcs_aposglory — aposglory
+  +8 rows (596 total)
+[138/382] extract dcs_aposglory — aposglory
+  +8 rows (604 total)
+[139/382] extract dcs_aposticha1 — aposticha1
+  +8 rows (612 total)
+[140/382] extract dcs_lauds1 — lauds1
+  +4 rows (616 total)
+[141/382] extract dcs_postgospelidiomelon — postgospelidiomelon
+  +4 rows (620 total)
+[142/382] extract dcs_laudsglory — laudsglory
+  +4 rows (624 total)
+[143/382] extract dcs_stictheotokion — stictheotokion
+  +8 rows (632 total)
+[144/382] extract dcs_aposticha1 — aposticha1
+  +8 rows (640 total)
+[145/382] extract dcs_maposglory — maposglory
+  +8 rows (648 total)
+[146/382] extract dcs_stichera01 — stichera01
+  +8 rows (656 total)
+[147/382] extract dcs_laudsglory — laudsglory
+  +4 rows (660 total)
+[148/382] extract dcs_lity1 — lity1
+  +4 rows (664 total)
+[149/382] extract dcs_stichera02 — stichera02
+  +4 rows (668 total)
+[150/382] extract dcs_sticboth — sticboth
+  +4 rows (672 total)
+[151/382] extract dcs_laudsglory — laudsglory
+  +4 rows (676 total)
+[152/382] extract dcs_postgospelidiomelon — postgospelidiomelon
+  +4 rows (680 total)
+[153/382] extract dcs_lauds1123as5678 — lauds1123as5678
+  +8 rows (688 total)
+[154/382] extract dcs_lauds1123as5678 — lauds1123as5678
+  +8 rows (696 total)
+[155/382] extract dcs_laudsglory — laudsglory
+  +4 rows (700 total)
+[156/382] extract dcs_alt1aposglory — alt1aposglory
+  +8 rows (708 total)
+[157/382] extract dcs_sticglory — sticglory
+  +8 rows (716 total)
+[158/382] extract dcs_sticglory — sticglory
+  +8 rows (724 total)
+[159/382] extract dcs_aposglory — aposglory
+  +8 rows (732 total)
+[160/382] extract dcs_lityboth — lityboth
+  +8 rows (740 total)
+[161/382] extract dcs_alt1lityglory — alt1lityglory
+  +4 rows (744 total)
+[162/382] extract dcs_postgospelidiomelon — postgospelidiomelon
+  +4 rows (748 total)
+[163/382] extract dcs_sticglory — sticglory
+  +8 rows (756 total)
+[164/382] extract dcs_svsticglory — svsticglory
+  +8 rows (764 total)
+[165/382] extract dcs_sticglory — sticglory
+  +8 rows (772 total)
+[166/382] extract dcs_aposboth — aposboth
+  +8 rows (780 total)
+[167/382] extract dcs_laudsglory — laudsglory
+  +4 rows (784 total)
+[168/382] extract dcs_laudsglory — laudsglory
+  +4 rows (788 total)
+[169/382] extract dcs_sticboth — sticboth
+  +4 rows (792 total)
+[170/382] extract dcs_sticglory — sticglory
+  +8 rows (800 total)
+[171/382] extract dcs_exaposteilarion1 — exaposteilarion1
+  +4 rows (804 total)
+[172/382] extract dcs_aposticha2 — aposticha2
+  +8 rows (812 total)
+[173/382] extract dcs_aposglory — aposglory
+  +8 rows (820 total)
+[174/382] extract dcs_lauds1 — lauds1
+  +4 rows (824 total)
+[175/382] extract dcs_lauds6 — lauds6
+  +8 rows (832 total)
+[176/382] extract dcs_aposglory — aposglory
+  +8 rows (840 total)
+[177/382] extract dcs_sticboth — sticboth
+  +4 rows (844 total)
+[178/382] extract dcs_aposglory — aposglory
+  +8 rows (852 total)
+[179/382] extract dcs_canon1ode1 — canon1ode1
+  +8 rows (860 total)
+[180/382] extract dcs_canon1ode8 — canon1ode8
+  +8 rows (868 total)
+[181/382] extract dcs_kathisma21 — kathisma21
+  +8 rows (876 total)
+[182/382] extract dcs_lauds2 — lauds2
+  +4 rows (880 total)
+[183/382] extract dcs_lauds8 — lauds8
+  +8 rows (888 total)
+[184/382] extract dcs_aposticha1 — aposticha1
+  +8 rows (896 total)
+[185/382] extract dcs_lihc2 — lihc2
+  +8 rows (904 total)
+[186/382] extract dcs_stichera5 — stichera5
+  +4 rows (908 total)
+[187/382] extract dcs_antiphon31 — antiphon31
+  +8 rows (916 total)
+[188/382] extract dcs_canon1ode6 — canon1ode6
+  +8 rows (924 total)
+[189/382] extract dcs_kathisma12 — kathisma12
+  +8 rows (932 total)
+[190/382] extract dcs_lauds02 — lauds02
+  +4 rows (936 total)
+[191/382] extract dcs_lauds6 — lauds6
+  +8 rows (944 total)
+[192/382] extract dcs_apolytikion — apolytikion
+  +4 rows (948 total)
+[193/382] extract dcs_glorybothheirmologic — glorybothheirmologic
+  +4 rows (952 total)
+[194/382] extract dcs_stichera3 — stichera3
+  +8 rows (960 total)
+[195/382] extract dcs_antiphon11 — antiphon11
+  +0 rows (960 total)
+[196/382] extract dcs_canon1ode4 — canon1ode4
+  +8 rows (968 total)
+[197/382] extract dcs_godisthelord — godisthelord
+  +4 rows (972 total)
+[198/382] extract dcs_kathisma23 — kathisma23
+  +8 rows (980 total)
+[199/382] extract dcs_lauds4 — lauds4
+  +8 rows (988 total)
+[200/382] extract dcs_prokeimenon — prokeimenon
+  +4 rows (992 total)
+[201/382] extract dcs_aposticha3 — aposticha3
+  +8 rows (1000 total)
+[202/382] extract dcs_stichera4 — stichera4
+  +8 rows (1008 total)
+[203/382] extract dcs_antiphon21 — antiphon21
+  +0 rows (1008 total)
+[204/382] extract dcs_canon1ode5 — canon1ode5
+  +8 rows (1016 total)
+[205/382] extract dcs_kathisma11 — kathisma11
+  +8 rows (1024 total)
+[206/382] extract dcs_lauds01 — lauds01
+  +4 rows (1028 total)
+[207/382] extract dcs_lauds5 — lauds5
+  +8 rows (1036 total)
+[208/382] extract dcs_apoltheotokionvm — apoltheotokionvm
+  +8 rows (1044 total)
+[209/382] extract dcs_aposticha4 — aposticha4
+  +4 rows (1048 total)
+[210/382] extract dcs_stichera5 — stichera5
+  +4 rows (1052 total)
+[211/382] extract dcs_antiphon31 — antiphon31
+  +8 rows (1060 total)
+[212/382] extract dcs_canon1ode6 — canon1ode6
+  +8 rows (1068 total)
+[213/382] extract dcs_kathisma12 — kathisma12
+  +8 rows (1076 total)
+[214/382] extract dcs_lauds02 — lauds02
+  +4 rows (1080 total)
+[215/382] extract dcs_lauds6 — lauds6
+  +8 rows (1088 total)
+[216/382] extract dcs_apolytikion — apolytikion
+  +0 rows (1088 total)
+[217/382] extract dcs_glorybothheirmologic — glorybothheirmologic
+  +4 rows (1092 total)
+[218/382] extract dcs_stichera5 — stichera5
+  +4 rows (1096 total)
+[219/382] extract dcs_antiphon21 — antiphon21
+  +4 rows (1100 total)
+[220/382] extract dcs_canon1ode5 — canon1ode5
+  +8 rows (1108 total)
+[221/382] extract dcs_kathisma11 — kathisma11
+  +8 rows (1116 total)
+[222/382] extract dcs_lauds01 — lauds01
+  +4 rows (1120 total)
+[223/382] extract dcs_lauds5 — lauds5
+  +8 rows (1128 total)
+[224/382] extract dcs_apoltheotokionvm — apoltheotokionvm
+  +8 rows (1136 total)
+[225/382] extract dcs_aposticha4 — aposticha4
+  +4 rows (1140 total)
+[226/382] extract dcs_stichera5 — stichera5
+[1/382] skip cappella_apolytikia (done)
+[2/382] skip cappella_kontakion (done)
+[3/382] skip cappella_sunday-antiphons (done)
+[4/382] extract newbyz_hymns-are-listed-by-their-dates-major-feasts-bold-type-are-celebrated-on-any-day — Hymns are listed by their dates. Major Feasts (bol
+  +0 rows (0 total)
+[5/382] extract newbyz_hymns-are-listed-by-their-dates-major-feasts-bold-type-are-celebrated-on-any-day — Hymns are listed by their dates. Major Feasts (bol
+  +0 rows (0 total)
+[6/382] extract newbyz_the-specific-date-of-the-moveable-hymns-depends-on-when-pascha-easter-occurs — The specific date of the moveable hymns depends on
+  +0 rows (0 total)
+[7/382] extract newbyz_142f024932 — EB
+  +0 rows (0 total)
+[8/382] extract newbyz_88f18cfd0d — EB
+  +0 rows (0 total)
+[9/382] extract newbyz_e20c472698 — EB
+  +0 rows (0 total)
+[10/382] extract newbyz_a6536c9843 — EB
+  +0 rows (0 total)
+[11/382] extract newbyz_3a7bb8c5f2 — EB
+  +0 rows (0 total)
+[12/382] extract newbyz_07e2666224 — EB
+  +0 rows (0 total)
+[13/382] extract newbyz_f9d80930e5 — EB
+  +0 rows (0 total)
+[14/382] extract newbyz_2fd9e488a6 — EB
+  +0 rows (0 total)
+[15/382] extract newbyz_fdfadfba38 — EB
+  +0 rows (0 total)
+[16/382] extract newbyz_8fc2f4bbaa — EB
+  +0 rows (0 total)
+[17/382] extract newbyz_a974c263b0 — EB
+  +0 rows (0 total)
+[18/382] extract newbyz_b467d9aa6b — EB
+  +0 rows (0 total)
+[19/382] extract newbyz_3b84bd8264 — EB
+  +0 rows (0 total)
+[20/382] extract newbyz_d71ec74180 — EB
+  +0 rows (0 total)
+[21/382] extract newbyz_4f0977918a — EB
+  +0 rows (0 total)
+[22/382] extract newbyz_ea2b4bb48b — EB
+  +0 rows (0 total)
+[23/382] extract newbyz_6481bbffee — EB
+  +0 rows (0 total)
+[24/382] extract newbyz_2656c7b121 — EB
+  +0 rows (0 total)
+[25/382] extract newbyz_01d28ac129 — ​
+  +0 rows (0 total)
+[26/382] extract newbyz_a14b5d8e22 — EB
+  +0 rows (0 total)
+[27/382] extract newbyz_d8cebda320 — EB
+  +0 rows (0 total)
+[28/382] extract newbyz_d96ba29e74 — EB
+  +0 rows (0 total)
+[29/382] extract newbyz_ea3a3d2a9f — EB
+  +0 rows (0 total)
+[30/382] extract newbyz_15b5f158fc — EB
+  +0 rows (0 total)
+[31/382] extract newbyz_3dd1c1282a — EB
+  +0 rows (0 total)
+[32/382] extract newbyz_bde922ad2e — EB
+  +0 rows (0 total)
+[33/382] extract newbyz_bb26c8827b — EB
+  +0 rows (0 total)
+[34/382] extract newbyz_14ea20af2d — EB
+  +0 rows (0 total)
+[35/382] extract newbyz_237d113f97 — EB
+  +0 rows (0 total)
+[36/382] extract newbyz_8886f75a2b — EB
+  +0 rows (0 total)
+[37/382] extract newbyz_e707819ae6 — EB
+  +0 rows (0 total)
+[38/382] extract newbyz_13ed1ca61d — EB
+  +0 rows (0 total)
+[39/382] extract newbyz_1b4ce7d2ef — EB
+  +0 rows (0 total)
+[40/382] extract newbyz_6ccf19387d — EB
+  +0 rows (0 total)
+[41/382] extract newbyz_6138d83a2c — EB
+  +0 rows (0 total)
+[42/382] extract newbyz_edf7b553d8 — EB
+  +0 rows (0 total)
+[43/382] extract newbyz_796ce58ac5 — EB
+  +0 rows (0 total)
+[44/382] extract newbyz_890c41c66c — EB
+  +0 rows (0 total)
+[45/382] extract newbyz_b807efc4d5 — EB
+  +0 rows (0 total)
+[46/382] extract newbyz_eec2046135 — EB
+  +0 rows (0 total)
+[47/382] extract newbyz_fc78b09f89 — EB     GM     EM
+  +0 rows (0 total)
+[48/382] extract newbyz_9a6879782d — EB
+  +0 rows (0 total)
+[49/382] extract newbyz_3769c09533 — EB
+  +0 rows (0 total)
+[50/382] skip newbyz_a48e27d40b (done)
+[51/382] extract newbyz_02760254e0 — EB
+  +0 rows (0 total)
+[52/382] extract newbyz_5957ed546f — EB
+  +0 rows (0 total)
+[53/382] extract newbyz_3f22debf59 — EB
+  +0 rows (0 total)
+[54/382] extract newbyz_0fafcff79d — EB
+  +0 rows (0 total)
+[55/382] extract newbyz_a64f0f1711 — EB
+  +0 rows (0 total)
+[56/382] extract newbyz_30a06bf806 — EB
+  +0 rows (0 total)
+[57/382] skip dcs_alt1kathisma1 (done)
+[58/382] extract dcs_alt1apolytikion1 — alt1apolytikion1
+  +0 rows (0 total)
+[59/382] extract dcs_prokeimenon — prokeimenon
+  +0 rows (0 total)
+[60/382] skip dcs_sticglory (done)
+[61/382] extract dcs_godisthelord — godisthelord
+  +0 rows (0 total)
+[62/382] extract dcs_eotheotokion — eotheotokion
+  +0 rows (0 total)
+[63/382] extract dcs_eotheotokion — eotheotokion
+  +0 rows (0 total)
+[64/382] extract dcs_eotheotokion — eotheotokion
+  +0 rows (0 total)
+[65/382] extract dcs_eotheotokion — eotheotokion
+  +0 rows (0 total)
+[66/382] extract dcs_eotheotokion — eotheotokion
+  +0 rows (0 total)
+[67/382] extract dcs_psalm31 — psalm31
+  +0 rows (0 total)
+[68/382] extract dcs_hymn22 — hymn22
+  +0 rows (0 total)
+[69/382] extract dcs_hymn71 — hymn71
+  +0 rows (0 total)
+[70/382] extract dcs_memory-goa — memory GOA
+  +0 rows (0 total)
+[71/382] extract dcs_troparion2 — troparion2
+  +0 rows (0 total)
+[72/382] skip dcs_fimis-goa (done)
+[73/382] extract dcs_martyrs — martyrs
+  +0 rows (0 total)
+[74/382] skip dcs_annunciation (done)
+[75/382] skip dcs_epiphany1 (done)
+[76/382] skip dcs_meeting (done)
+[77/382] skip dcs_pentecost2 (done)
+[78/382] skip dcs_triodion14 (done)
+[79/382] extract dcs_postgospelglory-apostles — postgospelglory apostles
+  +0 rows (0 total)
+[80/382] extract dcs_postgospelglory-prophet — postgospelglory prophet
+  +0 rows (0 total)
+[81/382] extract dcs_psa50-mode2 — psa50 mode2
+  +0 rows (0 total)
+[82/382] extract dcs_apolytikion1 — apolytikion1
+  +0 rows (0 total)
+[83/382] skip dcs_aposboth (done)
+[84/382] extract dcs_idiomelon11 — idiomelon11
+  +0 rows (0 total)
+[85/382] skip dcs_idiomelon61 (done)
+[86/382] skip dcs_aposglory (done)
+[87/382] extract dcs_lauds3 — lauds3
+  +0 rows (0 total)
+[88/382] skip dcs_ode9c2 (done)
+[89/382] skip dcs_aposticha2 (done)
+[90/382] extract dcs_prophecytroparion2 — prophecytroparion2
+  +0 rows (0 total)
+[91/382] skip dcs_stichera1234as78910 (done)
+[92/382] extract dcs_sticboth — sticboth
+  +0 rows (0 total)
+[93/382] extract dcs_sticboth — sticboth
+  +0 rows (0 total)
+[94/382] skip dcs_aposglory (done)
+[95/382] extract dcs_postgospelidiomelon — postgospelidiomelon
+  +0 rows (0 total)
+[96/382] extract dcs_postgospelidiomelon — postgospelidiomelon
+  +0 rows (0 total)
+[97/382] skip dcs_sticglory (done)
+[98/382] extract dcs_laudsboth — laudsboth
+  +0 rows (0 total)
+[99/382] extract dcs_theotokoshymn — theotokoshymn
+  +0 rows (0 total)
+[100/382] extract dcs_lity5 — lity5
+  +0 rows (0 total)
+[101/382] skip dcs_stichera03 (done)
+[102/382] skip dcs_alt1aposboth (done)
+[103/382] skip dcs_sticglory (done)
+[104/382] extract dcs_laudsglory — laudsglory
+  +0 rows (0 total)
+[105/382] skip dcs_stichera03 (done)
+[106/382] skip dcs_aposticha1 (done)
+[107/382] extract dcs_postgospelidiomelon — postgospelidiomelon
+  +0 rows (0 total)
+[108/382] skip dcs_sticglory (done)
+[109/382] skip dcs_sticglory (done)
+[110/382] skip dcs_aposglory (done)
+[111/382] skip dcs_aposglory (done)
+[112/382] extract dcs_postgospelidiomelon — postgospelidiomelon
+  +0 rows (0 total)
+[113/382] extract dcs_postgospelidiomelon — postgospelidiomelon
+  +0 rows (0 total)
+[114/382] skip dcs_aposglory (done)
+[115/382] skip dcs_aposboth (done)
+[116/382] skip dcs_stichera03 (done)
+[117/382] skip dcs_stichera03 (done)
+[118/382] extract dcs_lityglory — lityglory
+  +0 rows (0 total)
+[119/382] extract dcs_laudsglory — laudsglory
+  +0 rows (0 total)
+[120/382] extract dcs_laudsglory — laudsglory
+  +0 rows (0 total)
+[121/382] skip dcs_alt1postgospelidiomelon (done)
+[122/382] skip dcs_aposglory (done)
+[123/382] skip dcs_sticglory (done)
+[124/382] skip dcs_lauds4 (done)
+[125/382] skip dcs_sticglory (done)
+[126/382] skip dcs_sticglory (done)
+[127/382] skip dcs_sticglory (done)
+[128/382] skip dcs_aposglory (done)
+[129/382] skip dcs_svsticglory (done)
+[130/382] extract dcs_lity1 — lity1
+  +0 rows (0 total)
+[131/382] extract dcs_stichera04 — stichera04
+  +0 rows (0 total)
+[132/382] skip dcs_sticglory (done)
+[133/382] skip dcs_sticglory (done)
+[134/382] extract dcs_postgospelidiomelon — postgospelidiomelon
+  +0 rows (0 total)
+[135/382] extract dcs_lity1 — lity1
+  +0 rows (0 total)
+[136/382] skip dcs_sticglory2 (done)
+[137/382] skip dcs_aposglory (done)
+[138/382] skip dcs_aposglory (done)
+[139/382] skip dcs_aposticha1 (done)
+[140/382] extract dcs_lauds1 — lauds1
+  +0 rows (0 total)
+[141/382] extract dcs_postgospelidiomelon — postgospelidiomelon
+  +0 rows (0 total)
+[142/382] extract dcs_laudsglory — laudsglory
+  +0 rows (0 total)
+[143/382] skip dcs_stictheotokion (done)
+[144/382] skip dcs_aposticha1 (done)
+[145/382] skip dcs_maposglory (done)
+[146/382] skip dcs_stichera01 (done)
+[147/382] extract dcs_laudsglory — laudsglory
+  +0 rows (0 total)
+[148/382] extract dcs_lity1 — lity1
+  +0 rows (0 total)
+[149/382] skip dcs_stichera02 (done)
+[150/382] extract dcs_sticboth — sticboth
+  +0 rows (0 total)
+[151/382] extract dcs_laudsglory — laudsglory
+  +0 rows (0 total)
+[152/382] extract dcs_postgospelidiomelon — postgospelidiomelon
+  +0 rows (0 total)
+[153/382] skip dcs_lauds1123as5678 (done)
+[154/382] skip dcs_lauds1123as5678 (done)
+[155/382] extract dcs_laudsglory — laudsglory
+  +0 rows (0 total)
+[156/382] skip dcs_alt1aposglory (done)
+[157/382] skip dcs_sticglory (done)
+[158/382] skip dcs_sticglory (done)
+[159/382] skip dcs_aposglory (done)
+[160/382] skip dcs_lityboth (done)
+[161/382] extract dcs_alt1lityglory — alt1lityglory
+  +0 rows (0 total)
+[162/382] extract dcs_postgospelidiomelon — postgospelidiomelon
+  +0 rows (0 total)
+[163/382] skip dcs_sticglory (done)
+[164/382] skip dcs_svsticglory (done)
+[165/382] skip dcs_sticglory (done)
+[166/382] skip dcs_aposboth (done)
+[167/382] extract dcs_laudsglory — laudsglory
+  +0 rows (0 total)
+[168/382] extract dcs_laudsglory — laudsglory
+  +0 rows (0 total)
+[169/382] extract dcs_sticboth — sticboth
+  +0 rows (0 total)
+[170/382] skip dcs_sticglory (done)
+[171/382] extract dcs_exaposteilarion1 — exaposteilarion1
+  +0 rows (0 total)
+[172/382] skip dcs_aposticha2 (done)
+[173/382] skip dcs_aposglory (done)
+[174/382] extract dcs_lauds1 — lauds1
+  +0 rows (0 total)
+[175/382] skip dcs_lauds6 (done)
+[176/382] skip dcs_aposglory (done)
+[177/382] extract dcs_sticboth — sticboth
+  +0 rows (0 total)
+[178/382] skip dcs_aposglory (done)
+[179/382] skip dcs_canon1ode1 (done)
+[180/382] skip dcs_canon1ode8 (done)
+[181/382] skip dcs_kathisma21 (done)
+[182/382] extract dcs_lauds2 — lauds2
+  +0 rows (0 total)
+[183/382] skip dcs_lauds8 (done)
+[184/382] skip dcs_aposticha1 (done)
+[185/382] skip dcs_lihc2 (done)
+[186/382] skip dcs_stichera5 (done)
+[187/382] skip dcs_antiphon31 (done)
+[188/382] skip dcs_canon1ode6 (done)
+[189/382] skip dcs_kathisma12 (done)
+[190/382] extract dcs_lauds02 — lauds02
+  +0 rows (0 total)
+[191/382] skip dcs_lauds6 (done)
+[192/382] extract dcs_apolytikion — apolytikion
+  +0 rows (0 total)
+[193/382] extract dcs_glorybothheirmologic — glorybothheirmologic
+  +0 rows (0 total)
+[194/382] skip dcs_stichera3 (done)
+[195/382] skip dcs_antiphon11 (done)
+[196/382] skip dcs_canon1ode4 (done)
+[197/382] extract dcs_godisthelord — godisthelord
+  +0 rows (0 total)
+[198/382] skip dcs_kathisma23 (done)
+[199/382] skip dcs_lauds4 (done)
+[200/382] extract dcs_prokeimenon — prokeimenon
+  +0 rows (0 total)
+[201/382] skip dcs_aposticha3 (done)
+[202/382] skip dcs_stichera4 (done)
+[203/382] extract dcs_antiphon21 — antiphon21
+  +0 rows (0 total)
+[204/382] skip dcs_canon1ode5 (done)
+[205/382] skip dcs_kathisma11 (done)
+[206/382] extract dcs_lauds01 — lauds01
+  +0 rows (0 total)
+[207/382] skip dcs_lauds5 (done)
+[208/382] skip dcs_apoltheotokionvm (done)
+[209/382] extract dcs_aposticha4 — aposticha4
+  +0 rows (0 total)
+[210/382] skip dcs_stichera5 (done)
+[211/382] skip dcs_antiphon31 (done)
+[212/382] skip dcs_canon1ode6 (done)
+[213/382] skip dcs_kathisma12 (done)
+[214/382] extract dcs_lauds02 — lauds02
+  +0 rows (0 total)
+[215/382] skip dcs_lauds6 (done)
+[216/382] extract dcs_apolytikion — apolytikion
+  +0 rows (0 total)
+[217/382] extract dcs_glorybothheirmologic — glorybothheirmologic
+  +0 rows (0 total)
+[218/382] skip dcs_stichera5 (done)
+[219/382] extract dcs_antiphon21 — antiphon21
+  +0 rows (0 total)
+[220/382] skip dcs_canon1ode5 (done)
+[221/382] skip dcs_kathisma11 (done)
+[222/382] extract dcs_lauds01 — lauds01
+  +0 rows (0 total)
+[223/382] skip dcs_lauds5 (done)
+[224/382] skip dcs_apoltheotokionvm (done)
+[225/382] extract dcs_aposticha4 — aposticha4
+  +0 rows (0 total)
+[226/382] skip dcs_stichera5 (done)
+[227/382] skip dcs_antiphon31 (done)
+[228/382] skip dcs_canon1ode6 (done)
+[229/382] skip dcs_kathisma12 (done)
+[230/382] extract dcs_lauds02 — lauds02
+  +0 rows (0 total)
+[231/382] skip dcs_lauds6 (done)
+[232/382] extract dcs_apolytikion — apolytikion
+  +0 rows (0 total)
+[233/382] extract dcs_lihc-concise — lihc concise
+  +0 rows (0 total)
+[234/382] skip dcs_stichera6 (done)
+[235/382] extract dcs_antiphon41 — antiphon41
+  +8 rows (8 total)
+[236/382] skip dcs_canon1ode6 (done)
+[237/382] skip dcs_kathisma12 (done)
+[238/382] extract dcs_lauds02 — lauds02
+  +0 rows (8 total)
+[239/382] skip dcs_lauds6 (done)
+[240/382] skip dcs_apoltheotokionvm (done)
+[241/382] extract dcs_aposticha4 — aposticha4
+  +0 rows (8 total)
+[242/382] skip dcs_stichera4 (done)
+[243/382] extract dcs_communionhymn — communionhymn
+  +4 rows (12 total)
+[244/382] extract dcs_angelsintheheavens — angelsintheheavens
+  +4 rows (16 total)
+[245/382] extract dcs_lauds2 — lauds2
+  +0 rows (16 total)
+[246/382] extract dcs_ode3katavasia — ode3katavasia
+  +4 rows (20 total)
+[247/382] extract dcs_ode6katavasia — ode6katavasia
+  +4 rows (24 total)
+[248/382] extract dcs_ode9hh1122asm1m2m3m4gmtrbmth — ode9hh1122asm1m2m3m4gmtrbmth
+  +8 rows (32 total)
+[249/382] skip dcs_sticglory (done)
+[250/382] extract dcs_lauds1234as1234 — lauds1234as1234
+  +8 rows (40 total)
+[251/382] extract dcs_sticboth — sticboth
+  +0 rows (40 total)
+[252/382] extract dcs_stichera05 — stichera05
+  +8 rows (48 total)
+[253/382] extract dcs_lauds2 — lauds2
+  +0 rows (48 total)
+[254/382] skip dcs_stichera03 (done)
+[255/382] extract dcs_lauds1234as1234 — lauds1234as1234
+  +8 rows (56 total)
+[256/382] skip dcs_stichera01 (done)
+[257/382] extract dcs_stichera1234as3456 — stichera1234as3456
+  +8 rows (64 total)
+[258/382] skip dcs_lauds4 (done)
+[259/382] extract dcs_stichera05 — stichera05
+  +8 rows (72 total)
+[260/382] skip dcs_stichera01 (done)
+[261/382] extract dcs_stichera1234as3456 — stichera1234as3456
+  +8 rows (80 total)
+[262/382] skip dcs_lauds4 (done)
+[263/382] extract dcs_stichera05 — stichera05
+  +8 rows (88 total)
+[264/382] skip dcs_aposglory (done)
+[265/382] skip dcs_stichera01 (done)
+[266/382] extract dcs_laudsglory — laudsglory
+  +0 rows (88 total)
+[267/382] extract dcs_laudsglory — laudsglory
+  +0 rows (88 total)
+[268/382] skip dcs_kathisma21 (done)
+[269/382] skip dcs_lauds4 (done)
+[270/382] extract dcs_lity2 — lity2
+  +0 rows (88 total)
+[271/382] extract dcs_stichera10 — stichera10
+  +8 rows (96 total)
+[272/382] extract dcs_laudsglory — laudsglory
+  +0 rows (96 total)
+[273/382] skip dcs_aposticha1 (done)
+[274/382] skip dcs_stichera03 (done)
+[275/382] skip dcs_lauds4 (done)
+[276/382] extract dcs_stichera10 — stichera10
+  +8 rows (104 total)
+[277/382] skip dcs_stichera02 (done)
+[278/382] skip dcs_aposticha1 (done)
+[279/382] extract dcs_stichera1as5 — stichera1as5
+  +4 rows (108 total)
+[280/382] skip dcs_maposglory (done)
+[281/382] skip dcs_aposticha1 (done)
+[282/382] extract dcs_theotokoshymn-short — theotokoshymn short
+  +4 rows (112 total)
+[283/382] skip dcs_kathisma23 (done)
+[284/382] extract dcs_laudsglory — laudsglory
+  +0 rows (112 total)
+[285/382] extract dcs_stichera08 — stichera08
+  +8 rows (120 total)
+[286/382] skip dcs_aposglory (done)
+[287/382] skip dcs_stichera02 (done)
+[288/382] extract dcs_lauds3 — lauds3
+  +0 rows (120 total)
+[289/382] extract dcs_stichera09 — stichera09
+  +8 rows (128 total)
+[290/382] skip dcs_aposglory (done)
+[291/382] skip dcs_stichera2 (done)
+[292/382] extract dcs_postgospelglory — postgospelglory
+  +0 rows (128 total)
+[293/382] skip dcs_aposticha3 (done)
+[294/382] extract dcs_stichera04 — stichera04
+  +0 rows (128 total)
+[295/382] skip dcs_aposboth (done)
+[296/382] extract dcs_laudsboth — laudsboth
+  +0 rows (128 total)
+[297/382] extract dcs_lauds2as5 — lauds2as5
+  +0 rows (128 total)
+[298/382] skip dcs_aposticha1 (done)
+[299/382] extract dcs_lityglory — lityglory
+  +0 rows (128 total)
+[300/382] extract dcs_stichera05 — stichera05
+  +8 rows (136 total)
+[301/382] extract dcs_lauds2as5 — lauds2as5
+  +4 rows (140 total)
+[302/382] extract dcs_stichera123as345 — stichera123as345
+  +8 rows (148 total)
+[303/382] skip dcs_maposglory (done)
+[304/382] skip dcs_sticglory (done)
+[305/382] skip dcs_kathisma22 (done)
+[306/382] extract dcs_lauds12as45 — lauds12as45
+  +8 rows (156 total)
+[307/382] extract dcs_postgospelglory — postgospelglory
+  +0 rows (156 total)
+[308/382] extract dcs_lauds1 — lauds1
+  +0 rows (156 total)
+[309/382] skip dcs_sticglory (done)
+[310/382] extract dcs_lauds2 — lauds2
+  +0 rows (156 total)
+[311/382] skip dcs_sticglory (done)
+[312/382] skip dcs_sticglory (done)
+[313/382] extract dcs_lauds3 — lauds3
+  +0 rows (156 total)
+[314/382] skip dcs_aposglory (done)
+[315/382] skip dcs_sticglory (done)
+[316/382] extract dcs_apolytikion1 — apolytikion1
+  +0 rows (156 total)
+[317/382] skip dcs_sticglory (done)
+[318/382] skip dcs_lauds6 (done)
+[319/382] extract dcs_lauds3 — lauds3
+  +0 rows (156 total)
+[320/382] skip dcs_aposticha1 (done)
+[321/382] skip dcs_stichera03 (done)
+[322/382] skip dcs_aposticha2 (done)
+[323/382] extract dcs_kathisma3 — kathisma3
+  +4 rows (160 total)
+[324/382] extract dcs_ode8 — ode8
+  +4 rows (164 total)
+[325/382] skip dcs_aposglory (done)
+[326/382] skip dcs_stichera01 (done)
+[327/382] skip dcs_aposticha3 (done)
+[328/382] extract dcs_lauds2 — lauds2
+  +0 rows (164 total)
+[329/382] extract dcs_troparion — troparion
+  +8 rows (172 total)
+[330/382] extract dcs_complete — complete
+  +4 rows (176 total)
+[331/382] extract dcs_lauds3 — lauds3
+  +0 rows (176 total)
+[332/382] extract dcs_ode8 — ode8
+  +4 rows (180 total)
+[333/382] skip dcs_aposglory (done)
+[334/382] extract dcs_lauds1 — lauds1
+  +0 rows (180 total)
+[335/382] extract dcs_ode3 — ode3
+  +4 rows (184 total)
+[336/382] extract dcs_ode6 — ode6
+  +4 rows (188 total)
+[337/382] extract dcs_complete — complete
+  +4 rows (192 total)
+[338/382] extract dcs_idiomelon3 — idiomelon3
+  +4 rows (196 total)
+[339/382] extract dcs_idiomelon3 — idiomelon3
+  +4 rows (200 total)
+[340/382] extract dcs_antiphon04 — antiphon04
+  +8 rows (208 total)
+[341/382] extract dcs_antiphon09 — antiphon09
+  +8 rows (216 total)
+[342/382] extract dcs_antiphon13 — antiphon13
+  +8 rows (224 total)
+[343/382] skip dcs_aposglory (done)
+[344/382] extract dcs_complete — complete
+  +4 rows (228 total)
+[345/382] extract dcs_laudsglory — laudsglory
+  +0 rows (228 total)
+[346/382] skip dcs_stichera01 (done)
+[347/382] extract dcs_encomia11 — encomia11
+  +4 rows (232 total)
+[348/382] extract dcs_evlogetaria3 — evlogetaria3
+  +0 rows (232 total)
+[349/382] extract dcs_kathisma1 — kathisma1
+  +4 rows (236 total)
+[350/382] skip dcs_laudstheotokion (done)
+[351/382] extract dcs_ode6 — ode6
+  +4 rows (240 total)
+[352/382] extract dcs_apolytikion2 — apolytikion2
+  +0 rows (240 total)
+[353/382] extract dcs_aposticha4 — aposticha4
+  +0 rows (240 total)
+[354/382] skip dcs_stichera02 (done)
+[355/382] extract dcs_communionhymn — communionhymn
+  +4 rows (244 total)
+[356/382] skip dcs_stichera02 (done)
+[357/382] skip dcs_stictheotokion (done)
+[358/382] extract dcs_entrancehymn — entrancehymn
+  +4 rows (248 total)
+[359/382] extract dcs_apolytikion — apolytikion
+  +0 rows (248 total)
+[360/382] extract dcs_entrancehymn — entrancehymn
+  +4 rows (252 total)
+[361/382] extract sam_m0010-doxology-mode-1 — m0010 doxology mode 1
+  +8 rows (260 total)
+[362/382] extract sam_m0070-brief-doxology-mode-4 — m0070 brief doxology mode 4
+  +4 rows (264 total)
+[363/382] extract sam_m0125-christ-is-risen — m0125 christ is risen
+  +8 rows (272 total)
+[364/382] extract sam_m0240-save-us-o-son-of-god — m0240 save us o son of god
+  +4 rows (276 total)
+[365/382] extract sam_m0268-typica-2nd-stasis-mode-5 — m0268 typica 2nd stasis mode 5
+  +8 rows (284 total)
+[366/382] extract sam_m0370-eis-polla-eti — m0370 eis polla eti
+  +8 rows (292 total)
+[367/382] extract sam_m0595-anaphora-mode-2-deuteroprotos — m0595 anaphora mode 2 deuteroprotos
+  +4 rows (296 total)
+[368/382] extract sam_m0625-anaphora-mode-5-phrygian — m0625 anaphora mode 5 phrygian
+  +8 rows (304 total)
+[369/382] extract sam_m0655-anaphora-mode-8-gregory — m0655 anaphora mode 8 gregory
+  +8 rows (312 total)
+[370/382] extract sam_m0710-it-is-truly-right-mode-3-gregory — m0710 it is truly right mode 3 gregory
+  +8 rows (320 total)
+[371/382] extract sam_m0780-it-is-truly-right-mode-7-phokaeus — m0780 it is truly right mode 7 phokaeus
+  +8 rows (328 total)
+[372/382] extract sam_m0850-nativity — m0850 nativity
+  +8 rows (336 total)
+[373/382] extract sam_m0910-lazarus-saturday — m0910 lazarus saturday
+  +4 rows (340 total)
+[374/382] extract sam_m0990-samaritan-woman — m0990 samaritan woman
+  +8 rows (348 total)
+[375/382] extract sam_m1045-transfiguration-alternate — m1045 transfiguration alternate
+  +8 rows (356 total)
+[376/382] extract sam_m1310-friday — m1310 friday
+  +8 rows (364 total)
+[377/382] extract sam_m1370-theophany — m1370 theophany
+  +8 rows (372 total)
+[378/382] extract sam_m1420-thomas-sunday — m1420 thomas sunday
+  +4 rows (376 total)
+[379/382] extract sam_m1500-receive-me-today-mode-6-athonite — m1500 receive me today mode 6 athonite
+  +8 rows (384 total)
+[380/382] extract sam_m1550-let-our-mouths-be-filled — m1550 let our mouths be filled
+  +8 rows (392 total)
+[381/382] extract sam_m1660-in-thee-who-art-full-of-grace-brief — m1660 in thee who art full of grace brief
+  +8 rows (400 total)
+[382/382] extract sam_m1750-now-the-hosts-mode-6 — m1750 now the hosts mode 6
+  +8 rows (408 total)
+
+Wrote 408 new rows → /Users/gaurav/From-Scratch-LLM/data/byzantine/sft_raw.jsonl
+Log → /Users/gaurav/From-Scratch-LLM/data/byzantine/extract_log.jsonl
