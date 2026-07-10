@@ -77,6 +77,33 @@ neume→pitch transcription **when the mapping is 1:1 and the anchor is given.**
 provides neither. This is a **scoping/diagnostic result** that sharpens the project's
 conclusion — it does not overturn the melismatic wall.
 
+### The controlled contrast that proves it (real near-1:1, SAME fix)
+
+The strongest evidence is a parallel run that changes ONLY the data source. Trained on the
+REAL near-1:1 subset (`sft_near1to1_train_cued.jsonl`, the 12% of hymns closest to 1:1,
+with the identical anchor-in-prompt + length-cue fix) and scored on real held-out
+(`sft_near1to1_heldout_cued.jsonl`):
+
+| byz→west, epoch 1 | Synthetic (1:1 by construction) | **Real near-1:1** |
+|---|---|---|
+| pitch_accuracy | 0.99 | **0.18** |
+| interval_accuracy | 0.99 | **0.30** |
+| exact_match | 0.925 | **0.00** |
+| melodic_equivalence | 1.925 | **0.02** |
+
+Same model, same recipe, same anchor fix — the real data stays flat at ~0.00 (historical
+level). Sample predictions emit a generic plausible scale-run that ignores the actual
+input neumes, even with the anchor supplied. This **controls for the two things that might
+have explained the synthetic win** (the anchor fix and the ≈1:1 ratio) and shows neither
+was sufficient: the synthetic result came entirely from the task being genuinely 1:1
+*by construction* (each neume = one fixed pitch step). "Near-1:1 in aggregate count" is
+NOT per-position aligned — non-pitch tokens (martyria, breath) occupy sequence slots and
+melisma smears the mapping, so real neume names still under-specify pitch. Capacity was
+never the issue.
+
+(Epoch-2 real numbers to be appended when the full run finishes; epoch 1 already tells the
+story.)
+
 ## Relation to other docs
 - Supersedes the blanket "melodic_equivalence never moved" reading of the handoff — but
   ONLY for synthetic/aligned data. The real-corpus wall stands.
