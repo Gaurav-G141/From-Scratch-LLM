@@ -29,11 +29,33 @@ def load_jsonl(path: Path) -> list[dict]:
     return rows
 
 
+# Standard ChatML template — identical to what Qwen*-Instruct tokenizers ship. BASE
+# models (e.g. Qwen2.5-Coder-7B, not the -Instruct variant) carry NO chat_template, so
+# apply_chat_template raises. We inject ChatML for them; harmless for models that already
+# have a template (we only set it when missing).
+_CHATML_TEMPLATE = (
+    "{% for message in messages %}"
+    "{{'<|im_start|>' + message['role'] + '\n' + message['content'] + '<|im_end|>' + '\n'}}"
+    "{% endfor %}"
+    "{% if add_generation_prompt %}{{ '<|im_start|>assistant\n' }}{% endif %}"
+)
+
+
+def _ensure_chat_template(tokenizer) -> None:
+    """Give base models a ChatML template so apply_chat_template works. No-op if the
+    tokenizer already has one (Instruct models)."""
+    if getattr(tokenizer, "chat_template", None):
+        return
+    tokenizer.chat_template = _CHATML_TEMPLATE
+    print("No chat_template on tokenizer (base model) -> injected ChatML.", file=sys.stderr)
+
+
 def _apply_template(tokenizer, messages, **kwargs) -> str:
     """apply_chat_template with Qwen3 thinking-mode suppressed. Day-3 v2 found a
     <think>…</think> wrapper on 100% of outputs; enable_thinking=False stops the model
     re-learning it. The kwarg is Qwen3-specific, so we retry without it on templates
     that don't accept it (Gemma-2, Llama-3.1, etc.)."""
+    _ensure_chat_template(tokenizer)
     try:
         return tokenizer.apply_chat_template(
             messages, tokenize=False, enable_thinking=False, **kwargs

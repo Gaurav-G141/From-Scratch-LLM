@@ -73,6 +73,16 @@ def main() -> None:
     tokenizer = AutoTokenizer.from_pretrained(args.model)
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token
+    # Base models (e.g. Qwen2.5-Coder-7B) ship NO chat_template. Inject the same ChatML
+    # template used at train time so inference formatting matches training exactly.
+    if not getattr(tokenizer, "chat_template", None):
+        tokenizer.chat_template = (
+            "{% for message in messages %}"
+            "{{'<|im_start|>' + message['role'] + '\n' + message['content'] + '<|im_end|>' + '\n'}}"
+            "{% endfor %}"
+            "{% if add_generation_prompt %}{{ '<|im_start|>assistant\n' }}{% endif %}"
+        )
+        print("No chat_template (base model) -> injected ChatML.", file=sys.stderr)
     # Decoder-only batched generation requires LEFT padding, else right-pad tokens shift
     # the position of the generated continuation and corrupt short-prompt rows.
     tokenizer.padding_side = "left"

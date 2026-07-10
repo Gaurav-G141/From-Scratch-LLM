@@ -31,6 +31,16 @@ class LocalHFBackend:
         self.device = device or pick_device()
         print(f"Loading {label} on {self.device} (4bit={load_4bit}) ...", file=sys.stderr)
         self.tokenizer = AutoTokenizer.from_pretrained(model_name)
+        # Base models (e.g. Qwen2.5-Coder-7B) ship no chat_template; inject the same
+        # ChatML used at train time so inference formatting matches training.
+        if not getattr(self.tokenizer, "chat_template", None):
+            self.tokenizer.chat_template = (
+                "{% for message in messages %}"
+                "{{'<|im_start|>' + message['role'] + '\n' + message['content'] + '<|im_end|>' + '\n'}}"
+                "{% endfor %}"
+                "{% if add_generation_prompt %}{{ '<|im_start|>assistant\n' }}{% endif %}"
+            )
+            print("No chat_template (base model) -> injected ChatML.", file=sys.stderr)
 
         model_kwargs: dict = {"torch_dtype": "auto"}
         if load_4bit:
