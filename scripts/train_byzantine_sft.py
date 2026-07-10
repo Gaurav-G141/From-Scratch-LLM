@@ -180,7 +180,13 @@ def train_with_unsloth(
             gradient_accumulation_steps=grad_accum,
             learning_rate=learning_rate,
             logging_steps=5,
-            save_strategy="epoch" if epochs and epochs > 0 else "no",
+            # save_strategy="no": Unsloth's patched SFTConfig cannot be pickled during
+            # mid-training checkpoint saves (torch.save(self.args) -> PicklingError:
+            # "not the same object as trl.trainer.sft_config.SFTConfig"), triggered once
+            # unsloth_compiled_cache is populated (2nd+ run in a session). The final
+            # adapter is saved below via model.save_pretrained (PEFT save, no SFTConfig),
+            # so skipping intermediate checkpoints avoids the crash with no real loss.
+            save_strategy="no",
             report_to="none",
             bf16=bf16,
             fp16=not bf16,

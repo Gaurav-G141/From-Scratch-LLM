@@ -101,8 +101,11 @@ NOT per-position aligned — non-pitch tokens (martyria, breath) occupy sequence
 melisma smears the mapping, so real neume names still under-specify pitch. Capacity was
 never the issue.
 
-(Epoch-2 real numbers to be appended when the full run finishes; epoch 1 already tells the
-story.)
+The epoch-1 number above is the final local result for the real near-1:1 run. The epoch-2
+continuation was intentionally stopped partway (MPS thermal throttling degraded it to
+60–96 s/step; only the epoch-1 checkpoint was saved) — epoch 1 already settles the
+conclusion, so no epoch-2 local number exists. Any 2-epoch confirmation on real data
+belongs on Colab GPU, not local MPS.
 
 ## Relation to other docs
 - Supersedes the blanket "melodic_equivalence never moved" reading of the handoff — but
