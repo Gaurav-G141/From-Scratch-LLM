@@ -229,7 +229,7 @@ def train_with_peft(
 ) -> None:
     import torch
     from datasets import Dataset
-    from peft import LoraConfig, get_peft_model
+    from peft import LoraConfig, get_peft_model, prepare_model_for_kbit_training
     from transformers import AutoModelForCausalLM, AutoTokenizer, TrainingArguments, Trainer, DataCollatorForSeq2Seq
 
     device = "cuda" if torch.cuda.is_available() else (
@@ -240,9 +240,25 @@ def train_with_peft(
     tokenizer = AutoTokenizer.from_pretrained(model_name)
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token
+    _ensure_chat_template(tokenizer)
 
-    model = AutoModelForCausalLM.from_pretrained(model_name, torch_dtype="auto")
-    model.to(device)
+    # On CUDA, load in NF4 4-bit so a 7B fits comfortably (a T4's 16 GB or an L4's 22 GB);
+    # fp16/bf16 full weights (~14 GB for 7B) leave little room for activations. On MPS/CPU
+    # (local smoke tests) keep the plain load — bitsandbytes is CUDA-only.
+    kbit = device == "cuda"
+    if kbit:
+        from transformers import BitsAndBytesConfig
+        quant = BitsAndBytesConfig(
+            load_in_4bit=True, bnb_4bit_quant_type="nf4",
+            bnb_4bit_compute_dtype=(torch.bfloat16 if torch.cuda.is_bf16_supported() else torch.float16),
+            bnb_4bit_use_double_quant=True,
+        )
+        model = AutoModelForCausalLM.from_pretrained(
+            model_name, quantization_config=quant, device_map="auto")
+        model = prepare_model_for_kbit_training(model)
+    else:
+        model = AutoModelForCausalLM.from_pretrained(model_name, torch_dtype="auto")
+        model.to(device)
 
     lora_config = LoraConfig(
         r=8,
