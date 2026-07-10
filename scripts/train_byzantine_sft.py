@@ -336,7 +336,12 @@ def main() -> None:
     parser.add_argument("--grad-accum", type=int, default=2,
                         help="gradient accumulation steps; effective batch = batch-size * this")
     parser.add_argument("--lr", type=float, default=2e-4)
-    parser.add_argument("--force-peft", action="store_true", help="Skip Unsloth even on CUDA")
+    parser.add_argument("--force-peft", action="store_true",
+                        help="(deprecated no-op) PEFT is now the default; kept for compatibility")
+    parser.add_argument("--use-unsloth", action="store_true",
+                        help="Opt into the Unsloth fast path. Off by default because Unsloth's "
+                             "compiled SFTTrainer crashes on transformers>=5.5 "
+                             "(push_to_hub_token AttributeError). PEFT 4-bit QLoRA is the default.")
     args = parser.parse_args()
 
     data_path = Path(args.data)
@@ -352,7 +357,7 @@ def main() -> None:
 
     import torch
 
-    use_unsloth = torch.cuda.is_available() and not args.force_peft
+    use_unsloth = torch.cuda.is_available() and args.use_unsloth and not args.force_peft
     if use_unsloth:
         try:
             from unsloth import FastLanguageModel  # noqa: F401
