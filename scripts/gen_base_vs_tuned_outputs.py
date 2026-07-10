@@ -43,6 +43,8 @@ def main() -> None:
     parser.add_argument("--out", default=str(ROOT / "runs/byzantine_translation_1.7b_outputs.json"))
     parser.add_argument("--max-new-tokens", type=int, default=512)
     parser.add_argument("--temperature", type=float, default=0.3)
+    parser.add_argument("--load-4bit", action="store_true",
+                        help="NF4 4-bit load (CUDA only; needed to fit 7B on a T4)")
     args = parser.parse_args()
 
     from eval_harness.backends.local_hf import LocalHFBackend
@@ -65,7 +67,8 @@ def main() -> None:
 
     for label, adapter in [("base", None), ("tuned", args.adapter_path)]:
         print(f"\n=== Loading {label} ({args.model}) ===", flush=True)
-        backend = LocalHFBackend(model_name=args.model, adapter_path=adapter)
+        backend = LocalHFBackend(model_name=args.model, adapter_path=adapter,
+                                 load_4bit=args.load_4bit)
         for key in suite_keys:
             scenarios = suite_data[key]
             print(f"  {label} | {key} | n={len(scenarios)}", flush=True)

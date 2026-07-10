@@ -22,18 +22,35 @@ class LocalHFBackend:
         model_name: str = DEFAULT_MODEL_NAME,
         device: str | None = None,
         adapter_path: str | None = None,
+        load_4bit: bool = False,
     ):
         self.model_name = model_name
         self.adapter_path = adapter_path
         label = f"{model_name}+adapter" if adapter_path else model_name
         self.name = f"local:{label}"
         self.device = device or pick_device()
-        print(f"Loading {label} on {self.device} ...", file=sys.stderr)
+        print(f"Loading {label} on {self.device} (4bit={load_4bit}) ...", file=sys.stderr)
         self.tokenizer = AutoTokenizer.from_pretrained(model_name)
-        self.model = AutoModelForCausalLM.from_pretrained(
-            model_name,
-            torch_dtype="auto",
-        ).to(self.device)
+
+        model_kwargs: dict = {"torch_dtype": "auto"}
+        if load_4bit:
+            # NF4 4-bit fits a 7B on a 16 GB T4; CUDA-only. device_map handles placement,
+            # so we must NOT call .to(device) afterwards.
+            if self.device != "cuda":
+                raise SystemExit("load_4bit=True requires CUDA")
+            from transformers import BitsAndBytesConfig
+
+            model_kwargs["quantization_config"] = BitsAndBytesConfig(
+                load_in_4bit=True,
+                bnb_4bit_quant_type="nf4",
+                bnb_4bit_compute_dtype=torch.bfloat16,
+                bnb_4bit_use_double_quant=True,
+            )
+            model_kwargs["device_map"] = "auto"
+
+        self.model = AutoModelForCausalLM.from_pretrained(model_name, **model_kwargs)
+        if not load_4bit:
+            self.model = self.model.to(self.device)
         if adapter_path:
             from peft import PeftModel
 
