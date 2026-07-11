@@ -1,5 +1,8 @@
 # Colab Runbook — Byzantine SFT on a bigger model ($10 budget)
 
+> **For the runnable, copy-paste, cell-by-cell notebook see `docs/colab_notebook.md`.**
+> This file is the background/rationale (budget math, model choice, why each step).
+
 Budget-aware, vetted step sequence for training the Byzantine transcription adapter on
 Colab. Guiding principle: **spend zero GPU money on anything verifiable on CPU first,
 then make ONE clean paid run — not five debugging runs.**
