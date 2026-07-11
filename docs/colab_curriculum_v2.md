@@ -223,6 +223,26 @@ python3 scripts/score_real_musical.py \
 lower pure-repeat %, and ideally `real_musicality_0_2 > 0` with `good_rate > 0`. The scorer's
 ceiling on real gold is ~1.74, so that's the target to approach, not 2.0.
 
+### Read n2w and w2n on DIFFERENT scales — the directions are not equally well-posed
+
+The two directions have different intrinsic ceilings *by the music*, not by a data bug, so
+do not expect symmetric numbers:
+
+- **neume→west (n2w) is a true function.** Each neume maps to exactly one pitch step
+  (`oligon`=+1, `apostrophos`=−1, …), so given the Ison anchor the pitch sequence is
+  uniquely determined. On synthetic this hits melodic **2.0**. Expect n2w to climb highest.
+- **west→neume (w2n) is one-to-many.** `oligon` AND `petaste` both encode "+1" (an accent
+  distinction with no Western-pitch counterpart), so a rising second maps to two valid
+  neumes and the input can't disambiguate. Even on *perfect* synthetic, w2n tops out around
+  **1.2**, not 2.0 (`docs/byzantine_synthetic_breakthrough_20260709.md`).
+
+Therefore, when grading `curr2`:
+- A lower w2n number is **not** failure — it reflects a real notational ambiguity. Judge w2n
+  by `set_f1` / `hist_sim` / `ngram_f1` (right neume vocabulary and local shape); exact-match
+  is unfairly capped there.
+- The clean 1:1 correctness the synthetic prior teaches is inherently n2w-directional. w2n
+  benefits from the prior (right vocabulary, non-degeneracy) but cannot reach n2w's ceiling.
+
 If it still floors → escalate to option #3 (DTW label realignment), the overnight job.
 
 ---
