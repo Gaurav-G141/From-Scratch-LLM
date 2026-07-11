@@ -141,6 +141,7 @@ def train_with_unsloth(
     seq_length: int,
     batch_size: int,
     grad_accum: int,
+    init_adapter: str | None = None,
 ) -> None:
     from unsloth import FastLanguageModel
     from unsloth.chat_templates import train_on_responses_only
@@ -153,14 +154,20 @@ def train_with_unsloth(
         max_seq_length=seq_length,
         load_in_4bit=True,
     )
-    model = FastLanguageModel.get_peft_model(
-        model,
-        r=8,
-        target_modules=["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"],
-        lora_alpha=16,
-        lora_dropout=0.05,
-        bias="none",
-    )
+    if init_adapter:
+        # Curriculum stage 2: reattach a saved adapter as trainable (see PEFT path note).
+        from peft import PeftModel
+        model = PeftModel.from_pretrained(model, init_adapter, is_trainable=True)
+        print(f"Continuing from adapter: {init_adapter}", file=sys.stderr)
+    else:
+        model = FastLanguageModel.get_peft_model(
+            model,
+            r=8,
+            target_modules=["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"],
+            lora_alpha=16,
+            lora_dropout=0.05,
+            bias="none",
+        )
 
     texts = rows_to_text(rows, tokenizer)
     ds = Dataset.from_dict({"text": texts})
@@ -226,10 +233,11 @@ def train_with_peft(
     seq_length: int,
     batch_size: int,
     grad_accum: int,
+    init_adapter: str | None = None,
 ) -> None:
     import torch
     from datasets import Dataset
-    from peft import LoraConfig, get_peft_model, prepare_model_for_kbit_training
+    from peft import LoraConfig, get_peft_model, prepare_model_for_kbit_training, PeftModel
     from transformers import AutoModelForCausalLM, AutoTokenizer, TrainingArguments, Trainer, DataCollatorForSeq2Seq
 
     device = "cuda" if torch.cuda.is_available() else (
@@ -260,15 +268,23 @@ def train_with_peft(
         model = AutoModelForCausalLM.from_pretrained(model_name, torch_dtype="auto")
         model.to(device)
 
-    lora_config = LoraConfig(
-        r=8,
-        lora_alpha=16,
-        lora_dropout=0.05,
-        bias="none",
-        task_type="CAUSAL_LM",
-        target_modules=["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"],
-    )
-    model = get_peft_model(model, lora_config)
+    # Curriculum stage 2: continue from an existing adapter (e.g. the synthetic-pretrained
+    # LoRA) instead of a fresh random init. load(..., is_trainable=True) reattaches the
+    # saved LoRA weights AND keeps them trainable, so stage-2 real-data training adapts the
+    # synthetic prior rather than starting over. Falls back to a fresh LoRA when omitted.
+    if init_adapter:
+        model = PeftModel.from_pretrained(model, init_adapter, is_trainable=True)
+        print(f"Continuing from adapter: {init_adapter}", file=sys.stderr)
+    else:
+        lora_config = LoraConfig(
+            r=8,
+            lora_alpha=16,
+            lora_dropout=0.05,
+            bias="none",
+            task_type="CAUSAL_LM",
+            target_modules=["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"],
+        )
+        model = get_peft_model(model, lora_config)
     model.print_trainable_parameters()
 
     # C1: response-only loss. We render the prompt (system+user) alone and the full
@@ -336,6 +352,10 @@ def main() -> None:
     parser.add_argument("--grad-accum", type=int, default=2,
                         help="gradient accumulation steps; effective batch = batch-size * this")
     parser.add_argument("--lr", type=float, default=2e-4)
+    parser.add_argument("--init-adapter", default=None,
+                        help="Path to an existing LoRA adapter to CONTINUE training from "
+                             "(curriculum stage 2: synthetic-pretrained -> real). Omit to "
+                             "start from a fresh LoRA. Base --model must match the adapter's.")
     parser.add_argument("--force-peft", action="store_true",
                         help="(deprecated no-op) PEFT is now the default; kept for compatibility")
     parser.add_argument("--use-unsloth", action="store_true",
@@ -376,6 +396,7 @@ def main() -> None:
             seq_length=args.seq_length,
             batch_size=args.batch_size,
             grad_accum=args.grad_accum,
+            init_adapter=args.init_adapter,
         )
     else:
         train_with_peft(
@@ -388,6 +409,7 @@ def main() -> None:
             seq_length=args.seq_length,
             batch_size=args.batch_size,
             grad_accum=args.grad_accum,
+            init_adapter=args.init_adapter,
         )
 
     meta = {
@@ -401,6 +423,7 @@ def main() -> None:
         "grad_accum": args.grad_accum,
         "response_only_loss": True,
         "backend": "unsloth" if use_unsloth else "peft",
+        "init_adapter": args.init_adapter,
     }
     (output_dir / "train_meta.json").write_text(json.dumps(meta, indent=2), encoding="utf-8")
     print(f"Saved adapter → {output_dir}")

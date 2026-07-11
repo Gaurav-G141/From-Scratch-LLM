@@ -70,39 +70,31 @@ print("imports OK")
 
 ---
 
-## Cell 2 — Config + auto-discover the real adapter dirs
+## Cell 2 — Auto-discover the adapter dirs (no path to edit)
 
-Set the two `--out` roots you used during training. The helper walks into
-`checkpoints/checkpoint-95/` (or the newest checkpoint) and returns the dir that actually
-contains `adapter_config.json`.
+Scans the whole box for the `coder7b_n2w` / `coder7b_w2n` adapters and returns the dir
+that actually holds `adapter_config.json` (walking into `checkpoints/checkpoint-95/`).
+Works whether they're in the repo (`models 2/`, committed via git), on Drive, or in
+`./models` — nothing to type, so no path to mistype.
 
 ```python
 import glob, os
 
 BASE = "unsloth/Qwen2.5-Coder-7B-bnb-4bit"
 
-# The trained adapters are committed IN THE REPO under "models 2/" (note the space),
-# so no Drive mount is needed — a git pull brought them onto the Colab box.
-# If yours live elsewhere (e.g. Drive), point these at those --out roots instead.
-N2W_ROOT = "/content/From-Scratch-LLM/models 2/coder7b_n2w"
-W2N_ROOT = "/content/From-Scratch-LLM/models 2/coder7b_w2n"
-
-def find_adapter(root):
-    """Return the dir holding adapter_config.json: root itself, else newest checkpoint."""
-    if os.path.isfile(os.path.join(root, "adapter_config.json")):
-        return root
-    hits = glob.glob(os.path.join(root, "**", "adapter_config.json"), recursive=True)
+def find_dir(direction):
+    """Find the checkpoint dir for 'n2w' or 'w2n' by scanning all of /content."""
+    hits = glob.glob(f"/content/**/coder7b_{direction}/**/adapter_config.json",
+                     recursive=True)
     if not hits:
-        raise SystemExit(
-            f"No adapter_config.json anywhere under {root}. "
-            f"Check the path — is this the --out you trained to?")
-    def step(p):  # sort by checkpoint step number, take the highest
+        raise SystemExit(f"no coder7b_{direction} adapter found under /content")
+    def step(p):  # newest checkpoint if several
         d = os.path.basename(os.path.dirname(p))
         return int("".join(c for c in d if c.isdigit()) or 0)
     return os.path.dirname(sorted(hits, key=step)[-1])
 
-N2W = find_adapter(N2W_ROOT)
-W2N = find_adapter(W2N_ROOT)
+N2W = find_dir("n2w")
+W2N = find_dir("w2n")
 
 # eval files, matched to the recipe each adapter was trained on
 N2W_EVAL = "data/byzantine/sft_n2w_heldout_cued.jsonl"   # n2w trained cued
