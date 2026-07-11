@@ -114,6 +114,53 @@ gives no explicit pitch-center anchor, so cross-entropy never had to pin the oct
 4. If register can't be anchored → Branch 4 (reframe to recoverable properties, or reward-based
    training on the scorer). See `docs/byzantine_next_plans_by_outcome.md`.
 
+## Delta on the 4 Opus rubric dimensions (DETERMINISTIC PROXY — not the LLM judge)
+
+The original Opus/GPT-4o sweeps scored 4 LLM-judged dims 0–2: melodic_equivalence,
+mode_fidelity, notation_convention, meaning_preservation. The OpenAI account is inactive
+(billing 429) and no Anthropic key is set, so the real judge could not run. Instead these are
+**mapped from the deterministic metrics** (`scripts/proxy_judge_dims.py`) — a directional proxy.
+
+**Two caveats stack, so read this as directional, NOT apples-to-apples:** (1) different judge (a
+formula, not an LLM); (2) different eval set — this is the 501-row DTW real heldout, while Opus's
+numbers were on the 10-scenario hand-crafted banks.
+
+Mapping: melodic ← mean(interval_hist_sim, contour_sim)×2; mode ← mean(mode_correct,
+ison_correct)×2; notation ← gold-vocab token-validity ×2; meaning ← mean(set_f1, hist_sim,
+ambitus_match)×2.
+
+### n2w proxy dims (0–2)
+| run | melodic | mode | notation | meaning |
+|---|---|---|---|---|
+| coder7b (base) | 1.04 | 2.00 | 0.02 | 0.51 |
+| curr (v1) | 1.11 | 2.00 | 0.04 | 0.82 |
+| curr2 (v2) | 1.06 | 0.08 | 1.62 | 0.30 |
+| v3 | 1.29 | 1.49 | 1.96 | 0.86 |
+| v3b ngram-6 | 1.30 | 1.32 | 1.63 | 0.52 |
+| **v3b ngram-8** | **1.37** | 1.47 | 1.76 | 0.64 |
+| v3b temp | 1.31 | 1.43 | 0.89 | 0.59 |
+
+**Reading:** ngram-8 has the best proxy-**melodic** of any run (1.37) — consistent with its
+best-ever interval_hist_sim. proxy-**notation** stays clean (1.76; v2's 1.62 was inflated by
+hallucinated-but-in-vocab tokens). proxy-**meaning** dipped from v3 (0.86 → 0.64) — this is the
+same ambitus/register regression showing up in the meaning bucket, since ambitus feeds it.
+mode holds ~1.47. No run reaches strict pass (melodic ≥1.5 AND meaning ≥1.5) — the melodic
+bottleneck the Opus sweeps flagged is still the wall on this harder real data.
+
+### Opus reference (LLM judge, scenario banks — for orientation, NOT the same axis)
+`docs/byzantine_opus_sweep.md`: heldout overall 1.55 / melodic 0.50 / meaning 1.90; unseen
+overall 1.55 / melodic 0.40 / meaning 1.80. Opus's meaning was high (fluent notation shape) but
+melodic low (the documented bottleneck). The proxy shows v3b **raising melodic** off that floor
+on real data while meaning is gated by register — the mirror-image profile, which fits the whole
+project arc (v3b finally has melodic knowledge; register is the new frontier).
+
+> w2n proxy-melodic reads 0.00 because the w2n metric set has no pitch-interval metrics (output
+> is neumes, not pitches) — that dim is **N/A for w2n**, not a true zero. Judge w2n by
+> notation/meaning: v3/v3b hold ~1.9/0.40, far above base's 0.14/0.24.
+
+**To run the REAL judge when billing is active:** `scripts/judge_preds_llm.py` is ready and
+smoke-tested (reuses the harness `OpenAIJudge`, same 4 dims + rubric). One command per file.
+
 ## Files
 - Scores: `runs/v3b_{ngram,ngram8,temp}_{n2w,w2n}_realscore.json` (w2n: ngram + temp only).
 - Predictions: `runs/v3b_n2w_{ngram,ngram8,temp}_preds.jsonl`, `runs/v3b_w2n_{ngram,temp}_preds.jsonl`.
