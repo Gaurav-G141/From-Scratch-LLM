@@ -112,10 +112,44 @@ Blended data (anti-forgetting) + LR 3e-5 (adapt, don't overwrite). Must log
 
 ---
 
-## Cell 5 — Predict on DTW-aligned real heldout (SOFT penalty only)
+## Cell 4b-persist — Save adapters to Drive (do this the moment training finishes)
 
-`--repetition-penalty 1.2` only — NO `--no-repeat-ngram-size` (that caused v2's
-hallucination). `--max-new-tokens 160` = safe headroom, ~2× faster than 256.
+Colab has wiped these adapters once already, forcing a full retrain. Copy them to Drive
+**right after Cell 4b** so a disconnect can never cost you the ~L4 retrain again. Predictions
+(Cell 5) then read from the local copies as usual; Drive is just the durable backup.
+
+```python
+from google.colab import drive
+drive.mount('/content/drive')
+
+import shutil, os
+DST = "/content/drive/MyDrive/byz_v3_adapters"
+os.makedirs(DST, exist_ok=True)
+for name in ["v3_prior", "v3_n2w", "v3_w2n"]:
+    src = f"models/{name}"
+    if os.path.isdir(src):
+        shutil.copytree(src, f"{DST}/{name}", dirs_exist_ok=True)
+        print("saved", name, "->", f"{DST}/{name}")
+```
+
+To RESTORE on a fresh runtime (skip Cells 2–4, jump straight to prediction): mount Drive, then
+`shutil.copytree("/content/drive/MyDrive/byz_v3_adapters/<name>", "models/<name>", dirs_exist_ok=True)`
+for each of the three, and run the `find_adapter` cell.
+
+---
+
+## Cell 5 — v3b: predict two decoding variants to break the looping
+
+v3's knowledge was the best of any run, but it **loops** (variety 0.11, just under the 0.15
+anti-drone gate → 87% of rows force-scored 0). The fix is decoding, not retraining, so predict
+BOTH variants on the same v3 adapters in one session and grade offline to pick the winner:
+
+- **ngram** (recommended primary, deterministic): `--repetition-penalty 1.2 --no-repeat-ngram-size 6`.
+  Size 6 blocks only LONG verbatim loops; natural short chant repeats survive. (v2's size-3 was
+  too aggressive → 42% hallucinated tokens — do NOT go below 6.)
+- **temp** (mild sampling, breaks loops a different way): `--repetition-penalty 1.3 --temperature 0.5`.
+
+`--max-new-tokens 160` = safe headroom, ~2× faster than 256.
 
 ```python
 import glob, os
@@ -129,16 +163,38 @@ print("n2w:",N2W,"\nw2n:",W2N)
 ```
 
 ```python
+# Variant A — ngram: gentle long-loop block (deterministic; recommended primary)
 !python scripts/predict_local.py --model {BASE} --adapter-path "{N2W}" \
   --eval data/byzantine/sft_aligned_n2w_heldout.jsonl \
-  --out runs/v3_n2w_preds.jsonl \
-  --load-4bit --batch-size 16 --max-new-tokens 160 --repetition-penalty 1.2
+  --out runs/v3b_n2w_ngram_preds.jsonl \
+  --load-4bit --batch-size 16 --max-new-tokens 160 \
+  --repetition-penalty 1.2 --no-repeat-ngram-size 6
 
 !python scripts/predict_local.py --model {BASE} --adapter-path "{W2N}" \
   --eval data/byzantine/sft_aligned_w2n_heldout.jsonl \
-  --out runs/v3_w2n_preds.jsonl \
-  --load-4bit --batch-size 16 --max-new-tokens 160 --repetition-penalty 1.2
+  --out runs/v3b_w2n_ngram_preds.jsonl \
+  --load-4bit --batch-size 16 --max-new-tokens 160 \
+  --repetition-penalty 1.2 --no-repeat-ngram-size 6
 ```
+
+```python
+# Variant B — temp: mild sampling
+!python scripts/predict_local.py --model {BASE} --adapter-path "{N2W}" \
+  --eval data/byzantine/sft_aligned_n2w_heldout.jsonl \
+  --out runs/v3b_n2w_temp_preds.jsonl \
+  --load-4bit --batch-size 16 --max-new-tokens 160 \
+  --repetition-penalty 1.3 --temperature 0.5
+
+!python scripts/predict_local.py --model {BASE} --adapter-path "{W2N}" \
+  --eval data/byzantine/sft_aligned_w2n_heldout.jsonl \
+  --out runs/v3b_w2n_temp_preds.jsonl \
+  --load-4bit --batch-size 16 --max-new-tokens 160 \
+  --repetition-penalty 1.3 --temperature 0.5
+```
+
+> Want the original v3 baseline too (soft penalty only)? Re-add a block with
+> `--out runs/v3_{n2w,w2n}_preds.jsonl --repetition-penalty 1.2` and no other decode flag —
+> but the v3 scores are already saved in `runs/v3_*_realscore.json`, so this is optional.
 
 ---
 
@@ -148,54 +204,58 @@ print("n2w:",N2W,"\nw2n:",W2N)
 import os, zipfile
 from google.colab import files
 os.makedirs("/content/dl", exist_ok=True)
-preds=[f for f in ["runs/v3_n2w_preds.jsonl","runs/v3_w2n_preds.jsonl"] if os.path.isfile(f)]
+preds=[f for f in [
+    "runs/v3b_n2w_ngram_preds.jsonl","runs/v3b_w2n_ngram_preds.jsonl",
+    "runs/v3b_n2w_temp_preds.jsonl","runs/v3b_w2n_temp_preds.jsonl",
+] if os.path.isfile(f)]
 assert preds, "run Cell 5 first"
-with zipfile.ZipFile("/content/dl/v3_preds.zip","w",zipfile.ZIP_DEFLATED) as z:
+with zipfile.ZipFile("/content/dl/v3b_preds.zip","w",zipfile.ZIP_DEFLATED) as z:
     for p in preds: z.write(p, arcname=os.path.basename(p))
-files.download("/content/dl/v3_preds.zip")
+files.download("/content/dl/v3b_preds.zip")
 ```
 
-Optional adapters:
-```python
-import shutil
-from google.colab import files
-for name,path in [("v3_n2w",N2W),("v3_w2n",W2N),("v3_prior",find_adapter("models/v3_prior"))]:
-    shutil.make_archive(f"/content/dl/{name}","zip",path); files.download(f"/content/dl/{name}.zip")
-```
+Then locally: unzip into `runs/` and run `bash scripts/grade_v3b.sh` — it grades all four files
+and prints the comparison table (v3b variants vs v3 / curr2 / curr / coder7b).
 
-**After downloads: Runtime → Disconnect.**
+**Persist the adapters this time (see Cell 4b-persist below) BEFORE you disconnect, so a wipe
+can't cost you another retrain.** After downloads: Runtime → Disconnect.
 
 ---
 
 ## After download — grade LOCALLY (free, deterministic)
 
-Grade against the DTW-aligned heldout (the labels the model was actually trained toward),
-and compare to v1/v2/baseline.
+Unzip `v3b_preds.zip` into `runs/`, then one command grades all four files and prints the
+comparison table (v3b variants vs v3 / curr2 / curr / coder7b):
 
 ```bash
-# unzip v3_preds.zip into runs/ first, then:
-python3 scripts/score_real_musical.py --eval data/byzantine/sft_aligned_n2w_heldout.jsonl \
-  --pred runs/v3_n2w_preds.jsonl --out runs/v3_n2w_realscore.json
-python3 scripts/score_real_musical.py --eval data/byzantine/sft_aligned_w2n_heldout.jsonl \
-  --pred runs/v3_w2n_preds.jsonl --out runs/v3_w2n_realscore.json
+# unzip v3b_preds.zip into runs/ first, then:
+bash scripts/grade_v3b.sh
 ```
 
-**Success = the labels-fix worked:** set_f1 / hist_sim / ngram_f1 materially above v1's best
-(n2w set_f1 0.48), `real_musicality_0_2 > 0` with `good_rate > 0`, variety in a healthy mid
-range (NOT ~0 drone, NOT ~0.9 hallucination). n2w should lead; w2n ceiling ~1.2 (one-to-many
-oligon/petaste) — judge it by set_f1/ngram, not exact match.
+`grade_v3b.sh` wraps `score_real_musical.py` (per direction, DTW-aligned heldout) and calls
+`compare_realscores.py`. Read `above_gate_music` / `above_gate_rows` in the table — that is the
+honest knowledge signal the anti-drone gate hides for a looping run (v3 was 0.358 over 67/501).
 
-Also worth a glance: grade v3 n2w on the SYNTHETIC melisma heldout to confirm the melisma
-prior held (`sft_synth_melisma_heldout.jsonl`, use `score_synthetic_eval.py`).
+**Pick the winning decoder:** highest `above_gate_music` with `above_gate_rows` climbing well
+past v3's 67/501, variety in a healthy ~0.3–0.6 band (NOT ~0 drone, NOT curr2's ~0.8
+hallucination). If variety rises but set_f1 / hist_sim / interval_hist_sim FALL vs v3, the
+decoder is manufacturing novel-but-wrong tokens (v2's failure) — reject it. n2w leads; w2n
+ceiling ~1.2 (oligon/petaste both +1) — judge w2n by set_f1 / hist_sim.
 
-If v3 still floors → the ceiling is deeper than alignment (Branch 4: reframe to recoverable
-properties, or reward-based training). See `docs/byzantine_next_plans_by_outcome.md`.
+Also worth a glance: grade a v3b n2w file on the SYNTHETIC melisma heldout to confirm the
+melisma prior held (`sft_synth_melisma_heldout.jsonl`, use `score_synthetic_eval.py`).
+
+If BOTH decoders cap out (looping persists or knowledge metrics drop) → the fix is training-side
+(length/EOS discipline or a diversity term), then Branch 4 (reframe / reward-based training).
+See `docs/byzantine_next_plans_by_outcome.md`.
 
 ---
 
 ## Gotchas (pre-empted)
 - Cell 1 asserts files + flags before any GPU spend; fails loud if the pull didn't land.
 - `--init-adapter` must log `Continuing from adapter: …`.
-- SOFT penalty only in Cell 5 — do NOT re-add `--no-repeat-ngram-size` (v2 hallucination).
+- Cell 5 v3b: ngram size **6** (not 3 — size-3 caused v2's 42% hallucination). temp variant
+  stays mild (0.5) to break loops without inventing invalid tokens.
+- Save adapters to Drive (Cell 4b-persist) BEFORE disconnecting — Colab has wiped them once.
 - Shell in a Python cell needs `!`.
 ```
