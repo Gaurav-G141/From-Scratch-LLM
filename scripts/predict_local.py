@@ -55,6 +55,12 @@ def main() -> None:
                     help="0.0 = greedy/deterministic (recommended for scoring)")
     ap.add_argument("--batch-size", type=int, default=16,
                     help="rows generated per batch (left-padded); 1 = unbatched")
+    ap.add_argument("--repetition-penalty", type=float, default=1.0,
+                    help="HF repetition_penalty; >1 discourages repeats (try 1.2 to break "
+                         "the drone/loop degeneration). 1.0 = off (default).")
+    ap.add_argument("--no-repeat-ngram-size", type=int, default=0,
+                    help="forbid repeating any n-gram of this size (try 3 to stop looping "
+                         "phrases). 0 = off (default).")
     ap.add_argument("--load-4bit", action="store_true", help="NF4 4-bit (CUDA only)")
     ap.add_argument("--limit", type=int, default=0, help="predict only first N rows (0=all)")
     ap.add_argument("--enable-thinking", action="store_true",
@@ -129,14 +135,19 @@ def main() -> None:
             texts = [template(build_prompt_messages(r["messages"])) for r in batch]
             # left-padded batch encode
             enc = tokenizer(texts, return_tensors="pt", padding=True).to(model.device)
+            gen_kwargs = dict(
+                max_new_tokens=args.max_new_tokens,
+                do_sample=(args.temperature > 0),
+                temperature=(args.temperature if args.temperature > 0 else None),
+                pad_token_id=tokenizer.pad_token_id,
+            )
+            # Anti-degeneration (step B): only pass when enabled so defaults stay greedy.
+            if args.repetition_penalty and args.repetition_penalty != 1.0:
+                gen_kwargs["repetition_penalty"] = args.repetition_penalty
+            if args.no_repeat_ngram_size and args.no_repeat_ngram_size > 0:
+                gen_kwargs["no_repeat_ngram_size"] = args.no_repeat_ngram_size
             with torch.no_grad():
-                gen = model.generate(
-                    **enc,
-                    max_new_tokens=args.max_new_tokens,
-                    do_sample=(args.temperature > 0),
-                    temperature=(args.temperature if args.temperature > 0 else None),
-                    pad_token_id=tokenizer.pad_token_id,
-                )
+                gen = model.generate(**enc, **gen_kwargs)
             # with left padding, every row's continuation starts at the same padded width
             gen_only = gen[:, enc["input_ids"].shape[1]:]
             completions = tokenizer.batch_decode(gen_only, skip_special_tokens=True)
