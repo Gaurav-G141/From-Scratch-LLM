@@ -89,6 +89,17 @@ def main() -> None:
             "{% if add_generation_prompt %}{{ '<|im_start|>assistant\n' }}{% endif %}"
         )
         print("No chat_template (base model) -> injected ChatML.", file=sys.stderr)
+    # Stop token: training targets end with the ChatML turn terminator <|im_end|>, but
+    # some bases (e.g. Qwen2.5-Coder) default eos to <|endoftext|> (a DIFFERENT id) — so
+    # generate() would never see its stop token and run to max_new_tokens (the observed
+    # ~3.35x run-on). Stop on <|im_end|> when present, plus the tokenizer eos as backup.
+    _stop_ids = []
+    _im_end = tokenizer.convert_tokens_to_ids("<|im_end|>")
+    if isinstance(_im_end, int) and _im_end >= 0 and _im_end != tokenizer.unk_token_id:
+        _stop_ids.append(_im_end)
+    if tokenizer.eos_token_id is not None and tokenizer.eos_token_id not in _stop_ids:
+        _stop_ids.append(tokenizer.eos_token_id)
+    print(f"stop token ids: {_stop_ids}", file=sys.stderr)
     # Decoder-only batched generation requires LEFT padding, else right-pad tokens shift
     # the position of the generated continuation and corrupt short-prompt rows.
     tokenizer.padding_side = "left"
@@ -140,6 +151,7 @@ def main() -> None:
                 do_sample=(args.temperature > 0),
                 temperature=(args.temperature if args.temperature > 0 else None),
                 pad_token_id=tokenizer.pad_token_id,
+                eos_token_id=_stop_ids,
             )
             # Anti-degeneration (step B): only pass when enabled so defaults stay greedy.
             if args.repetition_penalty and args.repetition_penalty != 1.0:
