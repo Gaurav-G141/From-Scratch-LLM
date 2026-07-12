@@ -77,6 +77,14 @@ documented "w2n ceiling."
   (1, pl.1, 4, pl.4) on a natural-note ladder are modeled. The model asserts no accidental or
   microtonal content.
 
+## Fine-tuning created the capability (base vs tuned)
+
+The same base model, **without** the adapter, scores **0.0% exact-match** on neume→west (it does
+not produce a valid pitch transcription at all — prompting alone cannot do this task). **With** the
+adapter it scores **96.0% exact.** That 0% → 96% jump is the direct measurement that SFT *created*
+the behavior rather than surfacing something already in the base. Full breakdown:
+`byzantine_deltas_base_vs_tuned_20260712.md`.
+
 ## The most important takeaway
 
 The same class of model scored **~10% positional accuracy on the real corpus** and **96% exact on
