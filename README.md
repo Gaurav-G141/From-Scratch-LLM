@@ -4,13 +4,21 @@ Working through the "Train Your Own Small Learning Model" assignment, now focuse
 
 > Transcribe between Byzantine/Chrysanthine neumatic notation and Western staff notation while preserving melodic contour, mode, martyria, ison, microtonal intent, and rhythmic modifiers.
 
-Base local model: [`Qwen/Qwen3-1.7B`](https://huggingface.co/Qwen/Qwen3-1.7B).
+Shipped model: LoRA adapter on [`unsloth/Qwen2.5-Coder-7B-bnb-4bit`](https://huggingface.co/unsloth/Qwen2.5-Coder-7B-bnb-4bit). (Early litmus/exploration used [`Qwen/Qwen3-1.7B`](https://huggingface.co/Qwen/Qwen3-1.7B) locally.)
 
-## Current status
+## Current status — COMPLETE
 
-The repo contains a working eval harness, Byzantine behavior spec, prompt banks, corpus discovery scripts, a deterministic data pipeline (Audiveris OMR for Western pitches + EZ/ED font and vector decoding for Byzantine neumes), the resulting SFT task datasets, and local LoRA adapters.
+**➡️ Start here: [`docs/FINAL_REPORT.md`](docs/FINAL_REPORT.md)** — the full front-door writeup.
 
-The core result so far: frontier prompting can improve notation formatting and memorized liturgical formulas, but it still fails on melodic equivalence for unseen and adversarial Byzantine transcription cases. That keeps supervised fine-tuning justified for this behavior.
+The assignment is done. Summary of the result:
+
+1. **Litmus PASS** — well-prompted GPT-4o and Claude Opus 4 fail Byzantine transcription on held-out/adversarial cases (0/10 unseen strict), so the behavior is worth training.
+2. **Data was the wall** — the real scanned corpus has non-corresponding neume↔pitch labels (~10% ceiling for any model), so we pivoted to **correct-by-construction synthetic interval-grammar data** (verified 1:1 by an independent re-derivation script).
+3. **The win** — a small LoRA fine-tune scores **96% exact / 98% melodic** on held-out neume→west transcription.
+4. **The delta** — the *same base model* scores **0% exact by prompting alone → 96% after fine-tuning**. Fine-tuning *created* the behavior.
+5. **It generalized** — on sequences longer than any in training, the interval rule holds at **99.2% interval accuracy** (rule-learning, not memorization).
+
+Try it live: [`demo/byzantine_live_demo.ipynb`](demo/byzantine_live_demo.ipynb).
 
 ## Repository map
 
@@ -210,7 +218,13 @@ Keep these eval banks out of training data:
 
 ## Reports and handoff docs
 
-- [`docs/byzantine_omr_western_data.md`](docs/byzantine_omr_western_data.md) — **current** deterministic data pipeline (OMR + neume extraction), per-file data index, and why the vision-era data was replaced
+- **[`docs/FINAL_REPORT.md`](docs/FINAL_REPORT.md) — the front-door final writeup. Read this first.**
+- [`docs/byzantine_deltas_base_vs_tuned_20260712.md`](docs/byzantine_deltas_base_vs_tuned_20260712.md) — base-vs-tuned delta (0% → 96% neume→west exact)
+- [`docs/byzantine_generalization_report_20260712.md`](docs/byzantine_generalization_report_20260712.md) — length-generalization test (learned the rule, not the shapes)
+- [`docs/byzantine_model_capabilities.md`](docs/byzantine_model_capabilities.md) — plain-language capability summary (what it does / doesn't do well)
+- [`docs/byzantine_synthetic_expanded_results_20260711.md`](docs/byzantine_synthetic_expanded_results_20260711.md) — the shipped synthetic run (96% result) + why the real corpus failed
+- [`docs/model_card.md`](docs/model_card.md) — HuggingFace model card
+- [`docs/byzantine_omr_western_data.md`](docs/byzantine_omr_western_data.md) — **historical** deterministic data pipeline (OMR + neume extraction), per-file data index, and why the vision-era data was replaced
 - [`docs/byzantine_day2_litmus_report.md`](docs/byzantine_day2_litmus_report.md) — behavior spec, eval design, Day 2 litmus verdict, and educational framing
 - [`docs/byzantine_day3_corpus.md`](docs/byzantine_day3_corpus.md) — historical vision-extraction corpus flow (superseded; see the OMR doc above)
 - [`docs/byzantine_day3_results_20260708.md`](docs/byzantine_day3_results_20260708.md) — **Day 3 midweek gate**: first real SFT run (Qwen3-1.7B, 897 translation rows) and base-vs-tuned numbers with error analysis
