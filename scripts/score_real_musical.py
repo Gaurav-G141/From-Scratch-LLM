@@ -178,6 +178,14 @@ def compose_score(sub: dict) -> int:
     # anti-drone gate: if the output has almost no variety it cannot be "real music"
     if sub["variety"] < 0.15:
         return 0
+    # length gate: a transcription off by >2x in length is wrong by construction (the
+    # model ran on or truncated), regardless of how similar its interval/note *distribution*
+    # looks. length_ratio is symmetric min/max, so <0.5 == >2x mismatch either direction.
+    # Without this, a 3x-too-long run-on with the right note-bag scored a high composite
+    # while a blind LLM judge (correctly) scored its melodic_equivalence 0. See
+    # runs/claude_judge_v3_vs_ngram8.json.
+    if sub.get("length_ratio", 1.0) < 0.5:
+        return 0
     if core >= 0.70:
         return 2
     if core >= 0.45:
@@ -349,6 +357,20 @@ def self_test() -> int:
     s = score_row(wrong, row, vocab)
     check("wrong-scale set_f1 low", s["set_f1"] < 0.4)
     check("wrong-scale real_musicality <=1", s["real_musicality_0_2"] <= 1)
+
+    # 4b) LENGTH GATE: right notes/intervals but ~3x too long (run-on) -> composite 0.
+    # This is the exact v3b failure a blind LLM judge caught: interval-histogram similarity
+    # stays high on a run-on, but the transcription is wrong. Must gate to 0.
+    runon = "Mode 1\nIson: G4\n" + " ".join(gold_body * 3)
+    s = score_row(runon, row, vocab)
+    check("run-on length_ratio < 0.5", s["length_ratio"] < 0.5)
+    check("run-on keeps high set_f1 (why it fooled the composite)", s["set_f1"] >= 0.8)
+    check("run-on real_musicality=0 (length gate)", s["real_musicality_0_2"] == 0)
+    # and truncation the other way (gold 3x longer than pred) also gates
+    trunc_gold = _fake_row("neume_to_west", gold_body * 3)
+    s = score_row(perfect, trunc_gold, vocab)
+    check("truncated (pred<<gold) length_ratio < 0.5", s["length_ratio"] < 0.5)
+    check("truncated real_musicality=0 (length gate)", s["real_musicality_0_2"] == 0)
 
     # 5) w2n path: gold-vs-gold on neumes
     gneu = "oligon apostrophos ison oligon oligon apostrophos elaphron oligon".split()
