@@ -1,0 +1,70 @@
+{
+  "dimension_guidance": {
+    "melodic_equivalence": "0 = wrong pitches/contour or drone; 1 = mostly correct but one microtonal/leap error or wrong register; 2 = melodic contour and pitches match the reference.",
+    "mode_fidelity": "Judge whether the MELODY is genuinely in the stated mode (echos), not just whether the header matches. 0 = wrong echos or mode collapse to major/minor; 1 = mode stated but one modulation/fthora mishandled; 2 = melody faithfully realizes the mode.",
+    "notation_convention": "0 = wrong notation system, prose, or invalid/garbage tokens; 1 = right system, minor format slips; 2 = clean, conventional Western staff-pitch formatting.",
+    "meaning_preservation": "0 = added harmony, dropped ison, invented rhythm, or Western bias; 1 = one bias slip; 2 = faithful to source semantics incl. ison and microtonal intent."
+  },
+  "rows": [
+    {
+      "id": "sam_m0600-anaphora-mode-3-nikolaidis_n2w_15",
+      "user_input": "Transcribe this Byzantine neume sequence (24 neumes) to Western staff pitches:\nMode 3\nsupport_combo_U argon_variant oligon ison gorgon antikenoma apostrophos elaphron_apostrophos ison martyria_C oligon ison psifiston martyria_N apostrophos apostrophos apli_variant oligon digorgon_dot measure_bar breath_mark_n martyria_N ison martyria_N",
+      "model_output": "Mode 3\nIson: F4\nF#4 G4 A4 B-4 C5 D5 E5 D5 C5 B-4 A4 B-4 C5 B-4 A4 G4 A4 B-4 A4 G4 F4 G4 F4 E4 D4 E4 F4 G4 F4 E4 D4 E4 F4 G4 F4 E4 D4 E4 F4 G4 F4 E4 D4 E4 F4 G4 F4 E4 D4 E4 F4 G4 F4 E4 D4 E4 F4 G4 F4 E4 D4 E4 F4 G4 F4 E4 D4 E4 F4 G4 F4 E4",
+      "reference": "Mode 3\nIson: A4\nD5 C5 B-4 A4 C5 D5 C5 B-4 A4 G4 F4 G4"
+    },
+    {
+      "id": "sam_m0600-anaphora-mode-3-nikolaidis_n2w_2",
+      "user_input": "Transcribe this Byzantine neume sequence (24 neumes) to Western staff pitches:\nMode 3\noligon_kentemata_support gorgon apostrophos_2 digorgon ison digorgon_dot measure_bar breath_mark_m kentemata martyria_C ison martyria_V digorgon_dot psifiston apostrophos chamile apostrophos petaste digorgon_variant petaste_2 apostrophos apostrophos_support digorgon_dot measure_bar",
+      "model_output": "Mode 3\nIson: A4\nA4 G#4 F#4 E-4 D4 C5 B-4 A4 G4 A4 B-4 A4 G4 F#4 G4 A4 B-4 A4 G4 F#4 G4 A4 B-4 A4 G4 F#4 G4 A4 B-4 A4 G4 F#4 G4 A4 B-4 A4 G4 F#4 G4 A4 B-4 A4 G4 F#4 G4 A4 B-4 A4 G4 F#4 G4 A4 B-4 A4 G4 F#4 G4 A4 B-4 A4 G4 F#4 G4 A4",
+      "reference": "Mode 3\nIson: A4\nG4 A4 G4 F4 F4 E4 D4 C4 F4 G4 A4 G4 F4"
+    },
+    {
+      "id": "sam_m0600-anaphora-mode-3-nikolaidis_n2w_24",
+      "user_input": "Transcribe this Byzantine neume sequence (24 neumes) to Western staff pitches:\nMode 3\npetaste_kentema measure_bar comma_breath kentemata martyria_V oligon_kentemata martyria_N psifiston apli elaphron_apostrophos elaphron_apostrophos ison martyria_C apli heteron_variant apostrophos digorgon_dot_variant breath_mark_n measure_bar breath_mark_n martyria_N petaste_3 apostrophos petaste",
+      "model_output": "Mode 3\nIson: A4\nA#4 B4 C5 D5 E5 F5 G5 F5 E5 D5 E5 D5 C5 B4 C5 D5 C5 B4 A4 B4 C5 D5 C5 B4 A4 B4 C5 D5 C5 B4 A4 B4 C5 D5 C5 B4 A4 B4 C5 D5 C5 B4 A4 B4 C5 D5 C5 B4 A4 B4 C5 D5 C5 B4 A4 B4 C5 D5 C5 B4 A4 B4 C5 D5 C5 B4 A4 B4 C5 D5 C5 B4 A4 B4 C",
+      "reference": "Mode 3\nIson: A4\nA4 G4 A4 D5 C5 B-4 A4 C5"
+    },
+    {
+      "id": "sam_m0600-anaphora-mode-3-nikolaidis_n2w_5",
+      "user_input": "Transcribe this Byzantine neume sequence (24 neumes) to Western staff pitches:\nMode 3\napostrophos_support digorgon_dot measure_bar comma_breath kentemata martyria_V oligon_kentemata martyria_N psifiston apostrophos apostrophos apostrophos apostrophos breath_mark_c oligon_kentemata_support gorgon apostrophos_2 digorgon ison digorgon_dot measure_bar breath_mark_m kentemata martyria_C",
+      "model_output": "Mode 3\nIson: A4\nA#4 B4 C5 D5 E5 F5 G5 F5 E5 D5 E5 D5 C5 B4 C5 D5 C5 B4 A4 B4 C5 B4 A4 G4 A4 B4 C5 B4 A4 G4 A4 B4 C5 B4 A4 G4 A4 B4 C5 B4 A4 G4 A4 B4 C5 B4 A4 G4 A4 B4 C5 B4 A4 G4 A4 B4 C5 B4 A4 G4 A4 B4 C5 B4 A4 G4 A4 B4 C5 B4 A4 G4 A4 B4 C",
+      "reference": "Mode 3\nIson: A4\nG4 F4 F4 G4 A4 G4 F4 E4 G4 F4 F4 A4"
+    },
+    {
+      "id": "sam_m0650-anaphora-mode-8-hierotheos_n2w_0",
+      "user_input": "Transcribe this Byzantine neume sequence (24 neumes) to Western staff pitches:\nMode pl. 4\nargon argon_variant petaste_5 martyria_C breath_mark_c martyria_C petaste_6 support_combo_U gorgon_variant endofonon apostrophos apostrophos petaste_qualitative apostrophos apostrophos gorgon_D homalon oligon_kentemata_support apostrophos_2 digorgon apostrophos digorgon_dot_variant measure_bar breath_mark_c",
+      "model_output": "Mode pl. 4\nIson: G4\nF#4 E-4 D4 C4 B3 A3 B3 C4 D4 F#4 E-4 D4 C4 D4 E-4 D4 C4 B3 C4 D4 E-4 D4 C4 B3 C4 D4 E-4 D4 C4 B3 C4 D4 E-4 D4 C4 B3 C4 D4 E-4 D4 C4 B3 C4 D4 E-4 D4 C4 B3 C4 D4 E-4 D4 C4 B3 C4 D4 E-4 D4 C4 B3 C4 D4 E-4 D4 C4 B3 C4 D",
+      "reference": "Mode pl. 4\nIson: G4\nA4 G4 A4 G4 F4 E4 D#4 E4 F4 D4"
+    },
+    {
+      "id": "sam_m0650-anaphora-mode-8-hierotheos_n2w_13",
+      "user_input": "Transcribe this Byzantine neume sequence (25 neumes) to Western staff pitches:\nMode pl. 4\nbreath_mark_c martyria_C petaste_8 martyria_M apostrophos_support petaste ison martyria_C apli breath_mark_c martyria_N slash_breath ison digorgon apostrophos apostrophos_support petaste ison psifiston elaphron_apostrophos apostrophos digorgon_variant ison apli breath_mark_c",
+      "model_output": "Mode pl. 4\nIson: G4\nF#4 E-4 D4 C4 B3 A3 F#4 G4 F#4 E-4 D4 E-4 F#4 E-4 D4 C4 D4 E-4 F#4 G4 A4 G4 F#4 E-4 D4 E-4 F#4 G4 A4 G4 F#4 E-4 D4 E-4 F#4 G4 A4 G4 F#4 E-4 D4 E-4 F#4 G4 A4 G4 F#4 E-4 D4 E-4 F#4 G4 A4 G4 F#4 E-4 D4 E-4 F#4",
+      "reference": "Mode pl. 4\nIson: G4\nA4 G4 F4 G4 G4 F4 E4 D4 D4"
+    },
+    {
+      "id": "sam_m0650-anaphora-mode-8-hierotheos_n2w_18",
+      "user_input": "Transcribe this Byzantine neume sequence (25 neumes) to Western staff pitches:\nMode pl. 4\npsifiston apostrophos apostrophos_support apli oligon digorgon oligon_kentema martyria_C ison petaste digorgon_variant petaste_qualitative ison oligon_hypsili klasma_variant period_breath homalon ison digorgon_dot breath_mark_b martyria_B slash_breath petaste_2 comma_breath apostrophos",
+      "model_output": "Mode pl. 4\nIson: G4\nF#4 E-4 D4 C4 B3 A3 B3 C4 F4 E4 D4 C4 D4 E4 F4 G4 A4 G4 F#4 E-4 D4 E-4 D4 C4 D4 E-4 D4 C4 B3 C4 D4 E-4 D4 E-4 F#4 G4 A4 G4 F#4 E-4 D4 E-4 D4 C4 D4 E-4 D4 C4 B3 C4 D4 E-4 D4 E-4 F#4 G4 A4 G4 F#4 E-4 D4 E-4 D4 C4 D",
+      "reference": "Mode pl. 4\nIson: G4\nC5 G4 F4 G4 A4 B-4 A4 B-4 G4 G4 A4 B4 C5 B-4"
+    },
+    {
+      "id": "sam_m0650-anaphora-mode-8-hierotheos_n2w_22",
+      "user_input": "Transcribe this Byzantine neume sequence (24 neumes) to Western staff pitches:\nMode pl. 4\napli measure_bar breath_mark_b martyria_B ison martyria_M petaste_kentema martyria_measure_J oligon_hypsili_5 dipli oligon digorgon apostrophos apostrophos support_combo_U gorgon_variant support_combo_Y gorgon_variant heteron_variant apostrophos_2 apli breath_mark_m kentemata martyria_C",
+      "model_output": "Mode pl. 4\nIson: G4\nG3 A#3 B3 C4 D4 E4 F4 E4 D4 C4 D4 E4 D4 C4 B3 C4 D4 C4 B3 A3 B3 C4 D4 E4 F4 E4 D4 C4 D4 E4 F4 E4 D4 C4 D4 E4 F4 E4 D4 C4 D4 E4 F4 E4 D4 C4 D4 E4 F4 E4 D4 C4 D4 E4 F4 E4 D4 C4 D4 E4 F4 E4 D4 C4 D4 E4 F4 E4 D4 C4 D4 E4 F4 E",
+      "reference": "Mode pl. 4\nIson: G4\nC5 E5 E5 D5 C5 B-4 A4 G4 F4 A4 A4"
+    },
+    {
+      "id": "sam_m0650-anaphora-mode-8-hierotheos_n2w_27",
+      "user_input": "Transcribe this Byzantine neume sequence (24 neumes) to Western staff pitches:\nMode pl. 4\noligon martyria_C psifiston elaphron_apostrophos apostrophos digorgon_variant petaste_2 apostrophos elaphron_apostrophos apostrophos homalon digorgon_variant ison oligon_kentemata_support gorgon petaste_qualitative apostrophos elaphron_4 klasma_variant period_breath homalon ison digorgon_dot breath_mark_b",
+      "model_output": "Mode pl. 4\nIson: G4\nF#4 E-4 D4 C5 B-4 A4 F#4 G4 A4 B-4 A4 G4 F#4 E-4 D4 E-4 F#4 G4 A4 G4 F#4 E-4 D4 E-4 F#4 G4 A4 G4 F#4 E-4 D4 E-4 F#4 G4 A4 G4 F#4 E-4 D4 E-4 F#4 G4 A4 G4 F#4 E-4 D4 E-4 F#4 G4 A4 G4 F#4 E-4 D4 E-4 F#4 G4 A4 G",
+      "reference": "Mode pl. 4\nIson: G4\nD5 E5 D5 C5 B4 C5 D5 D5 C5 G4 C5 E5 D5 C5 B4 C5 C5"
+    },
+    {
+      "id": "sam_m0650-anaphora-mode-8-hierotheos_n2w_31",
+      "user_input": "Transcribe this Byzantine neume sequence (24 neumes) to Western staff pitches:\nMode pl. 4\ndigorgon oligon_kentema kentemata ison ison psifiston apostrophos support_combo_U gorgon_variant apostrophos apostrophos_support apli comma_breath kentemata martyria_V support_combo_U martyria_C gorgon_variant apostrophos apostrophos_support oligon_kentemata_support gorgon petaste_qualitative apostrophos",
+      "model_output": "Mode pl. 4\nIson: G4\nF#4 E-4 D4 C4 B3 A3 B3 C4 D4 E4 F4 E4 D4 C4 D4 E4 F4 E4 D4 C4 D4 E4 F4 E4 D4 C4 D4 E4 F4 E4 D4 C4 D4 E4 F4 E4 D4 C4 D4 E4 F4 E4 D4 C4 D4 E4 F4 E4 D4 C4 D4 E4 F4 E4 D4 C4 D4 E4 F4 E4 D4 C4 D4 E4 F4 E4 D4 C4 D4 E4 F4 E4 D4",
+      "reference": "Mode pl. 4\nIson: G4\nD5 E5 D5 C5 B4 A4 G4 A4 G4 F4 E4 F4 G4 F4 E4 D#4"
+    }
+  ]
+}

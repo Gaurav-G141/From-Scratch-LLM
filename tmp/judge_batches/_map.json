@@ -1,0 +1,22 @@
+{
+  "batch_00.json": "v3_05",
+  "batch_01.json": "ngram8_07",
+  "batch_02.json": "ngram8_03",
+  "batch_03.json": "v3_02",
+  "batch_04.json": "ngram8_06",
+  "batch_05.json": "v3_07",
+  "batch_06.json": "v3_06",
+  "batch_07.json": "v3_08",
+  "batch_08.json": "ngram8_09",
+  "batch_09.json": "ngram8_01",
+  "batch_10.json": "v3_03",
+  "batch_11.json": "ngram8_02",
+  "batch_12.json": "v3_01",
+  "batch_13.json": "v3_00",
+  "batch_14.json": "ngram8_00",
+  "batch_15.json": "ngram8_08",
+  "batch_16.json": "v3_09",
+  "batch_17.json": "ngram8_04",
+  "batch_18.json": "ngram8_05",
+  "batch_19.json": "v3_04"
+}
