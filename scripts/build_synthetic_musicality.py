@@ -77,6 +77,9 @@ INTERVAL_NEUMES = {
     # guide-vouched leaps (combination tokens, exact table values)
     "oligon_kentema": +3,         # L122 "Kentima over oligon = up fourth"
     "oligon_hypsili": +4,         # L124 "Ypsili right/middle of oligon = up fifth"
+    "ypsili_left_oligon": +5,     # L126 "Ypsili at left of oligon = up sixth"
+    "ypsili_kentima_oligon": +6,  # L128 "Ypsili next to kentima over oligon = up seventh"
+    "ypsili_over_kentima_oligon": +7,  # L130 "Ypsili over kentima over oligon = up octave"
     "elaphron": -2,               # L95  "Elaphron = descending third"
     "elaphron_apostrophos": -3,   # L134 "Elaphron over apostrophos = down fourth"
     "chamile": -4,                # L96  "Hamili/Chamili = descending fifth"
@@ -90,6 +93,16 @@ INTERVAL_NEUMES = {
 # Used ONLY in the neume->west direction (they are not recoverable from pitches, so
 # putting them in a west->neume target would teach guessing). Verifier skips them.
 BREATH_NOOPS = ["breath_mark_m", "comma_breath", "measure_bar"]
+
+# Duration signs (guide "Duration Rules", L157-174): they extend the PRECEDING note's
+# beat count; they do NOT move the pitch cursor. Default note = 1 beat. We use only a
+# BIJECTIVE subset — each total-beat value maps to exactly ONE token — so the duration
+# is exactly recoverable in BOTH directions (unlike breaths). apli=+1 (2 beats total),
+# dipli=+2 (3), tetrapli=+4 (5). klasma (+1) and gorgon (fractional) are excluded to
+# keep beats<->token a bijection. A duration sign attaches to the last pitch-bearing
+# neume and renders inline as "<pitch>:<beats>" when beats>1 (plain "<pitch>" == 1 beat).
+DURATION_BEATS = {"apli": 2, "dipli": 3, "tetrapli": 5}
+BEATS_TO_DURATION = {v: k for k, v in DURATION_BEATS.items()}  # bijection for w2n
 
 # Diatonic natural-note ladder, C3..C6 (real OMR corpus is >98% naturals, octaves 3-5;
 # the wider span gives transposition headroom). No accidentals => no 12-TET microtone
@@ -113,9 +126,10 @@ MODES = {
     "Mode pl. 4": "C4",   # plagal IV, C/Ni finalis, diatonic
 }
 
-# Melodic ambit: keep each walk within a 10th of its own start so it stays singable and
-# fits on the ladder at several anchors.
-AMBIT = 9
+# Melodic ambit: keep each walk within an 11th of its own start so it stays singable and
+# fits on the ladder at several anchors. Widened from 9 to 11 to give the up-to-octave
+# ascending leaps (ypsili combos, +7) room without immediately clamping.
+AMBIT = 11
 # Transposition anchor band (ladder indices): G3..C5 — a realistic ison register.
 ANCHOR_BAND = range(LADDER_INDEX["G3"], LADDER_INDEX["C5"] + 1)
 
@@ -125,6 +139,8 @@ _MOVE_WEIGHTS = [
     ("apostrophos", 5), ("oligon", 4), ("petaste", 3), ("ison", 2), ("elaphron", 2),
     ("oligon_kentema", 1), ("oligon_hypsili", 1), ("elaphron_apostrophos", 1),
     ("chamile", 1),
+    # larger guide-vouched ascending leaps (rarer, as big leaps are in real chant)
+    ("ypsili_left_oligon", 1), ("ypsili_kentima_oligon", 1), ("ypsili_over_kentima_oligon", 1),
 ]
 MOVE_POOL = [name for name, w in _MOVE_WEIGHTS for _ in range(w)]
 _ASC = [n for n in INTERVAL_NEUMES if INTERVAL_NEUMES[n] > 0]
@@ -161,6 +177,25 @@ def gen_neumes(seed: int, length: int) -> tuple[list[str], int, int]:
     return neumes, lo, hi
 
 
+def maybe_insert_durations(neumes: list[str], seed: int) -> list[str]:
+    """Deterministically attach duration signs to some pitch-bearing neumes (BOTH
+    directions — duration is exactly recoverable). A duration token follows the neume
+    whose note it lengthens; never at the start, never two in a row. ~50% of walks get
+    durations. Returns a NEW list."""
+    x = _lcg((seed ^ 0x2545F4914F6CDD1D) & 0xFFFFFFFF)
+    if x % 2 == 0:  # ~50% of walks stay plain (1 beat everywhere)
+        return list(neumes)
+    dur_tokens = list(DURATION_BEATS)
+    out: list[str] = []
+    for i, n in enumerate(neumes):
+        out.append(n)
+        x = _lcg(x)
+        # attach a duration to ~1 in 4 interior pitch-bearing neumes
+        if i > 0 and x % 4 == 0:
+            out.append(dur_tokens[x % len(dur_tokens)])
+    return out
+
+
 def maybe_insert_breaths(neumes: list[str], seed: int) -> list[str]:
     """Deterministically sprinkle breath/barline no-ops into a neume line (n2w only).
     Returns a NEW list; pitch derivation must skip these tokens."""
@@ -178,11 +213,21 @@ def maybe_insert_breaths(neumes: list[str], seed: int) -> list[str]:
 
 
 def pitches_from(anchor_idx: int, neumes: list[str]) -> list[str]:
-    """Emit the pitch for each PITCH-BEARING neume (breaths skipped)."""
+    """Emit the pitch for each PITCH-BEARING neume from a sequence that may contain
+    breath no-ops (skipped) and duration signs (lengthen the PRECEDING note, no cursor
+    move). A note held >1 beat renders as "<pitch>:<beats>"; 1-beat notes as "<pitch>".
+    So a duration sign is exactly recoverable from the beats annotation in both dirs."""
     idx = anchor_idx
     out: list[str] = []
     for n in neumes:
         if n in BREATH_NOOPS:
+            continue
+        if n in DURATION_BEATS:
+            if not out:
+                raise ValueError("duration sign with no preceding note")
+            # replace the last emitted token's beats with this duration's total
+            base = out[-1].split(":")[0]
+            out[-1] = f"{base}:{DURATION_BEATS[n]}"
             continue
         idx += INTERVAL_NEUMES[n]
         if not (0 <= idx < len(LADDER)):
@@ -191,15 +236,17 @@ def pitches_from(anchor_idx: int, neumes: list[str]) -> list[str]:
     return out
 
 
-def make_rows(mode: str, anchor_idx: int, neumes_plain: list[str],
+def make_rows(mode: str, anchor_idx: int, neumes_dur: list[str],
               neumes_n2w: list[str], rid: str) -> list[dict]:
-    """Both directions for one anchored walk. `neumes_plain` (no breaths) drives w2n and
-    pitch derivation; `neumes_n2w` may contain breath no-ops shown in the n2w prompt."""
+    """Both directions for one anchored walk. `neumes_dur` (durations, no breaths) drives
+    w2n and pitch derivation; `neumes_n2w` may also contain breath no-ops shown only in
+    the n2w prompt. Duration signs appear in both directions (exactly recoverable via the
+    <pitch>:<beats> annotation); breaths appear only n2w."""
     ison = LADDER[anchor_idx]
-    pitches = pitches_from(anchor_idx, neumes_plain)
+    pitches = pitches_from(anchor_idx, neumes_dur)
     pitch_str = " ".join(pitches)
     n2w_neume_str = " ".join(neumes_n2w)
-    w2n_neume_str = " ".join(neumes_plain)
+    w2n_neume_str = " ".join(neumes_dur)
 
     west_block = f"{mode}\nIson: {ison}\n{pitch_str}"
     byz_block = f"{mode}\n(Ison {ison})\n{w2n_neume_str}"
@@ -238,16 +285,28 @@ def make_rows(mode: str, anchor_idx: int, neumes_plain: list[str],
     ]
 
 
-def verify_walk(mode: str, anchor_idx: int, neumes_plain: list[str],
+def verify_walk(mode: str, anchor_idx: int, neumes_dur: list[str],
                 neumes_n2w: list[str]) -> None:
     """Raise if the anchored walk is not internally consistent. Runs on EVERY walk."""
-    assert all(n in INTERVAL_NEUMES for n in neumes_plain), "unknown interval neume"
-    assert all(n in INTERVAL_NEUMES or n in BREATH_NOOPS for n in neumes_n2w), "bad n2w token"
-    # n2w with breaths stripped must equal the plain sequence (same music)
-    assert [n for n in neumes_n2w if n not in BREATH_NOOPS] == neumes_plain, "breath desync"
-    pitches = pitches_from(anchor_idx, neumes_plain)
-    assert len(pitches) == len(neumes_plain), "length mismatch"
-    assert all(p in LADDER_INDEX for p in pitches), "off-ladder pitch"
+    assert all(n in INTERVAL_NEUMES or n in DURATION_BEATS for n in neumes_dur), "unknown neume/duration"
+    assert all(n in INTERVAL_NEUMES or n in DURATION_BEATS or n in BREATH_NOOPS
+               for n in neumes_n2w), "bad n2w token"
+    # n2w with breaths stripped must equal the duration-bearing sequence (same music)
+    assert [n for n in neumes_n2w if n not in BREATH_NOOPS] == neumes_dur, "breath desync"
+    # duration signs never lead and never repeat (each attaches to a real preceding note)
+    for i, n in enumerate(neumes_dur):
+        if n in DURATION_BEATS:
+            assert i > 0 and neumes_dur[i - 1] not in DURATION_BEATS, "dangling duration"
+    pitches = pitches_from(anchor_idx, neumes_dur)
+    n_pitch_bearing = sum(1 for n in neumes_dur if n in INTERVAL_NEUMES)
+    assert len(pitches) == n_pitch_bearing, "length mismatch"
+    # each pitch token is "<ladder pitch>" or "<ladder pitch>:<beats>"; beats must be a
+    # value that maps back to exactly one duration sign (bijection => reversible w2n)
+    for p in pitches:
+        parts = p.split(":")
+        assert parts[0] in LADDER_INDEX, "off-ladder pitch"
+        if len(parts) == 2:
+            assert int(parts[1]) in BEATS_TO_DURATION, "unrecoverable beats"
 
 
 def _signatures_from_file(path: Path) -> set[tuple]:
@@ -291,7 +350,9 @@ def build(out_path: str, n_walks: int, min_len: int, max_len: int,
         length = min_len + (seed % (max_len - min_len + 1))
         mode = list(MODES.keys())[seed % len(MODES)]
         neumes_plain, lo, hi = gen_neumes(seed, length)
-        neumes_n2w = maybe_insert_breaths(neumes_plain, seed)
+        # duration signs go in BOTH directions (exactly recoverable); breaths only n2w.
+        neumes_dur = maybe_insert_durations(neumes_plain, seed)
+        neumes_n2w = maybe_insert_breaths(neumes_dur, seed)
         base_seed = seed
         seed += 1
 
@@ -309,12 +370,12 @@ def build(out_path: str, n_walks: int, min_len: int, max_len: int,
             if sig in seen:
                 continue
             try:
-                verify_walk(mode, anchor_idx, neumes_plain, neumes_n2w)
+                verify_walk(mode, anchor_idx, neumes_dur, neumes_n2w)
             except (AssertionError, ValueError):
                 continue
             seen.add(sig)
             rid = f"synth_{base_seed:06d}_t{ti}"
-            rows.extend(make_rows(mode, anchor_idx, neumes_plain, neumes_n2w, rid))
+            rows.extend(make_rows(mode, anchor_idx, neumes_dur, neumes_n2w, rid))
             kept_anchored += 1
             emitted_any = True
         if emitted_any:

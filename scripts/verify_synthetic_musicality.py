@@ -33,11 +33,17 @@ STEP = {
     "ison": 0, "oligon": 1, "petaste": 1, "apostrophos": -1,
     "oligon_kentema": 3,        # up a fourth
     "oligon_hypsili": 4,        # up a fifth
+    "ypsili_left_oligon": 5,    # up a sixth
+    "ypsili_kentima_oligon": 6, # up a seventh
+    "ypsili_over_kentima_oligon": 7,  # up an octave
     "elaphron": -2,             # down a third
     "elaphron_apostrophos": -3, # down a fourth
     "chamile": -4,              # down a fifth
 }
 BREATH_NOOPS = {"breath_mark_m", "comma_breath", "measure_bar"}
+# Duration signs lengthen the preceding note (guide L157-174). Independently re-declared.
+DURATION_BEATS = {"apli": 2, "dipli": 3, "tetrapli": 5}
+BEATS_TO_DURATION = {v: k for k, v in DURATION_BEATS.items()}
 
 LADDER = [
     "C3", "D3", "E3", "F3", "G3", "A3", "B3",
@@ -50,12 +56,31 @@ MODES = {"Mode 1", "Mode pl. 1", "Mode 4", "Mode pl. 4"}
 PITCH_RE = re.compile(r"^[A-G][3-6]$")
 
 
+def _pitch_ok(tok: str) -> bool:
+    """A pitch token is '<ladder pitch>' or '<ladder pitch>:<beats>' where beats maps
+    back to exactly one duration sign (bijection => reversible)."""
+    parts = tok.split(":")
+    if parts[0] not in LADDER_IX:
+        return False
+    if len(parts) == 1:
+        return True
+    if len(parts) != 2 or not parts[1].isdigit():
+        return False
+    return int(parts[1]) in BEATS_TO_DURATION
+
+
 def derive(anchor: str, neumes: list[str]) -> list[str]:
-    """Pitches for pitch-bearing neumes; breaths are skipped no-ops."""
+    """Pitches for pitch-bearing neumes. Breaths are skipped no-ops. Duration signs
+    lengthen the preceding note, rendered as '<pitch>:<beats>' when >1 beat."""
     ix = LADDER_IX[anchor]
     out = []
     for n in neumes:
         if n in BREATH_NOOPS:
+            continue
+        if n in DURATION_BEATS:
+            assert out, "duration with no preceding note"
+            base = out[-1].split(":")[0]
+            out[-1] = f"{base}:{DURATION_BEATS[n]}"
             continue
         ix += STEP[n]
         if not (0 <= ix < len(LADDER)):
@@ -74,7 +99,7 @@ def check_n2w(row: dict) -> None:
     prompt_anchor = um.group(1)
     neumes = ulines[3].split()
     assert mode in MODES, f"unknown mode {mode!r}"
-    assert all(n in STEP or n in BREATH_NOOPS for n in neumes), "bad token in user"
+    assert all(n in STEP or n in BREATH_NOOPS or n in DURATION_BEATS for n in neumes), "bad token in user"
     assert alines[0] == mode, "mode header mismatch"
     m = re.match(r"^Ison: ([A-G][3-6])$", alines[1])
     assert m, "ison header malformed"
@@ -82,7 +107,7 @@ def check_n2w(row: dict) -> None:
     assert anchor in LADDER_IX, "anchor off-ladder"
     assert anchor == prompt_anchor, "prompt anchor != target anchor"
     pitches = alines[2].split()
-    assert all(PITCH_RE.match(p) and p in LADDER_IX for p in pitches), "off-ladder pitch"
+    assert all(_pitch_ok(p) for p in pitches), "off-ladder or bad-beats pitch"
     assert derive(anchor, neumes) == pitches, "pitches != interval walk"
 
 
@@ -95,11 +120,13 @@ def check_w2n(row: dict) -> None:
     assert m, "ison header malformed"
     anchor = m.group(1)
     pitches = ulines[3].split()
+    assert all(_pitch_ok(p) for p in pitches), "off-ladder or bad-beats pitch in w2n input"
     assert alines[0] == mode, "mode header mismatch"
     assert alines[1] == f"(Ison {anchor})", "ison paren header mismatch"
     neumes = alines[2].split()
-    # w2n targets must NOT contain breath no-ops (not recoverable from pitches)
-    assert all(n in STEP for n in neumes), "non-interval token in w2n target"
+    # w2n targets must NOT contain breath no-ops (not recoverable from pitches), but MAY
+    # contain duration signs (exactly recoverable from the <pitch>:<beats> annotation).
+    assert all(n in STEP or n in DURATION_BEATS for n in neumes), "bad token in w2n target"
     assert derive(anchor, neumes) == pitches, "neumes don't reproduce pitches"
 
 

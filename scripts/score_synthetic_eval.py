@@ -58,9 +58,10 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data" / "byzantine"
 
-# A Western staff pitch token, e.g. G4, F#4, Bb3. We keep the accidental if present so a
-# model that (wrongly) emits sharps on synthetic data is scored as wrong, not normalised.
-PITCH_TOKEN = re.compile(r"\b[A-G][#b]?\d\b")
+# A Western staff pitch token, e.g. G4, F#4, Bb3, or a held note with a beat count
+# G4:2. We keep the accidental if present (a model emitting sharps on synthetic data is
+# scored wrong, not normalised) AND the :beats suffix (duration is part of the answer).
+PITCH_TOKEN = re.compile(r"\b[A-G][#b]?\d(?::\d+)?\b")
 # Neume tokens are lowercase words with underscores (our vocab): oligon, apostrophos, ...
 NEUME_TOKEN = re.compile(r"\b[a-z][a-z_]+\b")
 
@@ -133,6 +134,7 @@ def intervals(pitches: list[str]) -> list[int]:
     NAMES = "CDEFGAB"
 
     def deg(p):
+        p = p.split(":")[0]  # drop any :beats duration suffix; degree is pitch-only
         m = re.match(r"^([A-G])[#b]?(\d)$", p)
         return None if not m else NAMES.index(m.group(1)) + 7 * int(m.group(2))
 
