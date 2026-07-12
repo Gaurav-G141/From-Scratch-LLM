@@ -1,0 +1,29 @@
+{
+  "judge": "claude-opus (blind subagents, 4-dim rubric from goals/byzantine_transcription.yaml)",
+  "eval": "data/byzantine/sft_aligned_n2w_heldout.jsonl (100-row paired sample, n2w)",
+  "caveat": "different eval set than Opus scenario-bank sweep; judge is Claude not Opus-API. Directional but real rubric judgment.",
+  "runs": {
+    "ngram8": {
+      "n": 100,
+      "dimensions": {
+        "melodic_equivalence": 0.0,
+        "mode_fidelity": 0.05,
+        "notation_convention": 1.28,
+        "meaning_preservation": 0.09
+      },
+      "strict_pass": "0/100",
+      "strict_rate": 0.0
+    },
+    "v3": {
+      "n": 100,
+      "dimensions": {
+        "melodic_equivalence": 0.0,
+        "mode_fidelity": 0.0,
+        "notation_convention": 1.39,
+        "meaning_preservation": 0.2
+      },
+      "strict_pass": "0/100",
+      "strict_rate": 0.0
+    }
+  }
+}
