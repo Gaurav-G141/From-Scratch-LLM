@@ -8,3 +8,4 @@ runs/
 models/
 data/byzantine/corpus/*.pdf
 *.png
+byz_synth_expanded/
