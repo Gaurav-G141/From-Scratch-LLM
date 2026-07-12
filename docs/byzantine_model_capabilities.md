@@ -8,7 +8,7 @@ A plain-language capability summary of the fine-tuned model (LoRA adapter on
 ## One-sentence summary
 
 The model transcribes **Byzantine neume notation → Western staff pitches near-perfectly
-(96% exact, 1.95/2.0 melodic)** on held-out data for a diatonic interval grammar that includes
+(96% exact, 98% melodic)** on held-out data for a diatonic interval grammar that includes
 ascending leaps up to an octave and rhythmic note durations — a task frontier prompting could
 not do reliably — but only for **synthetic, correct-by-construction** sequences, not real
 scanned manuscript chant, and the reverse direction is limited by an inherent ambiguity in the
@@ -20,8 +20,11 @@ notation itself.
   both row-id and exact-input-prompt overlap = 0).
 - **Deterministic scoring:** no LLM judge. The synthetic gold is exact by construction, so
   correctness is computed directly (exact match, per-position pitch accuracy, interval accuracy,
-  edit distance, and a 0–2 melodic-equivalence composite).
-- **Sanity-checked:** gold-vs-gold scores a perfect 2.0 in both directions, so the scorer is
+  edit distance, and a melodic-equivalence composite).
+- **All scores below are shown as percentages (higher = better).** The melodic-equivalence
+  composite is natively a 0–2 rubric score; it is reported here as % of its 2.0 maximum so every
+  number is on the same 0–100% scale.
+- **Sanity-checked:** gold-vs-gold scores a perfect 100% in both directions, so the scorer is
   measuring real correctness, not an artifact.
 
 ## What it does WELL
@@ -30,11 +33,11 @@ notation itself.
 
 | metric | score | meaning |
 |---|---|---|
-| exact_match | **0.960** | reproduces the entire pitch sequence exactly, 96% of the time |
-| pitch_accuracy | **0.991** | 99% of individual pitches correct |
-| interval_accuracy | **0.992** | the melodic motion between notes is right |
-| melodic_equivalence (0–2) | **1.955** | essentially at the 2.0 ceiling |
-| strict_pass_rate | **0.962** | 96% pass the strict bar (melodic≥1.5 AND meaning≥1.5) |
+| exact_match | **96.0%** | reproduces the entire pitch sequence exactly, 96% of the time |
+| pitch_accuracy | **99.1%** | 99% of individual pitches correct |
+| interval_accuracy | **99.2%** | the melodic motion between notes is right |
+| melodic_equivalence | **97.8%** | (1.955 of 2.0) — essentially at the ceiling |
+| strict_pass_rate | **96.2%** | 96% pass the strict bar (melodic ≥ 75% AND meaning ≥ 75%) |
 
 Concretely, given a neume sequence and its ison (starting-pitch) anchor, the model correctly:
 - walks the diatonic intervals — unison, steps, and leaps up to an **octave** (the ypsili/kentima
@@ -49,18 +52,19 @@ model a specialized notation grammar that prompting a frontier model did not rel
 
 ## What it does NOT do well (and why)
 
-**west → neume — low exact-match (0.14), but this is a notation ceiling, not a model failure.**
+**west → neume — low exact-match (14%), but this is a notation ceiling, not a model failure.**
 
 | metric | score | how to read it |
 |---|---|---|
-| pitch_accuracy | 0.765 | **the honest signal** — 76% of neume positions correct |
-| exact_match | 0.137 | misleading here — see below |
-| interval_accuracy | 0.0 | **n/a** — output is neume tokens, not pitches, so no interval is defined |
+| pitch_accuracy | 76.5% | **the honest signal** — 76% of neume positions correct |
+| exact_match | 13.7% | misleading here — see below |
+| melodic_equivalence | 49.0% | (0.981 of 2.0) — held down by the ambiguity below |
+| interval_accuracy | n/a | output is neume tokens, not pitches, so no interval is defined |
 
 The reverse direction is intrinsically ambiguous: **multiple neumes encode the same pitch
 motion** (e.g. `oligon` and `petaste` both mean "+1 step"). From pitches alone you cannot recover
 which one was originally written, so exact match is capped well below 100% no matter how good the
-model is. Judge this direction by positional pitch accuracy (0.76), not exact match. This is the
+model is. Judge this direction by positional pitch accuracy (76%), not exact match. This is the
 documented "w2n ceiling."
 
 **Out of scope entirely (never trained, do not expect):**
