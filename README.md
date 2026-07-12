@@ -239,3 +239,5 @@ Keep these eval banks out of training data:
 | **PASS** | Frontier prompting cannot reliably hit threshold after prompt edits; proceed to SFT |
 | **FAIL** | Frontier prompting reaches high adherence; pick a harder behavior |
 | **BORDERLINE** | Scores land in the middle band; tighten the spec or add adversarial scenarios |
+
+HUGGING FACE URL: https://huggingface.co/FableMogger9000/byzantine-synthetic-grammar-lora/blob/main/README.md 

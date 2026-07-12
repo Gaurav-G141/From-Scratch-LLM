@@ -110,7 +110,7 @@ range, does not have it). Detail: [`byzantine_generalization_report_20260712.md`
 - **Live demo (Colab):** [`demo/byzantine_live_demo.ipynb`](../demo/byzantine_live_demo.ipynb) — type
   neumes, get pitches, shown next to the ground-truth answer. Includes a base-vs-tuned cell (§6) and a
   base-only cell (§6b).
-- **Published model:** `<HF_REPO_URL>` — LoRA adapter, loads on the base model (see
+- **Published model:** https://huggingface.co/FableMogger9000/byzantine-synthetic-grammar-lora/blob/main/README.md — LoRA adapter, loads on the base model (see
   [`docs/model_card.md`](model_card.md) and [`docs/huggingface_publish.md`](huggingface_publish.md)).
 - **Data pipeline:** `build_synthetic_musicality.py` (generate) → `verify_synthetic_musicality.py`
   (independent re-derivation) → `train_byzantine_sft.py` (LoRA) → `predict_local.py` (inference) →
