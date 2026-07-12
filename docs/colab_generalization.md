@@ -173,16 +173,54 @@ compositional generalization.
 
 ---
 
-## Cell 7 — Save adapter(s) to Drive
+## Cell 7 — Download the RESULTS directly (predictions + score)
+
+The results are small JSON files (a few MB) — download them straight to your Mac's
+`~/Downloads`, no Drive or model download needed. This is all you need to analyze/record the
+run.
+
+```python
+from google.colab import files
+import os
+for f in ["runs/synth_len_score.json", "runs/synth_len_preds.jsonl"]:
+    # (for Test B use synth_noleap_* / synth_onlyleap_* names)
+    if os.path.isfile(f):
+        print("downloading", f, f"({os.path.getsize(f)/1e6:.2f} MB)")
+        files.download(f)
+    else:
+        print("MISSING (run predict/score first):", f)
+```
+
+Tip: `synth_len_score.json` alone is the headline number; `synth_len_preds.jsonl` is the raw
+per-row predictions if you want to inspect specific cases.
+
+## Cell 7b — (optional) Save adapter to Drive
+
+Only if you want to keep the trained weights. The adapter is ~80 MB (or ~600 MB if you copy the
+`checkpoints/` too — the top-level adapter alone is enough to reuse). Drive is better than a
+browser download for something this size.
 
 ```python
 from google.colab import drive; drive.mount('/content/drive')
 import shutil, os
 DST="/content/drive/MyDrive/byz_generalization"; os.makedirs(DST, exist_ok=True)
-shutil.copytree(ADP, f"{DST}/synth_len_adapter", dirs_exist_ok=True)
+# copy ONLY the top-level adapter files, not the big checkpoints/ dir:
+os.makedirs(f"{DST}/synth_len_adapter", exist_ok=True)
+for fn in os.listdir(ADP):
+    src=os.path.join(ADP, fn)
+    if os.path.isfile(src):                       # skips checkpoints/ subdir
+        shutil.copy(src, f"{DST}/synth_len_adapter/")
 for f in ["runs/synth_len_preds.jsonl","runs/synth_len_score.json"]:
     if os.path.isfile(f): shutil.copy(f, DST)
-print("saved to", DST)
+print("saved adapter (top-level only) + results to", DST)
+```
+
+To also download the adapter to your Mac as a zip (instead of / in addition to Drive):
+```python
+import shutil
+from google.colab import files
+shutil.make_archive("/content/synth_len_adapter","zip",ADP)   # includes checkpoints -> larger
+files.download("/content/synth_len_adapter.zip")
 ```
 
 ---
