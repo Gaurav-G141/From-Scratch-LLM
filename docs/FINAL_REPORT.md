@@ -107,7 +107,8 @@ range, does not have it). Detail: [`byzantine_generalization_report_20260712.md`
 
 ## 6. Try it / reproduce it
 
-- **Live demo (Colab):** [`demo/byzantine_live_demo.ipynb`](../demo/byzantine_live_demo.ipynb) — type
+- **Live demo — [▶ Open in Colab](https://colab.research.google.com/drive/1c4o_tVMIN0CUhcbTG44i5SB8yYgnodes?usp=sharing)**
+  (source: [`demo/byzantine_live_demo.ipynb`](../demo/byzantine_live_demo.ipynb)) — type
   neumes, get pitches, shown next to the ground-truth answer. Includes a base-vs-tuned cell (§6) and a
   base-only cell (§6b).
 - **Published model:** https://huggingface.co/FableMogger9000/byzantine-synthetic-grammar-lora/blob/main/README.md — LoRA adapter, loads on the base model (see

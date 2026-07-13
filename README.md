@@ -18,7 +18,7 @@ The assignment is done. Summary of the result:
 4. **The delta** — the *same base model* scores **0% exact by prompting alone → 96% after fine-tuning**. Fine-tuning *created* the behavior.
 5. **It generalized** — on sequences longer than any in training, the interval rule holds at **99.2% interval accuracy** (rule-learning, not memorization).
 
-Try it live: [`demo/byzantine_live_demo.ipynb`](demo/byzantine_live_demo.ipynb).
+Try it live: **[▶ Open the demo in Colab](https://colab.research.google.com/drive/1c4o_tVMIN0CUhcbTG44i5SB8yYgnodes?usp=sharing)** (source: [`demo/byzantine_live_demo.ipynb`](demo/byzantine_live_demo.ipynb)).
 
 ## Repository map
 

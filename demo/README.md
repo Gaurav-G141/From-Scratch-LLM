@@ -4,8 +4,10 @@
 type Byzantine neumes → the model returns Western staff pitches, shown next to the
 ground-truth answer so the audience sees they match.
 
+**▶ Open in Colab:** https://colab.research.google.com/drive/1c4o_tVMIN0CUhcbTG44i5SB8yYgnodes?usp=sharing
+
 ## Running it
-1. Open `byzantine_live_demo.ipynb` in Colab (upload, or push and open from GitHub).
+1. Open the Colab link above (or upload `byzantine_live_demo.ipynb`, or open it from GitHub).
 2. Runtime → Change runtime type → **GPU** (T4 is enough).
 3. In **Cell 1**, set `ADAPTER_SOURCE`:
    - `"hf"` + `HF_REPO` — load from your published HuggingFace adapter (simplest once uploaded).
